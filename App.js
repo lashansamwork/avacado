@@ -12,7 +12,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
-import primaryNavigator from './routes/primaryNavigator';
+import primaryNavigator from './src/routes/primaryNavigator';
 
 const App = () => {
   return (
