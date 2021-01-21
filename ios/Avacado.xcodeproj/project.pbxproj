@@ -15,11 +15,16 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* AvacadoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AvacadoTests.m */; };
+		34C9E4182DC24D6AA89FB4EB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45BE54703F724ADCAEF60EB5 /* Roboto-Medium.ttf */; };
 		3542159770C1C47A2103F8C0 /* libPods-Avacado-AvacadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7647541B3504786297DB3ABD /* libPods-Avacado-AvacadoTests.a */; };
 		520A8BB4373BD4C79832126C /* libPods-Avacado-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D59A73D583E3DEC3A2499F /* libPods-Avacado-tvOS.a */; };
 		5D39DAB745FE9DCD66CA8398 /* libPods-Avacado.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A3CB209151EE99982F894D /* libPods-Avacado.a */; };
 		6077E460CDEF04C01CB5D712 /* libPods-Avacado-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F3041A4E56A0095375EB9D /* libPods-Avacado-tvOSTests.a */; };
+		64F480E2BF144D5389BD402A /* avocado-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518879D2E84E63ACAB7E4D /* avocado-logo.png */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE370236A04602860C3FD7 /* yogaGirl.png */; };
+		9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */; };
+		E9AF48E685944561AB366AC6 /* girlSittingCouch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 27130C44C2A24D82B595FB14 /* girlSittingCouch3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,29 +49,50 @@
 		00E356EE1AD99517003FC87E /* AvacadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AvacadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AvacadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvacadoTests.m; sourceTree = "<group>"; };
+		0B7E9A594AA7454894A274C2 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Avacado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avacado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Avacado/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Avacado/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Avacado/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Avacado/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Avacado/main.m; sourceTree = "<group>"; };
+		16167DE47BA44EDABCD6782B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		201EC51090DF478D867786AF /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		264391E9722D4F7196291006 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		27130C44C2A24D82B595FB14 /* girlSittingCouch3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = girlSittingCouch3.png; path = ../src/assets/images/girlSittingCouch3.png; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Avacado-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avacado-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Avacado-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Avacado-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D130B04AD49F79212B7E764 /* Pods-Avacado-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Avacado-tvOS/Pods-Avacado-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		33BD8ED6AC6A786F4CC1450B /* Pods-Avacado-AvacadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-AvacadoTests.release.xcconfig"; path = "Target Support Files/Pods-Avacado-AvacadoTests/Pods-Avacado-AvacadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E155058610AA3E8AD81C590 /* Pods-Avacado-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Avacado-tvOSTests/Pods-Avacado-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		42D0CA65AE244DE6A9963266 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		45BE54703F724ADCAEF60EB5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		470D47566F2442A8A4A71E46 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		49D59A73D583E3DEC3A2499F /* libPods-Avacado-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Avacado-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		519C56F6604C75A5D4431875 /* Pods-Avacado.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado.debug.xcconfig"; path = "Target Support Files/Pods-Avacado/Pods-Avacado.debug.xcconfig"; sourceTree = "<group>"; };
 		51CDF98120A01B7BEB8CD058 /* Pods-Avacado-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Avacado-tvOSTests/Pods-Avacado-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		53024B0B401B37BB73B74595 /* Pods-Avacado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado.release.xcconfig"; path = "Target Support Files/Pods-Avacado/Pods-Avacado.release.xcconfig"; sourceTree = "<group>"; };
+		5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../src/assets/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		7647541B3504786297DB3ABD /* libPods-Avacado-AvacadoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Avacado-AvacadoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C518879D2E84E63ACAB7E4D /* avocado-logo.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "avocado-logo.png"; path = "../src/assets/images/avocado-logo.png"; sourceTree = "<group>"; };
+		7CBABF876EBB4EDAA8DBE8C7 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		7DDE370236A04602860C3FD7 /* yogaGirl.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = yogaGirl.png; path = ../src/assets/images/yogaGirl.png; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Avacado/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B3E03DADB81A4B518FCC509F /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		B868631FF50E4B2690886826 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		BC9679018B2C43A19DA1E13E /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		C2A3CB209151EE99982F894D /* libPods-Avacado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Avacado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6F099009F7D470DAD88A12A /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		C924F028874548E6B0C9F1C5 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		D0D515571ADF4B05918F0899 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		D52B639041A144D29DF8723D /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		D5F3041A4E56A0095375EB9D /* libPods-Avacado-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Avacado-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF04B7CF05C45C8AACA6CD0 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		E3883120406F07CC54F533A4 /* Pods-Avacado-AvacadoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-AvacadoTests.debug.xcconfig"; path = "Target Support Files/Pods-Avacado-AvacadoTests/Pods-Avacado-AvacadoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FC551794217D46EE92BA2476 /* Pods-Avacado-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Avacado-tvOS/Pods-Avacado-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FDEDCDAC24E0453EA49F9167 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +191,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B5DAB4DC1579E6F86A3BF6FD /* Pods */,
+				99E2D3C5E81F4D608A413D2B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -180,6 +207,34 @@
 				2D02E4901E0B4A5D006451C7 /* Avacado-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		99E2D3C5E81F4D608A413D2B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C518879D2E84E63ACAB7E4D /* avocado-logo.png */,
+				27130C44C2A24D82B595FB14 /* girlSittingCouch3.png */,
+				7DDE370236A04602860C3FD7 /* yogaGirl.png */,
+				5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */,
+				45BE54703F724ADCAEF60EB5 /* Roboto-Medium.ttf */,
+				201EC51090DF478D867786AF /* AntDesign.ttf */,
+				C924F028874548E6B0C9F1C5 /* Entypo.ttf */,
+				16167DE47BA44EDABCD6782B /* EvilIcons.ttf */,
+				D52B639041A144D29DF8723D /* Feather.ttf */,
+				7CBABF876EBB4EDAA8DBE8C7 /* FontAwesome.ttf */,
+				0B7E9A594AA7454894A274C2 /* FontAwesome5_Brands.ttf */,
+				FDEDCDAC24E0453EA49F9167 /* FontAwesome5_Regular.ttf */,
+				DEF04B7CF05C45C8AACA6CD0 /* FontAwesome5_Solid.ttf */,
+				BC9679018B2C43A19DA1E13E /* Fontisto.ttf */,
+				D0D515571ADF4B05918F0899 /* Foundation.ttf */,
+				42D0CA65AE244DE6A9963266 /* Ionicons.ttf */,
+				264391E9722D4F7196291006 /* MaterialCommunityIcons.ttf */,
+				C6F099009F7D470DAD88A12A /* MaterialIcons.ttf */,
+				B868631FF50E4B2690886826 /* Octicons.ttf */,
+				470D47566F2442A8A4A71E46 /* SimpleLineIcons.ttf */,
+				B3E03DADB81A4B518FCC509F /* Zocial.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B5DAB4DC1579E6F86A3BF6FD /* Pods */ = {
@@ -342,6 +397,11 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				64F480E2BF144D5389BD402A /* avocado-logo.png in Resources */,
+				E9AF48E685944561AB366AC6 /* girlSittingCouch3.png in Resources */,
+				846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */,
+				9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */,
+				34C9E4182DC24D6AA89FB4EB /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

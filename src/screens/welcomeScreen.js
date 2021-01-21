@@ -17,9 +17,9 @@ const welcomeScreen = ({navigation}) => {
                 <Image style={{flex:1,  width: null, height:null}} source={girlCouchImage} />
             </View> 
             <View style={{flex:3,   width:'70%', alignSelf: 'center'}}>
-                <Text style={{fontSize: 20}}>Hi there! I'm Jade</Text>
-                <Text style={{fontSize: 20}}>What do you want me to</Text>
-                <Text style={{fontSize: 20}}>call you?</Text>
+                <Text style={{fontSize: 20,  }}>Hi there! I'm Jade</Text>
+                <Text style={{fontSize: 20, fontFamily:'Nunito-SemiBold'}}>What do you want me to</Text>
+                <Text style={{fontSize: 20, fontFamily:'Nunito-SemiBold'}}>call you?</Text>
             </View>
             <TextInput style={{flex:1, alignSelf:'center',width:'70%',height: 40,borderBottomColor:"#1C4950", borderBottomWidth: 1}} onChangeText={text => onChangeText(text)} value={value} />
             <View style={{flex:5, alignItems:'center', }}>
