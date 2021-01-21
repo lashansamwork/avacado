@@ -6,7 +6,7 @@ import welcomeScreen from '../screens/welcomeScreen';
 import signedInRoutes from '../routes/signedInRoutes';
 
 const primaryNavigator = () => {
-    isSignIn = true; //add logic
+    isSignIn = false; //add logic
     return (
         <Stack.Navigator
             screenOptions={{

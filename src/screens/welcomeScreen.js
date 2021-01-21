@@ -8,7 +8,7 @@ const welcomeScreen = ({navigation}) => {
     const [value, onChangeText] = React.useState('What do you want me to call you');
     return (
         <View style={{flex:1}}>
-            <View style={{position: 'absolute', top: 0, alignSelf: 'center',width: '90%',height: '46%',padding:20, backgroundColor:"#1C4950", borderBottomRightRadius:20, borderBottomLeftRadius:20}} ></View>
+            <View style={{position: 'absolute', top: 0, alignSelf: 'center',width: '100%',height: '46%',padding:20, backgroundColor:"#1C4950", borderBottomRightRadius:20, borderBottomLeftRadius:20}} ></View>
          
             <View style={{ justifyContent:'flex-end', flex: 3.2, alignSelf: 'center',  }}>
                 <Image 
