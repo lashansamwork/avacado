@@ -10,14 +10,15 @@ const layout = {
       image: 10
     },
     fontSizes: {
-      small: 10,
+      small: 11,
       medium: 14, 
       large: 20,
+      xxxLarge: 40,
     },
     imageSizes:{
       small: 100,
       medium: 130,
-      large: 150,
+      large: 170,
     },
     heights: {
       short: 100,

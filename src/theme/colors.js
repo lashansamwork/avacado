@@ -4,6 +4,7 @@ const colors = {
   themeColors:  {
     primary: '#1E535A',
     secondary: 'white',
+    pink: '#EBBDBD',
   },
   // customColors: {
   //   darkGreen: '#1E535A',
