@@ -11,8 +11,13 @@ const layout = {
     },
     fontSizes: {
       small: 10,
-      medium: 16, 
+      medium: 14, 
       large: 20,
+    },
+    imageSizes:{
+      small: 100,
+      medium: 130,
+      large: 150,
     },
     heights: {
       short: 100,
