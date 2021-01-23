@@ -6,6 +6,7 @@ import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
 import GoalCategoryScreen from '../screens/GoalCategoryScreen';
 import WhatScreen from '../screens/WhatScreen';
+import AboutScreen from '../screens/AboutScreen';
 
 const signedInRoutes = () => {
 
@@ -20,6 +21,7 @@ const signedInRoutes = () => {
             <Stack.Screen name="GoalCategoryScreen" component={GoalCategoryScreen} />
             <Stack.Screen name="FirstPageScreen" component={FirstPageScreen} />
             <Stack.Screen name="AddGoalScreen" component={AddGoalScreen} />
+            <Stack.Screen name="AboutScreen" component={AboutScreen} />
         </Stack.Navigator>
     );
 }

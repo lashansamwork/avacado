@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 const avacadoLogo = require('../assets/images/avocado-logo.png');
 const girlCouchImage = require('../assets/images/girlSittingCouch3.png');
 import CheckCircle from '../assets/images/CheckCircle';
@@ -8,11 +8,11 @@ import layout from '../theme/layout';
 const FirstPageScreen = ({navigation}) => {
     const [name, onChangeName] = React.useState('');
     return (
-        <View style={{flex:1}}>
+        <SafeAreaView style={{flex:1}}>
             <View style={{position: 'absolute', top: 0, alignSelf: 'center',width: '100%',height: '46%',padding:20, backgroundColor:"#1C4950", borderBottomRightRadius:20, borderBottomLeftRadius:20}} ></View>
          
-            <View style={{ justifyContent:'flex-end', flex: 3.2, paddingTop: layout.padding.xxxLarge, alignSelf: 'center',  }}>
-                <Image style={{height:'90%', }} source={avacadoLogo} resizeMode='contain'/>
+            <View style={{ justifyContent:'center', flex: 3.2, paddingTop: layout.padding.xxxLarge, alignSelf: 'center',  }}>
+                <Image style={{ alignSelf: 'center', width: layout.imageSizes.large, height: layout.imageSizes.large }} resizeMode='contain' source={avacadoLogo}  />
             </View>
             <View style={{flex:8, width:'90%',alignSelf: 'center', }}>
                 <Image style={{flex:1,  width: null, height:null}} source={girlCouchImage} />
@@ -28,7 +28,7 @@ const FirstPageScreen = ({navigation}) => {
                     <CheckCircle />
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 

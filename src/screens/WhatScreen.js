@@ -3,6 +3,7 @@ import { SafeAreaView, Text, TouchableOpacity, Image, View, TextInput } from 're
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 const readingGirl = require('../assets/images/readingGirl.png');
+
 import CheckCircle from '../assets/images/CheckCircle';
 import Svg, { Path } from 'react-native-svg';
 
@@ -18,9 +19,13 @@ const SvgHand = ({style}) => {
 
 const WhatScreen = () => {
     const [goal, onChangeGoal] = React.useState('');
+
+    // new state for description/image etc
     return (
-        <SafeAreaView style={{ alignSelf: 'center', width: '85%', flexGrow: 1,}}>
-            <Text style={{ flex: 2 }}>The progress indicator</Text>
+        <SafeAreaView style={{ alignSelf: 'center', width: layout.screenWidth.medium, flexGrow: 1,}}>
+            <View style={{ flex: 2, alignItems:'center', justifyContent:'center',}}>
+                <Text >The progress indicator</Text>
+            </View>
             <Text style={{ flex: 1, color: colors.themeColors.primary, paddingBottom:layout.padding.large ,fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>What?</Text>
             <Text style={{ flex: 1, color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>What do you want to achieve?</Text>
             {/* need logic */}
