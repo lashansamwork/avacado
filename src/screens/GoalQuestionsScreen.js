@@ -104,10 +104,6 @@ const GoalQuestionsScreen = () => {
         />
     );
 }
-const styles = StyleSheet.create({
-    scene: {
-        flex: 1,
-    },
-});
+ 
 
 export default GoalQuestionsScreen;
