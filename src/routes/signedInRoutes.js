@@ -5,7 +5,7 @@ Stack = createStackNavigator();
 import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
 import GoalCategoryScreen from '../screens/GoalCategoryScreen';
-import WhatScreen from '../screens/WhatScreen';
+import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
 import AboutScreen from '../screens/AboutScreen';
 
 const signedInRoutes = () => {
@@ -15,9 +15,9 @@ const signedInRoutes = () => {
             screenOptions={{
                 headerShown: false,
             }} 
-        initialRouteName="WhatScreen"
+        initialRouteName="GoalQuestionsScreen"
         >
-            <Stack.Screen name="WhatScreen" component={WhatScreen} />
+            <Stack.Screen name="GoalQuestionsScreen" component={GoalQuestionsScreen} />
             <Stack.Screen name="GoalCategoryScreen" component={GoalCategoryScreen} />
             <Stack.Screen name="FirstPageScreen" component={FirstPageScreen} />
             <Stack.Screen name="AddGoalScreen" component={AddGoalScreen} />

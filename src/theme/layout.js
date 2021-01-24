@@ -1,4 +1,5 @@
 
+import { Dimensions } from 'react-native';
 const layout = {
   screenWidth: {
     full: '100%',
@@ -26,6 +27,10 @@ const layout = {
     small: 100,
     medium: 130,
     large: 170,
+    xlarge: 186,
+  },
+  autoImageSizes:{
+    large:Dimensions.get('window').width/2,
   },
   heights: {
     short: 100,
