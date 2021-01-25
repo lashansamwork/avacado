@@ -15,7 +15,7 @@ const signedInRoutes = () => {
             screenOptions={{
                 headerShown: false,
             }} 
-        initialRouteName="GoalQuestionsScreen"
+        initialRouteName="AboutScreen"
         >
             <Stack.Screen name="GoalQuestionsScreen" component={GoalQuestionsScreen} />
             <Stack.Screen name="GoalCategoryScreen" component={GoalCategoryScreen} />

@@ -34,14 +34,15 @@ const AboutScreen = ({ navigation }) => {
                 <TouchableOpacity>
                     <SvgCloseButton style={{ flexShrink: 1, paddingTop: layout.padding.large }} />
                 </TouchableOpacity>
-
-                <Image style={{ flex: 1, alignSelf: 'center', width: layout.imageSizes.large, height: layout.imageSizes.large }} resizeMode='contain' source={avacadoLogo} />
-
-                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>Contact me</Text>
-                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>How it works?</Text>
-                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>Rate App</Text>
-                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>@AvocaDooApp on Instagram</Text>
-                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>@AvocaDooApp on Twitter</Text>
+                <View style={{ alignSelf: 'center', height: layout.heights.mediumLow, aspectRatio: 658 / 506 }} >
+                    <Image style={{ flex: 1, height: null, width: null }} resizeMode='stretch' source={avacadoLogo} />
+                </View>
+                <View style={{ padding:layout.padding.xxxLarge}}></View>
+                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink, padding:layout.padding.medium}}>Contact me</Text>
+                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink, padding:layout.padding.medium}}>How it works?</Text>
+                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink, padding:layout.padding.medium}}>Rate App</Text>
+                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink, padding:layout.padding.medium}}>@AvocaDooApp on Instagram</Text>
+                <Text style={{ flex: 0.3, fontSize: layout.fontSizes.large, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink, padding:layout.padding.medium}}>@AvocaDooApp on Twitter</Text>
                 <View style={{ flex: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Text style={{ fontSize: layout.fontSizes.xsmall, fontFamily: 'Nunito-SemiBold', color: colors.themeColors.pink }}>Version 00</Text>
                 </View>
