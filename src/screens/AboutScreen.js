@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StatusBar, SafeAreaView, TouchableOpacity } from 'react-native';
 import Svg, { Defs, ClipPath, Rect, Path, G } from 'react-native-svg';
 const avacadoLogo = require('../assets/images/avocado-logo.png');
 import layout from '../theme/layout';
@@ -30,6 +30,7 @@ const SvgCloseButton = ({ style }) => {
 const AboutScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flexGrow: 1, alignItems: 'center', backgroundColor: colors.themeColors.primary }}>
+            <StatusBar barStyle="light-content" />
             <View style={{ flex: 1, width: layout.screenWidth.narrow }}>
                 <TouchableOpacity>
                     <SvgCloseButton style={{ flexShrink: 1, paddingTop: layout.padding.large }} />

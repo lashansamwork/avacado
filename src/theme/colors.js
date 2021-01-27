@@ -1,6 +1,6 @@
 
 const colors = {
-  backgroundColor: '#efefef',
+  backgroundColor: '#FFFFFF',
   themeColors:  {
     primary: '#1E535A',
     secondary: 'white',
