@@ -22,7 +22,7 @@ const layout = {
     small: 11,
     medium: 14,
     mediumHigh:15,
-    large: 20,
+    large: 23,
     xxxLarge: 40,
   },
   imageSizes: {
