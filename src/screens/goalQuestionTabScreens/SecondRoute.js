@@ -35,31 +35,33 @@ const SecondRoute = () => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
-    const [reason,onChangeReason] = useState('');
+    const [reason, onChangeReason] = useState('');
     setIndex = 1;
     return (
-    <SafeAreaView style={{ alignSelf: 'center', width: layout.screenWidth.medium, flex: 1 }}>
-        <StatusBar barStyle="dark-content" />
-        <View style={{paddingTop:layout.padding.xxxxLarge}}></View>
-            <View style={{paddingTop:layout.padding.medium}}></View>
-            <View style={{aspectRatio:945/15,height:layout.screenWidth.xxxSmall, alignSelf:'center'}}>
-                <Image style={{flex: 1,width:null,height:null}} source={StepTwo} resizeMode='stretch' />
+        <SafeAreaView style={{ alignSelf: 'center', width: layout.screenWidth.medium, flexGrow: 1, flexDirection: 'column' }}>
+            <View style={{ aspectRatio: 945 / 15, height: layout.screenWidth.xxxSmall, alignSelf: 'center' }}>
+                <Image style={{ flex: 1, width: null, height: null }} source={StepTwo} resizeMode='stretch' />
             </View>
-        <Text style={{ flex: 1, color: colors.themeColors.primary, paddingBottom: layout.padding.large, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>How?</Text>
-        <Text style={{ flex: 1, color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>How will you achieve this goal?</Text>
-        {/* need logic */}
-        <View style={{ flex: 6 }}>
-            <View style={{backgroundColor:colors.themeColors.pink, flex:1, borderRadius:30}}></View>
-        </View>
-        <View style={{ flex: 1, paddingTop: layout.padding.large }}>
-         
-        </View>
-        <View style={{ flex: 5, alignItems: 'center', paddingTop: layout.padding.xxxLarge }}>
-            <TouchableOpacity>
-                <CheckCircle />
-            </TouchableOpacity>
-        </View>
-    </SafeAreaView>);
+            <View style={{ flexShrink: 1 }}>
+                <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>How?</Text>
+                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>How will you achieve this goal?</Text>
+            </View>
+            {/* need logic */}
+            <View style={{ flex: 6 , justifyContent:'center',}}>
+                <View style={{padding:layout.padding.large}}></View>
+                <TouchableOpacity style={{ backgroundColor: colors.themeColors.pink, flex: 0.23, borderRadius: 22, justifyContent:'center' }}>
+                    <Text style={{color:colors.themeColors.primary,fontSize: layout.fontSizes.mediumHigh, fontFamily: 'Nunito-SemiBold'}}> &#9; &#9; &#9; + Add Task/Habit</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={{ flex: 1, paddingTop: layout.padding.large }}>
+
+            </View>
+            <View style={{ flex: 5, alignItems: 'center', paddingTop: layout.padding.xxxLarge }}>
+                <TouchableOpacity>
+                    <CheckCircle />
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>);
 };
 
 export default SecondRoute;

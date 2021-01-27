@@ -21,6 +21,7 @@ const layout = {
     xsmall: 10,
     small: 11,
     medium: 14,
+    mediumHigh:15,
     large: 20,
     xxxLarge: 40,
   },
