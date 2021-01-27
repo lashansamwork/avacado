@@ -22,7 +22,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 const initialLayout = { width: Dimensions.get('screen').width };
 import FirstRoute from './goalQuestionTabScreens/FirstRoute';
 import SecondRoute from './goalQuestionTabScreens/SecondRoute';
-
+import ThirdRoute from './goalQuestionTabScreens/ThirdRoute';
 
 
 const GoalQuestionsScreen = () => {
@@ -30,10 +30,12 @@ const GoalQuestionsScreen = () => {
     const [routes] = React.useState([
         { key: 'first', title: 'First' },
         { key: 'second', title: 'Second' },
+        { key: 'third', title:'third'},
     ]);
     const renderScene = SceneMap({
         first: () => FirstRoute(()=>incrementIndex()),
         second: () => SecondRoute(()=>incrementIndex()),
+        third: () => ThirdRoute(()=>incrementIndex()),
     });
 
     const incrementIndex = () => {
