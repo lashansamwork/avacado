@@ -32,7 +32,7 @@ const SvgHand = ({ style }) => {
     );
 }
 
-const SecondRoute = () => {
+const ThirdRoute = () => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
@@ -66,4 +66,4 @@ const SecondRoute = () => {
         </SafeAreaView>);
 };
 
-export default SecondRoute;
+export default ThirdRoute;
