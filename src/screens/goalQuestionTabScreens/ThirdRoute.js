@@ -32,7 +32,7 @@ const SvgHand = ({ style }) => {
     );
 }
 
-const ThirdRoute = () => {
+const ThirdRoute = (onPress) => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
@@ -59,7 +59,7 @@ const ThirdRoute = () => {
 
             </View>
             <View style={{ flex: 5, alignItems: 'center', paddingTop: layout.padding.xxxLarge }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={onPress}>
                     <CheckCircle />
                 </TouchableOpacity>
             </View>
