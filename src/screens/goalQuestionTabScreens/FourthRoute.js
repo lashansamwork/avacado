@@ -35,7 +35,7 @@ const FourthRoute = () => {
             </View>
             <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>When?</Text>
-                <Text style={{ width:'85%', color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>When do you think you will have achieved it?</Text>
+                <Text style={{ width:'85%', color: colors.themeColors.pink, fontSize: layout.fontSizes.large, fontFamily: "Nunito-SemiBold", }}>When do you think you will have achieved it?</Text>
             </View>
             {/* need logic */}
             <View style={{flex: 7, justifyContent: 'center'}}>

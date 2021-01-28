@@ -9,6 +9,7 @@ import GoalCategoryScreen from '../screens/GoalCategoryScreen';
 import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
 import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen'; 
+import GoalAddedScreen from '../screens/GoalAddedScreen';
 const leftArrow = require('../assets/images/arrow-left.png'); 
 import layout from '../theme/layout';
 const signedInRoutes = () => {
@@ -20,7 +21,7 @@ const signedInRoutes = () => {
             screenOptions={{
                 headerShown: true,
             }}
-            initialRouteName="WelcomeScreen"
+            initialRouteName="GoalAddedScreen"
         >
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="FirstPageScreen" component={FirstPageScreen} options={{ headerShown: false }} />
@@ -46,6 +47,7 @@ const signedInRoutes = () => {
             <Stack.Screen name="GoalCategoryScreen" component={GoalCategoryScreen} options={{ headerShown: false,   }} />
             <Stack.Screen name="AddGoalScreen" component={AddGoalScreen} options={{ headerShown: false,   }}/>
             <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false,   }}/>
+            <Stack.Screen name="GoalAddedScreen" component={GoalAddedScreen} options={{ headerShown: false,   }} />
         </Stack.Navigator>
     );
 }

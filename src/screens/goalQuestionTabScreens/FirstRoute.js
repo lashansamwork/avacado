@@ -45,7 +45,7 @@ const FirstRoute = (onPress) => {
             </View>
             <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>What?</Text>
-                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>What do you want to achieve?</Text>
+                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large,fontFamily: "Nunito-SemiBold", }}>What do you want to achieve?</Text>
             </View>
             <View style={{ flex: 6, alignItems: 'center', paddingTop: layout.padding.xxxxLarge }}>
                 <View style={{ paddingTop:layout.padding.large}} ></View>
