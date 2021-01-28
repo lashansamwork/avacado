@@ -17,6 +17,7 @@ const thinkingGirlDescription = "Self growth";
 import CheckCircle from '../../assets/images/CheckCircle';
 import StepOne from '../../assets/images/stepOne.png';
 import StepTwo from '../../assets/images/stepTwo.png';
+import StepThree from '../../assets/images/thirdStep.png';
 import Svg, { Path } from 'react-native-svg';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 const initialLayout = { width: Dimensions.get('screen').width };
@@ -31,7 +32,7 @@ const SvgHand = ({ style }) => {
     );
 }
 
-const SecondRoute = (onPress) => {
+const ThirdRoute = (onPress) => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
@@ -40,18 +41,19 @@ const SecondRoute = (onPress) => {
     return (
         <SafeAreaView style={{ alignSelf: 'center', width: layout.screenWidth.medium, flexGrow: 1, flexDirection: 'column' }}>
             <View style={{ aspectRatio: 945 / 15, height: layout.screenWidth.xxxSmall, alignSelf: 'center' }}>
-                <Image style={{ flex: 1, width: null, height: null }} source={StepTwo} resizeMode='stretch' />
+                <Image style={{ flex: 1, width: null, height: null }} source={StepThree} resizeMode='stretch' />
             </View>
             <View style={{ flexShrink: 1 }}>
-                <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>How?</Text>
-                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>How will you achieve this goal?</Text>
+                <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>Why?</Text>
+                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>Why do you want to achieve it?</Text>
             </View>
             {/* need logic */}
-            <View style={{ flex: 6 , justifyContent:'center',}}>
-                <View style={{padding:layout.padding.large}}></View>
-                <TouchableOpacity style={{ backgroundColor: colors.themeColors.pink, flex: 0.23, borderRadius: 22, justifyContent:'center' }}>
-                    <Text style={{color:colors.themeColors.primary,fontSize: layout.fontSizes.mediumHigh, fontFamily: 'Nunito-SemiBold'}}> &#9; &#9; &#9; + Add Task/Habit</Text>
-                </TouchableOpacity>
+            <View style={{flex: 6, justifyContent: 'center'}}>
+                <View style={{ padding: layout.padding.large }}></View>
+                <TextInput
+                    placeholder="Why do you want to do this? why do you think it’s important for you? keep asking yourself why Until you hit a value."
+                    multiline={true}
+                    style={{flex: 0.5,width:'95%'}} />
             </View>
             <View style={{ flex: 1, paddingTop: layout.padding.large }}>
 
@@ -64,4 +66,4 @@ const SecondRoute = (onPress) => {
         </SafeAreaView>);
 };
 
-export default SecondRoute;
+export default ThirdRoute;
