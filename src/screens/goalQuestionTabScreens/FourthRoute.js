@@ -22,7 +22,7 @@ import Svg, { Path } from 'react-native-svg';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 const initialLayout = { width: Dimensions.get('screen').width };
 
-const FourthRoute = () => {
+const FourthRoute = ({navigation}) => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
@@ -48,7 +48,7 @@ const FourthRoute = () => {
 
             </View>
             <View style={{ flex: 5, alignItems: 'center', paddingTop: layout.padding.xxxLarge }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('GoalAddedScreen') }>
                     <CheckCircle />
                 </TouchableOpacity>
             </View>
