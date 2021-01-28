@@ -17,6 +17,11 @@ const layout = {
   radius: {
     image: 10
   },
+  imageAspectRatio: {
+    avacadoLogo: 658/506,
+    girlCouchImage: 519 / 441,
+    tinyLine: 41/31
+  },
   fontSizes: {
     xsmall: 10,
     small: 11,
@@ -50,7 +55,7 @@ const layout = {
     xxxshort: 16,
     xxshort:30,
     short: 100,
-    mediumLow:130,
+    mediumLow:120,
     medium: 200,
     tall: 300,
     xxtall:440,
