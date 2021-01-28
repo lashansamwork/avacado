@@ -46,8 +46,6 @@ const GoalCategoryScreen = ({navigation}) => {
                     </View>
                     <Text style={{fontFamily: "Nunito-SemiBold", fontSize: layout.fontSizes.medium, color: colors.themeColors.primary, padding:layout.padding.medium }}>Self Growth</Text>
                 </TouchableOpacity>
-    
-    
             </SafeAreaView>
 
     );

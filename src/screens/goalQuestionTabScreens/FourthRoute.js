@@ -22,7 +22,7 @@ import Svg, { Path } from 'react-native-svg';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 const initialLayout = { width: Dimensions.get('screen').width };
 
-const FourthRoute = () => {
+const FourthRoute = ({navigation}) => {
     let goalPlaceholder = readingGirlPlaceholder;
     let girlImagePath = readingGirl;
     let goalDescription = readingGirlDescription;
@@ -35,7 +35,7 @@ const FourthRoute = () => {
             </View>
             <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>When?</Text>
-                <Text style={{ width:'85%', color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>When do you think you will have achieved it?</Text>
+                <Text style={{ width:'85%', color: colors.themeColors.pink, fontSize: layout.fontSizes.large, fontFamily: "Nunito-SemiBold", }}>When do you think you will have achieved it?</Text>
             </View>
             {/* need logic */}
             <View style={{flex: 7, justifyContent: 'center'}}>
@@ -48,7 +48,7 @@ const FourthRoute = () => {
 
             </View>
             <View style={{ flex: 5, alignItems: 'center', paddingTop: layout.padding.xxxLarge }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('GoalAddedScreen') }>
                     <CheckCircle />
                 </TouchableOpacity>
             </View>

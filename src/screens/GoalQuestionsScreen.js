@@ -25,7 +25,7 @@ import SecondRoute from './goalQuestionTabScreens/SecondRoute';
 import ThirdRoute from './goalQuestionTabScreens/ThirdRoute';
 import FourthRoute from './goalQuestionTabScreens/FourthRoute';
 
-const GoalQuestionsScreen = () => {
+const GoalQuestionsScreen = ({navigation}) => {
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: 'first', title: 'First' },
@@ -37,7 +37,7 @@ const GoalQuestionsScreen = () => {
         first: () => FirstRoute(()=>incrementIndex()),
         second: () => SecondRoute(()=>incrementIndex()),
         third: () => ThirdRoute(()=>incrementIndex()),
-        fourth: () => FourthRoute(()=>incrementIndex()),
+        fourth: () => FourthRoute({navigation}),
     });
 
     const incrementIndex = () => {

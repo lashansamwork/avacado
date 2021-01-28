@@ -45,7 +45,7 @@ const ThirdRoute = (onPress) => {
             </View>
             <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>Why?</Text>
-                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>Why do you want to achieve it?</Text>
+                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large, fontFamily: "Nunito-SemiBold", }}>Why do you want to achieve it?</Text>
             </View>
             {/* need logic */}
             <View style={{flex: 6, justifyContent: 'center'}}>

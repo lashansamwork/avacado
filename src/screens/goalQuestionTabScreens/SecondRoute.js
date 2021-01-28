@@ -44,7 +44,7 @@ const SecondRoute = (onPress) => {
             </View>
             <View style={{ flexShrink: 1 }}>
                 <Text style={{ color: colors.themeColors.primary, paddingTop: layout.padding.xxxxLarge, fontSize: layout.fontSizes.xxxLarge, fontFamily: 'Nunito-SemiBold' }}>How?</Text>
-                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large }}>How will you achieve this goal?</Text>
+                <Text style={{ color: colors.themeColors.pink, fontSize: layout.fontSizes.large, fontFamily: "Nunito-SemiBold", }}>How will you achieve this goal?</Text>
             </View>
             {/* need logic */}
             <View style={{ flex: 6 , justifyContent:'center',}}>
