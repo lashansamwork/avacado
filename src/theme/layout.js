@@ -26,6 +26,7 @@ const layout = {
     xsmall: 10,
     small: 11,
     medium: 14,
+    welcomeText: 20,
     mediumHigh:15,
     large: 23,
     xxxLarge: 40,
