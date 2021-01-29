@@ -34,7 +34,7 @@ const FirstPageScreen = ({ navigation }) => {
                 <View style={{ flex: 0.18 }}></View>
                 <CustomTextInput placeholder="What do you want me to call you?" value={name} onChangeText={text => setName(text)} />
                 <View style={{ flex: 0.22 }}></View>
-                <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate('GoalCategoryScreen')}>
+                <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate('AddGoalScreen')}>
                     <CheckCircle />
                 </TouchableOpacity>
             </View>
