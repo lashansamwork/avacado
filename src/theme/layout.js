@@ -66,6 +66,7 @@ const layout = {
     nunito: 'Nunito-SemiBold'
   }, 
   backgroundBorderRadius:32,
+  defaultLineHeight: 30,
 };
 
 export default layout;
