@@ -13,6 +13,7 @@ const layout = {
     large: 12,
     xxxLarge: 20,
     xxxxLarge: 35,
+    screenHorizontal: 37,
   },
   radius: {
     image: 10
@@ -60,7 +61,11 @@ const layout = {
     medium: 200,
     tall: 300,
     xxtall:440,
-  }
+  }, 
+  fonts: {
+    nunito: 'Nunito-SemiBold'
+  }, 
+  backgroundBorderRadius:32,
 };
 
 export default layout;

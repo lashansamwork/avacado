@@ -5,6 +5,7 @@ const colors = {
     primary: '#1E535A',
     secondary: 'white',
     pink: '#EBBDBD',
+    grey: '#CECECE'
   },
   // customColors: {
   //   darkGreen: '#1E535A',

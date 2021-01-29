@@ -10,7 +10,7 @@ const WelcomeScreen = ({ navigation }) => {
 
     const IMAGE_TOP_OFFSET = -20;
     const TINY_IMAGE_HEIGHT = 30;
-    const LOGO_OFFSET = 150;
+    const LOGO_OFFSET = 175;
     const IMAGE_CUTOFF_VALUES = { 
         left: -60, 
         top: -20 
