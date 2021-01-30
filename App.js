@@ -12,8 +12,9 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
-import PrimaryNavigator from './src/routes/PrimaryNavigator';
 import colors from './src/theme/colors';
+import WelcomeNavigator from './src/routes/WelcomeNavigator';
+import TabNavigator from './src/routes/TabNavigator';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -29,11 +30,14 @@ const App = () => {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="primaryNavigator" component={PrimaryNavigator} />
+          screenOptions={{
+              headerShown: false,
+          }}
+          >
+          <Stack.Screen name="Home" component={TabNavigator} />
+          <Stack.Screen name="IntroRoutes" component={WelcomeNavigator} />
       </Stack.Navigator>
+      {/* <TabNavigator /> */}
     </NavigationContainer>
   );
 };
