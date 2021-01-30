@@ -12,7 +12,7 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
-import primaryNavigator from './src/routes/primaryNavigator';
+import PrimaryNavigator from './src/routes/PrimaryNavigator';
 import colors from './src/theme/colors';
 
 const MyTheme = {
@@ -32,7 +32,7 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="primaryNavigator" component={primaryNavigator} />
+        <Stack.Screen name="primaryNavigator" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
