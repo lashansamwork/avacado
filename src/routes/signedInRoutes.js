@@ -12,7 +12,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
 const leftArrow = require('../assets/images/arrow-left.png'); 
 import layout from '../theme/layout';
-const signedInRoutes = () => {
+const SignedInRoutes = () => {
 
 
 
@@ -52,4 +52,4 @@ const signedInRoutes = () => {
     );
 }
 
-export default signedInRoutes;
+export default SignedInRoutes;

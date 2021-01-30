@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 Stack = createStackNavigator();
 
 import WelcomeScreen from '../screens/WelcomeScreen';
-import signedInRoutes from '../routes/signedInRoutes';
+import SignedInRoutes from './SignedInRoutes';
 
 const primaryNavigator = () => {
     let isSignOut = false;
@@ -13,8 +13,8 @@ const primaryNavigator = () => {
                 headerShown: false,
             }}
             >
-            {isSignOut ? <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> :
-                <Stack.Screen name="signedInRoutes" component={signedInRoutes} />}
+            {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
+            <Stack.Screen name="signedInRoutes" component={SignedInRoutes} />
         </Stack.Navigator>
     );
 }
