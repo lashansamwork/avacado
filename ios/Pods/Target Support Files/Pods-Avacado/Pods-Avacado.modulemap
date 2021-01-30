@@ -1,6 +1,0 @@
-module Pods_Avacado {
-  umbrella header "Pods-Avacado-umbrella.h"
-
-  export *
-  module * { export * }
-}

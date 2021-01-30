@@ -1,6 +1,0 @@
-module Pods_Avacado_AvacadoTests {
-  umbrella header "Pods-Avacado-AvacadoTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
