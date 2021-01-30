@@ -13,14 +13,21 @@ const layout = {
     large: 12,
     xxxLarge: 20,
     xxxxLarge: 35,
+    screenHorizontal: 37,
   },
   radius: {
     image: 10
+  },
+  imageAspectRatio: {
+    avacadoLogo: 658/506,
+    girlCouchImage: 519 / 441,
+    tinyLine: 41/31
   },
   fontSizes: {
     xsmall: 10,
     small: 11,
     medium: 14,
+    welcomeText: 20,
     mediumHigh:15,
     large: 23,
     xxxLarge: 40,
@@ -50,11 +57,16 @@ const layout = {
     xxxshort: 16,
     xxshort:30,
     short: 100,
-    mediumLow:130,
+    mediumLow:120,
     medium: 200,
     tall: 300,
     xxtall:440,
-  }
+  }, 
+  fonts: {
+    nunito: 'Nunito-SemiBold'
+  }, 
+  backgroundBorderRadius:32,
+  defaultLineHeight: 30,
 };
 
 export default layout;

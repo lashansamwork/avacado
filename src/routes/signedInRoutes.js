@@ -45,8 +45,8 @@ const signedInRoutes = () => {
 
             />
             <Stack.Screen name="GoalCategoryScreen" component={GoalCategoryScreen} options={{ headerShown: false,   }} />
-            <Stack.Screen name="AddGoalScreen" component={AddGoalScreen} options={{ headerShown: false,   }}/>
-            <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false,   }}/>
+            <Stack.Screen name="AddGoalScreen" component={AddGoalScreen} options={{ headerShown: false, }}/>
+            <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false, }}/>
             <Stack.Screen name="GoalAddedScreen" component={GoalAddedScreen} options={{ headerShown: false,   }} />
         </Stack.Navigator>
     );
