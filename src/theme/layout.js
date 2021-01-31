@@ -21,16 +21,23 @@ const layout = {
   imageAspectRatio: {
     avacadoLogo: 658/506,
     girlCouchImage: 519 / 441,
-    tinyLine: 41/31
+    tinyLine: 41/31,
+    yogaGirl:804/612,
+    readingGirl:696 / 631,
+    moneyGirl:694/699,
+    thinkingGirl:635/765,
+    progressBar: 945 / 15,
+    svgHand :13.724/15.855,
   },
   fontSizes: {
     xsmall: 10,
     small: 11,
     medium: 14,
     welcomeText: 20,
-    mediumHigh:15,
+    mediumHigh:14,
+     
     large: 23,
-    xxxLarge: 40,
+    xxxLarge: 39,
   },
   imageSizes: {
     small: '10%',
@@ -42,8 +49,8 @@ const layout = {
   autoImageSizes:{
     xsmall:Dimensions.get('screen').width/10.7,
     small:Dimensions.get('screen').width/3.13,
-    medium:Dimensions.get('screen').width/3,
-    large:Dimensions.get('screen').width/2.7,
+    medium:'75%',
+    large:'90%', 
     xxxxLarge:Dimensions.get('screen').width/0.4443,
   },
   autoDisplacemets:{

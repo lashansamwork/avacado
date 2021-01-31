@@ -11,6 +11,7 @@ const FirstPageScreen = ({ navigation }) => {
     const [name, setName] = React.useState('');
     const COUCH_IMAGE_HEIGHT = '57%';
     const LOGO_OFFSET = 26;
+    const TEXT_GAP = 1;
     return (
         <View style={{ flex: 1, alignItems: 'center', }}>
             <View style={{  flex: 1.1, width: '100%', }}>
@@ -32,7 +33,7 @@ const FirstPageScreen = ({ navigation }) => {
                 <View style={{ flex: 0.17 }}></View>
                 <Text style={{ lineHeight: layout.defaultLineHeight, fontSize: layout.fontSizes.welcomeText, fontFamily: layout.fonts.nunito, color: colors.themeColors.primary }}>{`Hi there! I'm Jade.\nWhat do you want me to\ncall you?`}</Text>
                 <View style={{ flex: 0.18 }}></View>
-                <CustomTextInput placeholder="What do you want me to call you?" value={name} onChangeText={text => setName(text)} />
+                <CustomTextInput gap={TEXT_GAP} placeholder="What do you want me to call you?" value={name} onChangeText={text => setName(text)} />
                 <View style={{ flex: 0.22 }}></View>
                 <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => navigation.navigate('AddGoalScreen')}>
                     <CheckCircle />
