@@ -1,11 +1,10 @@
-
 const colors = {
   backgroundColor: '#FFFFFF',
-  themeColors:  {
+  themeColors: {
     primary: '#1E535A',
     secondary: 'white',
     pink: '#EBBDBD',
-    grey: '#CECECE'
+    grey: '#CECECE',
   },
   // customColors: {
   //   darkGreen: '#1E535A',
@@ -22,7 +21,6 @@ const colors = {
   //   backdrop: color('black').alpha(0.5).rgb().string(),
   //   notification: pinkA400,
   // }
-  
 };
 
 export default colors;
