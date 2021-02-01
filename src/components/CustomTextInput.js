@@ -14,7 +14,7 @@ const CustomTextInput = (props) => {
                 style={{ 
                     color: colors.themeColors.primary,
                     fontSize: layout.fontSizes.small,
-                    marginBottom:1,
+                    marginBottom:props.gap,
                 }}
                 textContentType='nickname'
             />

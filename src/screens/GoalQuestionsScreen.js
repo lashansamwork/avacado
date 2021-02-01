@@ -27,6 +27,7 @@ import FourthRoute from './goalQuestionTabScreens/FourthRoute';
 
 const GoalQuestionsScreen = ({navigation}) => {
     const [index, setIndex] = React.useState(0);
+    const PROGRESSBAR_HEIGHT = 3;
     const [routes] = React.useState([
         { key: 'first', title: 'First' },
         { key: 'second', title: 'Second' },
@@ -40,11 +41,22 @@ const GoalQuestionsScreen = ({navigation}) => {
         fourth: () => FourthRoute({navigation}),
     });
 
+    const PROGRESS_BARS = {
+        0: StepOne,
+        1: StepTwo,
+    }
+
+    const getProgressBar=(index)=>{
+        return PROGRESS_BARS[index]
+    }
+
     const incrementIndex = () => {
         setIndex(index+1);
     }
 
-    const renderTabBar = props => (<></>);
+    const renderTabBar = props => ( <View style={{alignSelf:'center', height:PROGRESSBAR_HEIGHT, aspectRatio: layout.imageAspectRatio.progressBar}}>
+        <Image source={getProgressBar(index)} style={{flex:1, width:null, height: null, }}/>
+    </View>);
     // new state for description/image etc
     
     return ( 
