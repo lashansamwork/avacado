@@ -3,6 +3,7 @@ import {Image, View, Dimensions} from 'react-native';
 import layout from '../theme/layout';
 import StepOne from '../assets/images/stepOne.png';
 import StepTwo from '../assets/images/stepTwo.png';
+import StepThree from '../assets/images/thirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
 import FirstRoute from './goalQuestionTabScreens/FirstRoute';
@@ -29,9 +30,10 @@ const GoalQuestionsScreen = ({navigation}) => {
   const PROGRESS_BARS = {
     0: StepOne,
     1: StepTwo,
+    2: StepThree,
   };
 
-  const getProgressBar = (index) => {
+  const getProgressBar = () => {
     return PROGRESS_BARS[index];
   };
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SafeAreaView, Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
@@ -6,8 +6,6 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/stepFour.png';
 
 const FourthRoute = ({navigation}) => {
-  const [reason, onChangeReason] = useState('');
-  setIndex = 1;
   return (
     <SafeAreaView
       style={{

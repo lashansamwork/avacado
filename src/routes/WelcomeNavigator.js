@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-Stack = createStackNavigator();
+let Stack = createStackNavigator();
 
 import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
