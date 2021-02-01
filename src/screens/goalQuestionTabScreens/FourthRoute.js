@@ -1,40 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {
-  StatusBar,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Image,
-  View,
-  TextInput,
-  Dimensions,
-} from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
-const readingGirl = require('../../assets/images/readingGirl.png');
-const yogaGirl = require('../../assets/images/yogaGirl.png');
-const moneyGirl = require('../../assets/images/moneyGirl.png');
-const thinkingGirl = require('../../assets/images/thinkingGirl.png');
-const readingGirlPlaceholder = 'Get my bachelors degree in three years';
-const yogalPlaceholder = 'Lose 2kg in a month';
-const moneyPlaceholder = 'Save 1,500$ in a month';
-const thinkingGirlPlaceholder = 'Build a reading habit in 21 days';
-const readingGirlDescription = 'Career & Education';
-const yogaDescription = 'Physical & Health';
-const moneyGirlDescription = 'Finance';
-const thinkingGirlDescription = 'Self growth';
 import CheckCircle from '../../assets/images/CheckCircle';
-import StepOne from '../../assets/images/stepOne.png';
-import StepTwo from '../../assets/images/stepTwo.png';
 import StepFour from '../../assets/images/stepFour.png';
-import Svg, {Path} from 'react-native-svg';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-const initialLayout = {width: Dimensions.get('screen').width};
 
 const FourthRoute = ({navigation}) => {
-  let goalPlaceholder = readingGirlPlaceholder;
-  let girlImagePath = readingGirl;
-  let goalDescription = readingGirlDescription;
   const [reason, onChangeReason] = useState('');
   setIndex = 1;
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, {Path, Circle, G, Ellipse} from 'react-native-svg';
+import Svg, {Path, Circle, G} from 'react-native-svg';
 
 const MyTasksIcon = (props) => {
   return (
