@@ -70,6 +70,7 @@ const layout = {
   },
   fonts: {
     nunito: 'Nunito-SemiBold',
+    roboto: 'Roboto-Medium',
   },
   backgroundBorderRadius: 32,
   defaultLineHeight: 30,
