@@ -56,9 +56,9 @@ const SecondRoute = (onPress) => {
               fontFamily: layout.fonts.nunito,
               color: colors.themeColors.pink,
               fontSize: layout.fontSizes.welcomeText,
-            }}
-          />
-          How will you achieve this goal?
+            }}>
+            How will you achieve this goal?
+          </Text>
           <View style={{flexBasis: HEADING_OFFSET}} />
         </View>
 

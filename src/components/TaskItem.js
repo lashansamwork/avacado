@@ -12,7 +12,7 @@ const TaskItem = (props) => {
         width: '100%',
         backgroundColor: props.backgroundColor,
         justifyContent: 'center',
-        borderRadius: BORDER_RADIUS,,
+        borderRadius: BORDER_RADIUS,
       }}>
       <Text
         style={{
@@ -20,7 +20,7 @@ const TaskItem = (props) => {
           fontSize: layout.fontSizes.medium,
           color: props.fontColor,
           paddingLeft: layout.padding.xxxLarge,
-        }} >
+        }}>
         {props.label}
       </Text>
     </TouchableOpacity>
