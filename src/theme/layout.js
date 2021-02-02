@@ -60,6 +60,7 @@ const layout = {
     small: Dimensions.get('screen').width / 5,
   },
   heights: {
+    seperatorHeight: 0.5,
     xxxshort: 16,
     xxshort: 30,
     short: 100,

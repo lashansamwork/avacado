@@ -7,6 +7,7 @@ const colors = {
     grey: '#CECECE',
     transparent: 'rgba(8, 30, 33, 0.74)',
     shadow: 'black',
+    lightGreen: '#53686D',
   },
 };
 
