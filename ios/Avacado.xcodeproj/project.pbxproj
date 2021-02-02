@@ -25,6 +25,18 @@
 		846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE370236A04602860C3FD7 /* yogaGirl.png */; };
 		9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */; };
 		E9AF48E685944561AB366AC6 /* girlSittingCouch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 27130C44C2A24D82B595FB14 /* girlSittingCouch3.png */; };
+		4545E26E823D4DFA8FF7CF16 /* arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = CB70E3F5C387457195A09E88 /* arrow-left.png */; };
+		F0C6C80E24FB4260B00F9208 /* avaca.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D9725578604C388B876719 /* avaca.png */; };
+		B9C70A1BA71049018FFDD573 /* congratzHand.png in Resources */ = {isa = PBXBuildFile; fileRef = DF959B8BE93B419F86571E26 /* congratzHand.png */; };
+		3DF12B5B43B1455E9B1F69F6 /* moneyGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F23AAFD276B4480964DBB47 /* moneyGirl.png */; };
+		09FC887AF1F54ECF8132934F /* readingGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = A30612395C9745C4B9CF420E /* readingGirl.png */; };
+		7FB38B7E930746DD9CCBD8EF /* stepFour.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAA32647C744F4492C9BBAB /* stepFour.png */; };
+		D195B7A108F8471AAC70023E /* stepOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6A66424AB648CFBE468060 /* stepOne.png */; };
+		22F84B95BF3146E996C88542 /* stepTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = AD258AA97A45442281470722 /* stepTwo.png */; };
+		5E982FD0C6274B76BCAB8AB2 /* thinkingGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CC561FA29C94BE68C74AAE7 /* thinkingGirl.png */; };
+		12A5A24E5CC748B287ACB456 /* thirdStep.png in Resources */ = {isa = PBXBuildFile; fileRef = 3120212C20C14C52A8F8273B /* thirdStep.png */; };
+		433A5BEBABEF414E8BB893FD /* tinyLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCDE03023A245728E509D32 /* tinyLine.png */; };
+		398B309B243B4CB3AF8D88B1 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89ECFCB8E8144ED59743BF5E /* Nunito-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +105,18 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FC551794217D46EE92BA2476 /* Pods-Avacado-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Avacado-tvOS/Pods-Avacado-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FDEDCDAC24E0453EA49F9167 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		CB70E3F5C387457195A09E88 /* arrow-left.png */ = {isa = PBXFileReference; name = "arrow-left.png"; path = "../src/assets/images/arrow-left.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		62D9725578604C388B876719 /* avaca.png */ = {isa = PBXFileReference; name = "avaca.png"; path = "../src/assets/images/avaca.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DF959B8BE93B419F86571E26 /* congratzHand.png */ = {isa = PBXFileReference; name = "congratzHand.png"; path = "../src/assets/images/congratzHand.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7F23AAFD276B4480964DBB47 /* moneyGirl.png */ = {isa = PBXFileReference; name = "moneyGirl.png"; path = "../src/assets/images/moneyGirl.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A30612395C9745C4B9CF420E /* readingGirl.png */ = {isa = PBXFileReference; name = "readingGirl.png"; path = "../src/assets/images/readingGirl.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2DAA32647C744F4492C9BBAB /* stepFour.png */ = {isa = PBXFileReference; name = "stepFour.png"; path = "../src/assets/images/stepFour.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0D6A66424AB648CFBE468060 /* stepOne.png */ = {isa = PBXFileReference; name = "stepOne.png"; path = "../src/assets/images/stepOne.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AD258AA97A45442281470722 /* stepTwo.png */ = {isa = PBXFileReference; name = "stepTwo.png"; path = "../src/assets/images/stepTwo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6CC561FA29C94BE68C74AAE7 /* thinkingGirl.png */ = {isa = PBXFileReference; name = "thinkingGirl.png"; path = "../src/assets/images/thinkingGirl.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3120212C20C14C52A8F8273B /* thirdStep.png */ = {isa = PBXFileReference; name = "thirdStep.png"; path = "../src/assets/images/thirdStep.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4FCDE03023A245728E509D32 /* tinyLine.png */ = {isa = PBXFileReference; name = "tinyLine.png"; path = "../src/assets/images/tinyLine.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		89ECFCB8E8144ED59743BF5E /* Nunito-Light.ttf */ = {isa = PBXFileReference; name = "Nunito-Light.ttf"; path = "../src/assets/Nunito-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +257,18 @@
 				B868631FF50E4B2690886826 /* Octicons.ttf */,
 				470D47566F2442A8A4A71E46 /* SimpleLineIcons.ttf */,
 				B3E03DADB81A4B518FCC509F /* Zocial.ttf */,
+				CB70E3F5C387457195A09E88 /* arrow-left.png */,
+				62D9725578604C388B876719 /* avaca.png */,
+				DF959B8BE93B419F86571E26 /* congratzHand.png */,
+				7F23AAFD276B4480964DBB47 /* moneyGirl.png */,
+				A30612395C9745C4B9CF420E /* readingGirl.png */,
+				2DAA32647C744F4492C9BBAB /* stepFour.png */,
+				0D6A66424AB648CFBE468060 /* stepOne.png */,
+				AD258AA97A45442281470722 /* stepTwo.png */,
+				6CC561FA29C94BE68C74AAE7 /* thinkingGirl.png */,
+				3120212C20C14C52A8F8273B /* thirdStep.png */,
+				4FCDE03023A245728E509D32 /* tinyLine.png */,
+				89ECFCB8E8144ED59743BF5E /* Nunito-Light.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -402,6 +438,18 @@
 				846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */,
 				9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */,
 				34C9E4182DC24D6AA89FB4EB /* Roboto-Medium.ttf in Resources */,
+				4545E26E823D4DFA8FF7CF16 /* arrow-left.png in Resources */,
+				F0C6C80E24FB4260B00F9208 /* avaca.png in Resources */,
+				B9C70A1BA71049018FFDD573 /* congratzHand.png in Resources */,
+				3DF12B5B43B1455E9B1F69F6 /* moneyGirl.png in Resources */,
+				09FC887AF1F54ECF8132934F /* readingGirl.png in Resources */,
+				7FB38B7E930746DD9CCBD8EF /* stepFour.png in Resources */,
+				D195B7A108F8471AAC70023E /* stepOne.png in Resources */,
+				22F84B95BF3146E996C88542 /* stepTwo.png in Resources */,
+				5E982FD0C6274B76BCAB8AB2 /* thinkingGirl.png in Resources */,
+				12A5A24E5CC748B287ACB456 /* thirdStep.png in Resources */,
+				433A5BEBABEF414E8BB893FD /* tinyLine.png in Resources */,
+				398B309B243B4CB3AF8D88B1 /* Nunito-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

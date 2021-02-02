@@ -48,7 +48,7 @@ const FirstRoute = (onPress) => {
             <View style={{ flex: 1, paddingHorizontal: layout.padding.screenHorizontal }}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={{ flexBasis: HEADING_GAP, fontFamily: layout.fonts.nunito, color: colors.themeColors.primary, fontSize: layout.fontSizes.xxxLarge }}>What?</Text>
-                    <Text style={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.pink, fontSize: layout.fontSizes.welcomeText }}>What do you want to achieve?</Text>
+                    <Text style={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.pink, fontSize: layout.fontSizes.header }}>What do you want to achieve?</Text>
                 </View>
                 <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
                     <View style={{ height: IMAGE_HEIGHT, aspectRatio: layout.imageAspectRatio.readingGirl }}>

@@ -36,7 +36,7 @@ const SecondRoute = (onPress) => {
             <View style={{ flex: 23, paddingHorizontal: layout.padding.screenHorizontal }}>
                 <View style={{ flex: 14, justifyContent: 'center' }}>
                     <Text style={{ flexBasis: HEADING_GAP, fontFamily: layout.fonts.nunito, color: colors.themeColors.primary, fontSize: layout.fontSizes.xxxLarge }}>How?</Text>
-                    <Text style={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.pink, fontSize: layout.fontSizes.welcomeText }}>How will you achieve this goal?</Text>
+                    <Text style={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.pink, fontSize: layout.fontSizes.header }}>How will you achieve this goal?</Text>
                     <View style={{ flexBasis:HEADING_OFFSET}}></View>
                 </View>
 

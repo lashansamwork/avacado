@@ -24,7 +24,7 @@ const GoalCategoryScreen = ({ navigation }) => {
         <View style={{ flexGrow: 1 }}>
             <StatusBar barStyle='dark-content' />
             <View style={{ flex: 3, alignItems: 'center' }}>
-                <Text style={{ position: 'absolute', bottom: 0, fontFamily: layout.fonts.nunito, fontSize: layout.fontSizes.welcomeText, color: colors.themeColors.primary }}>Goal categories</Text>
+                <Text style={{ position: 'absolute', bottom: 0, fontFamily: layout.fonts.nunito, fontSize: layout.fontSizes.header, color: colors.themeColors.primary }}>Goal categories</Text>
             </View>
             <View style={{ flex: 23,  }}>
                 <View style={{flex:1}}></View>

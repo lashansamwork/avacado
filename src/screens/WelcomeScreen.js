@@ -28,7 +28,7 @@ const WelcomeScreen = ({ navigation }) => {
                 </View>
                 <View style={{ flex: 1}}>
                     <View style={{ position: 'absolute', left: 0, right: 0, justifyContent: 'center', alignItems: 'center', top: IMAGE_TOP_OFFSET }}>
-                        <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: layout.fontSizes.welcomeText, color: "#EBBDBD" }}>Welcome Back Layan!</Text>
+                        <Text style={{ fontFamily: "Nunito-SemiBold", fontSize: layout.fontSizes.header, color: "#EBBDBD" }}>Welcome Back Layan!</Text>
                         <View style={{ flexDirection: 'row', width: '100%', paddingTop: layout.padding.small}}>
                             <View style={{ width: '34%'}} />
                             <View style={{ aspectRatio: layout.imageAspectRatio.tinyLine, height: TINY_IMAGE_HEIGHT }}>

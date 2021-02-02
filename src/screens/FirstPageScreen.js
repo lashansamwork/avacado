@@ -31,7 +31,7 @@ const FirstPageScreen = ({ navigation }) => {
             </View>
             <View style={{ flex: 1, width: '100%', paddingHorizontal: layout.padding.screenHorizontal }}>
                 <View style={{ flex: 0.17 }}></View>
-                <Text style={{ lineHeight: layout.defaultLineHeight, fontSize: layout.fontSizes.welcomeText, fontFamily: layout.fonts.nunito, color: colors.themeColors.primary }}>{`Hi there! I'm Jade.\nWhat do you want me to\ncall you?`}</Text>
+                <Text style={{ lineHeight: layout.defaultLineHeight, fontSize: layout.fontSizes.header, fontFamily: layout.fonts.nunito, color: colors.themeColors.primary }}>{`Hi there! I'm Jade.\nWhat do you want me to\ncall you?`}</Text>
                 <View style={{ flex: 0.18 }}></View>
                 <CustomTextInput gap={TEXT_GAP} placeholder="What do you want me to call you?" value={name} onChangeText={text => setName(text)} />
                 <View style={{ flex: 0.22 }}></View>

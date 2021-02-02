@@ -1,11 +1,10 @@
-
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 const layout = {
   screenWidth: {
     full: '100%',
     narrow: '90%',
     medium: '85%',
-    xxxSmall: '.41%'
+    xxxSmall: '.41%',
   },
   padding: {
     small: 4,
@@ -15,27 +14,31 @@ const layout = {
     xxxxLarge: 35,
     screenHorizontal: 37,
   },
+  card: {
+    width: 230,
+    height: 386,
+  },
   radius: {
-    image: 10
+    image: 10,
   },
   imageAspectRatio: {
-    avacadoLogo: 658/506,
+    avacadoLogo: 658 / 506,
     girlCouchImage: 519 / 441,
-    tinyLine: 41/31,
-    yogaGirl:804/612,
-    readingGirl:696 / 631,
-    moneyGirl:694/699,
-    thinkingGirl:635/765,
+    tinyLine: 41 / 31,
+    yogaGirl: 804 / 612,
+    readingGirl: 696 / 631,
+    moneyGirl: 694 / 699,
+    thinkingGirl: 635 / 765,
     progressBar: 945 / 15,
-    svgHand :13.724/15.855,
+    svgHand: 13.724 / 15.855,
   },
   fontSizes: {
     xsmall: 10,
     small: 11,
     medium: 14,
-    welcomeText: 20,
-    mediumHigh:14,
-     
+    header: 20,
+    mediumHigh: 14,
+    subText: 12,
     large: 23,
     xxxLarge: 39,
   },
@@ -44,36 +47,44 @@ const layout = {
     medium: 130,
     large: '2%',
     xLarge: 186,
-    xxxLarge:500, 
+    xxxLarge: 500,
   },
-  autoImageSizes:{
-    xsmall:Dimensions.get('screen').width/10.7,
-    small:Dimensions.get('screen').width/3.13,
-    medium:'75%',
-    large:'90%', 
-    xxxxLarge:Dimensions.get('screen').width/0.4443,
+  dayCircle: {
+    height: 68,
+    width: 68,
+    radius: 34,
   },
-  autoDisplacemets:{
-    high:Dimensions.get('screen').width/1,
-    medium:Dimensions.get('screen').width/2,
-    xmedium:Dimensions.get('screen').width/2.8,
-    xxmedium:Dimensions.get('screen').width/3.3,
-    small:Dimensions.get('screen').width/5,
+  autoImageSizes: {
+    xsmall: Dimensions.get('screen').width / 10.7,
+    small: Dimensions.get('screen').width / 3.13,
+    medium: '75%',
+    large: '90%',
+    xxxxLarge: Dimensions.get('screen').width / 0.4443,
+  },
+  autoDisplacemets: {
+    high: Dimensions.get('screen').width / 1,
+    medium: Dimensions.get('screen').width / 2,
+    xmedium: Dimensions.get('screen').width / 2.8,
+    xxmedium: Dimensions.get('screen').width / 3.3,
+    small: Dimensions.get('screen').width / 5,
   },
   heights: {
     xxxshort: 16,
-    xxshort:30,
+    xxshort: 30,
     short: 100,
-    mediumLow:120,
+    mediumLow: 120,
     medium: 200,
     tall: 300,
-    xxtall:440,
-  }, 
+    xxtall: 440,
+  },
   fonts: {
-    nunito: 'Nunito-SemiBold'
-  }, 
-  backgroundBorderRadius:32,
+    nunitoLight: 'Nunito-Light',
+    nunito: 'Nunito-SemiBold',
+  },
+  backgroundBorderRadius: 32,
+  cardBoaderRadius: 50,
   defaultLineHeight: 30,
+  buttonRadius: 17,
 };
 
 export default layout;
