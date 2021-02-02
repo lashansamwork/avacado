@@ -6,6 +6,7 @@ const TaskItem = (props) => {
   const BORDER_RADIUS = 20;
   return (
     <TouchableOpacity
+      onPress={props.onPress}
       style={{
         ...props.style,
         height: '22.2%',

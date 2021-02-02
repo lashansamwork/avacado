@@ -5,6 +5,7 @@ const colors = {
     secondary: 'white',
     pink: '#EBBDBD',
     grey: '#CECECE',
+    transparentBlack: 'rgba(0, 0, 0, 0.7)',
   },
 };
 
