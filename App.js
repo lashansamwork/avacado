@@ -36,7 +36,6 @@ const App = () => {
         <Stack.Screen name="Home" component={TabNavigator} />
         <Stack.Screen name="IntroRoutes" component={WelcomeNavigator} />
       </Stack.Navigator>
-      {/* <TabNavigator /> */}
     </NavigationContainer>
   );
 };

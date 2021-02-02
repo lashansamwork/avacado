@@ -76,7 +76,6 @@ const GoalQuestionsScreen = ({navigation}) => {
       />
     </View>
   );
-  // new state for description/image etc
 
   return (
     <TabView
