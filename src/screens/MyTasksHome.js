@@ -6,6 +6,13 @@ import {FlatList} from 'react-native-gesture-handler';
 import DaysList from '../components/DayElements/DaysList';
 
 const MyTasksHome = ({navigation}) => {
+  const onDatePress = (item) => {
+    console.log(
+      '🚀 ~ file: MyTasksHome.js ~ line 10 ~ onDatePress ~ item',
+      item,
+    );
+  };
+
   return (
     <SafeAreaView
       edges={['top']}
@@ -30,10 +37,17 @@ const MyTasksHome = ({navigation}) => {
           </Text>
         </View>
         <View style={{flex: 6, justifyContent: 'center'}}>
-          <View>
-            <DaysList />
+          <View
+            style={{
+              flex: 1,
+              borderWidth: 1,
+              justifyContent: 'center',
+            }}>
+            <View>
+              <DaysList initialSelect="Sun" onPress={onDatePress} />
+            </View>
           </View>
-          <View>
+          <View style={{flex: 2.8, borderWidth: 1}}>
             <FlatList />
           </View>
         </View>
