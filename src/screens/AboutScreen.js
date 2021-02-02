@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Svg, {Defs, ClipPath, Rect, Path, G} from 'react-native-svg';
-const avacadoLogo = require('../assets/images/AvocadoLogo.png');
+const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 
@@ -77,7 +77,7 @@ const AboutScreen = ({navigation}) => {
           <Image
             style={{flex: 1, height: null, width: null}}
             resizeMode="stretch"
-            source={avacadoLogo}
+            source={AvacadoLogo}
           />
         </View>
         <View style={{padding: layout.padding.xxxLarge}} />

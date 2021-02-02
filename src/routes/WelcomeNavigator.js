@@ -10,7 +10,7 @@ import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
 import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
-const leftArrow = require('../assets/images/ArrowLeft.png');
+const LeftArrow = require('../assets/images/ArrowLeft.png');
 import layout from '../theme/layout';
 const WelcomeNavigator = () => {
   return (
@@ -49,7 +49,7 @@ const WelcomeNavigator = () => {
               <Image
                 style={{flex: 1, width: null, height: null, left: 30}}
                 resizeMode="stretch"
-                source={leftArrow}
+                source={LeftArrow}
               />
             </View>
           ),

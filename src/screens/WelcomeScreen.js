@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-const avacadoLogo = require('../assets/images/AvocadoLogo.png');
-const girlCouchImage = require('../assets/images/GirlSittingCouch3.png');
+const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
+const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import layout from '../theme/layout';
 const TinyLine = require('../assets/images/TinyLine.png');
 import colors from '../theme/colors';
@@ -37,12 +37,12 @@ const WelcomeScreen = ({navigation}) => {
           <View
             style={{
               height: layout.heights.mediumLow,
-              aspectRatio: layout.imageAspectRatio.avacadoLogo,
+              aspectRatio: layout.imageAspectRatio.AvacadoLogo,
             }}>
             <Image
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
-              source={avacadoLogo}
+              source={AvacadoLogo}
             />
           </View>
           <View style={{flexBasis: LOGO_OFFSET}} />
@@ -88,7 +88,7 @@ const WelcomeScreen = ({navigation}) => {
           <View
             style={{
               height: '120%',
-              aspectRatio: layout.imageAspectRatio.girlCouchImage,
+              aspectRatio: layout.imageAspectRatio.GirlCouchImage,
             }}>
             <Image
               style={{
@@ -98,7 +98,7 @@ const WelcomeScreen = ({navigation}) => {
                 ...IMAGE_CUTOFF_VALUES,
               }}
               resizeMode="stretch"
-              source={girlCouchImage}
+              source={GirlCouchImage}
             />
           </View>
         </View>
