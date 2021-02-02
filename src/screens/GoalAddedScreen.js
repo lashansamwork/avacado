@@ -6,12 +6,7 @@ import {
   TouchableOpacity,
   Image,
   View,
-  ScrollView,
 } from 'react-native';
-const yogaGirl = require('../assets/images/yogaGirl.png');
-const readingGirl = require('../assets/images/readingGirl.png');
-const thinkingGirl = require('../assets/images/thinkingGirl.png');
-const moneyGirl = require('../assets/images/moneyGirl.png');
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 const CongratzHand = require('../assets/images/congratzHand.png');

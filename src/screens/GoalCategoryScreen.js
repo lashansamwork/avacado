@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-  StatusBar,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Image,
-  View,
-  ScrollView,
-} from 'react-native';
+import {StatusBar, Text, TouchableOpacity, Image, View} from 'react-native';
 const yogaGirl = require('../assets/images/yogaGirl.png');
-const readingGirl = require('../assets/images/readingGirl.png');
 const thinkingGirl = require('../assets/images/thinkingGirl.png');
 const moneyGirl = require('../assets/images/moneyGirl.png');
 import layout from '../theme/layout';

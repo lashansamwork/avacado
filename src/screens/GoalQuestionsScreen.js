@@ -1,33 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Image,
-  View,
-  TextInput,
-  Dimensions,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
+import {Image, View, Dimensions} from 'react-native';
 import layout from '../theme/layout';
-import colors from '../theme/colors';
-const readingGirl = require('../assets/images/readingGirl.png');
-const yogaGirl = require('../assets/images/yogaGirl.png');
-const moneyGirl = require('../assets/images/moneyGirl.png');
-const thinkingGirl = require('../assets/images/thinkingGirl.png');
-const readingGirlPlaceholder = 'Get my bachelors degree in three years';
-const yogalPlaceholder = 'Lose 2kg in a month';
-const moneyPlaceholder = 'Save 1,500$ i a mnonth';
-const thinkingGirlPlaceholder = 'Build a reading habit in 21 days';
-const readingGirlDescription = 'Career & Education';
-const yogaDescription = 'Physical & Health';
-const moneyGirlDescription = 'Finance';
-const thinkingGirlDescription = 'Self growth';
-import CheckCircle from '../assets/images/CheckCircle';
 import StepOne from '../assets/images/stepOne.png';
 import StepTwo from '../assets/images/stepTwo.png';
-import Svg, {Path} from 'react-native-svg';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import StepThree from '../assets/images/thirdStep.png';
+import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
 import FirstRoute from './goalQuestionTabScreens/FirstRoute';
 import SecondRoute from './goalQuestionTabScreens/SecondRoute';
@@ -53,9 +30,10 @@ const GoalQuestionsScreen = ({navigation}) => {
   const PROGRESS_BARS = {
     0: StepOne,
     1: StepTwo,
+    2: StepThree,
   };
 
-  const getProgressBar = (index) => {
+  const getProgressBar = () => {
     return PROGRESS_BARS[index];
   };
 
@@ -63,7 +41,7 @@ const GoalQuestionsScreen = ({navigation}) => {
     setIndex(index + 1);
   };
 
-  const renderTabBar = (props) => (
+  const renderTabBar = () => (
     <View
       style={{
         alignSelf: 'center',
