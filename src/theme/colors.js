@@ -5,7 +5,8 @@ const colors = {
     secondary: 'white',
     pink: '#EBBDBD',
     grey: '#CECECE',
-    transparentBlack: 'rgba(0, 0, 0, 0.7)',
+    transparent: 'rgba(8, 30, 33, 0.74)',
+    shadow: 'black',
   },
 };
 
