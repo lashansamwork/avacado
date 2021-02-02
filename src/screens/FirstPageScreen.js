@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-const avacadoLogo = require('../assets/images/avocado-logo.png');
-const girlCouchImage = require('../assets/images/girlSittingCouch3.png');
+const avacadoLogo = require('../assets/images/AvocadoLogo.png');
+const girlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import CheckCircle from '../assets/images/CheckCircle';
 import CustomTextInput from '../components/CustomTextInput';
 import layout from '../theme/layout';

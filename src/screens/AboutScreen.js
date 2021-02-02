@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Svg, {Defs, ClipPath, Rect, Path, G} from 'react-native-svg';
-const avacadoLogo = require('../assets/images/avocado-logo.png');
+const avacadoLogo = require('../assets/images/AvocadoLogo.png');
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 

@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import TabItem from './TabItem';
 import MyTasksIcon from '../SvgIcons/MyTasksIcon';
 import MyGoalsIcon from '../SvgIcons/MyGoalsIcon';
-const avacaIcon = require('../../assets/images/avaca.png');
+const avacaIcon = require('../../assets/images/AvocadoLogo.png');
 import layout from '../../theme/layout';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 const TabBar = ({state, descriptors, navigation}) => {

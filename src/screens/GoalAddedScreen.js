@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
-const CongratzHand = require('../assets/images/congratzHand.png');
+const CongratzHand = require('../assets/images/CongratzHand.png');
 
 const GoalAddedScreen = () => {
   return (

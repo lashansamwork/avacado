@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-const avacadoLogo = require('../assets/images/avocado-logo.png');
-const girlCouchImage = require('../assets/images/girlSittingCouch3.png');
+const avacadoLogo = require('../assets/images/AvocadoLogo.png');
+const girlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import layout from '../theme/layout';
-const TinyLine = require('../assets/images/tinyLine.png');
+const TinyLine = require('../assets/images/TinyLine.png');
 import colors from '../theme/colors';
 
 const WelcomeScreen = ({navigation}) => {

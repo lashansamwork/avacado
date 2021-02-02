@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, View, Dimensions} from 'react-native';
 import layout from '../theme/layout';
-import StepOne from '../assets/images/stepOne.png';
-import StepTwo from '../assets/images/stepTwo.png';
-import StepThree from '../assets/images/thirdStep.png';
+import StepOne from '../assets/images/StepOne.png';
+import StepTwo from '../assets/images/StepTwo.png';
+import StepThree from '../assets/images/ThirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
 import FirstRoute from './goalQuestionTabScreens/FirstRoute';

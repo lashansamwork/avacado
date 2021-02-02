@@ -1,14 +1,14 @@
 import React from 'react';
 import {StatusBar, Text, TouchableOpacity, Image, View} from 'react-native';
-const yogaGirl = require('../assets/images/yogaGirl.png');
-const thinkingGirl = require('../assets/images/thinkingGirl.png');
-const moneyGirl = require('../assets/images/moneyGirl.png');
+const yogaGirl = require('../assets/images/YogaGirl.png');
+const thinkingGirl = require('../assets/images/ThinkingGirl.png');
+const moneyGirl = require('../assets/images/MoneyGirl.png');
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 
 const categoryData = {
   readingGirl: {
-    image: require('../assets/images/readingGirl.png'),
+    image: require('../assets/images/ReadingGirl.png'),
     title: 'Career & Education',
     placeholder: 'Save $1,500 i a month',
   },

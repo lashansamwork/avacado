@@ -10,7 +10,7 @@ import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
 import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
-const leftArrow = require('../assets/images/arrow-left.png');
+const leftArrow = require('../assets/images/ArrowLeft.png');
 import layout from '../theme/layout';
 const WelcomeNavigator = () => {
   return (
