@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-const avacadoLogo = require('../assets/images/avocado-logo.png');
-const girlCouchImage = require('../assets/images/girlSittingCouch3.png');
+const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
+const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import CheckCircle from '../assets/images/CheckCircle';
 import CustomTextInput from '../components/CustomTextInput';
 import layout from '../theme/layout';
@@ -28,12 +28,12 @@ const FirstPageScreen = ({navigation}) => {
             <View
               style={{
                 height: layout.heights.mediumLow,
-                aspectRatio: layout.imageAspectRatio.avacadoLogo,
+                aspectRatio: layout.imageAspectRatio.AvacadoLogo,
               }}>
               <Image
                 style={{flex: 1, height: null, width: null}}
                 resizeMode="stretch"
-                source={avacadoLogo}
+                source={AvacadoLogo}
               />
             </View>
           </View>
@@ -54,12 +54,12 @@ const FirstPageScreen = ({navigation}) => {
               bottom: 0,
               zIndex: 1,
               height: COUCH_IMAGE_HEIGHT,
-              aspectRatio: layout.imageAspectRatio.girlCouchImage,
+              aspectRatio: layout.imageAspectRatio.GirlCouchImage,
             }}>
             <Image
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
-              source={girlCouchImage}
+              source={GirlCouchImage}
             />
           </View>
         </View>
