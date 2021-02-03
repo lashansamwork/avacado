@@ -3,14 +3,8 @@ import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import TabBar from '../components/TabBar/TabBar';
-
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+import MyTaskNavigator from '../routes/MyTaskNavigator';
+import MyGoalNavigator from '../routes/MyGoalNavigator';
 
 function MyGoalScreen() {
   return (
@@ -34,8 +28,8 @@ export default function TabNavigator() {
   return (
     <SafeAreaProvider>
       <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={MyGoalScreen} />
+        <Tab.Screen name="MyTask" component={MyTaskNavigator} />
+        <Tab.Screen name="Settings" component={MyGoalNavigator} />
         <Tab.Screen name="profile" component={ProfileScreen} />
       </Tab.Navigator>
     </SafeAreaProvider>

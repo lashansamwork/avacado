@@ -28,7 +28,7 @@ const FirstPageScreen = ({navigation}) => {
             <View
               style={{
                 height: layout.heights.mediumLow,
-                aspectRatio: layout.imageAspectRatio.AvacadoLogo,
+                aspectRatio: layout.imageAspectRatio.avacadoLogo,
               }}>
               <Image
                 style={{flex: 1, height: null, width: null}}
@@ -54,7 +54,7 @@ const FirstPageScreen = ({navigation}) => {
               bottom: 0,
               zIndex: 1,
               height: COUCH_IMAGE_HEIGHT,
-              aspectRatio: layout.imageAspectRatio.GirlCouchImage,
+              aspectRatio: layout.imageAspectRatio.girlCouchImage,
             }}>
             <Image
               style={{flex: 1, height: null, width: null}}

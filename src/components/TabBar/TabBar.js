@@ -58,8 +58,8 @@ const TabBar = ({state, descriptors, navigation}) => {
             }
           };
           return (
-            <TouchableOpacity onPress={onTabPress}>
-              <TabItem key={`${index}_tab`} {...TABS[index]} />
+            <TouchableOpacity onPress={onTabPress} key={`${index}_tab`}>
+              <TabItem {...TABS[index]} />
             </TouchableOpacity>
           );
         })}
