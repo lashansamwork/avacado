@@ -14,7 +14,8 @@ import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
 import TaskItem from '../../components/TaskItem';
-import DatePicker from 'react-native-date-picker'
+import DatePicker from 'react-native-date-picker';
+import WheelPicker from 'react-native-wheely';
 
 
 
@@ -51,13 +52,15 @@ const SecondRoute = (onPress) => {
   const [saturday, setSaturday] = useState(false);
   const [sunday, setSunday] = useState(false);
   //const [daysInWeekFlagArray, setDaysInWeekFlagArray]
+  const [selected, setSelected] = useState('Berlin');
+
 
   const changeColor = () => {
     setMonday(!monday);
   }
 
   const renderDay = [];
-  for (let i = 0;i<7;i++){
+  for (let i = 0; i < 7; i++) {
     renderDay.push(<Day day={daysInWeek[i]} key={i} selected={daysInWeekFlagArray[i]} />)
   }
 
@@ -99,13 +102,17 @@ const SecondRoute = (onPress) => {
                 Repeat every
               </Text>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '90%' }}>
-                 {renderDay}
-                {/* <Day day="MON" selected={monday} onPress={changeColor} /> */
-                
-        console.log('ok')
-                
-                }
+                {renderDay}
+                {/* <Day day="MON" selected={monday} onPress={changeColor} /> */}
 
+
+              </View>
+              <View>
+                <WheelPicker
+                  options={['Berlin', 'London', 'Amsterdam']}
+                  selected={selected}
+                  onChange={(city) => setSelected(city)}
+                />
               </View>
             </View>
             <View style={{ width: '70%', borderColor: 'black', height: layout.heights.seperatorHeight, backgroundColor: 'black' }} />
