@@ -14,17 +14,21 @@ const layout = {
     xxxxLarge: 35,
     screenHorizontal: 37,
   },
+  card: {
+    width: 230,
+    height: 386,
+  },
   radius: {
     image: 10,
   },
   imageAspectRatio: {
-    AvacadoLogo: 658 / 506,
-    GirlCouchImage: 519 / 441,
+    avacadoLogo: 658 / 506,
+    girlCouchImage: 519 / 441,
     tinyLine: 41 / 31,
-    YogaGirl: 804 / 612,
+    yogaGirl: 804 / 612,
     readingGirl: 696 / 631,
-    MoneyGirl: 694 / 699,
-    ThinkingGirl: 635 / 765,
+    moneyGirl: 694 / 699,
+    thinkingGirl: 635 / 765,
     progressBar: 945 / 15,
     svgHand: 13.724 / 15.855,
   },
@@ -32,9 +36,9 @@ const layout = {
     xsmall: 10,
     small: 11,
     medium: 14,
-    welcomeText: 20,
+    header: 20,
     mediumHigh: 14,
-
+    subText: 12,
     large: 23,
     xxxLarge: 39,
   },
@@ -44,6 +48,11 @@ const layout = {
     large: '2%',
     xLarge: 186,
     xxxLarge: 500,
+  },
+  dayCircle: {
+    height: 68,
+    width: 68,
+    radius: 34,
   },
   autoImageSizes: {
     xsmall: Dimensions.get('screen').width / 10.7,
@@ -69,10 +78,13 @@ const layout = {
     xxtall: 440,
   },
   fonts: {
+    nunitoLight: 'Nunito-Light',
     nunito: 'Nunito-SemiBold',
   },
   backgroundBorderRadius: 32,
+  cardBoaderRadius: 50,
   defaultLineHeight: 30,
+  buttonRadius: 17,
 };
 
 export default layout;
