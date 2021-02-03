@@ -3,7 +3,7 @@ import {SafeAreaView, Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
-import StepFour from '../../assets/images/stepFour.png';
+import StepFour from '../../assets/images/StepFour.png';
 
 const FourthRoute = ({navigation}) => {
   return (

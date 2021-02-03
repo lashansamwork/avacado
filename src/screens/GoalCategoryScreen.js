@@ -1,14 +1,14 @@
 import React from 'react';
 import {StatusBar, Text, TouchableOpacity, Image, View} from 'react-native';
-const yogaGirl = require('../assets/images/yogaGirl.png');
-const thinkingGirl = require('../assets/images/thinkingGirl.png');
-const moneyGirl = require('../assets/images/moneyGirl.png');
+const YogaGirl = require('../assets/images/YogaGirl.png');
+const ThinkingGirl = require('../assets/images/ThinkingGirl.png');
+const MoneyGirl = require('../assets/images/MoneyGirl.png');
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 
 const categoryData = {
   readingGirl: {
-    image: require('../assets/images/readingGirl.png'),
+    image: require('../assets/images/ReadingGirl.png'),
     title: 'Career & Education',
     placeholder: 'Save $1,500 i a month',
   },
@@ -42,7 +42,7 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.medium,
-              aspectRatio: layout.imageAspectRatio.yogaGirl,
+              aspectRatio: layout.imageAspectRatio.YogaGirl,
             }}>
             <Image
               style={{
@@ -51,7 +51,7 @@ const GoalCategoryScreen = ({navigation}) => {
                 width: null,
                 left: YOGA_GIRL_SIDE_OFFSET,
               }}
-              source={yogaGirl}
+              source={YogaGirl}
               resizeMode="stretch"
             />
           </View>
@@ -98,10 +98,10 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.medium,
-              aspectRatio: layout.imageAspectRatio.moneyGirl,
+              aspectRatio: layout.imageAspectRatio.MoneyGirl,
             }}>
             <Image
-              source={moneyGirl}
+              source={MoneyGirl}
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
             />
@@ -122,10 +122,10 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.large,
-              aspectRatio: layout.imageAspectRatio.thinkingGirl,
+              aspectRatio: layout.imageAspectRatio.ThinkingGirl,
             }}>
             <Image
-              source={thinkingGirl}
+              source={ThinkingGirl}
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
             />

@@ -20,7 +20,6 @@
 		520A8BB4373BD4C79832126C /* libPods-Avacado-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D59A73D583E3DEC3A2499F /* libPods-Avacado-tvOS.a */; };
 		5D39DAB745FE9DCD66CA8398 /* libPods-Avacado.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A3CB209151EE99982F894D /* libPods-Avacado.a */; };
 		6077E460CDEF04C01CB5D712 /* libPods-Avacado-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F3041A4E56A0095375EB9D /* libPods-Avacado-tvOSTests.a */; };
-		64F480E2BF144D5389BD402A /* avocado-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C518879D2E84E63ACAB7E4D /* avocado-logo.png */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDE370236A04602860C3FD7 /* yogaGirl.png */; };
 		9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */; };
@@ -74,7 +73,6 @@
 		53024B0B401B37BB73B74595 /* Pods-Avacado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avacado.release.xcconfig"; path = "Target Support Files/Pods-Avacado/Pods-Avacado.release.xcconfig"; sourceTree = "<group>"; };
 		5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../src/assets/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		7647541B3504786297DB3ABD /* libPods-Avacado-AvacadoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Avacado-AvacadoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C518879D2E84E63ACAB7E4D /* avocado-logo.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "avocado-logo.png"; path = "../src/assets/images/avocado-logo.png"; sourceTree = "<group>"; };
 		7CBABF876EBB4EDAA8DBE8C7 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		7DDE370236A04602860C3FD7 /* yogaGirl.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = yogaGirl.png; path = ../src/assets/images/yogaGirl.png; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Avacado/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 		99E2D3C5E81F4D608A413D2B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7C518879D2E84E63ACAB7E4D /* avocado-logo.png */,
 				27130C44C2A24D82B595FB14 /* girlSittingCouch3.png */,
 				7DDE370236A04602860C3FD7 /* yogaGirl.png */,
 				5CF3F3CCFE1D44EEA4235376 /* Nunito-SemiBold.ttf */,
@@ -397,7 +394,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				64F480E2BF144D5389BD402A /* avocado-logo.png in Resources */,
 				E9AF48E685944561AB366AC6 /* girlSittingCouch3.png in Resources */,
 				846195119DDA44039CFCA8CC /* yogaGirl.png in Resources */,
 				9556FF4CD8134DB78C90D431 /* Nunito-SemiBold.ttf in Resources */,
