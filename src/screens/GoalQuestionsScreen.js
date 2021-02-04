@@ -6,10 +6,10 @@ import StepTwo from '../assets/images/StepTwo.png';
 import StepThree from '../assets/images/ThirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
-import FirstRoute from './goalQuestionTabScreens/FirstRoute';
-import SecondRoute from './goalQuestionTabScreens/SecondRoute';
-import ThirdRoute from './goalQuestionTabScreens/ThirdRoute';
-import FourthRoute from './goalQuestionTabScreens/FourthRoute';
+import WhatGaolToAchieveScreen from './goalQuestionTabScreens/WhatGaolToAchieveScreen';
+import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScreen';
+import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
+import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
 
 const GoalQuestionsScreen = ({navigation}) => {
   const [index, setIndex] = React.useState(0);
@@ -21,10 +21,10 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'fourth', title: 'fourth'},
   ]);
   const renderScene = SceneMap({
-    first: () => FirstRoute(() => incrementIndex()),
-    second: () => SecondRoute(() => incrementIndex()),
-    third: () => ThirdRoute(() => incrementIndex()),
-    fourth: () => FourthRoute({navigation}),
+    first: () => WhatGaolToAchieveScreen(() => incrementIndex()),
+    second: () => HowToAchieveGoalScreen(() => incrementIndex()),
+    third: () => WhyAchieveGoalScreen(() => incrementIndex()),
+    fourth: () => WhenToAchieveGoalScreen({navigation}),
   });
 
   const PROGRESS_BARS = {
