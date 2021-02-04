@@ -48,7 +48,7 @@ const WhyAchieveGoalScreen = (onPress) => {
             style={{
               fontFamily: layout.fonts.nunito,
               color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.welcomeText,
+              fontSize: layout.fontSizes.header,
             }}>
             Why do you want to achieve it?
           </Text>

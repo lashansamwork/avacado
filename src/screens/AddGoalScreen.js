@@ -24,7 +24,7 @@ const addGoalScreen = ({navigation}) => {
           style={{
             flex: 20,
             color: colors.themeColors.pink,
-            fontSize: layout.fontSizes.welcomeText,
+            fontSize: layout.fontSizes.header,
             fontFamily: layout.fonts.nunito,
           }}>
           Add a goal

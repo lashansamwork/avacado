@@ -42,7 +42,7 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.medium,
-              aspectRatio: layout.imageAspectRatio.YogaGirl,
+              aspectRatio: layout.imageAspectRatio.yogaGirl,
             }}>
             <Image
               style={{
@@ -98,7 +98,7 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.medium,
-              aspectRatio: layout.imageAspectRatio.MoneyGirl,
+              aspectRatio: layout.imageAspectRatio.moneyGirl,
             }}>
             <Image
               source={MoneyGirl}
@@ -122,7 +122,7 @@ const GoalCategoryScreen = ({navigation}) => {
           <View
             style={{
               height: layout.autoImageSizes.large,
-              aspectRatio: layout.imageAspectRatio.ThinkingGirl,
+              aspectRatio: layout.imageAspectRatio.thinkingGirl,
             }}>
             <Image
               source={ThinkingGirl}
