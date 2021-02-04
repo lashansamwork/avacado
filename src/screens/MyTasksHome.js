@@ -11,10 +11,6 @@ const MyTasksHome = ({navigation}) => {
       .fill('')
       .map((_, i) => ({key: `${i}`, text: `item #${i}`})),
   );
-  console.log(
-    '🚀 ~ file: MyTasksHome.js ~ line 11 ~ MyTasksHome ~ tasks',
-    tasks,
-  );
 
   const onDatePress = (item) => {
     console.log(

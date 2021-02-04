@@ -24,7 +24,6 @@ export default function TasksList() {
     useRef(new Animated.Value(0)).current,
     useRef(new Animated.Value(0)).current,
   ];
-  // const opacity = useRef(new Animated.Value(0)).current;
 
   const onRowDidOpen = (rowKey) => {
     console.log('This row opened', rowKey);
