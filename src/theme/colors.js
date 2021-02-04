@@ -9,6 +9,7 @@ const colors = {
     none: 'rgba(30,83,90, 1);',
     shadow: 'black',
     lightGreen: '#53686D',
+    seperatorColor: '#222',
   },
 };
 
