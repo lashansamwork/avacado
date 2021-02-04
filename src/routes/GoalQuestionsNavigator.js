@@ -8,7 +8,7 @@ import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
 import layout from '../theme/layout';
 
-const GoalNavigator = () => {
+const GoalQuestionsNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -49,4 +49,4 @@ const GoalNavigator = () => {
   );
 };
 
-export default GoalNavigator;
+export default GoalQuestionsNavigator;

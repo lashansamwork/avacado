@@ -4,7 +4,7 @@ let Stack = createStackNavigator();
 
 import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
-import GoalNavigator from '../routes/GoalNavigator';
+import GoalQuestionsNavigator from '../routes/GoalQuestionsNavigator';
 import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
@@ -25,7 +25,10 @@ const WelcomeNavigator = () => {
         component={FirstPageScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="GoalNavigator" component={GoalNavigator} />
+      <Stack.Screen
+        name="GoalQuestionsNavigator"
+        component={GoalQuestionsNavigator}
+      />
       <Stack.Screen
         name="AddGoalScreen"
         component={AddGoalScreen}
