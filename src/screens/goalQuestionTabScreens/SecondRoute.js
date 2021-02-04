@@ -1,7 +1,7 @@
 /*eslint-disable */
 import React, { useState } from 'react';
 import {
-  StyleSheet, 
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -23,11 +23,15 @@ const Day = (props) => {
   let FONT_COLOR = props.isSelected ? colors.themeColors.pink : colors.themeColors.lightGreen;
   let VISIBILITY = props.isSelected ? 1 : 0;
   return (
-    <TouchableOpacity onPress={props.onPress} style={{ flexShrink: 1, alignItems: 'center', justifyContent:'center', 
-    paddingHorizontal: layout.padding.medium , }} >
+    <TouchableOpacity onPress={props.onPress} style={{
+      flexShrink: 1, alignItems: 'center', justifyContent: 'center',
+      paddingHorizontal: layout.padding.medium,
+    }} >
       <Text style={{ color: FONT_COLOR }}>{props.text}</Text>
-      <View style={{ backgroundColor: colors.themeColors.pink, aspectRatio: 1, height: 3, borderRadius: 90, 
-        opacity: VISIBILITY }} />
+      <View style={{
+        backgroundColor: colors.themeColors.pink, aspectRatio: 1, height: 3, borderRadius: 90,
+        opacity: VISIBILITY
+      }} />
     </TouchableOpacity>
   );
 }
@@ -37,7 +41,7 @@ const DayList = () => {
     { text: 'SUN', isSelected: false },
     { text: 'MON', isSelected: false },
     { text: 'TUE', isSelected: false },
-    { text: 'WED', isSelected: true },
+    { text: 'WED', isSelected: false },
     { text: 'THU', isSelected: false },
     { text: 'FRI', isSelected: false },
     { text: 'SAT', isSelected: false },
@@ -46,15 +50,17 @@ const DayList = () => {
   const onPress = (item) => {
     const newDaysArray = days.map((element) => {
       if (element.text === item.text) {
-        return { ...element, isSelected: true}
+        return { text: element.text, isSelected: !item.isSelected }
       } else {
-        return { ...element, isSelected: false}
+        return { ...element }
       }
     });
+    console.log('newDaysArray', newDaysArray);
     setDays(newDaysArray);
   }
   const renderItem = ({ item }) => {
-    return (<Day onPress={(item) => onPress(item)} isSelected={item.isSelected} text={item.text}/>);
+    console.log('item at renderitem', item);
+    return (<Day onPress={() => onPress(item)} isSelected={item.isSelected} text={item.text} />);
   }
   return (
     <FlatList
@@ -115,44 +121,44 @@ const SecondRoute = (onPress) => {
       <Modal style={{}} transparent={true} visible={modalVisible} onBackdropPress={() => setModalVisible(false)} >
         <View style={{ flex: 1, backgroundColor: colors.themeColors.transparent, alignItems: 'center', justifyContent: 'center' }}>
           <View style={{ flexBasis: 193 }}></View>
-          
-          <View style={{  alignItems: 'center', aspectRatio: MODAL_RATIO, width: '80.8%', backgroundColor: colors.themeColors.primary, borderRadius: 30, shadowColor: '#000', shadowOffset: { height: 3, }, }} >
 
-                <View style={{flex:1, justifyContent:'center'}} >
-                  <Text style={{ fontSize: 20, fontFamily: layout.fonts.nunito, color: colors.themeColors.pink }}>Set a reminder</Text>
-                </View>
+          <View style={{ alignItems: 'center', aspectRatio: MODAL_RATIO, width: '80.8%', backgroundColor: colors.themeColors.primary, borderRadius: 30, shadowColor: '#000', shadowOffset: { height: 3, }, }} >
 
-                <View style={{flex:1 ,overflow:'hidden', alignItems:'center',justifyContent:'center', width:'85%'}}>                  
-                  <View style={{transform: [{ scale: 1.1 }], flex:1, alignItems:'center', justifyContent:'center', }}>
-                    <DatePicker date={date} onDateChange={setDate} mode={'time'} textColor={colors.themeColors.pink} />
-                  </View>
-                </View>
-                
-                <View style={{marginVertical:layout.padding.small, width: '70%', height: layout.heights.seperatorHeight, backgroundColor: 'black' }} />
+            <View style={{ flex: 1, justifyContent: 'center' }} >
+              <Text style={{ fontSize: 20, fontFamily: layout.fonts.nunito, color: colors.themeColors.pink }}>Set a reminder</Text>
+            </View>
 
-                <View style={{ flex:0.8, alignItems:'center', justifyContent:'space-between',  overflow:'hidden', }}>
-                  <Text style={{ fontSize: layout.fontSizes.small, color: colors.themeColors.pink, fontFamily: layout.fonts.nunito }}>Repeat every</Text>
-                  <View style={{flexBasis:15}}></View>
-                  <DayList />
-                </View>
+            <View style={{ flex: 1, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', width: '85%' }}>
+              <View style={{ transform: [{ scale: 1.1 }], flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+                <DatePicker date={date} onDateChange={setDate} mode={'time'} textColor={colors.themeColors.pink} />
+              </View>
+            </View>
 
-                <View style={{marginVertical:layout.padding.small, width: '70%', height: layout.heights.seperatorHeight, backgroundColor: 'black' }} />
+            <View style={{ marginVertical: layout.padding.small, width: '70%', height: layout.heights.seperatorHeight, backgroundColor: 'black' }} />
 
-                <View style={{flex:1, alignItems:'center', justifyContent:'space-evenly'}}>
-                    <Text style={{ fontSize: layout.fontSizes.small, color: colors.themeColors.pink, fontFamily: layout.fonts.nunito }}>Times</Text>
-                    <View style={{height:'40%', alignItems:'center', justifyContent:'center', overflow:'hidden'}}>
-                      <WheelPicker
-                        selectedIndicatorStyle={{ backgroundColor: colors.themeColors.primary, color: 'red' }}
-                        options={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-                        selected={selected}
-                        onChange={(city) => setSelected(city)}
-                        itemHeight={15}
-                        containerStyle={{backgroundColor: colors.themeColors.primary, overflow:'hidden' }}
-                        itemTextStyle={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.secondary, color: colors.themeColors.pink }}
-                        itemStyle={{ backgroundColor: colors.themeColors.primary }}
-                      />
-                    </View>
-                </View>
+            <View style={{ flex: 0.8, alignItems: 'center', justifyContent: 'space-between', overflow: 'hidden', }}>
+              <Text style={{ fontSize: layout.fontSizes.small, color: colors.themeColors.pink, fontFamily: layout.fonts.nunito }}>Repeat every</Text>
+              <View style={{ flexBasis: 15 }}></View>
+              <DayList />
+            </View>
+
+            <View style={{ marginVertical: layout.padding.small, width: '70%', height: layout.heights.seperatorHeight, backgroundColor: 'black' }} />
+
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <Text style={{ fontSize: layout.fontSizes.small, color: colors.themeColors.pink, fontFamily: layout.fonts.nunito }}>Times</Text>
+              <View style={{ height: '40%', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <WheelPicker
+                  selectedIndicatorStyle={{ backgroundColor: colors.themeColors.primary, color: 'red' }}
+                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                  selected={selected}
+                  onChange={(city) => setSelected(city)}
+                  itemHeight={15}
+                  containerStyle={{ backgroundColor: colors.themeColors.primary, overflow: 'hidden' }}
+                  itemTextStyle={{ fontFamily: layout.fonts.nunito, color: colors.themeColors.secondary, color: colors.themeColors.pink }}
+                  itemStyle={{ backgroundColor: colors.themeColors.primary }}
+                />
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
