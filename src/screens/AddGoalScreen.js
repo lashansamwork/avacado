@@ -16,7 +16,7 @@ const addGoalScreen = ({navigation}) => {
       }}>
       <View style={{flex: 22}} />
       <TouchableOpacity
-        onPress={() => navigation.navigate('GoalCategoryScreen')}
+        onPress={() => navigation.navigate('GoalNavigator')}
         style={{flex: 9, alignItems: 'center', justifyContent: 'center'}}>
         <PlusInsideCircle />
         <View style={{flex: 11}} />
