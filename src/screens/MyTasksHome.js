@@ -2,14 +2,69 @@ import React, {useState} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
-import {FlatList} from 'react-native-gesture-handler';
 import DaysList from '../components/DayElements/DaysList';
+import TasksList from '../components/TasksElemets/TasksList';
 
 const MyTasksHome = ({navigation}) => {
+  const [tasks, setTasks] = useState(
+    Array(20)
+      .fill('')
+      .map((_, i) => ({key: `${i}`, text: `item #${i}`})),
+  );
+  console.log(
+    '🚀 ~ file: MyTasksHome.js ~ line 11 ~ MyTasksHome ~ tasks',
+    tasks,
+  );
+
   const onDatePress = (item) => {
     console.log(
       '🚀 ~ file: MyTasksHome.js ~ line 10 ~ onDatePress ~ item',
       item,
+    );
+  };
+
+  const ListCard = () => {
+    return (
+      <View style={{flexDirection: 'row'}}>
+        <View style={{flexBasis: 50}} />
+        <View
+          style={{
+            backgroundColor: colors.themeColors.primary,
+            flex: 1,
+            height: layout.card.taskHeight,
+            justifyContent: 'center',
+            paddingHorizontal: layout.padding.large,
+            borderRadius: layout.taskCardRadius,
+          }}>
+          <Text style={{color: colors.themeColors.secondary}}>
+            I am in a SwipeListView
+          </Text>
+        </View>
+        <View style={{flexBasis: 50}} />
+      </View>
+    );
+  };
+
+  const HiddenListCard = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          height: layout.card.taskHeight,
+          width: '100%',
+        }}>
+        <View style={{flexBasis: 50, backgroundColor: 'red'}}>
+          <View>
+            <Text>Save</Text>
+          </View>
+          <View>
+            <Text>Edit</Text>
+          </View>
+          <View>
+            <Text>Delete</Text>
+          </View>
+        </View>
+      </View>
     );
   };
 
@@ -40,15 +95,17 @@ const MyTasksHome = ({navigation}) => {
           <View
             style={{
               flex: 1,
-              borderWidth: 1,
               justifyContent: 'center',
             }}>
             <View>
               <DaysList initialSelect="Sun" onPress={onDatePress} />
             </View>
           </View>
-          <View style={{flex: 2.8, borderWidth: 1}}>
-            <FlatList />
+          <View
+            style={{
+              flex: 2.8,
+            }}>
+            <TasksList />
           </View>
         </View>
       </View>
