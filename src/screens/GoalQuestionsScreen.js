@@ -15,16 +15,16 @@ const GoalQuestionsScreen = ({navigation}) => {
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
   const [routes] = React.useState([
-    {key: 'first', title: 'First'},
-    {key: 'second', title: 'Second'},
-    {key: 'third', title: 'third'},
-    {key: 'fourth', title: 'fourth'},
+    {key: 'what', title: 'WhenToAchieve'},
+    {key: 'how', title: 'HowToAchieve'},
+    {key: 'why', title: 'WhyAchieve'},
+    {key: 'when', title: 'WhenToAchieve'},
   ]);
   const renderScene = SceneMap({
-    first: () => WhatGaolToAchieveScreen(() => incrementIndex()),
-    second: () => HowToAchieveGoalScreen(() => incrementIndex()),
-    third: () => WhyAchieveGoalScreen(() => incrementIndex()),
-    fourth: () => WhenToAchieveGoalScreen({navigation}),
+    what: () => WhatGaolToAchieveScreen(() => incrementIndex()),
+    how: () => HowToAchieveGoalScreen(() => incrementIndex()),
+    why: () => WhyAchieveGoalScreen(() => incrementIndex()),
+    when: () => WhenToAchieveGoalScreen({navigation}),
   });
 
   const PROGRESS_BARS = {
