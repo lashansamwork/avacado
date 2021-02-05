@@ -17,6 +17,7 @@ const layout = {
   card: {
     width: 230,
     height: 386,
+    taskHeight: 57,
   },
   radius: {
     image: 10,
@@ -85,6 +86,8 @@ const layout = {
   cardBoaderRadius: 50,
   defaultLineHeight: 30,
   buttonRadius: 17,
+  taskCardRadius: 20,
+  swipeButtonSize: 40,
 };
 
 export default layout;
