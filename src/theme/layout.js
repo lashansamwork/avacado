@@ -35,6 +35,7 @@ const layout = {
     svgHand: 13.724 / 15.855,
   },
   fontSizes: {
+    xxsmall: 9,
     xsmall: 10,
     small: 11,
     medium: 14,

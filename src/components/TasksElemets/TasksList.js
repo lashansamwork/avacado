@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Animated} from 'react-native';
+import {Image, Text, TouchableOpacity, View, Animated} from 'react-native';
 
 import {SwipeListView} from 'react-native-swipe-list-view';
 import colors from '../../theme/colors';
@@ -7,6 +7,7 @@ import layout from '../../theme/layout';
 const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
 );
+import TaskView from './TaskView';
 
 export default function TasksList() {
   const [listData, setListData] = useState([
@@ -56,9 +57,7 @@ export default function TasksList() {
           }}
           underlayColor={'rgba(255,255,255, 0.8)'}>
           <View>
-            <Text style={{color: colors.themeColors.secondary}}>
-              I am {data.item.text} in a SwipeListView
-            </Text>
+            <TaskView />
           </View>
         </TouchableHighlightAnimated>
       </View>
