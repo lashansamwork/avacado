@@ -5,7 +5,7 @@ import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 
-const FourthRoute = ({navigation}) => {
+const WhenToAchieveGoalScreen = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
@@ -76,4 +76,4 @@ const FourthRoute = ({navigation}) => {
   );
 };
 
-export default FourthRoute;
+export default WhenToAchieveGoalScreen;

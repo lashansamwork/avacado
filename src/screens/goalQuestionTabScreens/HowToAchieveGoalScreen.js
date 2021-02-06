@@ -5,7 +5,7 @@ import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
 import TaskItem from '../../components/TaskItem';
 
-const SecondRoute = (onPress) => {
+const HowToAchieveGoalScreen = (onPress) => {
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
@@ -69,4 +69,4 @@ const SecondRoute = (onPress) => {
   );
 };
 
-export default SecondRoute;
+export default HowToAchieveGoalScreen;

@@ -27,7 +27,7 @@ const SvgHand = (style) => {
   );
 };
 
-const FirstRoute = (onPress) => {
+const WhatGaolToAchieveScreen = (onPress) => {
   const [goal, onChangeGoal] = useState('');
 
   let girlImagePath = readingGirl;
@@ -126,4 +126,4 @@ const FirstRoute = (onPress) => {
   );
 };
 
-export default FirstRoute;
+export default WhatGaolToAchieveScreen;
