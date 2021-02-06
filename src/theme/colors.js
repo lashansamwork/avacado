@@ -5,22 +5,12 @@ const colors = {
     secondary: 'white',
     pink: '#EBBDBD',
     grey: '#CECECE',
+    transparent: 'rgba(8, 30, 33, 0.74)',
+    none: 'rgba(30,83,90, 1);',
+    shadow: 'black',
+    lightGreen: '#53686D',
+    seperatorColor: '#222',
   },
-  // customColors: {
-  //   darkGreen: '#1E535A',
-  //   primary: '#6200ee',
-  //   accent: '#03dac4',
-  //   background: '#f6f6f6',
-  //   surface: 'white',
-  //   error: '#B00020',
-  //   text: 'black',
-  //   onBackground: '#000000',
-  //   onSurface: '#000000',
-  //   disabled: color('black').alpha(0.26).rgb().string(),
-  //   placeholder: color('black').alpha(0.54).rgb().string(),
-  //   backdrop: color('black').alpha(0.5).rgb().string(),
-  //   notification: pinkA400,
-  // }
 };
 
 export default colors;

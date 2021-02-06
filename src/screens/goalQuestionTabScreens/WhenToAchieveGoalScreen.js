@@ -3,15 +3,15 @@ import {Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
-import StepFour from '../../assets/images/stepFour.png';
 import {CalendarList} from 'react-native-calendars';
+import StepFour from '../../assets/images/StepFour.png';
 
-const FourthRoute = ({navigation}) => {
-  const HEADING_GAP = 44;
-  const HEADING_OFFSET = 28;
-  const CALENDAR_OFFSET = 40;
-  const BUTTON_OFFSET = 35;
+const HEADING_GAP = 44;
+const HEADING_OFFSET = 28;
+const CALENDAR_OFFSET = 40;
+const BUTTON_OFFSET = 35;
 
+const WhenToAchieveGoalScreen = ({navigation}) => {
   return (
     <View style={{borderWidth: 1, borderColor: 'red', flex: 1}}>
       <View
@@ -100,4 +100,4 @@ const FourthRoute = ({navigation}) => {
   );
 };
 
-export default FourthRoute;
+export default WhenToAchieveGoalScreen;

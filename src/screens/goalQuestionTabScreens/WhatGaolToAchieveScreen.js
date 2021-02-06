@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
-const readingGirl = require('../../assets/images/readingGirl.png');
+const readingGirl = require('../../assets/images/ReadingGirl.png');
 const readingGirlPlaceholder = 'Get my bachelors degree in three years';
 const readingGirlDescription = 'Career & Education';
 import CheckCircle from '../../assets/images/CheckCircle';
@@ -27,7 +27,7 @@ const SvgHand = (style) => {
   );
 };
 
-const FirstRoute = (onPress) => {
+const WhatGaolToAchieveScreen = (onPress) => {
   const [goal, onChangeGoal] = useState('');
 
   let girlImagePath = readingGirl;
@@ -126,4 +126,4 @@ const FirstRoute = (onPress) => {
   );
 };
 
-export default FirstRoute;
+export default WhatGaolToAchieveScreen;

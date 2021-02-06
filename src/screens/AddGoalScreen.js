@@ -16,7 +16,7 @@ const addGoalScreen = ({navigation}) => {
       }}>
       <View style={{flex: 22}} />
       <TouchableOpacity
-        onPress={() => navigation.navigate('GoalCategoryScreen')}
+        onPress={() => navigation.navigate('GoalQuestionsNavigator')}
         style={{flex: 9, alignItems: 'center', justifyContent: 'center'}}>
         <PlusInsideCircle />
         <View style={{flex: 11}} />
@@ -24,7 +24,7 @@ const addGoalScreen = ({navigation}) => {
           style={{
             flex: 20,
             color: colors.themeColors.pink,
-            fontSize: layout.fontSizes.welcomeText,
+            fontSize: layout.fontSizes.header,
             fontFamily: layout.fonts.nunito,
           }}>
           Add a goal

@@ -11,7 +11,7 @@ import colors from '../../theme/colors';
 
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const ThirdRoute = (onPress) => {
+const WhyAchieveGoalScreen = (onPress) => {
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '26%';
@@ -48,7 +48,7 @@ const ThirdRoute = (onPress) => {
             style={{
               fontFamily: layout.fonts.nunito,
               color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.welcomeText,
+              fontSize: layout.fontSizes.header,
             }}>
             Why do you want to achieve it?
           </Text>
@@ -88,4 +88,4 @@ const ThirdRoute = (onPress) => {
   );
 };
 
-export default ThirdRoute;
+export default WhyAchieveGoalScreen;
