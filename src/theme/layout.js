@@ -28,6 +28,7 @@ const layout = {
     tinyLine: 41 / 31,
     yogaGirl: 804 / 612,
     readingGirl: 696 / 631,
+    readingGirlWithoutCircle: 270 / 265,
     moneyGirl: 694 / 699,
     thinkingGirl: 635 / 765,
     progressBar: 945 / 15,
