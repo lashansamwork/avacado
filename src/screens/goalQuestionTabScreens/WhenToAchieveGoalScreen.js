@@ -15,7 +15,15 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
   const CALENDAR_OFFSET = 25;
   const CALENDAR_HEIGHT = '103%';
   const CALENDAR_ASPECT_RATIO = 297 / 303;
+  const CALENDAR_MAGNIFICATION = 0.9;
   const BUTTON_OFFSET = 35;
+  const CALENDAR_RADIUS = 50;
+
+  const DAY_FONT_SIZE = 17;
+  const DAY_FONT_WEIGHT = '100';
+  const MONTH_FONT_SIZE = 22;
+  const MONTH_FONT_WEIGHT = '400';
+  const HEADER_FONT_SIZE = 16;
 
   return (
     <View style={{flex: 1.2}}>
@@ -76,8 +84,8 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
           pagingEnabled={true}
           horizontal={true}
           style={{
-            transform: [{scale: 0.9}],
-            borderRadius: 50,
+            transform: [{scale: CALENDAR_MAGNIFICATION}],
+            borderRadius: CALENDAR_RADIUS,
             height: CALENDAR_HEIGHT,
             aspectRatio: CALENDAR_ASPECT_RATIO,
             overflow: 'hidden',
@@ -89,13 +97,13 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
             dayTextColor: colors.themeColors.secondary,
             textSectionTitleColor: colors.themeColors.pink,
             calendarBackground: colors.themeColors.primary,
-            textDayFontSize: 17,
-            textMonthFontSize: 22,
-            textDayHeaderFontSize: 16,
+            textDayFontSize: DAY_FONT_SIZE,
+            textMonthFontSize: MONTH_FONT_SIZE,
+            textDayHeaderFontSize: HEADER_FONT_SIZE,
             textDayFontFamily: layout.fonts.roboto,
             textDayHeaderFontFamily: layout.fonts.roboto,
-            textDayFontWeight: '100',
-            textMonthFontWeight: '400',
+            textDayFontWeight: DAY_FONT_WEIGHT,
+            textMonthFontWeight: MONTH_FONT_WEIGHT,
             selectedDayBackgroundColor: colors.themeColors.pink,
             todayTextColor: colors.themeColors.secondary,
           }}
