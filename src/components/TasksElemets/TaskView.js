@@ -5,6 +5,7 @@ import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 
 const TaskView = () => {
+  const TIME_OFFSET = 20;
   return (
     <View
       style={{
@@ -40,12 +41,12 @@ const TaskView = () => {
         <Text
           style={{
             color: colors.themeColors.pink,
-            fontSize: layout.fontSizes.small,
+            fontSize: layout.fontSizes.xsmall,
             fontFamily: layout.fonts.nunito,
           }}>
-          2:00
+          2:00 pm
         </Text>
-        <View style={{flexBasis: 20}} />
+        <View style={{flexBasis: TIME_OFFSET}} />
       </View>
     </View>
   );
