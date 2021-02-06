@@ -104,6 +104,7 @@ const MyGoalsHome = ({navigation}) => {
         </View>
       </View>
       <ActionButton
+        onPress={() => navigation.navigate('GoalQuestionsNavigator')}
         buttonColor={colors.themeColors.pink}
         hideShadow={true}
         size={68}

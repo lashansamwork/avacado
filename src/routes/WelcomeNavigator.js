@@ -1,22 +1,18 @@
 import React from 'react';
-import {Image, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 let Stack = createStackNavigator();
 
 import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
-import GoalCategoryScreen from '../screens/GoalCategoryScreen';
-import GoalQuestionsScreen from '../screens/GoalQuestionsScreen';
+import GoalQuestionsNavigator from '../routes/GoalQuestionsNavigator';
 import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
-const LeftArrow = require('../assets/images/ArrowLeft.png');
-import layout from '../theme/layout';
 const WelcomeNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
       }}
       initialRouteName="WelcomeScreen">
       <Stack.Screen
@@ -30,35 +26,8 @@ const WelcomeNavigator = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="GoalQuestionsScreen"
-        component={GoalQuestionsScreen}
-        options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: '#FFFFFF',
-            shadowRadius: 0,
-            shadowOffset: {
-              height: 0,
-            },
-          },
-          title: '',
-
-          headerBackTitle: <></>,
-          headerBackImage: () => (
-            <View style={{aspectRatio: 1 / 1, height: layout.heights.xxxshort}}>
-              <Image
-                style={{flex: 1, width: null, height: null, left: 30}}
-                resizeMode="stretch"
-                source={LeftArrow}
-              />
-            </View>
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="GoalCategoryScreen"
-        component={GoalCategoryScreen}
-        options={{headerShown: false}}
+        name="GoalQuestionsNavigator"
+        component={GoalQuestionsNavigator}
       />
       <Stack.Screen
         name="AddGoalScreen"
