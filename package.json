@@ -11,7 +11,6 @@
     "nuke-setup": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-bundler-cache-* && rm -rf node_modules && npm cache clean --force && rm -rf ios/Pods  && npm install &&  cd ios && pod install && cd .. && npm start -- --reset-cache"
   },
   "dependencies": {
-    "@gregfrench/react-native-wheel-picker": "^1.2.12",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.7",
     "@react-navigation/native": "^5.9.0",
