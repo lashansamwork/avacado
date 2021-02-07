@@ -22,9 +22,19 @@ const GoalQuestionsScreen = ({navigation}) => {
   ]);
   const renderScene = SceneMap({
     what: () => WhatGaolToAchieveScreen(() => incrementIndex()),
-    how: () => HowToAchieveGoalScreen(() => incrementIndex()),
-    why: () => WhyAchieveGoalScreen(() => incrementIndex()),
-    when: () => WhenToAchieveGoalScreen({navigation}),
+    how: () =>
+      HowToAchieveGoalScreen(
+        () => incrementIndex(),
+        () => decrementIndex,
+        {navigation},
+      ),
+    why: () =>
+      WhyAchieveGoalScreen(
+        () => incrementIndex(),
+        () => decrementIndex,
+        {navigation},
+      ),
+    when: () => WhenToAchieveGoalScreen({navigation}, () => decrementIndex),
   });
 
   const PROGRESS_BARS = {
@@ -39,6 +49,10 @@ const GoalQuestionsScreen = ({navigation}) => {
 
   const incrementIndex = () => {
     setIndex(index + 1);
+  };
+
+  const decrementIndex = () => {
+    setIndex(index - 1);
   };
 
   const renderTabBar = () => (

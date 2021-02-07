@@ -10,7 +10,7 @@ import WheelPicker from 'react-native-wheely';
 
 import DayList from '../../components/MultipleDaySelector/DayList';
 
-const HowToAchieveGoalScreen = (onPress) => {
+const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
@@ -29,6 +29,16 @@ const HowToAchieveGoalScreen = (onPress) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [date, setDate] = useState(new Date());
   const [times, setTimes] = useState(5);
+
+  const goingBack = true;
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        e.preventDefault();
+        goBack()();
+      }),
+    [navigation, goingBack, goBack],
+  );
 
   return (
     <View style={{flexGrow: 1}}>

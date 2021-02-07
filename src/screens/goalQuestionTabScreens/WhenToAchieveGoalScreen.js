@@ -5,7 +5,16 @@ import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 
-const WhenToAchieveGoalScreen = ({navigation}) => {
+const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
+  const goingBack = true;
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        e.preventDefault();
+        goBack()();
+      }),
+    [navigation, goingBack, goBack],
+  );
   return (
     <SafeAreaView
       style={{
