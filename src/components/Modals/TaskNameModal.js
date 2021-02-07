@@ -5,7 +5,7 @@ import colors from '../../theme/colors';
 import CustomTextInput from '../CustomTextInput';
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskNameModal = () => {
+const TaskNameModal = (props) => {
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -13,7 +13,9 @@ const TaskNameModal = () => {
   const TEXT_INPUT_OFFSET = 30;
   const PICKER_CONTAINER_WIDTH = '85%';
   const TEXT_GAP = 2;
+
   const [name, setName] = React.useState('');
+
   return (
     <View
       activeOpacity={1}
@@ -66,7 +68,7 @@ const TaskNameModal = () => {
           justifyContent: 'center',
           width: PICKER_CONTAINER_WIDTH,
         }}>
-        <TouchableOpacity style={{alignSelf: 'center'}}>
+        <TouchableOpacity style={{alignSelf: 'center'}} onPress={props.onPress}>
           <CheckCircle />
         </TouchableOpacity>
       </View>

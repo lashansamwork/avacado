@@ -21,6 +21,14 @@ const HowToAchieveGoalScreen = (onPress) => {
   const MODAL_OFFSET = 200;
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalIndex, setModalIndex] = React.useState(0);
+
+  const CustomModal = () => {
+    if (modalIndex === 0) {
+      return <TaskNameModal onPress={() => setModalIndex(1)} />;
+    }
+    return <TaskTimeModal />;
+  };
 
   return (
     <View style={{flexGrow: 1}}>
@@ -38,8 +46,7 @@ const HowToAchieveGoalScreen = (onPress) => {
                 color: colors.themeColors.primary,
                 fontSize: layout.fontSizes.xxxLarge,
               }}>
-              {' '}
-              How?{' '}
+              How?
             </Text>
             <Text
               style={{
@@ -100,12 +107,13 @@ const HowToAchieveGoalScreen = (onPress) => {
             }}
             transparent={true}
             onPressOut={() => {
+              setModalIndex(0);
               setModalVisible(false);
             }}>
             <View style={{flexBasis: MODAL_OFFSET}} />
             <TouchableWithoutFeedback touchSoundDisabled>
               <View>
-                <TaskNameModal />
+                <CustomModal />
               </View>
             </TouchableWithoutFeedback>
           </TouchableOpacity>
@@ -114,5 +122,4 @@ const HowToAchieveGoalScreen = (onPress) => {
     </View>
   );
 };
-
 export default HowToAchieveGoalScreen;

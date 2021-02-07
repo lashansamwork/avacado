@@ -26,8 +26,6 @@ const TaskTimeModal = () => {
     <View
       activeOpacity={1}
       style={{
-        borderWidth: 5,
-        borderColor: 'red',
         alignItems: 'center',
         aspectRatio: MODAL_RATIO,
         width: MODAL_WIDTH,
@@ -138,7 +136,7 @@ const TaskTimeModal = () => {
             }}
             options={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
             selected={times}
-            onChange={(times) => setTimes(times)}
+            onChange={(element) => setTimes(element)}
             itemHeight={WHEEL_ITEM_HEIGHT}
             containerStyle={{
               backgroundColor: colors.themeColors.primary,
