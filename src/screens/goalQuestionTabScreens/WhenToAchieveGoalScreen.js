@@ -7,10 +7,11 @@ import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
 const WhenToAchieveGoalScreen = ({navigation}) => {
-  const HEADING_OFFSET = 0;
+  const HEADING_OFFSET = 25;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
+  const TEXT_GAP = -18;
 
   return (
     <View style={{flex: 1.2}}>
@@ -28,9 +29,9 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
       </View>
       <View
         style={{
-          flex: 3,
+          flex: 5,
           justifyContent: 'center',
-          padding: layout.padding.screenHorizontal,
+          paddingHorizontal: layout.padding.screenHorizontal,
         }}>
         <View style={{flexBasis: HEADING_OFFSET}} />
         <Text
@@ -44,6 +45,7 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
         </Text>
         <Text
           style={{
+            top: TEXT_GAP,
             flex: 1,
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.pink,
