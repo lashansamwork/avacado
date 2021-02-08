@@ -11,7 +11,7 @@ const calendarConfiguration = {
     'September',
     'October',
     'November',
-    'Décember',
+    'December',
   ],
   monthNamesShort: [
     'Jan',

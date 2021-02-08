@@ -3,16 +3,13 @@ import {Text, TouchableOpacity, Image, View} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
-import {Calendar, LocaleConfig} from 'react-native-calendars';
 import StepFour from '../../assets/images/StepFour.png';
-import calendarConfiguration from '../../theme/calendarConfigurations';
-LocaleConfig.locales.en = calendarConfiguration;
-LocaleConfig.defaultLocale = 'en';
+import Calendar from '../../components/Calendars/PrimaryCalendar';
 
 const WhenToAchieveGoalScreen = ({navigation}) => {
   const HEADING_GAP = 44;
-  const HEADING_OFFSET = 0;
-  const CALENDAR_OFFSET = 25;
+  const HEADING_OFFSET = 25;
+  const CALENDAR_OFFSET = 85;
   const CALENDAR_HEIGHT = '103%';
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_MAGNIFICATION = 0.9;
@@ -65,64 +62,21 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
         </Text>
       </View>
       <View style={{flexBasis: CALENDAR_OFFSET}} />
-      <View
-        style={{
-          flex: 0.52,
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-        }}>
-        <Calendar
-          hideExtraDays={true}
-          hideArrows={false}
-          disableArrowRight={false}
-          disableArrowLeft={false}
-          enableSwipeMonths={true}
-          scrollEnabled={false}
-          calendarWidth={300}
-          calendarHeight={500}
-          pagingEnabled={true}
-          horizontal={true}
+
+      <View style={{alignItems: 'center'}}>
+        <View
           style={{
-            transform: [{scale: CALENDAR_MAGNIFICATION}],
-            borderRadius: CALENDAR_RADIUS,
-            height: CALENDAR_HEIGHT,
             aspectRatio: CALENDAR_ASPECT_RATIO,
             overflow: 'hidden',
-          }}
-          theme={{
-            arrowColor: 'orange',
-            selectedDayTextColor: colors.themeColors.secondary,
-            monthTextColor: colors.themeColors.secondary,
-            dayTextColor: colors.themeColors.secondary,
-            textSectionTitleColor: colors.themeColors.pink,
-            calendarBackground: colors.themeColors.primary,
-            textDayFontSize: DAY_FONT_SIZE,
-            textMonthFontSize: MONTH_FONT_SIZE,
-            textDayHeaderFontSize: HEADER_FONT_SIZE,
-            textDayFontFamily: layout.fonts.roboto,
-            textDayHeaderFontFamily: layout.fonts.roboto,
-            textDayFontWeight: DAY_FONT_WEIGHT,
-            textMonthFontWeight: MONTH_FONT_WEIGHT,
-            selectedDayBackgroundColor: colors.themeColors.pink,
-            todayTextColor: colors.themeColors.secondary,
-          }}
-          markingType={'custom'}
-          markedDates={{
-            '2021-02-02': {
-              customStyles: {
-                container: {
-                  backgroundColor: colors.themeColors.pink,
-                },
-                text: {
-                  color: 'black',
-                  fontWeight: 'bold',
-                },
-              },
-            },
-          }}
-        />
+            height: '65%',
+
+            borderRadius: 50,
+            backgroundColor: colors.themeColors.primary,
+          }}>
+          <Calendar />
+        </View>
       </View>
+
       <View
         style={{
           flex: 0.2,
