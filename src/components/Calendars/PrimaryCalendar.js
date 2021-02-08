@@ -8,6 +8,7 @@ import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 import LeftArrow from '../Calendars/LeftArrow';
 import RightArrow from '../Calendars/RightArrow';
+
 const PrimaryCalendar = (props) => {
   const MONTH_OFFSET = -15;
   const WEEK_OFFSET = -10;
@@ -19,6 +20,8 @@ const PrimaryCalendar = (props) => {
   const MONTH_FONT_SIZE = 20;
   const MONTH_FONT_WEIGHT = '100';
   const HEADER_FONT_SIZE = 16;
+
+  const [selectedDay, setSelectedDay] = React.useState('2021-02-02');
 
   const renderArrow = (direction) => {
     if (direction === 'left') {
@@ -131,24 +134,29 @@ const PrimaryCalendar = (props) => {
           textDayFontWeight: DAY_FONT_WEIGHT,
           textMonthFontWeight: MONTH_FONT_WEIGHT,
           selectedDayBackgroundColor: colors.themeColors.pink,
+          todayTextColor: colors.themeColors.secondary,
         }}
         renderArrow={renderArrow}
-        // Initially visible month. Default = Date()
-        current={'2012-03-01'}
         // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-        minDate={'2012-05-10'}
-        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-        maxDate={'2012-05-30'}
-        // Handler which gets executed on day press. Default = undefined
+        minDate={'2020-12-30'}
         onDayPress={(day) => {
           console.log('selected day', day);
         }}
-        // renderHeader={(test) => {
-        //   console.log(
-        //     '🚀 ~ file: WhenToAchieveGoalScreen.js ~ line 73 ~ WhenToAchieveGoalScreen ~ test',
-        //     test,
-        //   );
-        // }}
+        markedDates={{
+          '2021-02-02': {
+            customStyles: {
+              container: {
+                backgroundColor: colors.themeColors.pink,
+              },
+              text: {
+                color: 'white',
+                fontWeight: 'bold',
+              },
+            },
+          },
+        }}
+        markingType={'custom'}
+        enableSwipeMonths={true}
       />
     </View>
     // <View>
