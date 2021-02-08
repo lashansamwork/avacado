@@ -7,7 +7,7 @@ import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
 const WhenToAchieveGoalScreen = ({navigation}) => {
-  const HEADING_OFFSET = 25;
+  const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
