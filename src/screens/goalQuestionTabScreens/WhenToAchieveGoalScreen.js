@@ -9,6 +9,7 @@ import Calendar from '../../components/Calendars/PrimaryCalendar';
 const WhenToAchieveGoalScreen = ({navigation}) => {
   const HEADING_OFFSET = 0;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
+  const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
 
   return (
@@ -25,10 +26,8 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
           resizeMode="stretch"
         />
       </View>
-
       <View
         style={{
-          borderWidth: 1,
           flex: 3,
           justifyContent: 'center',
           padding: layout.padding.screenHorizontal,
@@ -53,16 +52,13 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
           {'When do you think you will\nhave achieved it?'}
         </Text>
       </View>
-
-      {/* <View style={{flexBasis: CALENDAR_OFFSET}} /> */}
-
       <View style={{flex: 10, alignItems: 'center'}}>
         <View
           style={{
             aspectRatio: CALENDAR_ASPECT_RATIO,
             overflow: 'hidden',
             height: '100%',
-            borderRadius: 50,
+            borderRadius: CALENDAR_BORDER_RADIUS,
             backgroundColor: colors.themeColors.primary,
           }}>
           <Calendar />
