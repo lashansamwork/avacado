@@ -9,26 +9,22 @@ import layout from '../../theme/layout';
 import LeftArrow from '../Calendars/LeftArrow';
 import RightArrow from '../Calendars/RightArrow';
 const PrimaryCalendar = (props) => {
-  const HEADING_GAP = 44;
-  const HEADING_OFFSET = 0;
-  const CALENDAR_OFFSET = 25;
-  const CALENDAR_HEIGHT = '103%';
-  const CALENDAR_ASPECT_RATIO = 297 / 303;
-  const CALENDAR_MAGNIFICATION = 0.9;
-  const BUTTON_OFFSET = 35;
-  const CALENDAR_RADIUS = 50;
+  const MONTH_OFFSET = -15;
+  const WEEK_OFFSET = -10;
+  const DAYS_CONTAINER_OFFSET = -15;
 
+  const ARROW_GAP = 8;
   const DAY_FONT_SIZE = 17;
   const DAY_FONT_WEIGHT = '100';
   const MONTH_FONT_SIZE = 20;
-  const MONTH_FONT_WEIGHT = '400';
+  const MONTH_FONT_WEIGHT = '100';
   const HEADER_FONT_SIZE = 16;
 
   const renderArrow = (direction) => {
     if (direction === 'left') {
-      return <LeftArrow style={{height: 10}} arrowGap={15} />;
+      return <LeftArrow style={{height: 10}} arrowGap={ARROW_GAP} />;
     } else {
-      return <RightArrow style={{height: 10}} arrowGap={15} />;
+      return <RightArrow style={{height: 10}} arrowGap={ARROW_GAP} />;
     }
   };
 
@@ -70,6 +66,7 @@ const PrimaryCalendar = (props) => {
               paddingRight: 5,
             },
             dayContainer: {
+              top: DAYS_CONTAINER_OFFSET,
               flex: 1,
               alignItems: 'center',
             },
@@ -106,11 +103,12 @@ const PrimaryCalendar = (props) => {
               margin: 0,
               flexDirection: 'row',
               height: 50,
-              paddingHorizontal: 10,
+              paddingHorizontal: 5,
               width: '80%',
-              top: -5,
+              top: MONTH_OFFSET,
             },
             week: {
+              top: WEEK_OFFSET,
               paddingHorizontal: 10,
               marginTop: 5,
               marginBottom: 1,

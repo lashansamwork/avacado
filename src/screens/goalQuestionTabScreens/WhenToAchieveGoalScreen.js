@@ -7,20 +7,11 @@ import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
 const WhenToAchieveGoalScreen = ({navigation}) => {
-  const HEADING_GAP = 44;
-  const HEADING_OFFSET = 25;
-  const CALENDAR_OFFSET = 85;
-  const CALENDAR_HEIGHT = '103%';
+  const HEADING_GAP = 0;
+  const HEADING_OFFSET = 0;
+  const CALENDAR_OFFSET = 57;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
-  const CALENDAR_MAGNIFICATION = 0.9;
   const BUTTON_OFFSET = 35;
-  const CALENDAR_RADIUS = 50;
-
-  const DAY_FONT_SIZE = 17;
-  const DAY_FONT_WEIGHT = '100';
-  const MONTH_FONT_SIZE = 22;
-  const MONTH_FONT_WEIGHT = '400';
-  const HEADER_FONT_SIZE = 16;
 
   return (
     <View style={{flex: 1.2}}>
@@ -36,16 +27,18 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
           resizeMode="stretch"
         />
       </View>
+
       <View
         style={{
-          flex: 0.1,
+          borderWidth: 1,
+          flex: 3,
           justifyContent: 'center',
           padding: layout.padding.screenHorizontal,
         }}>
         <View style={{flexBasis: HEADING_OFFSET}} />
         <Text
           style={{
-            flexBasis: HEADING_GAP,
+            flex: 1,
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.primary,
             fontSize: layout.fontSizes.xxxLarge,
@@ -54,6 +47,7 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
         </Text>
         <Text
           style={{
+            flex: 1,
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.pink,
             fontSize: layout.fontSizes.header,
@@ -61,15 +55,15 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
           {'When do you think you will\nhave achieved it?'}
         </Text>
       </View>
-      <View style={{flexBasis: CALENDAR_OFFSET}} />
 
-      <View style={{alignItems: 'center'}}>
+      {/* <View style={{flexBasis: CALENDAR_OFFSET}} /> */}
+
+      <View style={{flex: 10, alignItems: 'center'}}>
         <View
           style={{
             aspectRatio: CALENDAR_ASPECT_RATIO,
             overflow: 'hidden',
-            height: '65%',
-
+            height: '100%',
             borderRadius: 50,
             backgroundColor: colors.themeColors.primary,
           }}>
@@ -79,7 +73,7 @@ const WhenToAchieveGoalScreen = ({navigation}) => {
 
       <View
         style={{
-          flex: 0.2,
+          flex: 8,
           alignItems: 'center',
           paddingTop: layout.padding.xxxLarge,
         }}>
