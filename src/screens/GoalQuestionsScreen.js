@@ -21,7 +21,7 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'when', title: 'WhenToAchieve'},
   ]);
   const renderScene = SceneMap({
-    what: () => WhatGaolToAchieveScreen(() => incrementIndex()),
+    what: () => WhatGoalToAchieveScreen(() => incrementIndex()),
     how: () =>
       HowToAchieveGoalScreen(
         () => incrementIndex(),
