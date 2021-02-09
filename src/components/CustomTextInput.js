@@ -4,6 +4,10 @@ import layout from '../theme/layout';
 import colors from '../theme/colors';
 
 const CustomTextInput = (props) => {
+  const TEXT_COLOR =
+    props.textColor === undefined
+      ? colors.themeColors.primary
+      : props.textColor;
   return (
     <View
       style={{
@@ -17,7 +21,7 @@ const CustomTextInput = (props) => {
         onChangeText={props.onChangeText}
         value={props.value}
         style={{
-          color: colors.themeColors.primary,
+          color: TEXT_COLOR,
           fontSize: layout.fontSizes.small,
           marginBottom: props.gap,
         }}
