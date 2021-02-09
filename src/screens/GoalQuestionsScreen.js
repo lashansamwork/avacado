@@ -6,7 +6,7 @@ import StepTwo from '../assets/images/StepTwo.png';
 import StepThree from '../assets/images/ThirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
-import WhatGaolToAchieveScreen from './goalQuestionTabScreens/WhatGaolToAchieveScreen';
+import WhatGoalToAchieveScreen from './goalQuestionTabScreens/WhatGoalToAchieveScreen';
 import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScreen';
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
@@ -21,7 +21,7 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'when', title: 'WhenToAchieve'},
   ]);
   const renderScene = SceneMap({
-    what: () => WhatGaolToAchieveScreen(() => incrementIndex()),
+    what: () => WhatGoalToAchieveScreen(() => incrementIndex()),
     how: () =>
       HowToAchieveGoalScreen(
         () => incrementIndex(),
