@@ -3,7 +3,7 @@ import {Text, View, FlatList} from 'react-native';
 import layout from '../../theme/layout';
 import DayItem from './DayItem';
 
-const DaysList = (props) => {
+const DaysList = ({onPress, initialSelect}) => {
   const DAYS = [
     {text: 'Sun', isSelected: false},
     {text: 'Mon', isSelected: false},
@@ -14,9 +14,14 @@ const DaysList = (props) => {
     {text: 'Sat', isSelected: false},
   ];
 
-  const [days, setDays] = useState(DAYS);
+  const daysNewState = DAYS.map((item) => {
+    return item.text === initialSelect ? {...item, isSelected: true} : item;
+  });
+
+  const [days, setDays] = useState(daysNewState);
 
   const onDayPress = (item) => {
+    onPress && onPress(item);
     const newDaysState = days.map((day) => {
       if (item.text === day.text) {
         return {
@@ -38,6 +43,10 @@ const DaysList = (props) => {
       data={days}
       horizontal
       keyExtractor={(item, index) => `${index}`}
+      contentContainerStyle={{
+        paddingHorizontal: layout.padding.screenHorizontal,
+      }}
+      showsHorizontalScrollIndicator={false}
       renderItem={({item}) => (
         <View style={{padding: layout.padding.small}}>
           <DayItem {...item} onPress={() => onDayPress(item)} />

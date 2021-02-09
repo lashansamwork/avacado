@@ -11,12 +11,21 @@ import colors from '../../theme/colors';
 
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const WhyAchieveGoalScreen = (onPress) => {
+const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '26%';
   const HEADING_OFFSET = '25.9%';
 
+  const goingBack = true;
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        e.preventDefault();
+        goBack()();
+      }),
+    [navigation, goingBack, goBack],
+  );
   return (
     <SafeAreaView
       style={{
