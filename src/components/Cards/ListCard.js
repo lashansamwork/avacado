@@ -27,9 +27,22 @@ const ListCard = ({
   const [showBottomSheetButtons, setShowBottomSheetButtons] = React.useState(
     true,
   );
-  const MODAL_OFFSET = 0;
-  let myRbSheet = null;
+  const RBSHEET_HEIGHT = 300;
+  const RBSHEET_OPEN_DURATION = 250;
+  const RBSHEET_RADIUS = 45;
+  const RBSHEET_MAIN_VIEW_RADIUS = 45;
 
+  const PINK_BAR_WIDTH = 45;
+  const PINK_BAR_RADIUS = 45;
+  const PINK_BAR_HEIGHT = 4;
+
+  const SEPERATOR_WIDTH = '80%';
+  const SEPERATOR_OPACITY = 0.5;
+
+  const BUTTON_GAP = 30;
+  const MODAL_OFFSET = 0;
+
+  let myRbSheet = null;
   return (
     <View>
       <View
@@ -137,42 +150,40 @@ const ListCard = ({
           ref={(ref) => {
             myRbSheet = ref;
           }}
-          height={300}
-          openDuration={250}
+          height={RBSHEET_HEIGHT}
+          openDuration={RBSHEET_OPEN_DURATION}
           customStyles={{
             container: {
               backgroundColor: colors.themeColors.primary,
               flex: 0.3,
               flexDirection: 'column',
               alignItems: 'center',
-              borderTopLeftRadius: 45,
-              borderTopRightRadius: 45,
+              borderTopLeftRadius: RBSHEET_RADIUS,
+              borderTopRightRadius: RBSHEET_RADIUS,
               opacity: showBottomSheetButtons,
             },
           }}>
-          {/* MAIN VIEW */}
           <View
             style={{
               flex: 1,
               width: '100%',
               flexDirection: 'column',
               alignItems: 'center',
-              borderTopLeftRadius: 45,
-              borderTopRightRadius: 45,
+              borderTopLeftRadius: RBSHEET_MAIN_VIEW_RADIUS,
+              borderTopRightRadius: RBSHEET_MAIN_VIEW_RADIUS,
             }}>
-            {/* PINK BAR */}
             <View
               style={{
-                width: 45,
-                borderRadius: 45,
+                width: PINK_BAR_WIDTH,
+                borderRadius: PINK_BAR_RADIUS,
                 margin: layout.padding.medium,
                 backgroundColor: colors.themeColors.pink,
-                height: 4,
+                height: PINK_BAR_HEIGHT,
               }}
             />
             {/* BTN 1 */}
             <View style={{flex: 1, justifyContent: 'center'}}>
-              <View style={{flexBasis: 30}} />
+              <View style={{flexBasis: BUTTON_GAP}} />
               <TouchableOpacity onPress={() => myRbSheet.close()}>
                 <Text
                   style={{
@@ -183,16 +194,14 @@ const ListCard = ({
                 </Text>
               </TouchableOpacity>
             </View>
-            {/* SEPARATOR */}
             <View
               style={{
                 height: layout.heights.seperatorHeight,
-                width: '80%',
-                backgroundColor: 'black',
-                opacity: 0.5,
+                width: SEPERATOR_WIDTH,
+                backgroundColor: colors.themeColors.shadow,
+                opacity: SEPERATOR_OPACITY,
               }}
             />
-            {/* BTN 2 DELETE */}
             <View style={{flex: 1, justifyContent: 'center'}}>
               <TouchableOpacity
                 onPress={() => {
@@ -207,11 +216,10 @@ const ListCard = ({
                   Delete
                 </Text>
               </TouchableOpacity>
-              <View style={{flexBasis: 30}} />
+              <View style={{flexBasis: BUTTON_GAP}} />
             </View>
           </View>
           <View style={{opacity: 1}}>
-            {/* MODAL */}
             <Modal visible={deleteModal} transparent={true}>
               <View
                 style={{
