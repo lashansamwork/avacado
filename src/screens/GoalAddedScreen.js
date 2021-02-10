@@ -11,7 +11,7 @@ import layout from '../theme/layout';
 import colors from '../theme/colors';
 const CongratzHand = require('../assets/images/CongratzHand.png');
 
-const GoalAddedScreen = () => {
+const GoalAddedScreen = ({navigation}) => {
   const ASPECT_RATIO = 998 / 928;
   const IMAGE_OFFSET = 202;
   const LETTER_OFFSET = 128;
@@ -26,7 +26,9 @@ const GoalAddedScreen = () => {
         alignItems: 'center',
       }}>
       <StatusBar barStyle="dark-content" />
-      <TouchableOpacity style={{flex: 1, alignItems: 'center'}}>
+      <TouchableOpacity
+        style={{flex: 1, alignItems: 'center'}}
+        onPress={() => navigation.navigate('Home')}>
         <View style={{flexBasis: IMAGE_OFFSET}} />
         <View style={{aspectRatio: ASPECT_RATIO, height: '25.1%'}}>
           <Image
