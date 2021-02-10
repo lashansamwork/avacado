@@ -13,6 +13,8 @@ const CongratzHand = require('../assets/images/CongratzHand.png');
 
 const GoalAddedScreen = () => {
   const ASPECT_RATIO = 998 / 928;
+  const IMAGE_OFFSET = 202;
+  const LETTER_OFFSET = 128;
 
   let name = 'Layan';
 
@@ -25,7 +27,7 @@ const GoalAddedScreen = () => {
       }}>
       <StatusBar barStyle="dark-content" />
       <TouchableOpacity style={{flex: 1, alignItems: 'center'}}>
-        <View style={{flexBasis: 202}} />
+        <View style={{flexBasis: IMAGE_OFFSET}} />
         <View style={{aspectRatio: ASPECT_RATIO, height: '25.1%'}}>
           <Image
             style={{flex: 1, width: null, height: null}}
@@ -61,7 +63,7 @@ const GoalAddedScreen = () => {
             You added a new goal that will change your life journey!
           </Text>
         </View>
-        <View style={{flexBasis: 128}} />
+        <View style={{flexBasis: LETTER_OFFSET}} />
       </TouchableOpacity>
     </SafeAreaView>
   );
