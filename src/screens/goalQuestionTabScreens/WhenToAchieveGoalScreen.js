@@ -6,13 +6,21 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
-const WhenToAchieveGoalScreen = ({navigation}) => {
+const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
   const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
   const TEXT_GAP = -18;
-
+  const goingBack = true;
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        e.preventDefault();
+        goBack()();
+      }),
+    [navigation, goingBack, goBack],
+  );
   return (
     <View style={{flex: 1.2}}>
       <View

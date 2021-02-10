@@ -18,6 +18,7 @@ const layout = {
   card: {
     width: 230,
     height: 386,
+    taskHeight: 57,
   },
   radius: {
     image: 10,
@@ -28,12 +29,14 @@ const layout = {
     tinyLine: 41 / 31,
     yogaGirl: 804 / 612,
     readingGirl: 696 / 631,
+    readingGirlWithoutCircle: 270 / 265,
     moneyGirl: 694 / 699,
     thinkingGirl: 635 / 765,
     progressBar: 945 / 15,
     svgHand: 13.724 / 15.855,
   },
   fontSizes: {
+    xxsmall: 9,
     xsmall: 10,
     small: 11,
     medium: 14,
@@ -88,6 +91,8 @@ const layout = {
   cardBoaderRadius: 50,
   defaultLineHeight: 30,
   buttonRadius: 17,
+  taskCardRadius: 20,
+  swipeButtonSize: 40,
 };
 
 export default layout;

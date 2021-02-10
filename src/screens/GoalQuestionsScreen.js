@@ -6,7 +6,7 @@ import StepTwo from '../assets/images/StepTwo.png';
 import StepThree from '../assets/images/ThirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
 const initialLayout = {width: Dimensions.get('screen').width};
-import WhatGaolToAchieveScreen from './goalQuestionTabScreens/WhatGaolToAchieveScreen';
+import WhatGoalToAchieveScreen from './goalQuestionTabScreens/WhatGoalToAchieveScreen';
 import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScreen';
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
@@ -21,10 +21,20 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'when', title: 'WhenToAchieve'},
   ]);
   const renderScene = SceneMap({
-    what: () => WhatGaolToAchieveScreen(() => incrementIndex()),
-    how: () => HowToAchieveGoalScreen(() => incrementIndex()),
-    why: () => WhyAchieveGoalScreen(() => incrementIndex()),
-    when: () => WhenToAchieveGoalScreen({navigation}),
+    what: () => WhatGoalToAchieveScreen(() => incrementIndex()),
+    how: () =>
+      HowToAchieveGoalScreen(
+        () => incrementIndex(),
+        () => decrementIndex,
+        {navigation},
+      ),
+    why: () =>
+      WhyAchieveGoalScreen(
+        () => incrementIndex(),
+        () => decrementIndex,
+        {navigation},
+      ),
+    when: () => WhenToAchieveGoalScreen({navigation}, () => decrementIndex),
   });
 
   const PROGRESS_BARS = {
@@ -39,6 +49,10 @@ const GoalQuestionsScreen = ({navigation}) => {
 
   const incrementIndex = () => {
     setIndex(index + 1);
+  };
+
+  const decrementIndex = () => {
+    setIndex(index - 1);
   };
 
   const renderTabBar = () => (
