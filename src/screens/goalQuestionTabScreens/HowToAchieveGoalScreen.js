@@ -81,7 +81,10 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
           </View>
         </View>
         <View
-          style={{flex: 9, paddingHorizontal: layout.padding.screenHorizontal}}>
+          style={{
+            flex: 13,
+            paddingHorizontal: layout.padding.screenHorizontal,
+          }}>
           <View style={{flex: 26}}>
             <TouchableOpacity
               onPress={onPress}
