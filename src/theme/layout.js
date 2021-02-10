@@ -85,6 +85,7 @@ const layout = {
   fonts: {
     nunitoLight: 'Nunito-Light',
     nunito: 'Nunito-SemiBold',
+    roboto: 'Roboto-Medium',
   },
   backgroundBorderRadius: 32,
   cardBoaderRadius: 50,
