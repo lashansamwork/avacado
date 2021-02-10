@@ -56,7 +56,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
             style={{
               fontFamily: layout.fonts.nunito,
               color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.welcomeText,
+              fontSize: layout.fontSizes.header,
             }}>
             What do you want to achieve?
           </Text>

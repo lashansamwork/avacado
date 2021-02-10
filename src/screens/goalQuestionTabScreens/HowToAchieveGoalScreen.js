@@ -62,10 +62,9 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
               style={{
                 fontFamily: layout.fonts.nunito,
                 color: colors.themeColors.pink,
-                fontSize: layout.fontSizes.welcomeText,
+                fontSize: layout.fontSizes.header,
               }}>
-              {' '}
-              How will you achieve this goal?{' '}
+              How will you achieve this goal?
             </Text>
             <View style={{flexBasis: HEADING_OFFSET}} />
           </View>
