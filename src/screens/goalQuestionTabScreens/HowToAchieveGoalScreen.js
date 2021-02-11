@@ -62,10 +62,9 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
               style={{
                 fontFamily: layout.fonts.nunito,
                 color: colors.themeColors.pink,
-                fontSize: layout.fontSizes.welcomeText,
+                fontSize: layout.fontSizes.header,
               }}>
-              {' '}
-              How will you achieve this goal?{' '}
+              How will you achieve this goal?
             </Text>
             <View style={{flexBasis: HEADING_OFFSET}} />
           </View>
@@ -82,7 +81,10 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
           </View>
         </View>
         <View
-          style={{flex: 9, paddingHorizontal: layout.padding.screenHorizontal}}>
+          style={{
+            flex: 13,
+            paddingHorizontal: layout.padding.screenHorizontal,
+          }}>
           <View style={{flex: 26}}>
             <TouchableOpacity
               onPress={onPress}
