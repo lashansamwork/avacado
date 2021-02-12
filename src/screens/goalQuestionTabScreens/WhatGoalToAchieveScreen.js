@@ -27,7 +27,7 @@ const SvgHand = (style) => {
   );
 };
 
-const WhatGoalToAchieveScreen = (onPress) => {
+const WhatGoalToAchieveScreen = (onPress, itemId) => {
   const [goal, onChangeGoal] = useState('');
 
   let girlImagePath = readingGirl;

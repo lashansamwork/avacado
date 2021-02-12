@@ -11,7 +11,7 @@ import colors from '../../theme/colors';
 
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+const WhyAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '26%';

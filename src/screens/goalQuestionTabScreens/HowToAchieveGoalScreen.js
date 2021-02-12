@@ -14,7 +14,7 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
-const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+const HowToAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;

@@ -11,7 +11,8 @@ import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScr
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
 
-const GoalQuestionsScreen = ({navigation}) => {
+const GoalQuestionsScreen = ({route, navigation}) => {
+  const {itemId} = route.params;
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
   const [routes] = React.useState([
@@ -21,20 +22,23 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'when', title: 'WhenToAchieve'},
   ]);
   const renderScene = SceneMap({
-    what: () => WhatGoalToAchieveScreen(() => incrementIndex()),
+    what: () => WhatGoalToAchieveScreen(() => incrementIndex(), itemId),
     how: () =>
       HowToAchieveGoalScreen(
         () => incrementIndex(),
         () => decrementIndex,
         {navigation},
+        itemId,
       ),
     why: () =>
       WhyAchieveGoalScreen(
         () => incrementIndex(),
         () => decrementIndex,
         {navigation},
+        itemId,
       ),
-    when: () => WhenToAchieveGoalScreen({navigation}, () => decrementIndex),
+    when: () =>
+      WhenToAchieveGoalScreen({navigation}, () => decrementIndex, itemId),
   });
 
   const PROGRESS_BARS = {

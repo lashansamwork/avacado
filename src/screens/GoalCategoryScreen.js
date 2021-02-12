@@ -38,7 +38,11 @@ const GoalCategoryScreen = ({navigation}) => {
         <View style={{flex: 1}} />
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() => {
+            navigation.navigate('GoalQuestionsScreen', {
+              itemId: 0,
+            });
+          }}>
           <View
             style={{
               height: layout.autoImageSizes.medium,

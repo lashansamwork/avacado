@@ -6,7 +6,7 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
-const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
+const WhenToAchieveGoalScreen = ({navigation}, goBack, itemId) => {
   const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
