@@ -8,6 +8,7 @@ const readingGirlDescription = 'Career & Education';
 import CheckCircle from '../../assets/images/CheckCircle';
 import Svg, {Path} from 'react-native-svg';
 import CustomTextInput from '../../components/CustomTextInput';
+import categoryData from '../../assets/CategoryData';
 
 const SvgHand = (style) => {
   return (
@@ -28,10 +29,15 @@ const SvgHand = (style) => {
 };
 
 const WhatGoalToAchieveScreen = (onPress, itemId) => {
+  const getData = (array) => {
+    return array.filter((item) => item.id === itemId);
+  };
+  let data = getData(categoryData);
+  data.map((element) => {
+    data = element;
+    return;
+  });
   const [goal, onChangeGoal] = useState('');
-
-  let girlImagePath = readingGirl;
-  let goalDescription = readingGirlDescription;
 
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
@@ -65,10 +71,10 @@ const WhatGoalToAchieveScreen = (onPress, itemId) => {
           <View
             style={{
               height: IMAGE_HEIGHT,
-              aspectRatio: layout.imageAspectRatio.readingGirl,
+              aspectRatio: data.aspectRatio,
             }}>
             <Image
-              source={girlImagePath}
+              source={data.imagePath}
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
             />
@@ -80,7 +86,7 @@ const WhatGoalToAchieveScreen = (onPress, itemId) => {
               fontSize: layout.fontSizes.medium,
               color: colors.themeColors.primary,
             }}>
-            {goalDescription}
+            {data.description}
           </Text>
           <View style={{flexBasis: IMAGE_OFFSET}} />
         </View>
@@ -91,7 +97,7 @@ const WhatGoalToAchieveScreen = (onPress, itemId) => {
           <CustomTextInput
             style={{position: 'absolute', bottom: 0, width: '100%'}}
             gap={CUSTOM_INPUT_TEXT_GAP}
-            placeholder={readingGirlPlaceholder}
+            placeholder={`${data.placeholder}`}
             value={goal}
             onChangeText={(text) => onChangeGoal(text)}
           />
