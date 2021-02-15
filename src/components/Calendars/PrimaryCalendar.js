@@ -9,7 +9,7 @@ import layout from '../../theme/layout';
 import LeftArrow from '../Calendars/LeftArrow';
 import RightArrow from '../Calendars/RightArrow';
 
-const PrimaryCalendar = (props) => {
+const PrimaryCalendar = ({onSelect}) => {
   const MONTH_OFFSET = -10;
   const WEEK_OFFSET = -10;
   const DAYS_CONTAINER_OFFSET = -15;
@@ -39,7 +39,7 @@ const PrimaryCalendar = (props) => {
       return <RightArrow style={{height: ARROW_HEIGHT}} arrowGap={ARROW_GAP} />;
     }
   };
-  const [selectedDay, setSelectedDay] = React.useState('2021-02-02');
+  const [selectedDay, setSelectedDay] = React.useState(new Date());
   return (
     <View
       style={{
@@ -51,6 +51,11 @@ const PrimaryCalendar = (props) => {
       <Calendar
         hideExtraDays={true}
         calendarWidth={CALENDAR_WIDTH}
+        current={selectedDay}
+        onDayPress={(day) => {
+          onSelect(day);
+          setSelectedDay(day);
+        }}
         theme={{
           'stylesheet.day.basic': {
             text: {
@@ -146,9 +151,6 @@ const PrimaryCalendar = (props) => {
         }}
         renderArrow={renderArrow}
         minDate={'2020-12-30'}
-        onDayPress={(day) => {
-          console.log('selected day', day);
-        }}
         markedDates={{
           '2021-02-02': {
             customStyles: {

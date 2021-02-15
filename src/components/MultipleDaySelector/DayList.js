@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import Day from './Day';
 
-const DayList = () => {
+const DayList = ({onDaysSubmit}) => {
   const DAYS = [
     {text: 'SUN', isSelected: false},
     {text: 'MON', isSelected: false},
@@ -22,6 +22,7 @@ const DayList = () => {
       }
     });
     setDays(newDaysArray);
+    onDaysSubmit(newDaysArray);
   };
   const renderItem = ({item}) => {
     return (

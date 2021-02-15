@@ -12,6 +12,8 @@ const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import layout from '../theme/layout';
 const TinyLine = require('../assets/images/TinyLine.png');
 import colors from '../theme/colors';
+import {useEffect} from 'react';
+import {getUser} from '../database/UserActions';
 
 const WelcomeScreen = ({navigation}) => {
   const IMAGE_TOP_OFFSET = -20;
@@ -21,6 +23,16 @@ const WelcomeScreen = ({navigation}) => {
     left: -60,
     top: -20,
   };
+  const [username, setUsername] = React.useState('');
+
+  useEffect(() => {
+    getUser().then((userArray) => {
+      if (userArray?.[0]) {
+        const user = userArray[0];
+        setUsername(user.name);
+      }
+    });
+  }, []);
 
   return (
     <SafeAreaView
@@ -63,7 +75,7 @@ const WelcomeScreen = ({navigation}) => {
                 fontSize: layout.fontSizes.welcomeText,
                 color: '#EBBDBD',
               }}>
-              Welcome Back Layan!
+              Welcome Back {username}!
             </Text>
             <View
               style={{

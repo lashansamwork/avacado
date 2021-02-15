@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 // import Modal from 'react-native-modal';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import DatePicker from 'react-native-date-picker';
 import WheelPicker from 'react-native-wheely';
 import DayList from '../MultipleDaySelector/DayList';
+import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskTimeModal = () => {
+const TaskTimeModal = ({onSubmit}) => {
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -21,6 +22,7 @@ const TaskTimeModal = () => {
 
   const [date, setDate] = useState(new Date());
   const [times, setTimes] = useState(5);
+  const [repeatDays, setRepeatDays] = useState(null);
 
   return (
     <View
@@ -95,7 +97,11 @@ const TaskTimeModal = () => {
           Repeat every
         </Text>
         <View style={{flex: 0.5}}>
-          <DayList />
+          <DayList
+            onDaysSubmit={(days) => {
+              setRepeatDays(days);
+            }}
+          />
         </View>
         <Text
           style={{
@@ -149,6 +155,20 @@ const TaskTimeModal = () => {
             itemStyle={{backgroundColor: colors.themeColors.primary}}
           />
         </View>
+      </View>
+      <View
+        style={{
+          flex: 11,
+          overflow: 'hidden',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: PICKER_CONTAINER_WIDTH,
+        }}>
+        <TouchableOpacity
+          style={{alignSelf: 'center'}}
+          onPress={() => onSubmit({date, times, repeatDays})}>
+          <CheckCircle />
+        </TouchableOpacity>
       </View>
     </View>
   );

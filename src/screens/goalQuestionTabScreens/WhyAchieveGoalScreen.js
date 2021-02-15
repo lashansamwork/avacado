@@ -11,7 +11,7 @@ import colors from '../../theme/colors';
 
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+const WhyAchieveGoalScreen = (onPress) => {
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '26%';
@@ -74,7 +74,7 @@ const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
         <View style={{flex: 26}}>
           <View style={{flexBasis: CHECK_BUTTON_OFFSET}} />
           <TouchableOpacity
-            onPress={onPress}
+            onPress={() => onPress(reason)}
             style={{
               flex: 1,
               alignItems: 'center',

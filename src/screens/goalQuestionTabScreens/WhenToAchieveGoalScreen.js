@@ -6,12 +6,13 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
-const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
+const WhenToAchieveGoalScreen = (onPress) => {
   const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
   const TEXT_GAP = -18;
+  const [selectedDate, setSelectedDate] = React.useState(null);
   return (
     <View style={{flex: 1.2}}>
       <View
@@ -62,7 +63,11 @@ const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
             borderRadius: CALENDAR_BORDER_RADIUS,
             backgroundColor: colors.themeColors.primary,
           }}>
-          <Calendar />
+          <Calendar
+            onSelect={() => {
+              setSelectedDate();
+            }}
+          />
         </View>
       </View>
 
@@ -73,8 +78,7 @@ const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
           paddingTop: layout.padding.xxxLarge,
         }}>
         <View style={{flexBasis: BUTTON_OFFSET}} />
-        <TouchableOpacity
-          onPress={() => navigation.navigate('GoalAddedScreen')}>
+        <TouchableOpacity onPress={() => onPress(selectedDate)}>
           <CheckCircle />
         </TouchableOpacity>
       </View>

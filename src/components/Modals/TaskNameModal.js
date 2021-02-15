@@ -5,7 +5,7 @@ import colors from '../../theme/colors';
 import CustomTextInput from '../CustomTextInput';
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskNameModal = (props) => {
+const TaskNameModal = ({onSubmit}) => {
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -68,7 +68,15 @@ const TaskNameModal = (props) => {
           justifyContent: 'center',
           width: PICKER_CONTAINER_WIDTH,
         }}>
-        <TouchableOpacity style={{alignSelf: 'center'}} onPress={props.onPress}>
+        <TouchableOpacity
+          style={{alignSelf: 'center'}}
+          onPress={() => {
+            console.log(
+              '🚀 ~ file: TaskNameModal.js ~ line 75 ~ TaskNameModal ~ onSubmit',
+              onSubmit,
+            );
+            onSubmit(name);
+          }}>
           <CheckCircle />
         </TouchableOpacity>
       </View>

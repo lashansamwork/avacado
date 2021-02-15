@@ -14,7 +14,7 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
-const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+const HowToAchieveGoalScreen = (onPress) => {
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
@@ -22,12 +22,33 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
-
+  const tasks = [];
+  const task = {
+    name: null,
+    dataTimes: [],
+  };
   const CustomModal = () => {
     if (modalIndex === 0) {
-      return <TaskNameModal onPress={() => setModalIndex(1)} />;
+      return (
+        <TaskNameModal
+          onSubmit={(taskName) => {
+            task.name = taskName;
+            setModalIndex(1);
+          }}
+        />
+      );
     }
-    return <TaskTimeModal />;
+    return (
+      <TaskTimeModal
+        onSubmit={(dateTimeObject) => {
+          //todo conevert correct way;
+          task.dataTimes = dateTimeObject;
+          tasks.push(task);
+          setModalIndex(0);
+          setModalVisible(false);
+        }}
+      />
+    );
   };
 
   return (
@@ -77,7 +98,9 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
           }}>
           <View style={{flex: 26}}>
             <TouchableOpacity
-              onPress={onPress}
+              onPress={() => {
+                onPress(tasks);
+              }}
               style={{
                 flex: 1,
                 alignItems: 'center',
@@ -107,11 +130,7 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            transparent={true}
-            onPressOut={() => {
-              setModalIndex(0);
-              setModalVisible(false);
-            }}>
+            transparent={true}>
             <View style={{flexBasis: MODAL_OFFSET}} />
             <TouchableWithoutFeedback touchSoundDisabled>
               <View>

@@ -19,7 +19,11 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            decrementIndex();
+            if (index === 0) {
+              navigation.pop();
+            } else {
+              setIndex(index - 1);
+            }
           }}
           activeOpacity={0.8}>
           <View
@@ -46,20 +50,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       headerBackTitle: <></>,
       headerTitle: <></>,
     });
-  }, [navigation]);
-
-  // options={{
-  //   headerShown: true,
-  //   title: '',
-  //   headerBackTitle: <></>,
-  //   headerBackImage: () => (
-  //     <View style={{aspectRatio: 1 / 1, height: layout.heights.xxxshort}}>
-  //       <Image
-
-  //       />
-  //     </View>
-  //   ),
-  // }}
+  }, [navigation, index]);
 
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
@@ -69,31 +60,50 @@ const GoalQuestionsScreen = ({route, navigation}) => {
     {key: 'why', title: 'WhyAchieve'},
     {key: 'when', title: 'WhenToAchieve'},
   ]);
-  const goal = {
+  const [goal, setGoal] = React.useState({
     name: null,
     category: route?.params?.category,
+    why: null,
+    when: null,
     tasks: [],
-  };
+  });
 
   const renderScene = SceneMap({
     what: () =>
       WhatGoalToAchieveScreen((goalName) => {
-        goal.name = goalName;
+        setGoal({
+          ...goal,
+          name: goalName,
+        });
         incrementIndex();
       }),
     how: () =>
-      HowToAchieveGoalScreen(
-        () => incrementIndex(),
-        () => decrementIndex,
-        {navigation},
-      ),
+      HowToAchieveGoalScreen((tasks) => {
+        console.log('tasks', tasks);
+        setGoal({
+          ...goal,
+          tasks: [...goal.tasks, ...tasks],
+        });
+        incrementIndex();
+      }),
     why: () =>
-      WhyAchieveGoalScreen(
-        () => incrementIndex(),
-        () => decrementIndex,
-        {navigation},
-      ),
-    when: () => WhenToAchieveGoalScreen({navigation}, () => decrementIndex),
+      WhyAchieveGoalScreen((why) => {
+        console.log('why', why);
+        setGoal({
+          ...goal,
+          why: why,
+        });
+        incrementIndex();
+      }),
+    when: () =>
+      WhenToAchieveGoalScreen((when) => {
+        console.log('when', when);
+        setGoal({
+          ...goal,
+          when: when,
+        });
+        incrementIndex();
+      }),
   });
 
   const PROGRESS_BARS = {
@@ -107,14 +117,12 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   };
 
   const incrementIndex = () => {
-    setIndex(index + 1);
-  };
-
-  const decrementIndex = () => {
-    if (index === 0) {
-      navigation.pop();
+    console.log('index', index);
+    if (index + 1 > routes.length) {
+      console.log('goal', goal);
+      navigation.navigate('GoalAddedScreen');
     } else {
-      setIndex(index - 1);
+      setIndex(index + 1);
     }
   };
 
