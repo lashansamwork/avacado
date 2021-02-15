@@ -27,14 +27,6 @@ const MyTheme = {
 };
 
 const App = () => {
-  useEffect(() => {
-    console.log('test');
-    // addToGoal({name: 'test', category: 'hahaha', tasks: []}).then((test) =>
-    //   console.log('tadaaa', test),
-    // );
-    getGoals().then((test) => console.log('tadaaa', test));
-  }, []);
-
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator

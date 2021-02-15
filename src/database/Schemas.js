@@ -1,5 +1,6 @@
 export const GoalSchemaName = 'Goal';
 export const TaskSchemaName = 'Task';
+export const UserSchemaName = 'User';
 
 export const GoalSchema = {
   name: 'Goal',
@@ -22,8 +23,15 @@ export const TaskSchema = {
   },
 };
 
+export const UserSchema = {
+  name: 'User',
+  properties: {
+    name: 'string',
+  },
+};
+
 export const databaseOptions = {
   path: 'test.realm',
-  schema: [GoalSchema, TaskSchema],
-  schemaVersion: 5,
+  schema: [GoalSchema, TaskSchema, UserSchema],
+  schemaVersion: 6,
 };
