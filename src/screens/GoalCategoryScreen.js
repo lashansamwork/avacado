@@ -38,7 +38,11 @@ const GoalCategoryScreen = ({navigation}) => {
         <View style={{flex: 1}} />
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Physical & Health',
+            })
+          }>
           <View
             style={{
               height: layout.autoImageSizes.medium,
@@ -68,7 +72,11 @@ const GoalCategoryScreen = ({navigation}) => {
 
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Career & Educational',
+            })
+          }>
           <View style={{flexBasis: READING_GIRL_OFFSET}} />
           <View
             style={{
@@ -93,7 +101,9 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {category: 'Finance'})
+          }>
           <View style={{flexBasis: FINANCE_GIRL_OFFSET}} />
           <View
             style={{
@@ -118,7 +128,11 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Self Growth',
+            })
+          }>
           <View
             style={{
               height: layout.autoImageSizes.large,

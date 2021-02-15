@@ -81,6 +81,7 @@ const layout = {
     medium: 200,
     tall: 300,
     xxtall: 440,
+    backButton: 80,
   },
   fonts: {
     nunitoLight: 'Nunito-Light',

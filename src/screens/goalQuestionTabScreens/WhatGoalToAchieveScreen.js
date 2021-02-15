@@ -32,7 +32,6 @@ const WhatGoalToAchieveScreen = (onPress) => {
 
   let girlImagePath = readingGirl;
   let goalDescription = readingGirlDescription;
-
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const IMAGE_OFFSET = 20;
@@ -112,7 +111,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
         </View>
         <View style={{flex: 26}}>
           <TouchableOpacity
-            onPress={onPress}
+            onPress={() => onPress(goal)}
             style={{
               flex: 1,
               alignItems: 'center',

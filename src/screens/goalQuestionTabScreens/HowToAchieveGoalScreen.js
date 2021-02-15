@@ -30,16 +30,6 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
     return <TaskTimeModal />;
   };
 
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
-
   return (
     <View style={{flexGrow: 1}}>
       <View style={{flexGrow: 1, height: '100%', marginTop: SAFEVIEW_OFFSET}}>

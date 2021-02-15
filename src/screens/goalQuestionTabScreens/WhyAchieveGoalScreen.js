@@ -17,15 +17,6 @@ const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
   const HEADING_GAP = '26%';
   const HEADING_OFFSET = '25.9%';
 
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
   return (
     <SafeAreaView
       style={{

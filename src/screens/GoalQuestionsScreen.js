@@ -10,8 +10,57 @@ import WhatGoalToAchieveScreen from './goalQuestionTabScreens/WhatGoalToAchieveS
 import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScreen';
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+const LeftArrow = require('../assets/images/ArrowLeft.png');
 
-const GoalQuestionsScreen = ({navigation}) => {
+const GoalQuestionsScreen = ({route, navigation}) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            decrementIndex();
+          }}
+          activeOpacity={0.8}>
+          <View
+            style={{
+              aspectRatio: 1,
+              height: layout.heights.xxxshort,
+              marginLeft: 30,
+            }}>
+            <Image
+              style={{flex: 1, width: null, height: null}}
+              resizeMode="stretch"
+              source={LeftArrow}
+            />
+          </View>
+        </TouchableOpacity>
+      ),
+      headerStyle: {
+        backgroundColor: '#FFFFFF',
+        shadowRadius: 0,
+        shadowOffset: {
+          height: 0,
+        },
+      },
+      headerBackTitle: <></>,
+      headerTitle: <></>,
+    });
+  }, [navigation]);
+
+  // options={{
+  //   headerShown: true,
+  //   title: '',
+  //   headerBackTitle: <></>,
+  //   headerBackImage: () => (
+  //     <View style={{aspectRatio: 1 / 1, height: layout.heights.xxxshort}}>
+  //       <Image
+
+  //       />
+  //     </View>
+  //   ),
+  // }}
+
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
   const [routes] = React.useState([
@@ -20,8 +69,18 @@ const GoalQuestionsScreen = ({navigation}) => {
     {key: 'why', title: 'WhyAchieve'},
     {key: 'when', title: 'WhenToAchieve'},
   ]);
+  const goal = {
+    name: null,
+    category: route?.params?.category,
+    tasks: [],
+  };
+
   const renderScene = SceneMap({
-    what: () => WhatGoalToAchieveScreen(() => incrementIndex()),
+    what: () =>
+      WhatGoalToAchieveScreen((goalName) => {
+        goal.name = goalName;
+        incrementIndex();
+      }),
     how: () =>
       HowToAchieveGoalScreen(
         () => incrementIndex(),
@@ -52,7 +111,11 @@ const GoalQuestionsScreen = ({navigation}) => {
   };
 
   const decrementIndex = () => {
-    setIndex(index - 1);
+    if (index === 0) {
+      navigation.pop();
+    } else {
+      setIndex(index - 1);
+    }
   };
 
   const renderTabBar = () => (

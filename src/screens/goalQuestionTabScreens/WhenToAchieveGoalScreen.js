@@ -12,15 +12,6 @@ const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
   const TEXT_GAP = -18;
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
   return (
     <View style={{flex: 1.2}}>
       <View
