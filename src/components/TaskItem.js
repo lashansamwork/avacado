@@ -2,27 +2,28 @@ import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import layout from '../theme/layout';
 
-const TaskItem = (props) => {
+const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
   const BORDER_RADIUS = 20;
   return (
     <TouchableOpacity
-      onPress={props.onPress}
+      onPress={onPress}
       style={{
-        ...props.style,
-        height: '22.2%',
+        ...style,
+        height: 70,
         width: '100%',
-        backgroundColor: props.backgroundColor,
+        backgroundColor: backgroundColor,
         justifyContent: 'center',
         borderRadius: BORDER_RADIUS,
+        marginBottom: 5,
       }}>
       <Text
         style={{
           fontFamily: layout.fonts.nunito,
           fontSize: layout.fontSizes.medium,
-          color: props.fontColor,
+          color: fontColor,
           paddingLeft: layout.padding.xxxLarge,
         }}>
-        {props.label}
+        {label}
       </Text>
     </TouchableOpacity>
   );

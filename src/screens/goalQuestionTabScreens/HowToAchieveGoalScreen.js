@@ -4,6 +4,9 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  ScrollView,
+  SafeAreaView,
+  FlatList,
   Modal,
 } from 'react-native';
 // import Modal from 'react-native-modal';
@@ -14,7 +17,28 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+];
+const BORDER_RADIUS = 20;
+const Item = ({title}) => (
+  <TaskItem
+    backgroundColor={colors.themeColors.primary}
+    label={title}
+    fontColor={colors.themeColors.secondary}
+  />
+);
+
 const HowToAchieveGoalScreen = (onPress) => {
+  const renderItem = ({item, index}) => <Item title={item.name} />;
+
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
@@ -55,6 +79,8 @@ const HowToAchieveGoalScreen = (onPress) => {
           ]);
           setModalIndex(0);
           setModalVisible(false);
+          console.log(task);
+          console.log(tasks);
         }}
       />
     );
@@ -90,13 +116,20 @@ const HowToAchieveGoalScreen = (onPress) => {
           </View>
           <View style={{flex: 16, alignItems: 'center'}}>
             <TaskItem
-              style={{position: 'absolute', top: 0}}
+              style={{marginBottom: 6}}
               label="+Add Task/Habit"
               backgroundColor={colors.themeColors.pink}
               fontColor={colors.themeColors.primary}
               onPress={() => {
                 setModalVisible(true);
               }}
+            />
+
+            <FlatList
+              style={{width: '100%'}}
+              data={tasks}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()}
             />
           </View>
         </View>
