@@ -132,7 +132,7 @@ const HowToAchieveGoalScreen = (onPress) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <TouchableOpacity
+          <View
             style={{
               flex: 1,
               width: '100%',
@@ -141,12 +141,11 @@ const HowToAchieveGoalScreen = (onPress) => {
             }}
             transparent={true}>
             <View style={{flexBasis: MODAL_OFFSET}} />
-            <TouchableWithoutFeedback touchSoundDisabled>
-              <View>
-                <CustomModal />
-              </View>
-            </TouchableWithoutFeedback>
-          </TouchableOpacity>
+
+            <View>
+              <CustomModal />
+            </View>
+          </View>
         </View>
       </Modal>
     </View>
