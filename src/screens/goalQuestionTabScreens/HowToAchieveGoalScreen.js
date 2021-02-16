@@ -22,17 +22,17 @@ const HowToAchieveGoalScreen = (onPress) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
-  const tasks = [];
-  const task = {
-    name: null,
-    dataTimes: [],
-  };
+  const [tasks, setTasks] = React.useState([]);
+  const [task, setTask] = React.useState({name: null, dataTimes: []});
   const CustomModal = () => {
     if (modalIndex === 0) {
       return (
         <TaskNameModal
           onSubmit={(taskName) => {
-            task.name = taskName;
+            setTask({
+              ...task,
+              name: taskName,
+            });
             setModalIndex(1);
           }}
         />
@@ -42,8 +42,17 @@ const HowToAchieveGoalScreen = (onPress) => {
       <TaskTimeModal
         onSubmit={(dateTimeObject) => {
           //todo conevert correct way;
-          task.dataTimes = dateTimeObject;
-          tasks.push(task);
+          setTask({
+            ...task,
+            dataTimes: dateTimeObject,
+          });
+          setTasks([
+            ...tasks,
+            {
+              ...task,
+              dataTimes: dateTimeObject,
+            },
+          ]);
           setModalIndex(0);
           setModalVisible(false);
         }}

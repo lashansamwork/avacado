@@ -11,6 +11,7 @@ import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScr
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useEffect} from 'react';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
 
 const GoalQuestionsScreen = ({route, navigation}) => {
@@ -19,11 +20,14 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            if (index === 0) {
-              navigation.pop();
-            } else {
-              setIndex(index - 1);
-            }
+            setIndex((i) => {
+              if (i - 1 < 0) {
+                navigation.pop();
+                return 0;
+              } else {
+                return i - 1;
+              }
+            });
           }}
           activeOpacity={0.8}>
           <View
@@ -50,8 +54,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       headerBackTitle: <></>,
       headerTitle: <></>,
     });
-  }, [navigation, index]);
-
+  }, [navigation]);
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
   const [routes] = React.useState([
@@ -117,8 +120,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   };
 
   const incrementIndex = () => {
-    console.log('index', index);
-    if (index + 1 > routes.length) {
+    if (index + 1 >= routes.length) {
       console.log('goal', goal);
       navigation.navigate('GoalAddedScreen');
     } else {

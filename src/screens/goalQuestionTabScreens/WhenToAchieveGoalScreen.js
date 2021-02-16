@@ -64,8 +64,8 @@ const WhenToAchieveGoalScreen = (onPress) => {
             backgroundColor: colors.themeColors.primary,
           }}>
           <Calendar
-            onSelect={() => {
-              setSelectedDate();
+            onSelect={(date) => {
+              setSelectedDate(date);
             }}
           />
         </View>

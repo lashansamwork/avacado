@@ -65,7 +65,9 @@ const WhyAchieveGoalScreen = (onPress) => {
               fontSize: layout.fontSizes.medium,
             }}
             value={reason}
-            onChange={() => setReason()}
+            onChangeText={(text) => {
+              setReason(text);
+            }}
           />
         </View>
       </View>
