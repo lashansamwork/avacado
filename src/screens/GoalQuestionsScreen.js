@@ -99,11 +99,13 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     why: () =>
       WhyAchieveGoalScreen((why) => {
+        console.log(why);
         setGoal({
           ...goal,
           why: why,
         });
         incrementIndex();
+        console.log('new goal', goal);
       }),
     when: () =>
       WhenToAchieveGoalScreen((when) => {

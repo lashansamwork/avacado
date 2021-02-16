@@ -12,34 +12,37 @@ import {getGoals} from '../database/GoalActions';
 import {useEffect} from 'react';
 
 const MyGoalsHome = ({navigation}) => {
-  const MY_TASKS = [
-    {
-      imageUrl: YogaGirl,
-      imageAspectRatio: layout.imageAspectRatio.yogaGirl,
-      title: 'Goal Name',
-      description:
-        'Because I wan’t to be healthy and beautiful which will make me more confident and strong which help me to get what I want in my life…. More',
-      buttonText: 'Remind me how?',
-      subText: 'june 5th 2020',
-      buttonOnPress: () => {},
-    },
-    {
-      imageUrl: ReadingGirl,
-      imageAspectRatio: layout.imageAspectRatio.readingGirl,
-      title: 'Goal Name',
-      description:
-        'Because I wan’t to be healthy and beautiful which will make me more confident and strong which help me to get what I want in my life…. More',
-      buttonText: 'Remind me how?',
-      subText: 'june 5th 2020',
-      buttonOnPress: () => {},
-    },
-  ];
+  let MY_GOALS = [];
 
-  const [myGoals, setMyGoals] = useState(MY_TASKS);
+  const getData = () => {
+    getGoals().then((realmArr) => {
+      console.log('realmArr lenght', realmArr.length);
+      console.log('realmArr value', realmArr);
+      realmArr.forEach((e) => {
+        MY_GOALS.push({
+          imageUrl: ReadingGirl,
+          imageAspectRatio: layout.imageAspectRatio.readingGirl,
+          title: e.name,
+          description: e.why,
+          buttonText: 'Remind me how?',
+          subText: 'june 5th 2020',
+          buttonOnPress: () => {},
+        });
+      });
+    });
+  };
+
+  getData();
+
+  console.log(MY_GOALS, 'my Goals');
+  MY_GOALS.forEach((e) => {
+    console.log(e);
+  });
+  const [myGoals, setMyGoals] = useState(MY_GOALS);
 
   useEffect(() => {
     getGoals().then((test) => {
-      console.log('testing....', test[0]);
+      test.forEach((e) => console.log(e));
     });
   }, []);
 
