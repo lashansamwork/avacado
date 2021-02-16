@@ -9,6 +9,7 @@ export const GoalSchema = {
     id: 'int',
     name: 'string',
     category: 'string',
+    when: 'int',
     tasks: 'Task[]',
   },
 };
@@ -33,5 +34,5 @@ export const UserSchema = {
 export const databaseOptions = {
   path: 'test.realm',
   schema: [GoalSchema, TaskSchema, UserSchema],
-  schemaVersion: 6,
+  schemaVersion: 7,
 };

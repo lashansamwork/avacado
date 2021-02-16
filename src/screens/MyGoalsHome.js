@@ -8,6 +8,8 @@ const ReadingGirl = require('../assets/images/ReadingGirl.png');
 import ActionButton from 'react-native-action-button';
 import colors from '../theme/colors';
 import PlusIcon from '../components/SvgIcons/PlusIcon';
+import {getGoals} from '../database/GoalActions';
+import {useEffect} from 'react';
 
 const MyGoalsHome = ({navigation}) => {
   const MY_TASKS = [
@@ -34,6 +36,12 @@ const MyGoalsHome = ({navigation}) => {
   ];
 
   const [myGoals, setMyGoals] = useState(MY_TASKS);
+
+  useEffect(() => {
+    getGoals().then((test) => {
+      console.log('testing....', test[0]);
+    });
+  }, []);
 
   return (
     <SafeAreaView

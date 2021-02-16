@@ -33,7 +33,7 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="IntroRoutes">
+        initialRouteName="Home">
         <Stack.Screen name="Home" component={TabNavigator} />
         <Stack.Screen name="IntroRoutes" component={WelcomeNavigator} />
       </Stack.Navigator>

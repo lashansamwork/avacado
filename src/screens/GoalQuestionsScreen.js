@@ -12,6 +12,7 @@ import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen'
 import WhenToAchieveGoalScreen from './goalQuestionTabScreens/WhenToAchieveGoalScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useEffect} from 'react';
+import {addToGoal} from '../database/GoalActions';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
 
 const GoalQuestionsScreen = ({route, navigation}) => {
@@ -71,6 +72,14 @@ const GoalQuestionsScreen = ({route, navigation}) => {
     tasks: [],
   });
 
+  useEffect(() => {
+    if (goal?.when) {
+      //steps completed
+      addToGoal(goal);
+      navigation.navigate('GoalAddedScreen');
+    }
+  }, [goal, navigation]);
+
   const renderScene = SceneMap({
     what: () =>
       WhatGoalToAchieveScreen((goalName) => {
@@ -82,7 +91,6 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     how: () =>
       HowToAchieveGoalScreen((tasks) => {
-        console.log('tasks', tasks);
         setGoal({
           ...goal,
           tasks: [...goal.tasks, ...tasks],
@@ -91,7 +99,6 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     why: () =>
       WhyAchieveGoalScreen((why) => {
-        console.log('why', why);
         setGoal({
           ...goal,
           why: why,
@@ -100,12 +107,10 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     when: () =>
       WhenToAchieveGoalScreen((when) => {
-        console.log('when', when);
         setGoal({
           ...goal,
-          when: when,
+          when: when.timestamp,
         });
-        incrementIndex();
       }),
   });
 
@@ -120,12 +125,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   };
 
   const incrementIndex = () => {
-    if (index + 1 >= routes.length) {
-      console.log('goal', goal);
-      navigation.navigate('GoalAddedScreen');
-    } else {
-      setIndex(index + 1);
-    }
+    setIndex(index + 1);
   };
 
   const renderTabBar = () => (
