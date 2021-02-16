@@ -40,19 +40,51 @@ const PrimaryCalendar = ({onSelect}) => {
     }
   };
   const [selectedDay, setSelectedDay] = React.useState(new Date());
+  const [marked, setMarked] = React.useState({
+    '2020-02-15': {
+      customStyles: {
+        container: {
+          top: -MARKED_DAY_OFFSET,
+          backgroundColor: colors.themeColors.pink,
+          height: MARKED_DAY_HEIGHT,
+          aspectRatio: 1,
+          paddingTop: layout.padding.xsmall,
+        },
+        text: {
+          color: colors.themeColors.secondary,
+        },
+      },
+    },
+  });
+
   return (
     <View
       style={{
         paddingHorizontal: layout.padding.xxxLarge,
         paddingVertical: layout.padding.large,
-
         overflow: 'hidden',
       }}>
       <Calendar
         hideExtraDays={true}
         calendarWidth={CALENDAR_WIDTH}
-        current={selectedDay}
+        // current={selectedDay}
         onDayPress={(day) => {
+          setMarked({
+            [day.dateString]: {
+              customStyles: {
+                container: {
+                  top: -MARKED_DAY_OFFSET,
+                  backgroundColor: colors.themeColors.pink,
+                  height: MARKED_DAY_HEIGHT,
+                  aspectRatio: 1,
+                  paddingTop: layout.padding.xsmall,
+                },
+                text: {
+                  color: colors.themeColors.secondary,
+                },
+              },
+            },
+          });
           onSelect(day);
           setSelectedDay(day);
         }}
@@ -151,22 +183,7 @@ const PrimaryCalendar = ({onSelect}) => {
         }}
         renderArrow={renderArrow}
         minDate={'2020-12-30'}
-        markedDates={{
-          '2021-02-02': {
-            customStyles: {
-              container: {
-                top: -MARKED_DAY_OFFSET,
-                backgroundColor: colors.themeColors.pink,
-                height: MARKED_DAY_HEIGHT,
-                aspectRatio: 1,
-                paddingTop: layout.padding.xsmall,
-              },
-              text: {
-                color: colors.themeColors.secondary,
-              },
-            },
-          },
-        }}
+        markedDates={marked}
         markingType={'custom'}
         enableSwipeMonths={true}
       />
