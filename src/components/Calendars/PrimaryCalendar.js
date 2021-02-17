@@ -26,11 +26,11 @@ const PrimaryCalendar = ({onSelect}) => {
   const WEEK_CONTAINER_GAP = 10;
   const DAY_FONT_SIZE = 17;
   const DAY_FONT_WEIGHT = '400';
-  const DAY_CONTAINER_WIDTH = 19;
-  const DAY_CONTAINER_HEIGHT = 20;
+  const DAY_CONTAINER_WIDTH = 32;
+  const DAY_CONTAINER_HEIGHT = 32;
 
   const MARKED_DAY_OFFSET = 3;
-  const MARKED_DAY_HEIGHT = 24;
+  const MARKED_DAY_HEIGHT = 20;
 
   const renderArrow = (direction) => {
     if (direction === 'left') {
