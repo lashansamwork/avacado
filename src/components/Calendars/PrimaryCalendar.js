@@ -32,6 +32,8 @@ const PrimaryCalendar = ({onSelect}) => {
   const MARKED_DAY_OFFSET = 3;
   const MARKED_DAY_HEIGHT = 20;
 
+  const SKIP_DAYS = 1;
+
   const renderArrow = (direction) => {
     if (direction === 'left') {
       return <LeftArrow style={{height: ARROW_HEIGHT}} arrowGap={ARROW_GAP} />;
@@ -65,6 +67,7 @@ const PrimaryCalendar = ({onSelect}) => {
         overflow: 'hidden',
       }}>
       <Calendar
+        minDate={new Date(Date.now() + SKIP_DAYS * 24 * 60 * 60 * 1000)}
         hideExtraDays={true}
         calendarWidth={CALENDAR_WIDTH}
         // current={selectedDay}
@@ -182,7 +185,6 @@ const PrimaryCalendar = ({onSelect}) => {
           todayTextColor: colors.themeColors.secondary,
         }}
         renderArrow={renderArrow}
-        minDate={'2020-12-30'}
         markedDates={marked}
         markingType={'custom'}
         enableSwipeMonths={true}

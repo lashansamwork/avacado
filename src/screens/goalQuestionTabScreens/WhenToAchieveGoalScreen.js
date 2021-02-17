@@ -13,6 +13,7 @@ const WhenToAchieveGoalScreen = (onPress) => {
   const BUTTON_OFFSET = 35;
   const TEXT_GAP = -18;
   const [selectedDate, setSelectedDate] = React.useState(null);
+  const [error, setError] = React.useState(false);
   return (
     <View style={{flex: 1.2}}>
       <View
@@ -78,9 +79,44 @@ const WhenToAchieveGoalScreen = (onPress) => {
           paddingTop: layout.padding.xxxLarge,
         }}>
         <View style={{flexBasis: BUTTON_OFFSET}} />
-        <TouchableOpacity onPress={() => onPress(selectedDate)}>
-          <CheckCircle />
-        </TouchableOpacity>
+        <View style={{flex: 5}}>
+          <TouchableOpacity
+            onPress={() => {
+              if (selectedDate !== null) {
+                onPress(selectedDate);
+              } else {
+                setError(true);
+              }
+            }}
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}>
+            <CheckCircle />
+          </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goal
+            </Text>
+          )}
+        </View>
       </View>
     </View>
   );
