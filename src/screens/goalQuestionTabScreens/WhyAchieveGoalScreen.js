@@ -16,7 +16,7 @@ const WhyAchieveGoalScreen = (onPress) => {
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '26%';
   const HEADING_OFFSET = '25.9%';
-
+  const [error, setError] = React.useState(false);
   return (
     <SafeAreaView
       style={{
@@ -73,10 +73,16 @@ const WhyAchieveGoalScreen = (onPress) => {
       </View>
       <View
         style={{flex: 9, paddingHorizontal: layout.padding.screenHorizontal}}>
-        <View style={{flex: 26}}>
+        <View style={{flex: 5}}>
           <View style={{flexBasis: CHECK_BUTTON_OFFSET}} />
           <TouchableOpacity
-            onPress={() => onPress(reason)}
+            onPress={() => {
+              if (reason !== '') {
+                onPress(reason);
+              } else {
+                setError(true);
+              }
+            }}
             style={{
               flex: 1,
               alignItems: 'center',
@@ -84,6 +90,27 @@ const WhyAchieveGoalScreen = (onPress) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goal
+            </Text>
+          )}
         </View>
       </View>
     </SafeAreaView>
