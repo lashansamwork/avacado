@@ -13,8 +13,8 @@ const TaskNameModal = ({onSubmit}) => {
   const TEXT_INPUT_OFFSET = 30;
   const PICKER_CONTAINER_WIDTH = '85%';
   const TEXT_GAP = 2;
-
   const [name, setName] = React.useState('');
+  const [error, setError] = React.useState(false);
 
   return (
     <View
@@ -60,6 +60,25 @@ const TaskNameModal = ({onSubmit}) => {
           onChangeText={(text) => setName(text)}
         />
       </View>
+      {!error && (
+        <View
+          style={{
+            flexBasis: 30,
+            width: '100%',
+          }}
+        />
+      )}
+      {error && (
+        <Text
+          style={{
+            lineHeight: layout.defaultLineHeight,
+            fontSize: layout.fontSizes.welcomeText,
+            fontFamily: layout.fonts.nunito,
+            color: colors.themeColors.error,
+          }}>
+          Name cannot be empty
+        </Text>
+      )}
       <View
         style={{
           flex: 11,
@@ -71,11 +90,14 @@ const TaskNameModal = ({onSubmit}) => {
         <TouchableOpacity
           style={{alignSelf: 'center'}}
           onPress={() => {
-            console.log(
-              '🚀 ~ file: TaskNameModal.js ~ line 75 ~ TaskNameModal ~ onSubmit',
-              onSubmit,
-            );
-            onSubmit(name);
+            if (name && name !== '') {
+              // name not empty do
+              onSubmit(name);
+            } else {
+              setError(true);
+            }
+            console.log('state: error', error);
+            console.log('state: name ', name);
           }}>
           <CheckCircle />
         </TouchableOpacity>

@@ -17,27 +17,19 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-];
 const BORDER_RADIUS = 20;
+
+//Task Item sent here
 const Item = ({title}) => (
   <TaskItem
     backgroundColor={colors.themeColors.primary}
-    label={title}
+    label={title} // check flatlist, pulls from STATE : tasks
     fontColor={colors.themeColors.secondary}
   />
 );
 
 const HowToAchieveGoalScreen = (onPress) => {
-  const renderItem = ({item, index}) => <Item title={item.name} />;
+  const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
 
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
@@ -71,7 +63,7 @@ const HowToAchieveGoalScreen = (onPress) => {
             dataTimes: dateTimeObject,
           });
           setTasks([
-            ...tasks,
+            ...tasks, // tasks sent to goal
             {
               ...task,
               dataTimes: dateTimeObject,
@@ -79,8 +71,11 @@ const HowToAchieveGoalScreen = (onPress) => {
           ]);
           setModalIndex(0);
           setModalVisible(false);
-          console.log(task);
-          console.log(tasks);
+          console.log(
+            '🚀 ~ file: HowToAchieveGoalScreen.js ~ line 76 ~ CustomModal ~ task',
+            task,
+          );
+          console.log('state: tasks:', tasks);
         }}
       />
     );
@@ -128,7 +123,7 @@ const HowToAchieveGoalScreen = (onPress) => {
             <FlatList
               style={{width: '100%'}}
               data={tasks}
-              renderItem={renderItem}
+              renderItem={renderItem} // fires render
               keyExtractor={(item, index) => index.toString()}
             />
           </View>
