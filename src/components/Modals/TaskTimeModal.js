@@ -19,7 +19,7 @@ const TaskTimeModal = ({onSubmit}) => {
   const WHEEL_ITEM_HEIGHT = 18;
   const WHEELPICKER_HEIGHT = '48%';
   const SEPERATOR_WIDTH = '95%';
-
+  const [error, setError] = React.useState(false);
   const [date, setDate] = useState(new Date());
   const [times, setTimes] = useState(5);
   const [repeatDays, setRepeatDays] = useState(null);
@@ -97,6 +97,7 @@ const TaskTimeModal = ({onSubmit}) => {
           Repeat every
         </Text>
         <View style={{flex: 0.5}}>
+          {/* list of days */}
           <DayList
             onDaysSubmit={(days) => {
               setRepeatDays(days);
@@ -164,10 +165,44 @@ const TaskTimeModal = ({onSubmit}) => {
           justifyContent: 'center',
           width: PICKER_CONTAINER_WIDTH,
         }}>
+        {/* dateTimeObject passed */}
         <TouchableOpacity
           style={{alignSelf: 'center'}}
-          onPress={() => onSubmit({date, times, repeatDays})}>
-          <CheckCircle />
+          onPress={() => {
+            console.log('TaskTimeModal: state: repeatDate ', repeatDays);
+            if (repeatDays !== null) {
+              onSubmit({date, times, repeatDays});
+            } else {
+              setError(true);
+            }
+          }}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Select the days to repeat
+            </Text>
+          )}
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <CheckCircle />
+          </View>
+          <View
+            style={{
+              flexBasis: 30,
+            }}
+          />
         </TouchableOpacity>
       </View>
     </View>

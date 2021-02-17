@@ -35,7 +35,7 @@ const HowToAchieveGoalScreen = (onPress) => {
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
   const MODAL_OFFSET = 200;
-
+  const [error, setError] = React.useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
   const [tasks, setTasks] = React.useState([]);
@@ -57,6 +57,7 @@ const HowToAchieveGoalScreen = (onPress) => {
     return (
       <TaskTimeModal
         onSubmit={(dateTimeObject) => {
+          //dateTimeObject with date obj/repeatDays []/times int
           //todo conevert correct way;
           setTask({
             ...task,
@@ -133,10 +134,16 @@ const HowToAchieveGoalScreen = (onPress) => {
             flex: 13,
             paddingHorizontal: layout.padding.screenHorizontal,
           }}>
-          <View style={{flex: 26}}>
+          <View style={{flex: 5}}>
             <TouchableOpacity
               onPress={() => {
-                onPress(tasks);
+                console.log('state:tasks', tasks);
+                if (tasks !== undefined && tasks.length !== 0) {
+                  onPress(tasks);
+                } else {
+                  setError(true);
+                  console.log('whyMain: state: error: ', error);
+                }
               }}
               style={{
                 flex: 1,
@@ -144,7 +151,29 @@ const HowToAchieveGoalScreen = (onPress) => {
                 justifyContent: 'flex-start',
               }}>
               <CheckCircle />
+              {/* submit button  */}
             </TouchableOpacity>
+          </View>
+          <View style={{flex: 20}}>
+            {!error && (
+              <View
+                style={{
+                  flexBasis: 30,
+                }}
+              />
+            )}
+            {error && (
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  lineHeight: layout.defaultLineHeight,
+                  fontSize: layout.fontSizes.welcomeText,
+                  fontFamily: layout.fonts.nunito,
+                  color: colors.themeColors.error,
+                }}>
+                Add at least one task for your goal
+              </Text>
+            )}
           </View>
         </View>
       </View>
