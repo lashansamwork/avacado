@@ -29,7 +29,7 @@ const SvgHand = (style) => {
 
 const WhatGoalToAchieveScreen = (onPress) => {
   const [goal, onChangeGoal] = useState('');
-
+  const [error, setError] = React.useState(false);
   let girlImagePath = readingGirl;
   let goalDescription = readingGirlDescription;
   const SAFEVIEW_OFFSET = 15;
@@ -109,9 +109,16 @@ const WhatGoalToAchieveScreen = (onPress) => {
             }
           </Text>
         </View>
-        <View style={{flex: 26}}>
+
+        <View style={{flex: 5}}>
           <TouchableOpacity
-            onPress={() => onPress(goal)}
+            onPress={() => {
+              if (goal !== '') {
+                onPress(goal);
+              } else {
+                setError(true);
+              }
+            }}
             style={{
               flex: 1,
               alignItems: 'center',
@@ -119,6 +126,27 @@ const WhatGoalToAchieveScreen = (onPress) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goal
+            </Text>
+          )}
         </View>
       </View>
     </SafeAreaView>
