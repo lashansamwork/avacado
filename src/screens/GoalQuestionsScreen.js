@@ -94,14 +94,14 @@ const GoalQuestionsScreen = ({route, navigation}) => {
 
         setGoal({
           ...goal,
-          tasks: [...goal.tasks, ...tasks].map((item, i) => {
+          tasks: [...tasks].map((item, i) => {
             console.log('tada item', {id: i, ...item});
             return {id: i, ...item};
           }),
         });
         console.log('after goal', goal);
         incrementIndex();
-      }),
+      }, goal.tasks),
     why: () =>
       WhyAchieveGoalScreen((why) => {
         setGoal({

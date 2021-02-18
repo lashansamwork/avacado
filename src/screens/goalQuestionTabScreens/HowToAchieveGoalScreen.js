@@ -28,7 +28,7 @@ const Item = ({title}) => (
   />
 );
 
-const HowToAchieveGoalScreen = (onPress) => {
+const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
 
   const SAFEVIEW_OFFSET = 15;
@@ -38,7 +38,7 @@ const HowToAchieveGoalScreen = (onPress) => {
   const [error, setError] = React.useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
-  const [tasks, setTasks] = React.useState([]);
+  const [tasks, setTasks] = React.useState(oldTasks);
   const [task, setTask] = React.useState({name: null});
   const CustomModal = () => {
     if (modalIndex === 0) {
