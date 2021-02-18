@@ -169,7 +169,6 @@ const HowToAchieveGoalScreen = (onPress) => {
           <View style={{flex: 5}}>
             <TouchableOpacity
               onPress={() => {
-                console.log('state:tasks', tasks);
                 if (tasks !== undefined && tasks.length !== 0) {
                   onPress(tasks);
                 } else {

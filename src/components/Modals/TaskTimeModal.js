@@ -181,7 +181,6 @@ const TaskTimeModal = ({onSubmit}) => {
               let daysStringArray = [];
               repeatDays.forEach((e) => {
                 if (e.isSelected === true) {
-                  console.log(e.text);
                   daysStringArray.push(e.text);
                 }
               });

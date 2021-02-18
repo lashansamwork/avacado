@@ -67,7 +67,6 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   const [goal, setGoal] = React.useState({
     name: null,
     category: route?.params?.category,
-    why: null,
     when: null,
     tasks: [],
   });
@@ -90,21 +89,26 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     how: () =>
       HowToAchieveGoalScreen((tasks) => {
+        console.log('before tasks ', tasks);
+        console.log('before goal', goal);
+
         setGoal({
           ...goal,
           tasks: [...goal.tasks, ...tasks].map((item, i) => {
+            console.log('tada item', {id: i, ...item});
             return {id: i, ...item};
           }),
         });
+        console.log('after goal', goal);
         incrementIndex();
       }),
     why: () =>
       WhyAchieveGoalScreen((why) => {
-        console.log(why);
         setGoal({
           ...goal,
           description: why,
         });
+        console.log('after posting why goal is ', goal);
         incrementIndex();
       }),
     when: () =>

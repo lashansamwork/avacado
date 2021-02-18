@@ -10,7 +10,6 @@ export const GoalSchema = {
     name: 'string',
     description: 'string',
     category: 'string',
-
     when: 'int',
     tasks: 'Task[]',
   },
