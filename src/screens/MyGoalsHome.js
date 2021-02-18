@@ -26,7 +26,7 @@ const MyGoalsHome = ({navigation}) => {
             title: element.name,
             description: element.description,
             buttonText: 'Remind me how?',
-            subText: 'june 5th 2020',
+            subText: element.when,
             buttonOnPress: () => {},
           },
         ]);

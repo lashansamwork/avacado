@@ -117,7 +117,12 @@ const GoalQuestionsScreen = ({route, navigation}) => {
           ...goal,
           when: when.timestamp,
         });
-        console.log('goalQuestions : posted a new goal :', goal);
+        console.log(
+          'goalQuestions : posted a new goal :',
+          goal,
+          'timestapm, ',
+          when.timestamp,
+        );
       }),
   });
 

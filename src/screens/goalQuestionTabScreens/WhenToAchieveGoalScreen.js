@@ -11,7 +11,7 @@ const WhenToAchieveGoalScreen = (onPress) => {
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
-  const TEXT_GAP = -18;
+  const TEXT_GAP = -17;
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [error, setError] = React.useState(false);
   return (
