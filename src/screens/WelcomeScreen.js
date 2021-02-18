@@ -44,7 +44,13 @@ const WelcomeScreen = ({navigation}) => {
       <StatusBar barStyle="light-content" />
       <TouchableOpacity
         style={{flex: 1}}
-        onPress={() => navigation.navigate('FirstPageScreen')}>
+        onPress={() => {
+          if (username !== '') {
+            navigation.navigate('Home');
+          } else {
+            navigation.navigate('FirstPageScreen');
+          }
+        }}>
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <View
             style={{
