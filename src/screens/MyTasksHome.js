@@ -4,6 +4,7 @@ import layout from '../theme/layout';
 import colors from '../theme/colors';
 import DaysList from '../components/DayElements/DaysList';
 import TasksList from '../components/TasksElemets/TasksList';
+import {getGoals} from '../database/GoalActions';
 
 const MyTasksHome = ({navigation}) => {
   const [tasks, setTasks] = useState(
@@ -11,6 +12,17 @@ const MyTasksHome = ({navigation}) => {
       .fill('')
       .map((_, i) => ({key: `${i}`, text: `item #${i}`})),
   );
+
+  // const getData = () => {
+  //   getGoals().then((realmArr) => {
+  //     console.log('MyTaskHome: Realm: ', realmArr);
+  //     realmArr.forEach((e) => {
+  //       console.log(e.tasks.date);
+  //     });
+  //   });
+  // };
+
+  // getData();
 
   const onDatePress = (item) => {
     console.log(
@@ -102,6 +114,7 @@ const MyTasksHome = ({navigation}) => {
               flex: 2.8,
             }}>
             <TasksList />
+            {/* Task Items and hidden functions */}
           </View>
         </View>
       </View>

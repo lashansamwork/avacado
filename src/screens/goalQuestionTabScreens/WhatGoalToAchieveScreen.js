@@ -28,7 +28,7 @@ const SvgHand = (style) => {
 };
 
 const WhatGoalToAchieveScreen = (onPress) => {
-  const [goal, onChangeGoal] = useState('');
+  const [goalName, onChangeGoalName] = useState('');
   const [error, setError] = React.useState(false);
   let girlImagePath = readingGirl;
   let goalDescription = readingGirlDescription;
@@ -91,8 +91,8 @@ const WhatGoalToAchieveScreen = (onPress) => {
             style={{position: 'absolute', bottom: 0, width: '100%'}}
             gap={CUSTOM_INPUT_TEXT_GAP}
             placeholder={readingGirlPlaceholder}
-            value={goal}
-            onChangeText={(text) => onChangeGoal(text)}
+            value={goalName}
+            onChangeText={(text) => onChangeGoalName(text)}
           />
         </View>
         <View style={{flex: 11}}>
@@ -113,8 +113,8 @@ const WhatGoalToAchieveScreen = (onPress) => {
         <View style={{flex: 5}}>
           <TouchableOpacity
             onPress={() => {
-              if (goal !== '') {
-                onPress(goal);
+              if (goalName !== '') {
+                onPress(goalName);
               } else {
                 setError(true);
               }
@@ -144,7 +144,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
                 fontFamily: layout.fonts.nunito,
                 color: colors.themeColors.error,
               }}>
-              Please enter your goal
+              Please enter your goalName
             </Text>
           )}
         </View>

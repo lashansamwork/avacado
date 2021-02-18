@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
-// import Modal from 'react-native-modal';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import DatePicker from 'react-native-date-picker';
@@ -168,10 +167,26 @@ const TaskTimeModal = ({onSubmit}) => {
         {/* dateTimeObject passed */}
         <TouchableOpacity
           style={{alignSelf: 'center'}}
+          // onPress={() => {
+          //   console.log('TaskTimeModal: state: date ', date);
+          //   let epochTime = date.getTime();
+          //   if (repeatDays !== null) {
+          //     onSubmit({date, times, epochTime});
+          //   } else {
+          //     setError(true);
+          //   }
+          // }}
           onPress={() => {
-            console.log('TaskTimeModal: state: repeatDate ', repeatDays);
             if (repeatDays !== null) {
-              onSubmit({date, times, repeatDays});
+              let daysStringArray = [];
+              repeatDays.forEach((e) => {
+                if (e.isSelected === true) {
+                  console.log(e.text);
+                  daysStringArray.push(e.text);
+                }
+              });
+              let epochTime = date.getTime();
+              onSubmit({epochTime, times, daysStringArray});
             } else {
               setError(true);
             }

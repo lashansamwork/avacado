@@ -12,39 +12,76 @@ import {getGoals} from '../database/GoalActions';
 import {useEffect} from 'react';
 
 const MyGoalsHome = ({navigation}) => {
-  let MY_GOALS = [];
+  const [myGoals, setMyGoals] = useState([]);
 
-  const getData = () => {
+  useEffect(() => {
     getGoals().then((realmArr) => {
-      console.log('realmArr lenght', realmArr.length);
-      console.log('realmArr value', realmArr);
-      realmArr.forEach((e) => {
-        MY_GOALS.push({
-          imageUrl: ReadingGirl,
-          imageAspectRatio: layout.imageAspectRatio.readingGirl,
-          title: e.name,
-          description: e.why,
-          buttonText: 'Remind me how?',
-          subText: 'june 5th 2020',
-          buttonOnPress: () => {},
-        });
+      realmArr.forEach((element, index) => {
+        setMyGoals([
+          ...myGoals,
+          {
+            key: index,
+            imageUrl: ReadingGirl,
+            imageAspectRatio: layout.imageAspectRatio.readingGirl,
+            title: element.name,
+            description: element.description,
+            buttonText: 'Remind me how?',
+            subText: 'june 5th 2020',
+            buttonOnPress: () => {},
+          },
+        ]);
       });
     });
-  };
+  }, []);
 
-  getData();
-
-  console.log(MY_GOALS, 'my Goals');
-  MY_GOALS.forEach((e) => {
-    console.log(e);
-  });
-  const [myGoals, setMyGoals] = useState(MY_GOALS);
+  console.log(
+    '🚀 ~ file: MyGoalsHome.js ~ line 16 ~ MyGoalsHome ~ myGoals',
+    myGoals,
+  );
 
   useEffect(() => {
     getGoals().then((test) => {
-      test.forEach((e) => console.log(e));
+      test.forEach((e) => console.log('testing....', e));
     });
   }, []);
+
+  // const [myGoals, setMyGoals] = useState(MY_GOALS);
+  // const MY_GOALS = [];
+
+  // useEffect(() => {
+  //   getGoals().then((realmArr) => {
+  //     realmArr.forEach((element) => {
+  //       console.log('MyGoalsHome: realm: getData: element = ', element);
+  //       MY_GOALS.push({
+  //         imageUrl: ReadingGirl,
+  //         imageAspectRatio: layout.imageAspectRatio.readingGirl,
+  //         title: element.name,
+  //         description: element.description,
+  //         buttonText: 'Remind me how?',
+  //         subText: 'june 5th  ',
+  //         buttonOnPress: () => {},
+  //       });
+  //       setMyGoals(MY_GOALS);
+  //     });
+  //   });
+  // });
+
+  // const getData = () => {
+  //   getGoals().then((realmArr) => {
+  //     realmArr.forEach((element) => {
+  //       console.log('MyGoalsHome: realm: getData: element = ', element);
+  //       MY_GOALS.push({
+  //         imageUrl: ReadingGirl,
+  //         imageAspectRatio: layout.imageAspectRatio.readingGirl,
+  //         title: element.name,
+  //         description: element.description,
+  //         buttonText: 'Remind me how?',
+  //         subText: 'june 5th 2020',
+  //         buttonOnPress: () => {},
+  //       });
+  //     });
+  //   });
+  // };
 
   return (
     <SafeAreaView
@@ -99,6 +136,7 @@ const MyGoalsHome = ({navigation}) => {
             }}
             renderItem={({item, index}) => (
               <View style={{margin: layout.padding.large}}>
+                {/* 👉  list card detail sent */}
                 <ListCard
                   imageUrl={item.imageUrl}
                   imageAspectRatio={item.imageAspectRatio}

@@ -39,7 +39,7 @@ const HowToAchieveGoalScreen = (onPress) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
   const [tasks, setTasks] = React.useState([]);
-  const [task, setTask] = React.useState({name: null, dataTimes: []});
+  const [task, setTask] = React.useState({name: null});
   const CustomModal = () => {
     if (modalIndex === 0) {
       return (
@@ -56,29 +56,61 @@ const HowToAchieveGoalScreen = (onPress) => {
     }
     return (
       <TaskTimeModal
-        onSubmit={(dateTimeObject) => {
-          //dateTimeObject with date obj/repeatDays []/times int
+        onSubmit={({epochTime, times, daysStringArray}) => {
+          let repeatDays = daysStringArray;
           //todo conevert correct way;
           setTask({
             ...task,
-            dataTimes: dateTimeObject,
+            epochTime: epochTime,
+            repeats: times,
+            daysToRepeat: repeatDays,
           });
           setTasks([
-            ...tasks, // tasks sent to goal
+            ...tasks,
             {
               ...task,
-              dataTimes: dateTimeObject,
+              epochTime: epochTime,
+              repeats: times,
+              daysToRepeat: repeatDays,
             },
           ]);
           setModalIndex(0);
           setModalVisible(false);
-          console.log(
-            '🚀 ~ file: HowToAchieveGoalScreen.js ~ line 76 ~ CustomModal ~ task',
-            task,
-          );
-          console.log('state: tasks:', tasks);
         }}
       />
+
+      // <TaskTimeModal
+      //   onSubmit={(dateTimeObject) => {
+      //     //dateTimeObject with date obj/repeatDays []/times int
+      //     //todo conevert correct way;
+      //     console.log(
+      //       'howtoachievegoalscreen: prop:datetimeobject',
+      //       dateTimeObject,
+      //     );
+      //     console.log(
+      //       'setTask Input task',
+      //       task,
+      //       ' dateTimeObj ',
+      //       dateTimeObject,
+      //     );
+      //     setTask({
+      //       ...task,
+      //       dataTimes: dateTimeObject,
+      //     });
+      //     console.log('datatimes saved to task : ', task);
+      //     setTasks([
+      //       ...tasks, // tasks sent to goal
+      //       {
+      //         ...task,
+      //         // Task.dataTimes must be of type 'number[]', got 'object' ([object Object])
+      //         dataTimes: dateTimeObject,
+      //       },
+      //     ]);
+      //     console.log('state: tasks:', tasks);
+      //     setModalIndex(0);
+      //     setModalVisible(false);
+      //   }} // onSubmit ends
+      // />
     );
   };
 
@@ -142,7 +174,6 @@ const HowToAchieveGoalScreen = (onPress) => {
                   onPress(tasks);
                 } else {
                   setError(true);
-                  console.log('whyMain: state: error: ', error);
                 }
               }}
               style={{

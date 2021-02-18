@@ -74,7 +74,6 @@ const GoalQuestionsScreen = ({route, navigation}) => {
 
   useEffect(() => {
     if (goal?.when) {
-      //steps completed
       addToGoal(goal);
       navigation.navigate('GoalAddedScreen');
     }
@@ -93,7 +92,9 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       HowToAchieveGoalScreen((tasks) => {
         setGoal({
           ...goal,
-          tasks: [...goal.tasks, ...tasks],
+          tasks: [...goal.tasks, ...tasks].map((item, i) => {
+            return {id: i, ...item};
+          }),
         });
         incrementIndex();
       }),
@@ -102,10 +103,9 @@ const GoalQuestionsScreen = ({route, navigation}) => {
         console.log(why);
         setGoal({
           ...goal,
-          why: why,
+          description: why,
         });
         incrementIndex();
-        console.log('new goal', goal);
       }),
     when: () =>
       WhenToAchieveGoalScreen((when) => {
@@ -113,6 +113,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
           ...goal,
           when: when.timestamp,
         });
+        console.log('goalQuestions : posted a new goal :', goal);
       }),
   });
 

@@ -41,11 +41,10 @@ const TaskNameModal = ({onSubmit}) => {
       <View style={{flexBasis: TEXT_INPUT_OFFSET}} />
       <View
         style={{
-          width: '60%',
+          width: '53%',
           flexShrink: 1,
           borderBottomColor: colors.themeColors.pink,
           borderBottomWidth: 1,
-          alignItems: 'center',
         }}>
         <CustomTextInput
           textColor={colors.themeColors.secondary}
@@ -96,8 +95,6 @@ const TaskNameModal = ({onSubmit}) => {
             } else {
               setError(true);
             }
-            console.log('state: error', error);
-            console.log('state: name ', name);
           }}>
           <CheckCircle />
         </TouchableOpacity>
