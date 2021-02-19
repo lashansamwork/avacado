@@ -67,7 +67,7 @@ export default function TasksList() {
   const [listData, setListData] = useState([
     {
       key: '0',
-      text: 'item #0',
+      text: 'test test test',
     },
     {
       key: '1',

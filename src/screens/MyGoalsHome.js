@@ -27,7 +27,9 @@ const MyGoalsHome = ({navigation}) => {
             description: element.description,
             buttonText: 'Remind me how?',
             subText: element.when,
-            buttonOnPress: () => {},
+            buttonOnPress: () => {
+              navigation.navigate('MyTasksForGoal', {myGoal: element});
+            },
           },
         ]);
       });
