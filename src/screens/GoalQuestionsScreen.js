@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, View, Dimensions} from 'react-native';
 import layout from '../theme/layout';
 import StepOne from '../assets/images/StepOne.png';
@@ -14,8 +14,18 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useEffect} from 'react';
 import {addToGoal} from '../database/GoalActions';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
+import {getGoals} from '../database/GoalActions';
 
 const GoalQuestionsScreen = ({route, navigation}) => {
+  const [newGoalIndex, setNewGoalIndex] = useState([]);
+
+  useEffect(() => {
+    getGoals().then((realmArr) => {
+      const indexArray = realmArr.map((element) => element.id);
+      setNewGoalIndex(Math.max(...indexArray));
+    });
+  }, [route, navigation]);
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -75,6 +85,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
     if (goal?.when) {
       addToGoal(goal);
       navigation.navigate('GoalAddedScreen');
+      console.log('✅  Sent to Realm. New Goal : ', goal, '  ');
     }
   }, [goal, navigation]);
 
@@ -89,17 +100,13 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       }),
     how: () =>
       HowToAchieveGoalScreen((tasks) => {
-        console.log('before tasks ', tasks);
-        console.log('before goal', goal);
-
         setGoal({
           ...goal,
           tasks: [...tasks].map((item, i) => {
-            console.log('tada item', {id: i, ...item});
-            return {id: i, ...item};
+            return {id: i + newGoalIndex, ...item};
           }),
         });
-        console.log('after goal', goal);
+
         incrementIndex();
       }, goal.tasks),
     why: () =>
@@ -108,7 +115,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
           ...goal,
           description: why,
         });
-        console.log('after posting why goal is ', goal);
+
         incrementIndex();
       }),
     when: () =>
@@ -117,12 +124,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
           ...goal,
           when: when.timestamp,
         });
-        console.log(
-          'goalQuestions : posted a new goal :',
-          goal,
-          'timestapm, ',
-          when.timestamp,
-        );
+        console.log('goalQuestions : posted a new goal :', goal);
       }),
   });
 

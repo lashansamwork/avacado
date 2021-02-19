@@ -16,23 +16,21 @@ const MyGoalsHome = ({navigation}) => {
 
   useEffect(() => {
     getGoals().then((realmArr) => {
-      realmArr.forEach((element, index) => {
-        setMyGoals([
-          ...myGoals,
-          {
-            key: index,
-            imageUrl: ReadingGirl,
-            imageAspectRatio: layout.imageAspectRatio.readingGirl,
-            title: element.name,
-            description: element.description,
-            buttonText: 'Remind me how?',
-            subText: element.when,
-            buttonOnPress: () => {
-              navigation.navigate('MyTasksForGoal', {myGoal: element});
-            },
+      const goalArray = realmArr.map((element, index) => {
+        return {
+          key: index,
+          imageUrl: ReadingGirl,
+          imageAspectRatio: layout.imageAspectRatio.readingGirl,
+          title: element.name,
+          description: element.description,
+          buttonText: 'Remind me how?',
+          subText: element.when,
+          buttonOnPress: () => {
+            navigation.navigate('MyTasksForGoal', {myGoal: element});
           },
-        ]);
+        };
       });
+      setMyGoals(goalArray);
     });
   }, []);
 
@@ -134,7 +132,6 @@ const MyGoalsHome = ({navigation}) => {
             keyExtractor={(item, index) => `${index}`}
             contentContainerStyle={{
               paddingHorizontal: layout.padding.medium,
-              width: '100%',
             }}
             renderItem={({item, index}) => (
               <View style={{margin: layout.padding.large}}>

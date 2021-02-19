@@ -16,8 +16,26 @@ const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
 );
 import TaskView from './TaskView';
+import {useEffect} from 'react';
 
-export default function TasksList() {
+export default function TasksList({rawData}) {
+  const [listData, setListData] = useState([]);
+
+  useEffect(() => {
+    if (rawData && rawData.length > 0) {
+      const dataList = rawData.map((element, index) => {
+        return {
+          key: element.id,
+          text: element.name,
+          time: element.epochTime,
+        };
+      });
+      setListData(dataList);
+    } else {
+      setListData([]);
+    }
+  }, [rawData]);
+
   const [tasks, setTasks] = React.useState([]);
   const [task, setTask] = React.useState({name: null, dataTimes: []});
   const MODAL_OFFSET = 200;
@@ -55,25 +73,11 @@ export default function TasksList() {
           ]);
           setModalIndex(0);
           setModalVisible(false);
-          console.log(
-            '🚀 ~ file: HowToAchieveGoalScreen.js ~ line 76 ~ CustomModal ~ task',
-            task,
-          );
           console.log('state: tasks:', tasks);
         }}
       />
     );
   };
-  const [listData, setListData] = useState([
-    {
-      key: '0',
-      text: 'test test test',
-    },
-    {
-      key: '1',
-      text: '554',
-    },
-  ]);
 
   const swipeAnimationArray = [
     useRef(new Animated.Value(0)).current,
@@ -91,6 +95,7 @@ export default function TasksList() {
       extrapolate: 'clamp',
     });
     // renderItem return
+    console.log('datat sdfsdfs', data);
     return (
       <View
         style={{
@@ -111,7 +116,7 @@ export default function TasksList() {
           }}
           underlayColor={'rgba(255,255,255, 0.8)'}>
           <View>
-            <TaskView />
+            <TaskView time={data.item.time} name={data.item.text} />
           </View>
         </TouchableHighlightAnimated>
       </View>
@@ -179,6 +184,12 @@ export default function TasksList() {
     // list check rederItem, listData
     <View style={{backgroundColor: colors.themeColors.secondary, flex: 1}}>
       <SwipeListView
+        ListEmptyComponent={
+          <View style={{width: '100%', alignItems: 'center'}}>
+            <Text style={layout.fonts.nunito}>No Tasks Available</Text>
+          </View>
+        }
+        keyExtractor={(item, index) => `${index}`}
         data={listData}
         renderItem={renderItem}
         ItemSeparatorComponent={() => (

@@ -14,45 +14,6 @@ const MyTasksForGoal = ({route, navigation}) => {
   const {myGoal} = route.params;
   const [selectedDay, setSelectedDay] = useState('');
 
-  // useEffect(() => {
-  //   getGoals().then((realmArr) => {
-  //     realmArr.forEach((element, index) => {
-  //       setMyGoals([
-  //         ...myGoals,
-  //         {
-  //           key: index,
-  //           imageUrl: ReadingGirl,
-  //           imageAspectRatio: layout.imageAspectRatio.readingGirl,
-  //           title: element.name,
-  //           description: element.description,
-  //           buttonText: 'Remind me how?',
-  //           subText: element.when,
-  //           buttonOnPress: () => {
-  //             navigation.navigate('MyTasksForGoal');
-  //           },
-  //         },
-  //       ]);
-  //     });
-  //   });
-  // }, []);
-  // console.log(
-  //   '🚀 ~ file: MyTasksForGoal.js ~ line 19 ~ MyTasksForGoal ~ myGoals',
-  //   myGoal,
-  // );
-  // myGoal.tasks.forEach((e) =>
-  //   console.log('foreach', {test: e.daysToRepeat[0], ...e}),
-  // );
-  // const getData = () => {
-  //   getGoals().then((realmArr) => {
-  //     console.log('MyTaskHome: Realm: ', realmArr);
-  //     realmArr.forEach((e) => {
-  //       console.log(e.tasks.date);
-  //     });
-  //   });
-  // };
-
-  // getData();
-
   const onDatePress = (selectedDay) => {
     setSelectedDay(selectedDay);
     console.log(selectedDay, ' is the selected day');
@@ -64,7 +25,9 @@ const MyTasksForGoal = ({route, navigation}) => {
           neededDaysArray.push(task);
         }
       });
+      return true;
     });
+
     setTasks(neededDaysArray);
     console.log('needed days tasks', tasks);
   };
@@ -134,7 +97,7 @@ const MyTasksForGoal = ({route, navigation}) => {
               fontSize: layout.fontSizes.header,
               color: colors.themeColors.primary,
             }}>
-            {/* {myGoals[0].title} */}
+            {/* {myGoal.title} */}
           </Text>
         </View>
         <View style={{flex: 6, justifyContent: 'center'}}>
@@ -156,7 +119,9 @@ const MyTasksForGoal = ({route, navigation}) => {
             style={{
               flex: 2.8,
             }}>
-            <TasksList />
+            <TasksList rawData={tasks} />
+
+            {/* tasks is an array */}
             {/* Task Items and hidden functions */}
           </View>
         </View>

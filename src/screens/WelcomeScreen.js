@@ -81,7 +81,7 @@ const WelcomeScreen = ({navigation}) => {
                 fontSize: layout.fontSizes.welcomeText,
                 color: '#EBBDBD',
               }}>
-              Welcome Back {username}!
+              {username ? `Welcome back ${username}!` : 'Welcome!'}
             </Text>
             <View
               style={{
