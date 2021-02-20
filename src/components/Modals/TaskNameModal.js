@@ -6,10 +6,6 @@ import CustomTextInput from '../CustomTextInput';
 import CheckCircle from '../../assets/images/CheckCircle';
 
 const TaskNameModal = ({onSubmit, reminder}) => {
-  console.log(
-    '🚀 ~ file: TaskNameModal.js ~ line 9 ~ TaskNameModal ~ reminder',
-    reminder,
-  );
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;

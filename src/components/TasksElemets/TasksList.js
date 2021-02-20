@@ -86,15 +86,12 @@ export default function TasksList({rawData}) {
           ]);
           setModalIndex(0);
           setModalVisible(false);
-          console.log('state: tasks:', tasks);
         }}
       />
     );
   };
 
-  const onRowDidOpen = (rowKey) => {
-    console.log('This row opened', rowKey);
-  };
+  const onRowDidOpen = (rowKey) => {};
 
   const renderItem = (data) => {
     let borderRadius = swipeAnimationArray[data.index].interpolate({
@@ -131,7 +128,6 @@ export default function TasksList({rawData}) {
   };
 
   const Option = ({text, onPress, showImage}) => {
-    console.log('image is ', showImage);
     if (showImage) {
       return (
         <TouchableOpacity

@@ -31,11 +31,6 @@ const MyTasksForGoal = ({route, navigation}) => {
 
       return true;
     });
-    console.log(
-      '🚀 ~ file: MyTasksForGoal.js ~ line 81 ~ onDatePress ~ dataList',
-      dataList,
-    );
-    setTasks(dataList);
   };
 
   const ListCard = () => {

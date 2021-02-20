@@ -9,7 +9,6 @@ import {useEffect} from 'react';
 const MyTasksHome = ({navigation}) => {
   const [tasks, setTasks] = useState([]);
   const [dataList, setDataList] = useState([]);
-
   const [pressedDay, setPressedDay] = useState('');
   useEffect(() => {
     getGoals().then((realmArr) => {
@@ -24,7 +23,6 @@ const MyTasksHome = ({navigation}) => {
           daysToRepeat: task.daysToRepeat,
         };
       });
-
       if (tasks && tasks.length > 0) {
         setTasks(tasks);
         console.log('data set ✅');
@@ -34,11 +32,8 @@ const MyTasksHome = ({navigation}) => {
       }
     });
   }, []);
-
   const onDatePress = (pressedDay) => {
-    // function replaced
     setPressedDay(pressedDay);
-
     const renderTasks = [];
 
     tasks.filter((task) => {
@@ -48,30 +43,14 @@ const MyTasksHome = ({navigation}) => {
             id: task.id,
             name: task.name,
             epochTime: task.epochTime,
+            daysToRepeat: task.daysToRepeat,
           });
         }
       });
       return true;
     });
-    console.log(
-      '🚀 ~ file: MyTasksHome.js ~ line 53 ~ onDatePress ~ renderTasks',
-      renderTasks,
-    );
     setDataList(renderTasks);
-    // let taskArray = myGoal.tasks;
-    // let neededDaysArray = [];
-    // taskArray.filter((task, index) => {
-    //   task.daysToRepeat.forEach((element) => {
-    //     if (element.toLowerCase() === selectedDay.toLowerCase()) {
-    //       neededDaysArray.push(task);
-    //     }
-    //   });
-    //   return true;
-    // });
-    // setTasks(neededDaysArray);
-    // console.log('needed days tasks', tasks);
   };
-
   return (
     <SafeAreaView
       edges={['top']}
@@ -117,5 +96,4 @@ const MyTasksHome = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
 export default MyTasksHome;
