@@ -5,7 +5,11 @@ import colors from '../../theme/colors';
 import CustomTextInput from '../CustomTextInput';
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskNameModal = ({onSubmit}) => {
+const TaskNameModal = ({onSubmit, reminder}) => {
+  console.log(
+    '🚀 ~ file: TaskNameModal.js ~ line 9 ~ TaskNameModal ~ reminder',
+    reminder,
+  );
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -13,7 +17,13 @@ const TaskNameModal = ({onSubmit}) => {
   const TEXT_INPUT_OFFSET = 30;
   const PICKER_CONTAINER_WIDTH = '85%';
   const TEXT_GAP = 2;
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState(() => {
+    if (reminder == null) {
+      return '';
+    } else {
+      return reminder;
+    }
+  });
   const [error, setError] = React.useState(false);
 
   return (

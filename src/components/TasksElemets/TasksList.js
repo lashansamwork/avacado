@@ -12,6 +12,7 @@ import TaskNameModal from '../Modals/TaskNameModal';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
+const Tick = require('../../assets/images/TickIcon.png');
 const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
 );
@@ -19,11 +20,11 @@ import TaskView from './TaskView';
 import {useEffect} from 'react';
 
 export default function TasksList({rawData}) {
-  console.log(
-    '🚀 ~ file: TasksList.js ~ line 22 ~ TasksList ~ rawData',
-    rawData,
-  );
+  const [reminder, setReminder] = React.useState('');
+  let swipeAnimationArray = [];
+
   const [listData, setListData] = useState([]);
+  const TICK_HEIGHT = '40%';
 
   useEffect(() => {
     if (rawData && rawData.length > 0) {
@@ -34,6 +35,10 @@ export default function TasksList({rawData}) {
           time: element.epochTime,
         };
       });
+
+      // dataList.forEach((element) => {
+      //   swipeAnimationArray.push(useRef(new Animated.Value(0)).current);
+      // });
       setListData(dataList);
     } else {
       setListData([]);
@@ -45,17 +50,21 @@ export default function TasksList({rawData}) {
   const MODAL_OFFSET = 200;
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
+
   const CustomModal = () => {
     if (modalIndex === 0) {
       return (
         <TaskNameModal
-          onSubmit={(taskName) => {
-            setTask({
-              ...task,
-              name: taskName,
-            });
-            setModalIndex(1);
-          }}
+          onSubmit={
+            ((taskName) => {
+              setTask({
+                ...task,
+                name: taskName,
+              });
+              setModalIndex(1);
+            },
+            reminder)
+          }
         />
       );
     }
@@ -83,11 +92,6 @@ export default function TasksList({rawData}) {
     );
   };
 
-  const swipeAnimationArray = [
-    useRef(new Animated.Value(0)).current,
-    useRef(new Animated.Value(0)).current,
-  ];
-
   const onRowDidOpen = (rowKey) => {
     console.log('This row opened', rowKey);
   };
@@ -98,7 +102,6 @@ export default function TasksList({rawData}) {
       outputRange: [layout.taskCardRadius, 1],
       extrapolate: 'clamp',
     });
-    // renderItem return
 
     return (
       <View
@@ -127,31 +130,60 @@ export default function TasksList({rawData}) {
     );
   };
 
-  const Option = ({text, onPress}) => (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      style={{
-        width: layout.swipeButtonSize,
-        backgroundColor: colors.themeColors.pink,
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 1,
-      }}
-      // action for hidden menu items
-      onPress={() => {
-        onPress();
-      }}>
-      <Text
-        style={{
-          color: colors.themeColors.secondary,
-          fontSize: layout.fontSizes.xsmall,
-          fontFamily: layout.fonts.nunito,
-        }}>
-        {text}
-      </Text>
-    </TouchableOpacity>
-  );
+  const Option = ({text, onPress, showImage}) => {
+    console.log('image is ', showImage);
+    if (showImage) {
+      return (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{
+            width: layout.swipeButtonSize,
+            backgroundColor: colors.themeColors.pink,
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginRight: 1,
+          }}
+          onPress={() => {
+            console.log('You pressed me!');
+          }}>
+          <View style={{aspectRatio: 1, height: TICK_HEIGHT}}>
+            <Image
+              source={Tick}
+              resizeMode="stretch"
+              style={{width: null, height: null, flex: 1}}
+            />
+          </View>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{
+            width: layout.swipeButtonSize,
+            backgroundColor: colors.themeColors.pink,
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginRight: 1,
+          }}
+          // action for hidden menu items
+          onPress={() => {
+            onPress();
+          }}>
+          <Text
+            style={{
+              color: colors.themeColors.secondary,
+              fontSize: layout.fontSizes.xsmall,
+              fontFamily: layout.fonts.nunito,
+            }}>
+            {text}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+  };
 
   const renderHiddenItem = (data, rowMap) => {
     let newOpacity = swipeAnimationArray[data.index].interpolate({
@@ -169,12 +201,13 @@ export default function TasksList({rawData}) {
           flex: 1,
           flexDirection: 'row',
           opacity: newOpacity,
-          // paddingTop: layout.padding.large,
+          // paddingTop: layout.padding.`large`,
         }}>
-        <Option text="Save" />
+        <Option showImage={true} />
         <Option
           text="Edit"
           onPress={() => {
+            setReminder(data.item.text);
             setModalVisible(true);
           }}
         />
@@ -183,7 +216,8 @@ export default function TasksList({rawData}) {
       </Animated.View>
     );
   };
-
+  swipeAnimationArray = new Array(listData.length);
+  swipeAnimationArray.fill(useRef(new Animated.Value(0)).current);
   return (
     // list check rederItem, listData
     <View style={{backgroundColor: colors.themeColors.secondary, flex: 1}}>
@@ -231,7 +265,6 @@ export default function TasksList({rawData}) {
             }}
             transparent={true}>
             <View style={{flexBasis: MODAL_OFFSET}} />
-
             <View>
               <CustomModal />
             </View>

@@ -24,7 +24,7 @@ const MyTasksHome = ({navigation}) => {
           daysToRepeat: task.daysToRepeat,
         };
       });
-      console.log('🚀 ~ file: MyTasksHome.js ~ line 31 ~ tasks ~ tasks', tasks);
+
       if (tasks && tasks.length > 0) {
         setTasks(tasks);
         console.log('data set ✅');
@@ -36,22 +36,13 @@ const MyTasksHome = ({navigation}) => {
   }, []);
 
   const onDatePress = (pressedDay) => {
-    console.log(
-      '🚀 ~ file: MyTasksHome.js ~ line 44 ~ onDatePress ~ pressedDay',
-      pressedDay,
-    );
-    console.log(
-      '🚀 ~ file: MyTasksHome.js ~ line 11 ~ MyTasksHome ~ tasks',
-      tasks,
-    );
-
     // function replaced
     setPressedDay(pressedDay);
 
     const renderTasks = [];
 
     tasks.filter((task) => {
-      task.daysToRepeat.forEach((element) => {
+      task.daysToRepeat.forEach((element, index) => {
         if (element.toLowerCase() === pressedDay.text.toLowerCase()) {
           renderTasks.push({
             id: task.id,
@@ -79,50 +70,6 @@ const MyTasksHome = ({navigation}) => {
     // });
     // setTasks(neededDaysArray);
     // console.log('needed days tasks', tasks);
-  };
-  const ListCard = () => {
-    return (
-      <View style={{flexDirection: 'row'}}>
-        <View style={{flexBasis: 50}} />
-        <View
-          style={{
-            backgroundColor: colors.themeColors.primary,
-            flex: 1,
-            height: layout.card.taskHeight,
-            justifyContent: 'center',
-            paddingHorizontal: layout.padding.large,
-            borderRadius: layout.taskCardRadius,
-          }}>
-          <Text style={{color: colors.themeColors.secondary}}>
-            I am in a SwipeListView
-          </Text>
-        </View>
-        <View style={{flexBasis: 50}} />
-      </View>
-    );
-  };
-
-  const HiddenListCard = () => {
-    return (
-      <View
-        style={{
-          flexDirection: 'row',
-          height: layout.card.taskHeight,
-          width: '100%',
-        }}>
-        <View style={{flexBasis: 50, backgroundColor: 'red'}}>
-          <View>
-            <Text>Save</Text>
-          </View>
-          <View>
-            <Text>Edit</Text>
-          </View>
-          <View>
-            <Text>Delete</Text>
-          </View>
-        </View>
-      </View>
-    );
   };
 
   return (
