@@ -5,32 +5,81 @@ import colors from '../theme/colors';
 import DaysList from '../components/DayElements/DaysList';
 import TasksList from '../components/TasksElemets/TasksList';
 import {getGoals} from '../database/GoalActions';
-
+import {useEffect} from 'react';
 const MyTasksHome = ({navigation}) => {
-  const [tasks, setTasks] = useState(
-    Array(20)
-      .fill('')
-      .map((_, i) => ({key: `${i}`, text: `item #${i}`})),
-  );
+  const [tasks, setTasks] = useState([]);
+  const [dataList, setDataList] = useState([]);
 
-  // const getData = () => {
-  //   getGoals().then((realmArr) => {
-  //     console.log('MyTaskHome: Realm: ', realmArr);
-  //     realmArr.forEach((e) => {
-  //       console.log(e.tasks.date);
-  //     });
-  //   });
-  // };
+  const [pressedDay, setPressedDay] = useState('');
+  useEffect(() => {
+    getGoals().then((realmArr) => {
+      const goals = realmArr.map((goal) => goal);
+      const arraysOfTasks = goals.map((goal) => [...goal.tasks]);
+      const flatten = [].concat.apply([], arraysOfTasks);
+      const tasks = flatten.map((task) => {
+        return {
+          id: task.id,
+          name: task.name,
+          epochTime: task.epochTime,
+          daysToRepeat: task.daysToRepeat,
+        };
+      });
+      console.log('🚀 ~ file: MyTasksHome.js ~ line 31 ~ tasks ~ tasks', tasks);
+      if (tasks && tasks.length > 0) {
+        setTasks(tasks);
+        console.log('data set ✅');
+      } else {
+        console.log('data not set ❌');
+        setTasks([]);
+      }
+    });
+  }, []);
 
-  // getData();
-
-  const onDatePress = (item) => {
+  const onDatePress = (pressedDay) => {
     console.log(
-      '🚀 ~ file: MyTasksHome.js ~ line 10 ~ onDatePress ~ item',
-      item,
+      '🚀 ~ file: MyTasksHome.js ~ line 44 ~ onDatePress ~ pressedDay',
+      pressedDay,
     );
-  };
+    console.log(
+      '🚀 ~ file: MyTasksHome.js ~ line 11 ~ MyTasksHome ~ tasks',
+      tasks,
+    );
 
+    // function replaced
+    setPressedDay(pressedDay);
+
+    const renderTasks = [];
+
+    tasks.filter((task) => {
+      task.daysToRepeat.forEach((element) => {
+        if (element.toLowerCase() === pressedDay.text.toLowerCase()) {
+          renderTasks.push({
+            id: task.id,
+            name: task.name,
+            epochTime: task.epochTime,
+          });
+        }
+      });
+      return true;
+    });
+    console.log(
+      '🚀 ~ file: MyTasksHome.js ~ line 53 ~ onDatePress ~ renderTasks',
+      renderTasks,
+    );
+    setDataList(renderTasks);
+    // let taskArray = myGoal.tasks;
+    // let neededDaysArray = [];
+    // taskArray.filter((task, index) => {
+    //   task.daysToRepeat.forEach((element) => {
+    //     if (element.toLowerCase() === selectedDay.toLowerCase()) {
+    //       neededDaysArray.push(task);
+    //     }
+    //   });
+    //   return true;
+    // });
+    // setTasks(neededDaysArray);
+    // console.log('needed days tasks', tasks);
+  };
   const ListCard = () => {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -113,7 +162,7 @@ const MyTasksHome = ({navigation}) => {
             style={{
               flex: 2.8,
             }}>
-            <TasksList />
+            <TasksList rawData={dataList} />
             {/* Task Items and hidden functions */}
           </View>
         </View>

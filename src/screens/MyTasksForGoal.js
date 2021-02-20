@@ -16,20 +16,26 @@ const MyTasksForGoal = ({route, navigation}) => {
 
   const onDatePress = (selectedDay) => {
     setSelectedDay(selectedDay);
-    console.log(selectedDay, ' is the selected day');
-    let taskArray = myGoal.tasks;
-    let neededDaysArray = [];
-    taskArray.filter((task, index) => {
+    let tasks = myGoal.tasks;
+    let dataList = [];
+    tasks.filter((task) => {
       task.daysToRepeat.forEach((element) => {
         if (element.toLowerCase() === selectedDay.toLowerCase()) {
-          neededDaysArray.push(task);
+          dataList.push({
+            id: task.id,
+            name: task.name,
+            epochTime: task.epochTime,
+          });
         }
       });
+
       return true;
     });
-
-    setTasks(neededDaysArray);
-    console.log('needed days tasks', tasks);
+    console.log(
+      '🚀 ~ file: MyTasksForGoal.js ~ line 81 ~ onDatePress ~ dataList',
+      dataList,
+    );
+    setTasks(dataList);
   };
 
   const ListCard = () => {
@@ -97,7 +103,7 @@ const MyTasksForGoal = ({route, navigation}) => {
               fontSize: layout.fontSizes.header,
               color: colors.themeColors.primary,
             }}>
-            {/* {myGoal.title} */}
+            {myGoal.title}
           </Text>
         </View>
         <View style={{flex: 6, justifyContent: 'center'}}>

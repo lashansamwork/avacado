@@ -17,12 +17,12 @@ const LeftArrow = require('../assets/images/ArrowLeft.png');
 import {getGoals} from '../database/GoalActions';
 
 const GoalQuestionsScreen = ({route, navigation}) => {
-  const [newGoalIndex, setNewGoalIndex] = useState([]);
+  const [newTaskIndex, setNewTaskIndex] = useState([]);
 
   useEffect(() => {
     getGoals().then((realmArr) => {
       const indexArray = realmArr.map((element) => element.id);
-      setNewGoalIndex(Math.max(...indexArray));
+      setNewTaskIndex(Math.max(...indexArray));
     });
   }, [route, navigation]);
 
@@ -103,7 +103,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
         setGoal({
           ...goal,
           tasks: [...tasks].map((item, i) => {
-            return {id: i + newGoalIndex, ...item};
+            return {id: i + newTaskIndex, ...item};
           }),
         });
 

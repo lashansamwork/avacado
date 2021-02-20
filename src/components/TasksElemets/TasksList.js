@@ -19,6 +19,10 @@ import TaskView from './TaskView';
 import {useEffect} from 'react';
 
 export default function TasksList({rawData}) {
+  console.log(
+    '🚀 ~ file: TasksList.js ~ line 22 ~ TasksList ~ rawData',
+    rawData,
+  );
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
@@ -95,7 +99,7 @@ export default function TasksList({rawData}) {
       extrapolate: 'clamp',
     });
     // renderItem return
-    console.log('datat sdfsdfs', data);
+
     return (
       <View
         style={{

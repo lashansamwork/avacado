@@ -39,11 +39,11 @@ const MyGoalsHome = ({navigation}) => {
     myGoals,
   );
 
-  useEffect(() => {
-    getGoals().then((test) => {
-      test.forEach((e) => console.log('testing....', e));
-    });
-  }, []);
+  // useEffect(() => {
+  //   getGoals().then((test) => {
+  //     test.forEach((e) => console.log('testing....', e));
+  //   });
+  // }, []);
 
   // const [myGoals, setMyGoals] = useState(MY_GOALS);
   // const MY_GOALS = [];
