@@ -38,11 +38,20 @@ const GoalCategoryScreen = ({navigation}) => {
         <View style={{flex: 1}} />
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
+          // <<<<<<< HEAD
           onPress={() =>
             navigation.navigate('GoalQuestionsScreen', {
               category: 'Physical & Health',
+              categoryId: 0,
             })
           }>
+          {/* =======
+          onPress={() => {
+            navigation.navigate('GoalQuestionsScreen', {
+              itemId: 0,
+            });
+          }}>
+>>>>>>> origin/code/category-dynamic */}
           <View
             style={{
               height: layout.autoImageSizes.medium,
@@ -72,11 +81,20 @@ const GoalCategoryScreen = ({navigation}) => {
 
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
+          // <<<<<<< HEAD
           onPress={() =>
             navigation.navigate('GoalQuestionsScreen', {
               category: 'Career & Educational',
+              categoryId: 1,
             })
           }>
+          {/* =======
+          onPress={() => {
+            navigation.navigate('GoalQuestionsScreen', {
+              itemId: 1,
+            });
+          }}>
+>>>>>>> origin/code/category-dynamic */}
           <View style={{flexBasis: READING_GIRL_OFFSET}} />
           <View
             style={{
@@ -101,9 +119,20 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
+          // <<<<<<< HEAD
           onPress={() =>
-            navigation.navigate('GoalQuestionsScreen', {category: 'Finance'})
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Finance',
+              categoryId: 2,
+            })
           }>
+          {/* =======
+          onPress={() => {
+            navigation.navigate('GoalQuestionsScreen', {
+              itemId: 2,
+            });
+          }}>
+>>>>>>> origin/code/category-dynamic */}
           <View style={{flexBasis: FINANCE_GIRL_OFFSET}} />
           <View
             style={{
@@ -128,11 +157,20 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
+          // <<<<<<< HEAD
           onPress={() =>
             navigation.navigate('GoalQuestionsScreen', {
               category: 'Self Growth',
+              categoryId: 3,
             })
           }>
+          {/* =======
+          onPress={() => {
+            navigation.navigate('GoalQuestionsScreen', {
+              itemId: 3,
+            });
+          }}>
+>>>>>>> origin/code/category-dynamic */}
           <View
             style={{
               height: layout.autoImageSizes.large,

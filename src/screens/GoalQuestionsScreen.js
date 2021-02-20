@@ -17,6 +17,8 @@ const LeftArrow = require('../assets/images/ArrowLeft.png');
 import {getGoals} from '../database/GoalActions';
 
 const GoalQuestionsScreen = ({route, navigation}) => {
+  const categoryId = route?.params?.categoryId;
+
   const [newTaskIndex, setNewTaskIndex] = useState([]);
 
   useEffect(() => {
@@ -66,6 +68,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
       headerTitle: <></>,
     });
   }, [navigation]);
+
   const [index, setIndex] = React.useState(0);
   const PROGRESSBAR_HEIGHT = 3;
   const [routes] = React.useState([
@@ -90,6 +93,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   }, [goal, navigation]);
 
   const renderScene = SceneMap({
+    // <<<<<<< HEAD
     what: () =>
       WhatGoalToAchieveScreen((goalName) => {
         setGoal({
@@ -97,7 +101,7 @@ const GoalQuestionsScreen = ({route, navigation}) => {
           name: goalName,
         });
         incrementIndex();
-      }),
+      }, categoryId),
     how: () =>
       HowToAchieveGoalScreen((tasks) => {
         setGoal({

@@ -17,6 +17,7 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
+// <<<<<<< HEAD
 const BORDER_RADIUS = 20;
 
 //Task Item sent here
@@ -31,6 +32,9 @@ const Item = ({title}) => (
 const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
 
+  // =======
+  // const HowToAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
+  // >>>>>>> origin/code/category-dynamic
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;

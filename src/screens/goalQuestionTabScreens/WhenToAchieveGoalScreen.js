@@ -6,7 +6,11 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
+// <<<<<<< HEAD
 const WhenToAchieveGoalScreen = (onPress) => {
+  // =======
+  // const WhenToAchieveGoalScreen = ({navigation}, goBack, itemId) => {
+  // >>>>>>> origin/code/category-dynamic
   const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;

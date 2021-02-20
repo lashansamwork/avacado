@@ -8,6 +8,7 @@ const readingGirlDescription = 'Career & Education';
 import CheckCircle from '../../assets/images/CheckCircle';
 import Svg, {Path} from 'react-native-svg';
 import CustomTextInput from '../../components/CustomTextInput';
+import {getCategoryData} from '../../assets/CategoryData';
 
 const SvgHand = (style) => {
   return (
@@ -27,11 +28,10 @@ const SvgHand = (style) => {
   );
 };
 
-const WhatGoalToAchieveScreen = (onPress) => {
+const WhatGoalToAchieveScreen = (onPress, categoryId) => {
+  const categoryData = getCategoryData(categoryId);
   const [goalName, onChangeGoalName] = useState('');
   const [error, setError] = React.useState(false);
-  let girlImagePath = readingGirl;
-  let goalDescription = readingGirlDescription;
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const IMAGE_OFFSET = 20;
@@ -64,10 +64,10 @@ const WhatGoalToAchieveScreen = (onPress) => {
           <View
             style={{
               height: IMAGE_HEIGHT,
-              aspectRatio: layout.imageAspectRatio.readingGirl,
+              aspectRatio: categoryData.aspectRatio,
             }}>
             <Image
-              source={girlImagePath}
+              source={categoryData.imagePath}
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
             />
@@ -79,7 +79,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
               fontSize: layout.fontSizes.medium,
               color: colors.themeColors.primary,
             }}>
-            {goalDescription}
+            {categoryData.description}
           </Text>
           <View style={{flexBasis: IMAGE_OFFSET}} />
         </View>
@@ -90,7 +90,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
           <CustomTextInput
             style={{position: 'absolute', bottom: 0, width: '100%'}}
             gap={CUSTOM_INPUT_TEXT_GAP}
-            placeholder={readingGirlPlaceholder}
+            placeholder={categoryData.placeholder}
             value={goalName}
             onChangeText={(text) => onChangeGoalName(text)}
           />
