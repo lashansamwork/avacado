@@ -32,6 +32,7 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
+          gestureEnabled: false,
         }}
         initialRouteName="IntroRoutes">
         <Stack.Screen name="Home" component={TabNavigator} />

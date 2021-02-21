@@ -11,6 +11,7 @@ const GoalQuestionsNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: true,
+        gestureEnabled: false,
       }}
       initialRouteName="GoalCategoryScreen">
       <Stack.Screen

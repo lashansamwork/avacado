@@ -13,6 +13,7 @@ const WelcomeNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        gestureEnabled: false,
       }}
       initialRouteName="WelcomeScreen">
       <Stack.Screen

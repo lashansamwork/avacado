@@ -10,6 +10,7 @@ const MyGoalNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: true,
+        gestureEnabled: false,
       }}
       initialRouteName="MyGoalsHome">
       <Stack.Screen
