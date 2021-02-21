@@ -139,9 +139,7 @@ export default function TasksList({rawData}) {
             alignItems: 'center',
             marginRight: 1,
           }}
-          onPress={() => {
-            console.log('You pressed me!');
-          }}>
+          onPress={onPress}>
           <View style={{aspectRatio: 1, height: TICK_HEIGHT}}>
             <Image
               source={Tick}
@@ -198,7 +196,13 @@ export default function TasksList({rawData}) {
           opacity: newOpacity,
           // paddingTop: layout.padding.`large`,
         }}>
-        <Option showImage={true} />
+        <Option
+          showImage={true}
+          onPress={() => {
+            rowMap[data.item.key].closeRow();
+            swipeAnimationArray.current[data.index].setValue(0);
+          }}
+        />
         <Option
           text="Edit"
           onPress={() => {
