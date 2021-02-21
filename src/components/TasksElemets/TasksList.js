@@ -57,11 +57,22 @@ export default function TasksList({
       extrapolate: 'clamp',
     });
 
+    let translateX = swipeAnimationArray.current[data.index].interpolate({
+      inputRange: [0, 83],
+      outputRange: [0, -(layout.swipeButtonSize - 6)],
+      extrapolate: 'clamp',
+    });
+
     return (
       <TouchableHighlightAnimated
         activeOpacity={0.8}
         onPress={() => console.log('You touched me')}
         style={{
+          transform: [
+            {
+              translateX: translateX,
+            },
+          ],
           width: 300,
           alignSelf: 'center',
           alignItems: 'center',
@@ -147,7 +158,6 @@ export default function TasksList({
           flex: 1,
           flexDirection: 'row',
           opacity: newOpacity,
-          // paddingTop: layout.padding.`large`,
         }}>
         <Option
           showImage={true}
@@ -184,7 +194,7 @@ export default function TasksList({
       <SwipeListView
         ListHeaderComponent={
           onAddTaskPress && (
-            <View style={{width: 300, alignSelf: 'center'}}>
+            <View style={{alignSelf: 'center'}}>
               <TaskItem
                 style={{height: 57, marginBottom: layout.padding.large}}
                 label="+Add Task/Habit"
@@ -210,9 +220,7 @@ export default function TasksList({
           swipeAnimationArray.current[key].setValue(value);
         }}
         renderHiddenItem={renderHiddenItem}
-        leftOpenValue={
-          layout.swipeButtonSize * 3 - layout.padding.screenHorizontal
-        }
+        leftOpenValue={layout.swipeButtonSize * 3}
         rightOpenValue={0}
         previewRowKey={'0'}
         previewOpenDelay={3000}
