@@ -176,11 +176,7 @@ export default function TasksList({
         <Option
           text="Delete"
           onPress={() => {
-            console.log(
-              '🚀 ~ file: TasksList.js ~ line 183 ~ renderHiddenItem ~ data',
-              data,
-            );
-            // deleteTask();
+            onDeletePress && onDeletePress(rawData[data.index]);
           }}
         />
         <View style={{flex: 1}} />

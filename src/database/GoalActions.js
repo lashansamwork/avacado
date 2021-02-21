@@ -49,19 +49,21 @@ export const deleteGoal = (id) =>
       .catch((error) => reject(error));
   });
 
-export const deleteTask = (goalId, task) =>
+export const deleteTask = (goalId, taskId) =>
   new Promise((resolve, reject) => {
     Realm.open(databaseOptions)
       .then((realm) => {
-        const goal = realm.objects(GoalSchemaName).filtered(`id == ${goalId}`);
-        goal.tasks = goal.tasks.filter((item) => {
-          if (item.id === task.id) {
-            return false;
-          } else {
-            return true;
-          }
+        realm.write(() => {
+          const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
+          goal.tasks = goal.tasks.filter((item) => {
+            if (item.id === taskId) {
+              return false;
+            } else {
+              return true;
+            }
+          });
+          resolve(goal);
         });
-        resolve(goal);
       })
       .catch((error) => reject(error));
   });

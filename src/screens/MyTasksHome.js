@@ -4,7 +4,7 @@ import layout from '../theme/layout';
 import colors from '../theme/colors';
 import DaysList from '../components/DayElements/DaysList';
 import TasksList from '../components/TasksElemets/TasksList';
-import {getGoals, updateTask} from '../database/GoalActions';
+import {getGoals, updateTask, deleteTask} from '../database/GoalActions';
 import {useEffect} from 'react';
 import TaskNameModal from '../components/Modals/TaskNameModal';
 import TaskTimeModal from '../components/Modals/TaskTimeModal';
@@ -160,6 +160,11 @@ const MyTasksHome = ({navigation}) => {
             }}>
             <TasksList
               rawData={dataList}
+              onDeletePress={(item) => {
+                deleteTask(item.goalId, item.id).then((test) => {
+                  updateGoalsState();
+                });
+              }}
               onEditPress={(item) => {
                 setIsVisibleEditModal(true);
                 setSelectedItem(item);
