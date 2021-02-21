@@ -82,39 +82,6 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
           setModalVisible(false);
         }}
       />
-
-      // <TaskTimeModal
-      //   onSubmit={(dateTimeObject) => {
-      //     //dateTimeObject with date obj/repeatDays []/times int
-      //     //todo conevert correct way;
-      //     console.log(
-      //       'howtoachievegoalscreen: prop:datetimeobject',
-      //       dateTimeObject,
-      //     );
-      //     console.log(
-      //       'setTask Input task',
-      //       task,
-      //       ' dateTimeObj ',
-      //       dateTimeObject,
-      //     );
-      //     setTask({
-      //       ...task,
-      //       dataTimes: dateTimeObject,
-      //     });
-      //     console.log('datatimes saved to task : ', task);
-      //     setTasks([
-      //       ...tasks, // tasks sent to goal
-      //       {
-      //         ...task,
-      //         // Task.dataTimes must be of type 'number[]', got 'object' ([object Object])
-      //         dataTimes: dateTimeObject,
-      //       },
-      //     ]);
-      //     console.log('state: tasks:', tasks);
-      //     setModalIndex(0);
-      //     setModalVisible(false);
-      //   }} // onSubmit ends
-      // />
     );
   };
 

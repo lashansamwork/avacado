@@ -3,7 +3,7 @@ import {View, Text, Image} from 'react-native';
 import readingGirl from '../../assets/images/ReadingGirlWithoutCircle.png';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
-
+import moment from 'moment';
 const TaskView = ({name, time}) => {
   const TIME_OFFSET = 20;
   return (
@@ -44,7 +44,7 @@ const TaskView = ({name, time}) => {
             fontSize: layout.fontSizes.xsmall,
             fontFamily: layout.fonts.nunito,
           }}>
-          {time}
+          {moment(time).format('LT')}
         </Text>
         <View style={{flexBasis: TIME_OFFSET}} />
       </View>

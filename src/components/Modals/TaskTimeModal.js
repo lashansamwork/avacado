@@ -7,7 +7,12 @@ import WheelPicker from 'react-native-wheely';
 import DayList from '../MultipleDaySelector/DayList';
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskTimeModal = ({onSubmit}) => {
+const TaskTimeModal = ({
+  onSubmit,
+  initialTime = new Date(),
+  initialDaysRepeat = [],
+  initialTimes = 5,
+}) => {
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -19,9 +24,9 @@ const TaskTimeModal = ({onSubmit}) => {
   const WHEELPICKER_HEIGHT = '48%';
   const SEPERATOR_WIDTH = '95%';
   const [error, setError] = React.useState(false);
-  const [date, setDate] = useState(new Date());
-  const [times, setTimes] = useState(5);
-  const [repeatDays, setRepeatDays] = useState(null);
+  const [date, setDate] = useState(initialTime);
+  const [times, setTimes] = useState(initialTimes);
+  const [repeatDays, setRepeatDays] = useState(initialDaysRepeat);
 
   return (
     <View
@@ -98,6 +103,7 @@ const TaskTimeModal = ({onSubmit}) => {
         <View style={{flex: 0.5}}>
           {/* list of days */}
           <DayList
+            initialSelect={repeatDays}
             onDaysSubmit={(days) => {
               setRepeatDays(days);
             }}
@@ -167,15 +173,6 @@ const TaskTimeModal = ({onSubmit}) => {
         {/* dateTimeObject passed */}
         <TouchableOpacity
           style={{alignSelf: 'center'}}
-          // onPress={() => {
-          //   console.log('TaskTimeModal: state: date ', date);
-          //   let epochTime = date.getTime();
-          //   if (repeatDays !== null) {
-          //     onSubmit({date, times, epochTime});
-          //   } else {
-          //     setError(true);
-          //   }
-          // }}
           onPress={() => {
             if (repeatDays !== null) {
               let daysStringArray = [];

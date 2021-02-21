@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import {useEffect} from 'react';
 import {FlatList} from 'react-native';
 import Day from './Day';
 
-const DayList = ({onDaysSubmit}) => {
+const DayList = ({onDaysSubmit, initialSelect}) => {
   const DAYS = [
     {text: 'SUN', isSelected: false},
     {text: 'MON', isSelected: false},
@@ -13,6 +14,24 @@ const DayList = ({onDaysSubmit}) => {
     {text: 'SAT', isSelected: false},
   ];
   const [days, setDays] = useState(DAYS);
+
+  useEffect(() => {
+    if (initialSelect?.length > 0) {
+      const updatedDays = DAYS.map((day) => {
+        const found = initialSelect.find((element) => element === day.text);
+        if (found) {
+          return {
+            ...day,
+            isSelected: true,
+          };
+        } else {
+          return day;
+        }
+      });
+      setDays(updatedDays);
+    }
+  }, []);
+
   const onPress = (item) => {
     const newDaysArray = days.map((element) => {
       if (element.text === item.text) {

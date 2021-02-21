@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   View,
   Animated,
+  Pressable,
 } from 'react-native';
-import TaskTimeModal from '../Modals/TaskTimeModal';
-import TaskNameModal from '../Modals/TaskNameModal';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
+import TaskItem from '../TaskItem';
 const Tick = require('../../assets/images/TickIcon.png');
 const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
@@ -19,8 +19,12 @@ const TouchableHighlightAnimated = Animated.createAnimatedComponent(
 import TaskView from './TaskView';
 import {useEffect} from 'react';
 
-export default function TasksList({rawData}) {
-  const [reminder, setReminder] = React.useState('');
+export default function TasksList({
+  rawData,
+  onDeletePress,
+  onEditPress,
+  onAddTaskPress,
+}) {
   const [listData, setListData] = useState([]);
   const swipeAnimationArray = useRef([]).current;
   const TICK_HEIGHT = '40%';
@@ -44,52 +48,6 @@ export default function TasksList({rawData}) {
     }
   }, [rawData, swipeAnimationArray]);
 
-  const [tasks, setTasks] = React.useState([]);
-  const [task, setTask] = React.useState({name: null, dataTimes: []});
-  const MODAL_OFFSET = 200;
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalIndex, setModalIndex] = React.useState(0);
-
-  const CustomModal = () => {
-    if (modalIndex === 0) {
-      return (
-        <TaskNameModal
-          onSubmit={
-            ((taskName) => {
-              setTask({
-                ...task,
-                name: taskName,
-              });
-              setModalIndex(1);
-            },
-            reminder)
-          }
-        />
-      );
-    }
-    return (
-      <TaskTimeModal
-        onSubmit={(dateTimeObject) => {
-          //dateTimeObject with date obj/repeatDays []/times int
-          //todo conevert correct way;
-          setTask({
-            ...task,
-            dataTimes: dateTimeObject,
-          });
-          setTasks([
-            ...tasks, // tasks sent to goal
-            {
-              ...task,
-              dataTimes: dateTimeObject,
-            },
-          ]);
-          setModalIndex(0);
-          setModalVisible(false);
-        }}
-      />
-    );
-  };
-
   const onRowDidOpen = (rowKey) => {};
 
   const renderItem = (data) => {
@@ -100,29 +58,24 @@ export default function TasksList({rawData}) {
     });
 
     return (
-      <View
+      <TouchableHighlightAnimated
+        activeOpacity={0.8}
+        onPress={() => console.log('You touched me')}
         style={{
           width: 300,
           alignSelf: 'center',
+          alignItems: 'center',
+          backgroundColor: colors.themeColors.primary,
+          borderBottomColor: 'black',
+          justifyContent: 'center',
+          borderRadius: borderRadius,
           height: 57,
-        }}>
-        <TouchableHighlightAnimated
-          activeOpacity={0.8}
-          onPress={() => console.log('You touched me')}
-          style={{
-            alignItems: 'center',
-            backgroundColor: colors.themeColors.primary,
-            borderBottomColor: 'black',
-            justifyContent: 'center',
-            borderRadius: borderRadius,
-            height: 57,
-          }}
-          underlayColor={'rgba(255,255,255, 0.8)'}>
-          <View>
-            <TaskView time={data.item.time} name={data.item.text} />
-          </View>
-        </TouchableHighlightAnimated>
-      </View>
+        }}
+        underlayColor={'rgba(255,255,255, 0.8)'}>
+        <View>
+          <TaskView time={data.item.time} name={data.item.text} />
+        </View>
+      </TouchableHighlightAnimated>
     );
   };
 
@@ -199,6 +152,7 @@ export default function TasksList({rawData}) {
         <Option
           showImage={true}
           onPress={() => {
+            console.log('checkmark pressed');
             rowMap[data.item.key].closeRow();
             swipeAnimationArray.current[data.index].setValue(0);
           }}
@@ -206,11 +160,19 @@ export default function TasksList({rawData}) {
         <Option
           text="Edit"
           onPress={() => {
-            setReminder(data.item.text);
-            setModalVisible(true);
+            onEditPress && onEditPress(rawData[data.index]);
           }}
         />
-        <Option text="Delete" />
+        <Option
+          text="Delete"
+          onPress={() => {
+            console.log(
+              '🚀 ~ file: TasksList.js ~ line 183 ~ renderHiddenItem ~ data',
+              data,
+            );
+            // deleteTask();
+          }}
+        />
         <View style={{flex: 1}} />
       </Animated.View>
     );
@@ -220,6 +182,19 @@ export default function TasksList({rawData}) {
     // list check rederItem, listData
     <View style={{backgroundColor: colors.themeColors.secondary, flex: 1}}>
       <SwipeListView
+        ListHeaderComponent={
+          onAddTaskPress && (
+            <View style={{width: 300, alignSelf: 'center'}}>
+              <TaskItem
+                style={{height: 57, marginBottom: layout.padding.large}}
+                label="+Add Task/Habit"
+                backgroundColor={colors.themeColors.pink}
+                fontColor={colors.themeColors.primary}
+                onPress={onAddTaskPress}
+              />
+            </View>
+          )
+        }
         ListEmptyComponent={
           <View style={{width: '100%', alignItems: 'center'}}>
             <Text style={layout.fonts.nunito}>No Tasks Available</Text>
@@ -243,32 +218,6 @@ export default function TasksList({rawData}) {
         previewOpenDelay={3000}
         onRowDidOpen={onRowDidOpen}
       />
-      <Modal
-        transparent={true}
-        visible={modalVisible}
-        onBackdropPress={() => setModalVisible(false)}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: colors.themeColors.transparent,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <View
-            style={{
-              flex: 1,
-              width: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            transparent={true}>
-            <View style={{flexBasis: MODAL_OFFSET}} />
-            <View>
-              <CustomModal />
-            </View>
-          </View>
-        </View>
-      </Modal>
     </View>
   );
 }

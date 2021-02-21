@@ -10,7 +10,6 @@ const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
     <TouchableOpacity
       onPress={onPress}
       style={{
-        ...style,
         height: 70,
         width: '100%',
         backgroundColor: backgroundColor,
@@ -19,6 +18,7 @@ const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
         flexDirection: 'row',
         borderRadius: BORDER_RADIUS,
         marginBottom: 5,
+        ...style,
       }}>
       <Text
         style={{
