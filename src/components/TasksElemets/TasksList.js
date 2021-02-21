@@ -21,29 +21,28 @@ import {useEffect} from 'react';
 
 export default function TasksList({rawData}) {
   const [reminder, setReminder] = React.useState('');
-  let swipeAnimationArray = [];
-
   const [listData, setListData] = useState([]);
+  const swipeAnimationArray = useRef([]).current;
   const TICK_HEIGHT = '40%';
 
   useEffect(() => {
     if (rawData && rawData.length > 0) {
       const dataList = rawData.map((element, index) => {
         return {
-          key: element.id,
+          id: element.id,
+          key: index,
           text: element.name,
           time: element.epochTime,
         };
       });
-
-      // dataList.forEach((element) => {
-      //   swipeAnimationArray.push(useRef(new Animated.Value(0)).current);
-      // });
+      swipeAnimationArray.current = new Array(dataList.length).fill(
+        new Animated.Value(0),
+      );
       setListData(dataList);
     } else {
       setListData([]);
     }
-  }, [rawData]);
+  }, [rawData, swipeAnimationArray]);
 
   const [tasks, setTasks] = React.useState([]);
   const [task, setTask] = React.useState({name: null, dataTimes: []});
@@ -94,7 +93,7 @@ export default function TasksList({rawData}) {
   const onRowDidOpen = (rowKey) => {};
 
   const renderItem = (data) => {
-    let borderRadius = swipeAnimationArray[data.index].interpolate({
+    let borderRadius = swipeAnimationArray.current[data.index].interpolate({
       inputRange: [0, 83],
       outputRange: [layout.taskCardRadius, 1],
       extrapolate: 'clamp',
@@ -182,7 +181,7 @@ export default function TasksList({rawData}) {
   };
 
   const renderHiddenItem = (data, rowMap) => {
-    let newOpacity = swipeAnimationArray[data.index].interpolate({
+    let newOpacity = swipeAnimationArray.current[data.index].interpolate({
       inputRange: [0, 83],
       outputRange: [0, 1],
       extrapolate: 'clamp',
@@ -212,8 +211,7 @@ export default function TasksList({rawData}) {
       </Animated.View>
     );
   };
-  swipeAnimationArray = new Array(listData.length);
-  swipeAnimationArray.fill(useRef(new Animated.Value(0)).current);
+
   return (
     // list check rederItem, listData
     <View style={{backgroundColor: colors.themeColors.secondary, flex: 1}}>
@@ -230,7 +228,7 @@ export default function TasksList({rawData}) {
           <View style={{padding: layout.padding.medium}} />
         )}
         onSwipeValueChange={({value, key}) => {
-          swipeAnimationArray[key].setValue(value);
+          swipeAnimationArray.current[key].setValue(value);
         }}
         renderHiddenItem={renderHiddenItem}
         leftOpenValue={
