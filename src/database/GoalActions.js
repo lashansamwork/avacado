@@ -15,12 +15,19 @@ export const addToGoal = (newGoal) =>
       .catch((error) => reject(error));
   });
 
-export const getGoals = () =>
+export const getGoals = (goalId) =>
   new Promise((resolve, reject) => {
     Realm.open(databaseOptions)
       .then((realm) => {
-        const goals = realm.objects(GoalSchemaName);
-        resolve(goals);
+        if (typeof goalId === 'number') {
+          const goals = realm
+            .objects(GoalSchemaName)
+            .filtered(`id == ${goalId}`);
+          resolve(goals);
+        } else {
+          const goals = realm.objects(GoalSchemaName);
+          resolve(goals);
+        }
       })
       .catch((error) => reject(error));
   });

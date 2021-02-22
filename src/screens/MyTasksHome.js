@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, View, Modal} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  Modal,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 import DaysList from '../components/DayElements/DaysList';
@@ -8,22 +15,62 @@ import {getGoals, updateTask, deleteTask} from '../database/GoalActions';
 import {useEffect} from 'react';
 import TaskNameModal from '../components/Modals/TaskNameModal';
 import TaskTimeModal from '../components/Modals/TaskTimeModal';
+const LeftArrow = require('../assets/images/ArrowLeft.png');
 const MODAL_OFFSET = 200;
 
-const MyTasksHome = ({navigation}) => {
+const MyTasksHome = ({navigation, route}) => {
   const [tasks, setTasks] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [isVisibleEditModal, setIsVisibleEditModal] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
   const [selectedDay, setSelectedDay] = React.useState({text: 'Sun'});
   const [selectedItem, setSelectedItem] = useState(null);
+  const selectedGoal = route?.params?.goal;
   useEffect(() => {
     updateGoalsState();
   }, []);
 
+  React.useLayoutEffect(() => {
+    if (selectedGoal) {
+      navigation.setOptions({
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.pop();
+            }}
+            activeOpacity={0.8}>
+            <View
+              style={{
+                aspectRatio: 1,
+                height: layout.heights.xxxshort,
+                marginLeft: 30,
+              }}>
+              <Image
+                style={{flex: 1, width: null, height: null}}
+                resizeMode="stretch"
+                source={LeftArrow}
+              />
+            </View>
+          </TouchableOpacity>
+        ),
+        headerStyle: {
+          backgroundColor: '#FFFFFF',
+          shadowRadius: 0,
+          shadowOffset: {
+            height: 0,
+          },
+        },
+        headerBackTitle: <></>,
+        headerTitle: <></>,
+      });
+    }
+  }, [navigation]);
+
   const updateGoalsState = () => {
     //not good code ( this code divides the relationship between goals and tasks )
-    getGoals().then((realmArr) => {
+    const selectedGoal = route?.params?.goal;
+
+    getGoals(selectedGoal?.id).then((realmArr) => {
       const goals = realmArr.map((goal) => goal);
       const arraysOfTasks = goals.map((goal) => [
         ...goal.tasks.map((task) => {

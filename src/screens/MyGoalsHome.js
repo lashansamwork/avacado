@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native';
-import {View, Text, FlatList, Modal, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Modal,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import layout from '../theme/layout';
 import ListCard from '../components/Cards/ListCard';
 import ActionButton from 'react-native-action-button';
@@ -35,7 +42,7 @@ const MyGoalsHome = ({navigation}) => {
           buttonText: 'Remind me how?',
           subText: element.when,
           buttonOnPress: () => {
-            navigation.navigate('MyTasksForGoal', {myGoal: element});
+            navigation.navigate('MyGoalTask', {goal: element});
           },
         };
       });
