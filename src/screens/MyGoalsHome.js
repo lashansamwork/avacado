@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, Modal, TouchableOpacity} from 'react-native';
 import layout from '../theme/layout';
 import ListCard from '../components/Cards/ListCard';
 import ActionButton from 'react-native-action-button';
@@ -9,17 +9,22 @@ import PlusIcon from '../components/SvgIcons/PlusIcon';
 import {getGoals} from '../database/GoalActions';
 import {useEffect} from 'react';
 import {getImageFromCategory} from '../utility/GlobalFunctions';
+import moment from 'moment';
+import TaskDeleteModal from '../components/Modals/TaskDeleteModal';
 
 const MyGoalsHome = ({navigation}) => {
   const [myGoals, setMyGoals] = useState([]);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     getGoals().then((realmArr) => {
       const goalArray = realmArr.map((element, index) => {
+        const {image, aspectRatio} = getImageFromCategory(element.category);
         return {
           key: index,
-          imageUrl: getImageFromCategory(element.category),
-          imageAspectRatio: layout.imageAspectRatio.readingGirl,
+          imageUrl: image,
+          imageAspectRatio: aspectRatio,
           title: element.name,
           description: element.description,
           buttonText: 'Remind me how?',
@@ -33,6 +38,44 @@ const MyGoalsHome = ({navigation}) => {
     });
   }, []);
 
+  const onDeleteGoalPressed = () => {
+    console.log(
+      '🚀 ~ file: MyGoalsHome.js ~ line 44 ~ onDeleteGoalPressed ~ selectedItem',
+      selectedItem,
+    );
+  };
+
+  const RenderDeleteModal = ({visible, onDeletePress, onCancelPress}) => {
+    return (
+      <Modal visible={visible} transparent={true}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: colors.themeColors.transparentLight,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'transparent',
+            }}
+            onPressOut={() => {
+              setDeleteModal(false);
+            }}>
+            <TaskDeleteModal
+              onDeletePress={onDeletePress}
+              onCancelPress={onCancelPress}
+            />
+          </TouchableOpacity>
+        </View>
+      </Modal>
+    );
+  };
+
   return (
     <SafeAreaView
       edges={['top']}
@@ -40,6 +83,11 @@ const MyGoalsHome = ({navigation}) => {
         flex: 1,
       }}>
       <View style={{flex: 1}}>
+        <RenderDeleteModal
+          visible={deleteModal}
+          onDeletePress={onDeleteGoalPressed}
+          onCancelPress={() => setDeleteModal(false)}
+        />
         <View
           style={{
             flex: 1,
@@ -87,13 +135,18 @@ const MyGoalsHome = ({navigation}) => {
               <View style={{margin: layout.padding.large}}>
                 {/* 👉  list card detail sent */}
                 <ListCard
+                  onDeletePress={() => {
+                    setSelectedItem(item);
+                    console.log('tadaa....');
+                    setDeleteModal(true);
+                  }}
                   imageUrl={item.imageUrl}
                   imageAspectRatio={item.imageAspectRatio}
                   title={item.title}
                   description={item.description}
                   buttonText={item.buttonText}
                   buttonOnPress={item.buttonOnPress}
-                  subText={item.subText}
+                  subText={moment(item.subText).format('llll')}
                 />
               </View>
             )}
