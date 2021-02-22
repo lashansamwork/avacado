@@ -42,9 +42,11 @@ export const deleteGoal = (id) =>
   new Promise((resolve, reject) => {
     Realm.open(databaseOptions)
       .then((realm) => {
-        const goal = realm.objects(GoalSchemaName).filtered(`id == ${id}`);
-        realm.delete(goal);
-        resolve();
+        realm.write(() => {
+          const goal = realm.objectForPrimaryKey(GoalSchemaName, id);
+          realm.delete(goal);
+          resolve();
+        });
       })
       .catch((error) => reject(error));
   });
@@ -92,17 +94,8 @@ export const addNewTask = (goalId, task) =>
     Realm.open(databaseOptions)
       .then((realm) => {
         realm.write(() => {
-          console.log('🚀 ~ file: GoalActions.js ~ line 90 ~ goalId', goalId);
           const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
-          console.log(
-            '🚀 ~ file: GoalActions.js ~ line 95 ~ realm.write ~ goal',
-            JSON.parse(JSON.stringify(goal)),
-          );
           const newTask = {...task, id: goal.tasks.length};
-          console.log(
-            '🚀 ~ file: GoalActions.js ~ line 96 ~ realm.write ~ newTask',
-            newTask,
-          );
           goal.tasks = [...goal.tasks, newTask];
           resolve(goal);
         });

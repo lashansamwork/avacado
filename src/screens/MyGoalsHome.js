@@ -6,7 +6,7 @@ import ListCard from '../components/Cards/ListCard';
 import ActionButton from 'react-native-action-button';
 import colors from '../theme/colors';
 import PlusIcon from '../components/SvgIcons/PlusIcon';
-import {getGoals} from '../database/GoalActions';
+import {getGoals, deleteGoal} from '../database/GoalActions';
 import {useEffect} from 'react';
 import {getImageFromCategory} from '../utility/GlobalFunctions';
 import moment from 'moment';
@@ -18,10 +18,15 @@ const MyGoalsHome = ({navigation}) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
+    updateGoals();
+  }, []);
+
+  const updateGoals = () => {
     getGoals().then((realmArr) => {
       const goalArray = realmArr.map((element, index) => {
         const {image, aspectRatio} = getImageFromCategory(element.category);
         return {
+          id: element.id,
           key: index,
           imageUrl: image,
           imageAspectRatio: aspectRatio,
@@ -36,13 +41,18 @@ const MyGoalsHome = ({navigation}) => {
       });
       setMyGoals(goalArray);
     });
-  }, []);
+  };
 
   const onDeleteGoalPressed = () => {
     console.log(
       '🚀 ~ file: MyGoalsHome.js ~ line 44 ~ onDeleteGoalPressed ~ selectedItem',
       selectedItem,
     );
+    deleteGoal(selectedItem.id).then(() => {
+      updateGoals();
+      console.log('tadaa....');
+    });
+    setDeleteModal(false);
   };
 
   const RenderDeleteModal = ({visible, onDeletePress, onCancelPress}) => {
@@ -85,7 +95,7 @@ const MyGoalsHome = ({navigation}) => {
       <View style={{flex: 1}}>
         <RenderDeleteModal
           visible={deleteModal}
-          onDeletePress={onDeleteGoalPressed}
+          onDeletePress={() => onDeleteGoalPressed()}
           onCancelPress={() => setDeleteModal(false)}
         />
         <View
@@ -137,7 +147,6 @@ const MyGoalsHome = ({navigation}) => {
                 <ListCard
                   onDeletePress={() => {
                     setSelectedItem(item);
-                    console.log('tadaa....');
                     setDeleteModal(true);
                   }}
                   imageUrl={item.imageUrl}
