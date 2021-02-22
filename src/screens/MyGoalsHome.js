@@ -44,10 +44,6 @@ const MyGoalsHome = ({navigation}) => {
   };
 
   const onDeleteGoalPressed = () => {
-    console.log(
-      '🚀 ~ file: MyGoalsHome.js ~ line 44 ~ onDeleteGoalPressed ~ selectedItem',
-      selectedItem,
-    );
     deleteGoal(selectedItem.id).then(() => {
       updateGoals();
       console.log('tadaa....');

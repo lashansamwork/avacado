@@ -45,7 +45,6 @@ const ListCard = ({
     if (myRbSheet && isVisibleRBSheet) {
       myRbSheet.open();
     } else if (!myRbSheet && !isVisibleRBSheet && pressedButton === 'delete') {
-      console.log('tadaaa....');
       onDeletePress && onDeletePress();
     }
   }, [isVisibleRBSheet]);
