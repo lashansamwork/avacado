@@ -1,18 +1,7 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Modal,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
-import DotIcon from '../components/SvgIcons/DotIcon';
-import PinkButton from '../components/Buttons/PinkButton';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import {useEffect} from 'react';
 import LeftArrow from '../components/NavBar/LeftArrow';
 const GoalInfoScreen = ({navigation, route}) => {
   const title = route?.params?.title;
