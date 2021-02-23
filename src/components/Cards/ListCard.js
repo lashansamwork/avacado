@@ -79,7 +79,6 @@ const ListCard = ({
             flex: 14,
             alignItems: 'center',
             paddingTop: layout.padding.medium,
-            borderWidth: 2,
           }}>
           <View
             style={{

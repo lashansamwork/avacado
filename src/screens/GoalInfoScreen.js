@@ -13,7 +13,7 @@ import DotIcon from '../components/SvgIcons/DotIcon';
 import PinkButton from '../components/Buttons/PinkButton';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {useEffect} from 'react';
-const LeftArrow = require('../assets/images/ArrowLeft.png');
+import LeftArrow from '../components/NavBar/LeftArrow';
 const GoalInfoScreen = ({navigation, route}) => {
   const title = route?.params?.title;
   const description = route?.params?.description;
@@ -23,26 +23,7 @@ const GoalInfoScreen = ({navigation, route}) => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.pop();
-          }}
-          activeOpacity={0.8}>
-          <View
-            style={{
-              aspectRatio: 1,
-              height: layout.heights.xxxshort,
-              marginLeft: 30,
-            }}>
-            <Image
-              style={{flex: 1, width: null, height: null}}
-              resizeMode="stretch"
-              source={LeftArrow}
-            />
-          </View>
-        </TouchableOpacity>
-      ),
+      headerLeft: () => <LeftArrow onNavigation={() => navigation.pop()} />,
       headerStyle: {
         backgroundColor: '#FFFFFF',
         shadowRadius: 0,
@@ -73,7 +54,7 @@ const GoalInfoScreen = ({navigation, route}) => {
           style={{
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.primary,
-            fontSize: 19.5,
+            fontSize: layout.fontSizes.xheader,
           }}>
           My Why
         </Text>
@@ -103,7 +84,7 @@ const GoalInfoScreen = ({navigation, route}) => {
           style={{
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.primary,
-            fontSize: 20,
+            fontSize: layout.fontSizes.xheader,
           }}>
           {title}
         </Text>
@@ -115,7 +96,7 @@ const GoalInfoScreen = ({navigation, route}) => {
         }}>
         <Text
           style={{
-            fontSize: 10,
+            fontSize: layout.fontSizes.xsmall,
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.transparent,
           }}>

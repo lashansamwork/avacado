@@ -40,6 +40,7 @@ const layout = {
     xsmall: 10,
     small: 11,
     medium: 14,
+    xheader: 19.5,
     header: 20,
     mediumHigh: 14,
     subText: 12,
