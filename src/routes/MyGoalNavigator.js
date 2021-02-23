@@ -6,6 +6,7 @@ import GoalQuestionsNavigator from '../routes/GoalQuestionsNavigator';
 import MyTasksHome from '../screens/MyTasksHome';
 import layout from '../theme/layout';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
+import GoalInfoScreen from '../screens/GoalInfoScreen';
 const Stack = createStackNavigator();
 
 const MyGoalNavigator = ({navigation}) => {
@@ -26,7 +27,16 @@ const MyGoalNavigator = ({navigation}) => {
         component={GoalQuestionsNavigator}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="MyGoalTask" component={MyTasksHome} />
+      <Stack.Screen
+        name="GoalInfoScreen"
+        component={GoalInfoScreen}
+        options={{headerShown: true}}
+      />
+      <Stack.Screen
+        name="MyGoalTask"
+        component={MyTasksHome}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

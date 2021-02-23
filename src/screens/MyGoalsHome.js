@@ -89,6 +89,15 @@ const MyGoalsHome = ({navigation}) => {
     );
   };
 
+  const onCardPress = (item) => {
+    navigation.navigate('GoalInfoScreen', {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      imageAspectRatio: item.imageAspectRatio,
+      description: item.description,
+    });
+  };
+
   return (
     <SafeAreaView
       edges={['top']}
@@ -159,6 +168,7 @@ const MyGoalsHome = ({navigation}) => {
                   buttonText={item.buttonText}
                   buttonOnPress={item.buttonOnPress}
                   subText={moment(item.subText).format('llll')}
+                  onCardPress={() => onCardPress(item)}
                 />
               </View>
             )}

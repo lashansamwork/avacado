@@ -22,6 +22,7 @@ const ListCard = ({
   buttonOnPress,
   subText,
   onDeletePress,
+  onCardPress,
 }) => {
   const RBSHEET_HEIGHT = 300;
   const RBSHEET_OPEN_DURATION = 250;
@@ -72,11 +73,13 @@ const ListCard = ({
           </View>
           <View style={{flex: 1}} />
         </View>
-        <View
+        <TouchableOpacity
+          onPress={onCardPress}
           style={{
             flex: 14,
             alignItems: 'center',
             paddingTop: layout.padding.medium,
+            borderWidth: 2,
           }}>
           <View
             style={{
@@ -131,7 +134,7 @@ const ListCard = ({
               <PinkButton onPress={buttonOnPress} text={buttonText} />
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
