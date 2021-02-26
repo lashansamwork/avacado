@@ -5,7 +5,11 @@ import colors from '../../theme/colors';
 import CustomTextInput from '../CustomTextInput';
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskNameModal = (props) => {
+const TaskNameModal = ({onSubmit, initialName = ''}) => {
+  console.log(
+    '🚀 ~ file: TaskNameModal.js ~ line 9 ~ TaskNameModal ~ initialName',
+    initialName,
+  );
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -13,8 +17,8 @@ const TaskNameModal = (props) => {
   const TEXT_INPUT_OFFSET = 30;
   const PICKER_CONTAINER_WIDTH = '85%';
   const TEXT_GAP = 2;
-
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState(initialName);
+  const [error, setError] = React.useState(false);
 
   return (
     <View
@@ -41,11 +45,10 @@ const TaskNameModal = (props) => {
       <View style={{flexBasis: TEXT_INPUT_OFFSET}} />
       <View
         style={{
-          width: '60%',
+          width: '53%',
           flexShrink: 1,
           borderBottomColor: colors.themeColors.pink,
           borderBottomWidth: 1,
-          alignItems: 'center',
         }}>
         <CustomTextInput
           textColor={colors.themeColors.secondary}
@@ -60,6 +63,25 @@ const TaskNameModal = (props) => {
           onChangeText={(text) => setName(text)}
         />
       </View>
+      {!error && (
+        <View
+          style={{
+            flexBasis: 30,
+            width: '100%',
+          }}
+        />
+      )}
+      {error && (
+        <Text
+          style={{
+            lineHeight: layout.defaultLineHeight,
+            fontSize: layout.fontSizes.welcomeText,
+            fontFamily: layout.fonts.nunito,
+            color: colors.themeColors.error,
+          }}>
+          Name cannot be empty
+        </Text>
+      )}
       <View
         style={{
           flex: 11,
@@ -68,7 +90,16 @@ const TaskNameModal = (props) => {
           justifyContent: 'center',
           width: PICKER_CONTAINER_WIDTH,
         }}>
-        <TouchableOpacity style={{alignSelf: 'center'}} onPress={props.onPress}>
+        <TouchableOpacity
+          style={{alignSelf: 'center'}}
+          onPress={() => {
+            if (name && name !== '') {
+              // name not empty do
+              onSubmit(name);
+            } else {
+              setError(true);
+            }
+          }}>
           <CheckCircle />
         </TouchableOpacity>
       </View>

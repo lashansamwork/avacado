@@ -40,6 +40,7 @@ const layout = {
     xsmall: 10,
     small: 11,
     medium: 14,
+    xheader: 19.5,
     header: 20,
     mediumHigh: 14,
     subText: 12,
@@ -81,6 +82,7 @@ const layout = {
     medium: 200,
     tall: 300,
     xxtall: 440,
+    backButton: 80,
   },
   fonts: {
     nunitoLight: 'Nunito-Light',

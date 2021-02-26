@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-// import Modal from 'react-native-modal';
+import {Text, View, TouchableOpacity} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import DatePicker from 'react-native-date-picker';
 import WheelPicker from 'react-native-wheely';
 import DayList from '../MultipleDaySelector/DayList';
+import CheckCircle from '../../assets/images/CheckCircle';
 
-const TaskTimeModal = () => {
+const TaskTimeModal = ({
+  onSubmit,
+  initialTime = new Date(),
+  initialDaysRepeat = [],
+  initialTimes = 5,
+}) => {
   const MODAL_RATIO = 302 / 384;
   const MODAL_WIDTH = '80.8%';
   const MODAL_RADIUS = 30;
@@ -18,9 +23,10 @@ const TaskTimeModal = () => {
   const WHEEL_ITEM_HEIGHT = 18;
   const WHEELPICKER_HEIGHT = '48%';
   const SEPERATOR_WIDTH = '95%';
-
-  const [date, setDate] = useState(new Date());
-  const [times, setTimes] = useState(5);
+  const [error, setError] = React.useState(false);
+  const [date, setDate] = useState(initialTime);
+  const [times, setTimes] = useState(initialTimes);
+  const [repeatDays, setRepeatDays] = useState(initialDaysRepeat);
 
   return (
     <View
@@ -95,7 +101,13 @@ const TaskTimeModal = () => {
           Repeat every
         </Text>
         <View style={{flex: 0.5}}>
-          <DayList />
+          {/* list of days */}
+          <DayList
+            initialSelect={repeatDays}
+            onDaysSubmit={(days) => {
+              setRepeatDays(days);
+            }}
+          />
         </View>
         <Text
           style={{
@@ -149,6 +161,60 @@ const TaskTimeModal = () => {
             itemStyle={{backgroundColor: colors.themeColors.primary}}
           />
         </View>
+      </View>
+      <View
+        style={{
+          flex: 11,
+          overflow: 'hidden',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: PICKER_CONTAINER_WIDTH,
+        }}>
+        {/* dateTimeObject passed */}
+        <TouchableOpacity
+          style={{alignSelf: 'center'}}
+          onPress={() => {
+            if (repeatDays !== null) {
+              let daysStringArray = [];
+              repeatDays.forEach((e) => {
+                if (e.isSelected === true) {
+                  daysStringArray.push(e.text);
+                }
+              });
+              let epochTime = date.getTime();
+              onSubmit({epochTime, times, daysStringArray});
+            } else {
+              setError(true);
+            }
+          }}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Select the days to repeat
+            </Text>
+          )}
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <CheckCircle />
+          </View>
+          <View
+            style={{
+              flexBasis: 30,
+            }}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

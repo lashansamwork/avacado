@@ -1,39 +1,102 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Image} from 'react-native';
-import {View, Text, TouchableOpacity, FlatList} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Modal,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import layout from '../theme/layout';
 import ListCard from '../components/Cards/ListCard';
-const YogaGirl = require('../assets/images/YogaGirl.png');
-const ReadingGirl = require('../assets/images/ReadingGirl.png');
 import ActionButton from 'react-native-action-button';
 import colors from '../theme/colors';
 import PlusIcon from '../components/SvgIcons/PlusIcon';
+import {getGoals, deleteGoal} from '../database/GoalActions';
+import {useEffect} from 'react';
+import {getImageFromCategory} from '../utility/GlobalFunctions';
+import moment from 'moment';
+import TaskDeleteModal from '../components/Modals/TaskDeleteModal';
 
 const MyGoalsHome = ({navigation}) => {
-  const MY_TASKS = [
-    {
-      imageUrl: YogaGirl,
-      imageAspectRatio: layout.imageAspectRatio.yogaGirl,
-      title: 'Goal Name',
-      description:
-        'Because I wan’t to be healthy and beautiful which will make me more confident and strong which help me to get what I want in my life…. More',
-      buttonText: 'Remind me how?',
-      subText: 'june 5th 2020',
-      buttonOnPress: () => {},
-    },
-    {
-      imageUrl: ReadingGirl,
-      imageAspectRatio: layout.imageAspectRatio.readingGirl,
-      title: 'Goal Name',
-      description:
-        'Because I wan’t to be healthy and beautiful which will make me more confident and strong which help me to get what I want in my life…. More',
-      buttonText: 'Remind me how?',
-      subText: 'june 5th 2020',
-      buttonOnPress: () => {},
-    },
-  ];
+  const [myGoals, setMyGoals] = useState([]);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const [myGoals, setMyGoals] = useState(MY_TASKS);
+  useEffect(() => {
+    updateGoals();
+  }, []);
+
+  const updateGoals = () => {
+    getGoals().then((realmArr) => {
+      const goalArray = realmArr.map((element, index) => {
+        const {image, aspectRatio} = getImageFromCategory(element.category);
+        return {
+          id: element.id,
+          key: index,
+          imageUrl: image,
+          imageAspectRatio: aspectRatio,
+          title: element.name,
+          description: element.description,
+          buttonText: 'Remind me how?',
+          subText: element.when,
+          buttonOnPress: () => {
+            navigation.navigate('MyGoalTask', {goal: element});
+          },
+        };
+      });
+      setMyGoals(goalArray);
+    });
+  };
+
+  const onDeleteGoalPressed = () => {
+    deleteGoal(selectedItem.id).then(() => {
+      updateGoals();
+      console.log('tadaa....');
+    });
+    setDeleteModal(false);
+  };
+
+  const RenderDeleteModal = ({visible, onDeletePress, onCancelPress}) => {
+    return (
+      <Modal visible={visible} transparent={true}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: colors.themeColors.transparentLight,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <TouchableOpacity
+            style={{
+              flex: 1,
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'transparent',
+            }}
+            onPressOut={() => {
+              setDeleteModal(false);
+            }}>
+            <TaskDeleteModal
+              onDeletePress={onDeletePress}
+              onCancelPress={onCancelPress}
+            />
+          </TouchableOpacity>
+        </View>
+      </Modal>
+    );
+  };
+
+  const onCardPress = (item) => {
+    navigation.navigate('GoalInfoScreen', {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      imageAspectRatio: item.imageAspectRatio,
+      description: item.description,
+    });
+  };
 
   return (
     <SafeAreaView
@@ -42,6 +105,11 @@ const MyGoalsHome = ({navigation}) => {
         flex: 1,
       }}>
       <View style={{flex: 1}}>
+        <RenderDeleteModal
+          visible={deleteModal}
+          onDeletePress={() => onDeleteGoalPressed()}
+          onCancelPress={() => setDeleteModal(false)}
+        />
         <View
           style={{
             flex: 1,
@@ -84,18 +152,23 @@ const MyGoalsHome = ({navigation}) => {
             keyExtractor={(item, index) => `${index}`}
             contentContainerStyle={{
               paddingHorizontal: layout.padding.medium,
-              width: '100%',
             }}
             renderItem={({item, index}) => (
               <View style={{margin: layout.padding.large}}>
+                {/* 👉  list card detail sent */}
                 <ListCard
+                  onDeletePress={() => {
+                    setSelectedItem(item);
+                    setDeleteModal(true);
+                  }}
                   imageUrl={item.imageUrl}
                   imageAspectRatio={item.imageAspectRatio}
                   title={item.title}
                   description={item.description}
                   buttonText={item.buttonText}
                   buttonOnPress={item.buttonOnPress}
-                  subText={item.subText}
+                  subText={moment(item.subText).format('llll')}
+                  onCardPress={() => onCardPress(item)}
                 />
               </View>
             )}

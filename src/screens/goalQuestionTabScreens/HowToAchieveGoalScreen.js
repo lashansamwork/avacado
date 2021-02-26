@@ -4,6 +4,9 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  ScrollView,
+  SafeAreaView,
+  FlatList,
   Modal,
 } from 'react-native';
 // import Modal from 'react-native-modal';
@@ -14,31 +17,73 @@ import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 import TaskNameModal from '../../components/Modals/TaskNameModal';
 
-const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+// <<<<<<< HEAD
+const BORDER_RADIUS = 20;
+
+//Task Item sent here
+const Item = ({title}) => (
+  <TaskItem
+    backgroundColor={colors.themeColors.primary}
+    label={title} // check flatlist, pulls from STATE : tasks
+    fontColor={colors.themeColors.secondary}
+  />
+);
+
+const HowToAchieveGoalScreen = (onPress, oldTasks) => {
+  const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
+
+  // =======
+  // const HowToAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
+  // >>>>>>> origin/code/category-dynamic
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
   const MODAL_OFFSET = 200;
-
+  const [error, setError] = React.useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
-
+  const [tasks, setTasks] = React.useState(oldTasks);
+  const [task, setTask] = React.useState({name: null});
   const CustomModal = () => {
     if (modalIndex === 0) {
-      return <TaskNameModal onPress={() => setModalIndex(1)} />;
+      return (
+        <TaskNameModal
+          onSubmit={(taskName) => {
+            setTask({
+              ...task,
+              name: taskName,
+            });
+            setModalIndex(1);
+          }}
+        />
+      );
     }
-    return <TaskTimeModal />;
+    return (
+      <TaskTimeModal
+        onSubmit={({epochTime, times, daysStringArray}) => {
+          let repeatDays = daysStringArray;
+          //todo conevert correct way;
+          setTask({
+            ...task,
+            epochTime: epochTime,
+            repeats: times,
+            daysToRepeat: repeatDays,
+          });
+          setTasks([
+            ...tasks,
+            {
+              ...task,
+              epochTime: epochTime,
+              repeats: times,
+              daysToRepeat: repeatDays,
+            },
+          ]);
+          setModalIndex(0);
+          setModalVisible(false);
+        }}
+      />
+    );
   };
-
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
 
   return (
     <View style={{flexGrow: 1}}>
@@ -70,13 +115,20 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
           </View>
           <View style={{flex: 16, alignItems: 'center'}}>
             <TaskItem
-              style={{position: 'absolute', top: 0}}
+              style={{marginBottom: 6}}
               label="+Add Task/Habit"
               backgroundColor={colors.themeColors.pink}
               fontColor={colors.themeColors.primary}
               onPress={() => {
                 setModalVisible(true);
               }}
+            />
+
+            <FlatList
+              style={{width: '100%'}}
+              data={tasks}
+              renderItem={renderItem} // fires render
+              keyExtractor={(item, index) => index.toString()}
             />
           </View>
         </View>
@@ -85,16 +137,44 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
             flex: 13,
             paddingHorizontal: layout.padding.screenHorizontal,
           }}>
-          <View style={{flex: 26}}>
+          <View style={{flex: 5}}>
             <TouchableOpacity
-              onPress={onPress}
+              onPress={() => {
+                if (tasks !== undefined && tasks.length !== 0) {
+                  onPress(tasks);
+                } else {
+                  setError(true);
+                }
+              }}
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'flex-start',
               }}>
               <CheckCircle />
+              {/* submit button  */}
             </TouchableOpacity>
+          </View>
+          <View style={{flex: 20}}>
+            {!error && (
+              <View
+                style={{
+                  flexBasis: 30,
+                }}
+              />
+            )}
+            {error && (
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  lineHeight: layout.defaultLineHeight,
+                  fontSize: layout.fontSizes.welcomeText,
+                  fontFamily: layout.fonts.nunito,
+                  color: colors.themeColors.error,
+                }}>
+                Add at least one task for your goal
+              </Text>
+            )}
           </View>
         </View>
       </View>
@@ -110,25 +190,20 @@ const HowToAchieveGoalScreen = (onPress, goBack, {navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <TouchableOpacity
+          <View
             style={{
               flex: 1,
               width: '100%',
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            transparent={true}
-            onPressOut={() => {
-              setModalIndex(0);
-              setModalVisible(false);
-            }}>
+            transparent={true}>
             <View style={{flexBasis: MODAL_OFFSET}} />
-            <TouchableWithoutFeedback touchSoundDisabled>
-              <View>
-                <CustomModal />
-              </View>
-            </TouchableWithoutFeedback>
-          </TouchableOpacity>
+
+            <View>
+              <CustomModal />
+            </View>
+          </View>
         </View>
       </Modal>
     </View>

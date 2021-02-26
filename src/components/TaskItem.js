@@ -1,29 +1,46 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import layout from '../theme/layout';
+const ClockIcon = require('../assets/images/ClockIcon.png');
 
-const TaskItem = (props) => {
+const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
   const BORDER_RADIUS = 20;
+  const CLOCK_HEIGHT = 16;
   return (
     <TouchableOpacity
-      onPress={props.onPress}
+      onPress={onPress}
       style={{
-        ...props.style,
-        height: '22.2%',
+        height: 70,
         width: '100%',
-        backgroundColor: props.backgroundColor,
-        justifyContent: 'center',
+        backgroundColor: backgroundColor,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
         borderRadius: BORDER_RADIUS,
+        marginBottom: 5,
+        ...style,
       }}>
       <Text
         style={{
           fontFamily: layout.fonts.nunito,
           fontSize: layout.fontSizes.medium,
-          color: props.fontColor,
+          color: fontColor,
           paddingLeft: layout.padding.xxxLarge,
         }}>
-        {props.label}
+        {label}
       </Text>
+      <View
+        style={{
+          aspectRatio: 1,
+          height: CLOCK_HEIGHT,
+          marginRight: layout.padding.xxxLarge,
+        }}>
+        <Image
+          source={ClockIcon}
+          resizeMode="stretch"
+          style={{width: null, height: null, flex: 1}}
+        />
+      </View>
     </TouchableOpacity>
   );
 };

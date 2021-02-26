@@ -6,9 +6,11 @@ import CheckCircle from '../assets/images/CheckCircle';
 import CustomTextInput from '../components/CustomTextInput';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
+import {addUser} from '../database/UserActions';
 
 const FirstPageScreen = ({navigation}) => {
   const [name, setName] = React.useState('');
+  const [error, setError] = React.useState(false);
   const COUCH_IMAGE_HEIGHT = '57%';
   const LOGO_OFFSET = 26;
   const TEXT_GAP = 1;
@@ -87,10 +89,28 @@ const FirstPageScreen = ({navigation}) => {
           value={name}
           onChangeText={(text) => setName(text)}
         />
+        {error && (
+          <Text
+            style={{
+              lineHeight: layout.defaultLineHeight,
+              fontSize: layout.fontSizes.welcomeText,
+              fontFamily: layout.fonts.nunito,
+              color: colors.themeColors.error,
+            }}>
+            Name cannot be empty
+          </Text>
+        )}
         <View style={{flex: 0.22}} />
         <TouchableOpacity
           style={{alignSelf: 'center'}}
-          onPress={() => navigation.navigate('AddGoalScreen')}>
+          onPress={() => {
+            if (name && name !== '') {
+              addUser({name: name});
+              navigation.navigate('AddGoalScreen');
+            } else {
+              setError(true);
+            }
+          }}>
           <CheckCircle />
         </TouchableOpacity>
       </View>

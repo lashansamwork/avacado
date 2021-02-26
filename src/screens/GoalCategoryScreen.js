@@ -38,7 +38,12 @@ const GoalCategoryScreen = ({navigation}) => {
         <View style={{flex: 1}} />
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Physical & Health',
+              categoryId: 0,
+            })
+          }>
           <View
             style={{
               height: layout.autoImageSizes.medium,
@@ -68,7 +73,12 @@ const GoalCategoryScreen = ({navigation}) => {
 
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Career & Educational',
+              categoryId: 1,
+            })
+          }>
           <View style={{flexBasis: READING_GIRL_OFFSET}} />
           <View
             style={{
@@ -93,7 +103,12 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Finance',
+              categoryId: 2,
+            })
+          }>
           <View style={{flexBasis: FINANCE_GIRL_OFFSET}} />
           <View
             style={{
@@ -118,7 +133,12 @@ const GoalCategoryScreen = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flex: 7, alignItems: 'center'}}
-          onPress={() => navigation.navigate('GoalQuestionsScreen')}>
+          onPress={() =>
+            navigation.navigate('GoalQuestionsScreen', {
+              category: 'Self Growth',
+              categoryId: 3,
+            })
+          }>
           <View
             style={{
               height: layout.autoImageSizes.large,

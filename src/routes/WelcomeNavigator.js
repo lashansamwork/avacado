@@ -5,7 +5,6 @@ let Stack = createStackNavigator();
 import FirstPageScreen from '../screens/FirstPageScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
 import GoalQuestionsNavigator from '../routes/GoalQuestionsNavigator';
-import AboutScreen from '../screens/AboutScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import GoalAddedScreen from '../screens/GoalAddedScreen';
 const WelcomeNavigator = () => {
@@ -13,6 +12,7 @@ const WelcomeNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        gestureEnabled: false,
       }}
       initialRouteName="WelcomeScreen">
       <Stack.Screen
@@ -32,11 +32,6 @@ const WelcomeNavigator = () => {
       <Stack.Screen
         name="AddGoalScreen"
         component={AddGoalScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="AboutScreen"
-        component={AboutScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

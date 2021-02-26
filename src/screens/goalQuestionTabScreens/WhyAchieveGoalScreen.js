@@ -11,21 +11,16 @@ import colors from '../../theme/colors';
 
 import CheckCircle from '../../assets/images/CheckCircle';
 
-const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
+// <<<<<<< HEAD
+const WhyAchieveGoalScreen = (onPress) => {
+  // =======
+  // const WhyAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
+  // >>>>>>> origin/code/category-dynamic
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
-  const HEADING_GAP = '26%';
+  const HEADING_GAP = '29.5%';
   const HEADING_OFFSET = '25.9%';
-
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
+  const [error, setError] = React.useState(false);
   return (
     <SafeAreaView
       style={{
@@ -74,16 +69,24 @@ const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
               fontSize: layout.fontSizes.medium,
             }}
             value={reason}
-            onChange={() => setReason()}
+            onChangeText={(text) => {
+              setReason(text);
+            }}
           />
         </View>
       </View>
       <View
         style={{flex: 9, paddingHorizontal: layout.padding.screenHorizontal}}>
-        <View style={{flex: 26}}>
+        <View style={{flex: 5}}>
           <View style={{flexBasis: CHECK_BUTTON_OFFSET}} />
           <TouchableOpacity
-            onPress={onPress}
+            onPress={() => {
+              if (reason !== '') {
+                onPress(reason);
+              } else {
+                setError(true);
+              }
+            }}
             style={{
               flex: 1,
               alignItems: 'center',
@@ -91,6 +94,27 @@ const WhyAchieveGoalScreen = (onPress, goBack, {navigation}) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goal
+            </Text>
+          )}
         </View>
       </View>
     </SafeAreaView>

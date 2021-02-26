@@ -4,7 +4,7 @@ import PlusInsideCircle from '../assets/images/PlusInsideCircle';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 
-const addGoalScreen = ({navigation}) => {
+const AddGoalScreen = ({navigation}) => {
   return (
     <View
       style={{
@@ -35,4 +35,4 @@ const addGoalScreen = ({navigation}) => {
   );
 };
 
-export default addGoalScreen;
+export default AddGoalScreen;

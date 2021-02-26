@@ -9,7 +9,7 @@ import layout from '../../theme/layout';
 import LeftArrow from '../Calendars/LeftArrow';
 import RightArrow from '../Calendars/RightArrow';
 
-const PrimaryCalendar = (props) => {
+const PrimaryCalendar = ({onSelect}) => {
   const MONTH_OFFSET = -10;
   const WEEK_OFFSET = -10;
   const DAYS_CONTAINER_OFFSET = -15;
@@ -26,11 +26,13 @@ const PrimaryCalendar = (props) => {
   const WEEK_CONTAINER_GAP = 10;
   const DAY_FONT_SIZE = 17;
   const DAY_FONT_WEIGHT = '400';
-  const DAY_CONTAINER_WIDTH = 19;
-  const DAY_CONTAINER_HEIGHT = 20;
+  const DAY_CONTAINER_WIDTH = 32;
+  const DAY_CONTAINER_HEIGHT = 32;
 
   const MARKED_DAY_OFFSET = 3;
-  const MARKED_DAY_HEIGHT = 24;
+  const MARKED_DAY_HEIGHT = 20;
+
+  const SKIP_DAYS = 1;
 
   const renderArrow = (direction) => {
     if (direction === 'left') {
@@ -39,18 +41,56 @@ const PrimaryCalendar = (props) => {
       return <RightArrow style={{height: ARROW_HEIGHT}} arrowGap={ARROW_GAP} />;
     }
   };
-  const [selectedDay, setSelectedDay] = React.useState('2021-02-02');
+  const [selectedDay, setSelectedDay] = React.useState(new Date());
+  const [marked, setMarked] = React.useState({
+    '2020-02-15': {
+      customStyles: {
+        container: {
+          top: -MARKED_DAY_OFFSET,
+          backgroundColor: colors.themeColors.pink,
+          height: MARKED_DAY_HEIGHT,
+          aspectRatio: 1,
+          paddingTop: layout.padding.xsmall,
+        },
+        text: {
+          color: colors.themeColors.secondary,
+        },
+      },
+    },
+  });
+
   return (
     <View
       style={{
         paddingHorizontal: layout.padding.xxxLarge,
         paddingVertical: layout.padding.large,
-
         overflow: 'hidden',
       }}>
       <Calendar
+        minDate={new Date(Date.now() + SKIP_DAYS * 24 * 60 * 60 * 1000)}
         hideExtraDays={true}
         calendarWidth={CALENDAR_WIDTH}
+        // current={selectedDay}
+        onDayPress={(day) => {
+          setMarked({
+            [day.dateString]: {
+              customStyles: {
+                container: {
+                  top: -MARKED_DAY_OFFSET,
+                  backgroundColor: colors.themeColors.pink,
+                  height: MARKED_DAY_HEIGHT,
+                  aspectRatio: 1,
+                  paddingTop: layout.padding.xsmall,
+                },
+                text: {
+                  color: colors.themeColors.secondary,
+                },
+              },
+            },
+          });
+          onSelect(day);
+          setSelectedDay(day);
+        }}
         theme={{
           'stylesheet.day.basic': {
             text: {
@@ -145,26 +185,7 @@ const PrimaryCalendar = (props) => {
           todayTextColor: colors.themeColors.secondary,
         }}
         renderArrow={renderArrow}
-        minDate={'2020-12-30'}
-        onDayPress={(day) => {
-          console.log('selected day', day);
-        }}
-        markedDates={{
-          '2021-02-02': {
-            customStyles: {
-              container: {
-                top: -MARKED_DAY_OFFSET,
-                backgroundColor: colors.themeColors.pink,
-                height: MARKED_DAY_HEIGHT,
-                aspectRatio: 1,
-                paddingTop: layout.padding.xsmall,
-              },
-              text: {
-                color: colors.themeColors.secondary,
-              },
-            },
-          },
-        }}
+        markedDates={marked}
         markingType={'custom'}
         enableSwipeMonths={true}
       />

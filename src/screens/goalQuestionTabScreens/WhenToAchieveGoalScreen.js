@@ -6,21 +6,18 @@ import CheckCircle from '../../assets/images/CheckCircle';
 import StepFour from '../../assets/images/StepFour.png';
 import Calendar from '../../components/Calendars/PrimaryCalendar';
 
-const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
+// <<<<<<< HEAD
+const WhenToAchieveGoalScreen = (onPress) => {
+  // =======
+  // const WhenToAchieveGoalScreen = ({navigation}, goBack, itemId) => {
+  // >>>>>>> origin/code/category-dynamic
   const HEADING_OFFSET = 18;
   const CALENDAR_ASPECT_RATIO = 297 / 303;
   const CALENDAR_BORDER_RADIUS = 50;
   const BUTTON_OFFSET = 35;
-  const TEXT_GAP = -18;
-  const goingBack = true;
-  React.useEffect(
-    () =>
-      navigation.addListener('beforeRemove', (e) => {
-        e.preventDefault();
-        goBack()();
-      }),
-    [navigation, goingBack, goBack],
-  );
+  const TEXT_GAP = -17;
+  const [selectedDate, setSelectedDate] = React.useState(null);
+  const [error, setError] = React.useState(false);
   return (
     <View style={{flex: 1.2}}>
       <View
@@ -71,7 +68,11 @@ const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
             borderRadius: CALENDAR_BORDER_RADIUS,
             backgroundColor: colors.themeColors.primary,
           }}>
-          <Calendar />
+          <Calendar
+            onSelect={(date) => {
+              setSelectedDate(date);
+            }}
+          />
         </View>
       </View>
 
@@ -82,10 +83,44 @@ const WhenToAchieveGoalScreen = ({navigation}, goBack) => {
           paddingTop: layout.padding.xxxLarge,
         }}>
         <View style={{flexBasis: BUTTON_OFFSET}} />
-        <TouchableOpacity
-          onPress={() => navigation.navigate('GoalAddedScreen')}>
-          <CheckCircle />
-        </TouchableOpacity>
+        <View style={{flex: 5}}>
+          <TouchableOpacity
+            onPress={() => {
+              if (selectedDate !== null) {
+                onPress(selectedDate);
+              } else {
+                setError(true);
+              }
+            }}
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}>
+            <CheckCircle />
+          </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goal
+            </Text>
+          )}
+        </View>
       </View>
     </View>
   );

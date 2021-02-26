@@ -8,6 +8,7 @@ const readingGirlDescription = 'Career & Education';
 import CheckCircle from '../../assets/images/CheckCircle';
 import Svg, {Path} from 'react-native-svg';
 import CustomTextInput from '../../components/CustomTextInput';
+import {getCategoryData} from '../../assets/CategoryData';
 
 const SvgHand = (style) => {
   return (
@@ -27,12 +28,10 @@ const SvgHand = (style) => {
   );
 };
 
-const WhatGoalToAchieveScreen = (onPress) => {
-  const [goal, onChangeGoal] = useState('');
-
-  let girlImagePath = readingGirl;
-  let goalDescription = readingGirlDescription;
-
+const WhatGoalToAchieveScreen = (onPress, categoryId) => {
+  const categoryData = getCategoryData(categoryId);
+  const [goalName, onChangeGoalName] = useState('');
+  const [error, setError] = React.useState(false);
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const IMAGE_OFFSET = 20;
@@ -65,10 +64,10 @@ const WhatGoalToAchieveScreen = (onPress) => {
           <View
             style={{
               height: IMAGE_HEIGHT,
-              aspectRatio: layout.imageAspectRatio.readingGirl,
+              aspectRatio: categoryData.aspectRatio,
             }}>
             <Image
-              source={girlImagePath}
+              source={categoryData.imagePath}
               style={{flex: 1, height: null, width: null}}
               resizeMode="stretch"
             />
@@ -80,7 +79,7 @@ const WhatGoalToAchieveScreen = (onPress) => {
               fontSize: layout.fontSizes.medium,
               color: colors.themeColors.primary,
             }}>
-            {goalDescription}
+            {categoryData.description}
           </Text>
           <View style={{flexBasis: IMAGE_OFFSET}} />
         </View>
@@ -91,9 +90,9 @@ const WhatGoalToAchieveScreen = (onPress) => {
           <CustomTextInput
             style={{position: 'absolute', bottom: 0, width: '100%'}}
             gap={CUSTOM_INPUT_TEXT_GAP}
-            placeholder={readingGirlPlaceholder}
-            value={goal}
-            onChangeText={(text) => onChangeGoal(text)}
+            placeholder={categoryData.placeholder}
+            value={goalName}
+            onChangeText={(text) => onChangeGoalName(text)}
           />
         </View>
         <View style={{flex: 11}}>
@@ -110,9 +109,16 @@ const WhatGoalToAchieveScreen = (onPress) => {
             }
           </Text>
         </View>
-        <View style={{flex: 26}}>
+
+        <View style={{flex: 5}}>
           <TouchableOpacity
-            onPress={onPress}
+            onPress={() => {
+              if (goalName !== '') {
+                onPress(goalName);
+              } else {
+                setError(true);
+              }
+            }}
             style={{
               flex: 1,
               alignItems: 'center',
@@ -120,6 +126,27 @@ const WhatGoalToAchieveScreen = (onPress) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
+        </View>
+        <View style={{flex: 13}}>
+          {!error && (
+            <View
+              style={{
+                flexBasis: 30,
+              }}
+            />
+          )}
+          {error && (
+            <Text
+              style={{
+                alignSelf: 'center',
+                lineHeight: layout.defaultLineHeight,
+                fontSize: layout.fontSizes.welcomeText,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.error,
+              }}>
+              Please enter your goalName
+            </Text>
+          )}
         </View>
       </View>
     </SafeAreaView>
