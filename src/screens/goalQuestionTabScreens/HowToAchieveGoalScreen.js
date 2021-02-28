@@ -1,13 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  ScrollView,
-  SafeAreaView,
-  FlatList,
-} from 'react-native';
+import {Text, TouchableOpacity, View, FlatList} from 'react-native';
 import Modal from 'react-native-modal';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';

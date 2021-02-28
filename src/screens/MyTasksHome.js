@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-  Modal,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {SafeAreaView, Text, View, TouchableOpacity, Image} from 'react-native';
+import Modal from 'react-native-modal';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 import DaysList from '../components/DayElements/DaysList';
 import TasksList from '../components/TasksElemets/TasksList';
-import {getGoals, updateTask, deleteTask} from '../database/GoalActions';
+import {
+  getGoals,
+  updateTask,
+  deleteTask,
+  addNewTask,
+} from '../database/GoalActions';
 import {useEffect} from 'react';
 import TaskNameModal from '../components/Modals/TaskNameModal';
 import TaskTimeModal from '../components/Modals/TaskTimeModal';
@@ -116,9 +115,15 @@ const MyTasksHome = ({navigation, route}) => {
         daysToRepeat: selectedItem.daysToRepeat,
       };
 
-      updateTask(goalId, task).then((test) => {
-        updateGoalsState();
-      });
+      if (selectedItem.isNew) {
+        addNewTask(goalId, task).then((test) => {
+          updateGoalsState();
+        });
+      } else {
+        updateTask(goalId, task).then((test) => {
+          updateGoalsState();
+        });
+      }
     }
   }, [selectedItem]);
 
@@ -129,6 +134,7 @@ const MyTasksHome = ({navigation, route}) => {
         <TaskNameModal
           initialName={name}
           onSubmit={(taskName) => {
+            console.log('worked');
             setSelectedItem({...selectedItem, name: taskName});
             setModalIndex(1);
           }}
@@ -159,11 +165,15 @@ const MyTasksHome = ({navigation, route}) => {
     setSelectedDay(day);
     const renderTasks = [];
     tasks.filter((task) => {
-      task.daysToRepeat.forEach((element, index) => {
-        if (element.toLowerCase() === day.text.toLowerCase()) {
-          renderTasks.push(task);
-        }
-      });
+      if (task?.daysToRepeat && task.daysToRepeat.length > 0) {
+        task.daysToRepeat.forEach((element, index) => {
+          if (element.toLowerCase() === day.text.toLowerCase()) {
+            renderTasks.push(task);
+          }
+        });
+      } else {
+        console.log('no tasks');
+      }
       return true;
     });
     setDataList(renderTasks);
@@ -212,6 +222,21 @@ const MyTasksHome = ({navigation, route}) => {
                   updateGoalsState();
                 });
               }}
+              onAddTaskPress={
+                selectedGoal
+                  ? () => {
+                      setSelectedItem({
+                        isNew: true,
+                        goalId: selectedGoal.id,
+                        name: '',
+                        daysToRepeat: [],
+                        epochTime: new Date().getTime(),
+                        repeats: 5,
+                      });
+                      setIsVisibleEditModal(true);
+                    }
+                  : null
+              }
               onEditPress={(item) => {
                 setIsVisibleEditModal(true);
                 setSelectedItem(item);
@@ -221,30 +246,10 @@ const MyTasksHome = ({navigation, route}) => {
           </View>
         </View>
         <Modal
-          transparent={true}
-          visible={isVisibleEditModal}
+          isVisible={isVisibleEditModal}
+          avoidKeyboard={true}
           onBackdropPress={() => setIsVisibleEditModal(false)}>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: colors.themeColors.transparent,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View
-              style={{
-                flex: 1,
-                width: '100%',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              transparent={true}>
-              <View style={{flexBasis: MODAL_OFFSET}} />
-              <View>
-                <CustomModal />
-              </View>
-            </View>
-          </View>
+          <CustomModal />
         </Modal>
       </View>
     </SafeAreaView>

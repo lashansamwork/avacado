@@ -190,7 +190,7 @@ export default function TasksList({
       <SwipeListView
         ListHeaderComponent={
           onAddTaskPress && (
-            <View style={{alignSelf: 'center'}}>
+            <View style={{alignSelf: 'center', width: 300}}>
               <TaskItem
                 style={{height: 57, marginBottom: layout.padding.large}}
                 label="+Add Task/Habit"

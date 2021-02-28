@@ -35,7 +35,7 @@ const MyGoalNavigator = ({navigation}) => {
       <Stack.Screen
         name="MyGoalTask"
         component={MyTasksHome}
-        options={{headerShown: false}}
+        options={{headerShown: true}}
       />
     </Stack.Navigator>
   );
