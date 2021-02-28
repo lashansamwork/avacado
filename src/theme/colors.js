@@ -3,6 +3,7 @@ const colors = {
   themeColors: {
     primary: '#1E535A',
     secondary: 'white',
+    primaryDisabled: 'rgba(255, 255, 255, 0.2)',
     pink: '#EBBDBD',
     grey: '#CECECE',
     transparent: 'rgba(8, 30, 33, 0.74)',

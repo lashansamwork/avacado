@@ -170,6 +170,7 @@ const PrimaryCalendar = ({onSelect}) => {
             },
             monthView: {},
           },
+          textDisabledColor: colors.themeColors.primaryDisabled,
           selectedDayTextColor: colors.themeColors.secondary,
           monthTextColor: colors.themeColors.secondary,
           dayTextColor: colors.themeColors.secondary,
