@@ -32,6 +32,7 @@ const TaskTimeModal = ({
     <View
       activeOpacity={1}
       style={{
+        alignSelf: 'center',
         alignItems: 'center',
         aspectRatio: MODAL_RATIO,
         width: MODAL_WIDTH,

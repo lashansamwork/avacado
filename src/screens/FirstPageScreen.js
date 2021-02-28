@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from 'react-native';
 const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
 const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import CheckCircle from '../assets/images/CheckCircle';
@@ -15,7 +21,9 @@ const FirstPageScreen = ({navigation}) => {
   const LOGO_OFFSET = 26;
   const TEXT_GAP = 1;
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
+    <KeyboardAvoidingView
+      style={{flex: 1, alignItems: 'center'}}
+      behavior="padding">
       <View style={{flex: 1.1, width: '100%'}}>
         <View style={{flex: 1, alignItems: 'center'}}>
           <View
@@ -114,7 +122,7 @@ const FirstPageScreen = ({navigation}) => {
           <CheckCircle />
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

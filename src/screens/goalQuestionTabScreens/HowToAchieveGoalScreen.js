@@ -7,9 +7,8 @@ import {
   ScrollView,
   SafeAreaView,
   FlatList,
-  Modal,
 } from 'react-native';
-// import Modal from 'react-native-modal';
+import Modal from 'react-native-modal';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
@@ -178,33 +177,11 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
           </View>
         </View>
       </View>
-
       <Modal
-        transparent={true}
-        visible={modalVisible}
+        isVisible={modalVisible}
+        avoidKeyboard={true}
         onBackdropPress={() => setModalVisible(false)}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: colors.themeColors.transparent,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <View
-            style={{
-              flex: 1,
-              width: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            transparent={true}>
-            <View style={{flexBasis: MODAL_OFFSET}} />
-
-            <View>
-              <CustomModal />
-            </View>
-          </View>
-        </View>
+        <CustomModal />
       </Modal>
     </View>
   );

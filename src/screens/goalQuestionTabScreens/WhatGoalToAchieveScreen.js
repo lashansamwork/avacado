@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, TouchableOpacity, Image, View} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+  KeyboardAvoidingView,
+} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 const readingGirl = require('../../assets/images/ReadingGirl.png');

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, View, Dimensions} from 'react-native';
+import {Image, View, Dimensions, KeyboardAvoidingView} from 'react-native';
 import layout from '../theme/layout';
 import StepOne from '../assets/images/StepOne.png';
 import StepTwo from '../assets/images/StepTwo.png';
@@ -161,16 +161,21 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   );
 
   return (
-    <TabView
-      timingConfig={{duration: 0.000000001}}
-      swipeVelocityImpact={0.0001}
-      swipeEnabled={false}
-      renderTabBar={renderTabBar}
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-    />
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior="padding"
+      keyboardVerticalOffset={10}>
+      <TabView
+        timingConfig={{duration: 0.000000001}}
+        swipeVelocityImpact={0.0001}
+        swipeEnabled={false}
+        renderTabBar={renderTabBar}
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+      />
+    </KeyboardAvoidingView>
   );
 };
 
