@@ -16,6 +16,11 @@ export const addToGoal = (newGoal) =>
             }),
             id: id,
           };
+
+          filteredGoal.tasks.forEach((task) => {
+            setAlarmsTasks(task);
+          });
+
           realm.create(GoalSchemaName, filteredGoal);
           resolve(newGoal);
         });
@@ -59,6 +64,7 @@ export const deleteGoal = (id) =>
       .then((realm) => {
         realm.write(() => {
           const goal = realm.objectForPrimaryKey(GoalSchemaName, id);
+          removeAlarmsAllTasks(goal.tasks);
           realm.delete(goal);
           resolve();
         });
@@ -74,6 +80,7 @@ export const deleteTask = (goalId, taskId) =>
           const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
           goal.tasks = goal.tasks.filter((item) => {
             if (item.id === taskId) {
+              removeAlarmsTasks(item);
               return false;
             } else {
               return true;
@@ -98,6 +105,10 @@ export const updateTask = (goalId, task) =>
               return item;
             }
           });
+          removeAlarmsTasks(task);
+          setTimeout(() => {
+            setAlarmsTasks(task);
+          }, 5000);
           resolve(goal);
         });
       })
@@ -111,6 +122,7 @@ export const addNewTask = (goalId, task) =>
         realm.write(() => {
           const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
           const newTask = {...task, id: goal.tasks.length};
+          setAlarmsTasks(newTask);
           goal.tasks = [...goal.tasks, newTask];
           resolve(goal);
         });
@@ -120,73 +132,57 @@ export const addNewTask = (goalId, task) =>
 
 export const removeAlarmsAllTasks = (tasks) => {
   tasks.forEach((task) => {
-    if (task.alarms && task.alarms.length > 0) {
-      task.alarms.forEach((alarm) => {
-        // ReactNativeAN.deleteAlarm(alarm.id);
-      });
-    }
+    removeAlarmsTasks(tasks);
   });
 };
 
 export const removeAlarmsTasks = (task) => {
   if (task.alarms && task.alarms.length > 0) {
-    task.alarms.forEach((alarm) => {
-      // ReactNativeAN.deleteAlarm(alarm.id);
+    task.daysToRepeat.forEach((day, index) => {
+      PushNotification.cancelLocalNotifications({id: `${task.name}-${index}`});
     });
   }
 };
 
 export const setAlarmsTasks = async (task) => {
-  console.log(
-    '🚀 ~ file: GoalActions.js ~ line 125 ~ setAlarmsTasks ~ task',
-    task,
-  );
-  try {
-    PushNotification.localNotificationSchedule({
-      //... You can use all the options from localNotifications
-      message: 'My Notification Message', // (required)
-      date: new Date(Date.now() + 10 * 1000), // in 60 secs
-      allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
-    });
-  } catch (e) {
-    console.log('🚀 ~ file: GoalActions.js ~ line 166 ~ setAlarmsTasks ~ e', e);
-  }
-
   const daysToRepeat = task.daysToRepeat;
   const readableTime = moment(task.epochTime);
   const hours = readableTime.format('HH');
   const mintues = readableTime.format('mm');
-  const alarms = [];
   daysToRepeat.forEach(async (day, index) => {
     const nextAvailableDate =
       findNextInstanceInDaysArray([index]).format('DD-MM-YYYY') +
       ` ${hours}:${mintues}:00`;
     if (nextAvailableDate) {
+      const epochTime = moment(
+        nextAvailableDate,
+        'DD-MM-YYYY HH:mm:ss',
+      ).valueOf();
       const alarmNotifData = {
+        id: `${task.name}-${index}`,
         title: 'Avaca.do',
+        date: new Date(epochTime),
         message: task.name,
         schedule_type: 'repeat',
         repeat_interval: 'weekly',
         loop_sound: true,
         small_icon: 'ic_launcher',
       };
+      createNewAlert(alarmNotifData);
     }
   });
-
-  return alarms;
 };
 
-export const createNewAlert = (alarmNotifData, fireDate) => {
-  // return new Promise((resolve, reject) => {
-  //   ReactNativeAN.scheduleAlarm({
-  //     ...alarmNotifData,
-  //     fire_date: fireDate,
-  //   })
-  //     .then((alert) => {
-  //       resolve(alert);
-  //     })
-  //     .catch((error) => reject(error));
-  // });
+export const createNewAlert = (alarmNotifData) => {
+  console.log(
+    '🚀 ~ file: GoalActions.js ~ line 177 ~ createNewAlert ~ alarmNotifData',
+    moment(alarmNotifData.date).format('DD-MM-YYYY HH:mm:ss'),
+  );
+
+  PushNotification.localNotificationSchedule({
+    ...alarmNotifData, // in 60 secs
+    allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+  });
 };
 
 const isThisInFuture = (targetDayNum) => {
