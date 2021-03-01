@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StatusBar,
   SafeAreaView,
@@ -10,13 +10,22 @@ import {
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 const CongratzHand = require('../assets/images/CongratzHand.png');
+import {getUser} from '../database/UserActions';
 
 const GoalAddedScreen = ({navigation}) => {
   const ASPECT_RATIO = 998 / 928;
   const IMAGE_OFFSET = 202;
   const LETTER_OFFSET = 128;
+  const [username, setUsername] = React.useState('');
 
-  let name = 'Layan';
+  useEffect(() => {
+    getUser().then((userArray) => {
+      if (userArray?.[0]) {
+        const user = userArray[0];
+        setUsername(user.name);
+      }
+    });
+  }, []);
 
   return (
     <SafeAreaView
@@ -52,7 +61,7 @@ const GoalAddedScreen = ({navigation}) => {
               color: colors.themeColors.pink,
               fontSize: layout.fontSizes.xxxLarge,
             }}>
-            Congrats {name}!
+            Congrats {username}!
           </Text>
           <Text
             style={{

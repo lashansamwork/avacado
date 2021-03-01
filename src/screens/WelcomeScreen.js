@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import PushNotification from 'react-native-push-notification';
 const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
 const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
 import layout from '../theme/layout';
@@ -14,6 +16,25 @@ const TinyLine = require('../assets/images/TinyLine.png');
 import colors from '../theme/colors';
 import {useEffect} from 'react';
 import {getUser} from '../database/UserActions';
+
+PushNotification.configure({
+  // (optional) Called when Token is generated (iOS and Android)
+  onRegister: function (token) {
+    console.log('TOKEN:', token);
+  },
+  // (optional) Called when the user fails to register for remote notifications. Typically occurs when APNS is having issues, or the device is a simulator. (iOS)
+  onRegistrationError: function (err) {
+    console.error(err.message, err);
+  },
+
+  // IOS ONLY (optional): default: all - Permissions to register.
+  permissions: {
+    alert: true,
+    badge: true,
+    sound: true,
+  },
+  requestPermissions: true,
+});
 
 const WelcomeScreen = ({navigation}) => {
   const IMAGE_TOP_OFFSET = -20;

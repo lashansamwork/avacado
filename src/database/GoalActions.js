@@ -1,6 +1,7 @@
 import {databaseOptions, GoalSchemaName} from './Schemas';
 import Realm from 'realm';
-
+import moment from 'moment';
+import PushNotification from 'react-native-push-notification';
 export const addToGoal = (newGoal) =>
   new Promise((resolve, reject) => {
     Realm.open(databaseOptions)
@@ -8,7 +9,14 @@ export const addToGoal = (newGoal) =>
         realm.write(() => {
           const lastGoal = realm.objects(GoalSchemaName).sorted('id', true)[0];
           const id = lastGoal == null ? 1 : lastGoal.id + 1;
-          realm.create(GoalSchemaName, {id: id, ...newGoal});
+          const filteredGoal = {
+            ...newGoal,
+            tasks: newGoal.tasks.map((task, index) => {
+              return {...task, id: index};
+            }),
+            id: id,
+          };
+          realm.create(GoalSchemaName, filteredGoal);
           resolve(newGoal);
         });
       })
@@ -25,7 +33,7 @@ export const getGoals = (goalId) =>
             .filtered(`id == ${goalId}`);
           resolve(goals);
         } else {
-          const goals = realm.objects(GoalSchemaName);
+          const goals = realm.objects(GoalSchemaName).toJSON();
           resolve(goals);
         }
       })
@@ -109,3 +117,96 @@ export const addNewTask = (goalId, task) =>
       })
       .catch((error) => reject(error));
   });
+
+export const removeAlarmsAllTasks = (tasks) => {
+  tasks.forEach((task) => {
+    if (task.alarms && task.alarms.length > 0) {
+      task.alarms.forEach((alarm) => {
+        // ReactNativeAN.deleteAlarm(alarm.id);
+      });
+    }
+  });
+};
+
+export const removeAlarmsTasks = (task) => {
+  if (task.alarms && task.alarms.length > 0) {
+    task.alarms.forEach((alarm) => {
+      // ReactNativeAN.deleteAlarm(alarm.id);
+    });
+  }
+};
+
+export const setAlarmsTasks = async (task) => {
+  console.log(
+    '🚀 ~ file: GoalActions.js ~ line 125 ~ setAlarmsTasks ~ task',
+    task,
+  );
+  try {
+    PushNotification.localNotificationSchedule({
+      //... You can use all the options from localNotifications
+      message: 'My Notification Message', // (required)
+      date: new Date(Date.now() + 10 * 1000), // in 60 secs
+      allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+    });
+  } catch (e) {
+    console.log('🚀 ~ file: GoalActions.js ~ line 166 ~ setAlarmsTasks ~ e', e);
+  }
+
+  const daysToRepeat = task.daysToRepeat;
+  const readableTime = moment(task.epochTime);
+  const hours = readableTime.format('HH');
+  const mintues = readableTime.format('mm');
+  const alarms = [];
+  daysToRepeat.forEach(async (day, index) => {
+    const nextAvailableDate =
+      findNextInstanceInDaysArray([index]).format('DD-MM-YYYY') +
+      ` ${hours}:${mintues}:00`;
+    if (nextAvailableDate) {
+      const alarmNotifData = {
+        title: 'Avaca.do',
+        message: task.name,
+        schedule_type: 'repeat',
+        repeat_interval: 'weekly',
+        loop_sound: true,
+        small_icon: 'ic_launcher',
+      };
+    }
+  });
+
+  return alarms;
+};
+
+export const createNewAlert = (alarmNotifData, fireDate) => {
+  // return new Promise((resolve, reject) => {
+  //   ReactNativeAN.scheduleAlarm({
+  //     ...alarmNotifData,
+  //     fire_date: fireDate,
+  //   })
+  //     .then((alert) => {
+  //       resolve(alert);
+  //     })
+  //     .catch((error) => reject(error));
+  // });
+};
+
+const isThisInFuture = (targetDayNum) => {
+  // param: positive integer for weekday
+  // returns: matching moment or false
+  const todayNum = moment().isoWeekday();
+
+  if (todayNum <= targetDayNum) {
+    return moment().isoWeekday(targetDayNum);
+  }
+  return false;
+};
+
+const findNextInstanceInDaysArray = (daysArray) => {
+  // iterate the array of days and find all possible matches
+  const tests = daysArray.map(isThisInFuture);
+  // select the first matching day of this week, ignoring subsequent ones, by finding the first moment object
+  const thisWeek = tests.find((sample) => {
+    return sample instanceof moment;
+  });
+  // but if there are none, we'll return the first valid day of next week (again, assuming the days are sorted)
+  return thisWeek || moment().add(1, 'weeks').isoWeekday(daysArray[0]);
+};

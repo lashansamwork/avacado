@@ -10,6 +10,7 @@ import {
   updateTask,
   deleteTask,
   addNewTask,
+  setAlarmsTasks,
 } from '../database/GoalActions';
 import {useEffect} from 'react';
 import TaskNameModal from '../components/Modals/TaskNameModal';
@@ -71,6 +72,9 @@ const MyTasksHome = ({navigation, route}) => {
 
     getGoals(selectedGoal?.id).then((realmArr) => {
       const goals = realmArr.map((goal) => goal);
+      console.log('Goals', goals);
+      console.log('Tasks', JSON.parse(JSON.stringify(goals[0].tasks)));
+      setAlarmsTasks(goals[0].tasks[0]);
       const arraysOfTasks = goals.map((goal) => [
         ...goal.tasks.map((task) => {
           return {goalId: goal.id, ...task};
