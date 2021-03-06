@@ -37,11 +37,9 @@ export default function TasksList({
           key: index,
           text: element.name,
           time: element.epochTime,
+          animation: new Animated.Value(0),
         };
       });
-      swipeAnimationArray.current = new Array(dataList.length).fill(
-        new Animated.Value(0),
-      );
       setListData(dataList);
     } else {
       setListData([]);
@@ -51,13 +49,13 @@ export default function TasksList({
   const onRowDidOpen = (rowKey) => {};
 
   const renderItem = (data) => {
-    let borderRadius = swipeAnimationArray.current[data.index].interpolate({
+    let borderRadius = data.item.animation.interpolate({
       inputRange: [0, 83],
       outputRange: [layout.taskCardRadius, 1],
       extrapolate: 'clamp',
     });
 
-    let translateX = swipeAnimationArray.current[data.index].interpolate({
+    let translateX = data.item.animation.interpolate({
       inputRange: [0, 83],
       outputRange: [0, -(layout.swipeButtonSize - 6)],
       extrapolate: 'clamp',
@@ -143,7 +141,7 @@ export default function TasksList({
   };
 
   const renderHiddenItem = (data, rowMap) => {
-    let newOpacity = swipeAnimationArray.current[data.index].interpolate({
+    let newOpacity = data.item.animation.interpolate({
       inputRange: [0, 83],
       outputRange: [0, 1],
       extrapolate: 'clamp',
@@ -164,7 +162,7 @@ export default function TasksList({
           onPress={() => {
             console.log('checkmark pressed');
             rowMap[data.item.key].closeRow();
-            swipeAnimationArray.current[data.index].setValue(0);
+            data.item.animation.setValue(0);
           }}
         />
         <Option
@@ -183,6 +181,8 @@ export default function TasksList({
       </Animated.View>
     );
   };
+
+  console.log('tadaa....', listData);
 
   return (
     // list check rederItem, listData
@@ -213,7 +213,8 @@ export default function TasksList({
           <View style={{padding: layout.padding.medium}} />
         )}
         onSwipeValueChange={({value, key}) => {
-          swipeAnimationArray.current[key].setValue(value);
+          const arrayIndex = parseInt(key);
+          listData[arrayIndex]?.animation.setValue(value);
         }}
         renderHiddenItem={renderHiddenItem}
         leftOpenValue={layout.swipeButtonSize * 3}
