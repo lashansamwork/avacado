@@ -34,7 +34,7 @@
     "react-native-tab-view": "^2.15.2",
     "react-native-vector-icons": "^8.0.0",
     "react-native-wheely": "^0.2.1",
-    "realm": "^10.2.0"
+    "realm": "10.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

@@ -35,7 +35,8 @@ export const getGoals = (goalId) =>
         if (typeof goalId === 'number') {
           const goals = realm
             .objects(GoalSchemaName)
-            .filtered(`id == ${goalId}`);
+            .filtered(`id == ${goalId}`)
+            .toJSON();
           resolve(goals);
         } else {
           const goals = realm.objects(GoalSchemaName).toJSON();
