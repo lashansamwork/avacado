@@ -98,6 +98,7 @@ export const updateTask = (goalId, task) =>
       .then((realm) => {
         realm.write(() => {
           const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
+          console.log('🚀 ~ file: GoalActions.js ~ line 97 ~ task', task);
           goal.tasks = goal.tasks.map((item) => {
             if (item.id === task.id) {
               return task;

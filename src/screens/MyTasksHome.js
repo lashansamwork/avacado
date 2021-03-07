@@ -88,6 +88,10 @@ const MyTasksHome = ({navigation, route}) => {
           repeats: task.repeats,
         };
       });
+      console.log(
+        '🚀 ~ file: MyTasksHome.js ~ line 99 ~ tasksArray ~ tasksArray',
+        tasksArray,
+      );
       if (tasksArray && tasksArray.length > 0) {
         setTasks(tasksArray);
         console.log('data set ✅');
@@ -129,7 +133,12 @@ const MyTasksHome = ({navigation, route}) => {
   }, [selectedItem]);
 
   const CustomModal = () => {
-    const {name, daysToRepeat, epochTime: currentTime, repeats} = selectedItem;
+    let {name, daysToRepeat, epochTime: currentTime, repeats} = selectedItem;
+    if (daysToRepeat && daysToRepeat.length > 0) {
+      daysToRepeat = daysToRepeat.map((item) => {
+        return {text: item, isSelected: true};
+      });
+    }
     if (modalIndex === 0) {
       return (
         <TaskNameModal

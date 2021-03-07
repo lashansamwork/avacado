@@ -18,7 +18,9 @@ const DayList = ({onDaysSubmit, initialSelect}) => {
   useEffect(() => {
     if (initialSelect?.length > 0) {
       const updatedDays = DAYS.map((day) => {
-        const found = initialSelect.find((element) => element === day.text);
+        const found = initialSelect.find(
+          (element) => element.text === day.text,
+        );
         if (found) {
           return {
             ...day,
