@@ -8,6 +8,10 @@ const CustomTextInput = (props) => {
     props.textColor === undefined
       ? colors.themeColors.primary
       : props.textColor;
+  const FONT_SIZE =
+    props.textColor === undefined ? layout.fontSizes.small : props.fontSize;
+  const PLACEHOLDER_COLOR =
+    props.textColor === undefined ? colors.themeColors.grey : props.textColor;
   return (
     <View
       style={{
@@ -17,12 +21,12 @@ const CustomTextInput = (props) => {
       }}>
       <TextInput
         placeholder={props.placeholder}
-        placeholderTextColor={colors.themeColors.grey}
+        placeholderTextColor={PLACEHOLDER_COLOR}
         onChangeText={props.onChangeText}
         value={props.value}
         style={{
           color: TEXT_COLOR,
-          fontSize: layout.fontSizes.small,
+          fontSize: FONT_SIZE,
           marginBottom: props.gap,
         }}
         textContentType="nickname"
