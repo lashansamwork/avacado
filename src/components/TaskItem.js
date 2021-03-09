@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import layout from '../theme/layout';
-const ClockIcon = require('../assets/images/ClockIcon.png');
+import ClockIcon from '../components/SvgIcons/ClockIcon';
 
 const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
   const BORDER_RADIUS = 20;
@@ -29,18 +29,7 @@ const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
         }}>
         {label}
       </Text>
-      <View
-        style={{
-          aspectRatio: 1,
-          height: CLOCK_HEIGHT,
-          marginRight: layout.padding.xxxLarge,
-        }}>
-        <Image
-          source={ClockIcon}
-          resizeMode="stretch"
-          style={{width: null, height: null, flex: 1}}
-        />
-      </View>
+      <ClockIcon />
     </TouchableOpacity>
   );
 };
