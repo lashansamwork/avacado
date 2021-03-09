@@ -6,6 +6,7 @@ import {
   Image,
   View,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
@@ -38,7 +39,6 @@ const SvgHand = (style) => {
 const WhatGoalToAchieveScreen = (onPress, categoryId) => {
   const categoryData = getCategoryData(categoryId);
   const [goalName, onChangeGoalName] = useState('');
-  const [error, setError] = React.useState(false);
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const IMAGE_OFFSET = 20;
@@ -123,7 +123,11 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
               if (goalName !== '') {
                 onPress(goalName);
               } else {
-                setError(true);
+                Alert.alert(
+                  'Goal is empty',
+                  'The goal to achieve cannot be empty. Please provide a goal',
+                  {cancelable: false},
+                );
               }
             }}
             style={{
@@ -133,27 +137,6 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
-        </View>
-        <View style={{flex: 13}}>
-          {!error && (
-            <View
-              style={{
-                flexBasis: 30,
-              }}
-            />
-          )}
-          {error && (
-            <Text
-              style={{
-                alignSelf: 'center',
-                lineHeight: layout.defaultLineHeight,
-                fontSize: layout.fontSizes.welcomeText,
-                fontFamily: layout.fonts.nunito,
-                color: colors.themeColors.error,
-              }}>
-              Please enter your goalName
-            </Text>
-          )}
         </View>
       </View>
     </SafeAreaView>

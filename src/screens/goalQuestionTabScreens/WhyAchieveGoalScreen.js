@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
@@ -20,7 +21,6 @@ const WhyAchieveGoalScreen = (onPress) => {
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '29.5%';
   const HEADING_OFFSET = '25.9%';
-  const [error, setError] = React.useState(false);
   return (
     <SafeAreaView
       style={{
@@ -84,7 +84,11 @@ const WhyAchieveGoalScreen = (onPress) => {
               if (reason !== '') {
                 onPress(reason);
               } else {
-                setError(true);
+                Alert.alert(
+                  'Reason is empty',
+                  'Please provide a reason to remember why this goal important to you',
+                  {cancelable: false},
+                );
               }
             }}
             style={{
@@ -94,27 +98,6 @@ const WhyAchieveGoalScreen = (onPress) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
-        </View>
-        <View style={{flex: 13}}>
-          {!error && (
-            <View
-              style={{
-                flexBasis: 30,
-              }}
-            />
-          )}
-          {error && (
-            <Text
-              style={{
-                alignSelf: 'center',
-                lineHeight: layout.defaultLineHeight,
-                fontSize: layout.fontSizes.welcomeText,
-                fontFamily: layout.fonts.nunito,
-                color: colors.themeColors.error,
-              }}>
-              Please enter your goal
-            </Text>
-          )}
         </View>
       </View>
     </SafeAreaView>

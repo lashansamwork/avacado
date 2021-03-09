@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, View, FlatList} from 'react-native';
+import {Text, TouchableOpacity, View, FlatList, Alert} from 'react-native';
 import Modal from 'react-native-modal';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
@@ -30,7 +30,6 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
   const MODAL_OFFSET = 200;
-  const [error, setError] = React.useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalIndex, setModalIndex] = React.useState(0);
   const [tasks, setTasks] = React.useState(oldTasks);
@@ -134,7 +133,11 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
                 if (tasks !== undefined && tasks.length !== 0) {
                   onPress(tasks);
                 } else {
-                  setError(true);
+                  Alert.alert(
+                    'There are no tasks',
+                    'You should provide at least one task helping to achieve your goal',
+                    {cancelable: false},
+                  );
                 }
               }}
               style={{
@@ -145,27 +148,6 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
               <CheckCircle />
               {/* submit button  */}
             </TouchableOpacity>
-          </View>
-          <View style={{flex: 20}}>
-            {!error && (
-              <View
-                style={{
-                  flexBasis: 30,
-                }}
-              />
-            )}
-            {error && (
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  lineHeight: layout.defaultLineHeight,
-                  fontSize: layout.fontSizes.welcomeText,
-                  fontFamily: layout.fonts.nunito,
-                  color: colors.themeColors.error,
-                }}>
-                Add at least one task for your goal
-              </Text>
-            )}
           </View>
         </View>
       </View>
