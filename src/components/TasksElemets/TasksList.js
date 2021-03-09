@@ -13,7 +13,6 @@ import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 import TaskItem from '../TaskItem';
 import Tick from '../SvgIcons/TickIcon';
-//const Tick = require('../../assets/images/TickIcon.png');
 const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
 );
