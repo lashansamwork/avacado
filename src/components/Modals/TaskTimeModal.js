@@ -25,7 +25,6 @@ const TaskTimeModal = ({
   const SEPERATOR_WIDTH = '95%';
   const [error, setError] = React.useState(false);
   const [date, setDate] = useState(initialTime);
-  const [times, setTimes] = useState(initialTimes);
   const [repeatDays, setRepeatDays] = useState(initialDaysRepeat);
 
   return (
@@ -125,44 +124,8 @@ const TaskTimeModal = ({
           flex: 12,
           alignItems: 'center',
           justifyContent: 'flex-start',
-        }}>
-        <Text
-          style={{
-            paddingTop: layout.padding.small,
-            fontSize: layout.fontSizes.medium,
-            color: colors.themeColors.pink,
-            fontFamily: layout.fonts.nunito,
-          }}>
-          Times
-        </Text>
-        <View
-          style={{
-            height: WHEELPICKER_HEIGHT,
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-          }}>
-          <WheelPicker
-            selectedIndicatorStyle={{
-              backgroundColor: colors.themeColors.primary,
-              color: 'red',
-            }}
-            options={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-            selected={times}
-            onChange={(element) => setTimes(element)}
-            itemHeight={WHEEL_ITEM_HEIGHT}
-            containerStyle={{
-              backgroundColor: colors.themeColors.primary,
-              overflow: 'hidden',
-            }}
-            itemTextStyle={{
-              fontFamily: layout.fonts.nunito,
-              color: colors.themeColors.pink,
-            }}
-            itemStyle={{backgroundColor: colors.themeColors.primary}}
-          />
-        </View>
-      </View>
+        }}
+      />
       <View
         style={{
           flex: 11,
@@ -183,7 +146,7 @@ const TaskTimeModal = ({
                 }
               });
               let epochTime = date.getTime();
-              onSubmit({epochTime, times, daysStringArray});
+              onSubmit({epochTime, daysStringArray});
             } else {
               setError(true);
             }

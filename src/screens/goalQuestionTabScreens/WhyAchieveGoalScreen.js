@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
-
 import CheckCircle from '../../assets/images/CheckCircle';
 
 const WhyAchieveGoalScreen = (onPress) => {

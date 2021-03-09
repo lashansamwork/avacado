@@ -22,7 +22,6 @@ export const TaskSchema = {
     id: 'int',
     name: 'string',
     epochTime: 'int',
-    repeats: 'int',
     daysToRepeat: 'string[]',
   },
 };

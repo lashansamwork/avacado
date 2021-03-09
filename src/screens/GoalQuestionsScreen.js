@@ -93,7 +93,6 @@ const GoalQuestionsScreen = ({route, navigation}) => {
   }, [goal, navigation]);
 
   const renderScene = SceneMap({
-    // <<<<<<< HEAD
     what: () =>
       WhatGoalToAchieveScreen((goalName) => {
         setGoal({
