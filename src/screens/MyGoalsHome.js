@@ -53,7 +53,6 @@ const MyGoalsHome = ({navigation}) => {
   const onDeleteGoalPressed = () => {
     deleteGoal(selectedItem.id).then(() => {
       updateGoals();
-      console.log('tadaa....');
     });
     setDeleteModal(false);
   };

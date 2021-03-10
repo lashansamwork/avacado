@@ -182,8 +182,6 @@ export default function TasksList({
     );
   };
 
-  console.log('tadaa....', listData);
-
   return (
     // list check rederItem, listData
     <View style={{backgroundColor: colors.themeColors.secondary, flex: 1}}>

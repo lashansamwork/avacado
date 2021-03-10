@@ -5,7 +5,7 @@ import StepOne from '../assets/images/StepOne.png';
 import StepTwo from '../assets/images/StepTwo.png';
 import StepThree from '../assets/images/ThirdStep.png';
 import {TabView, SceneMap} from 'react-native-tab-view';
-const initialLayout = {width: Dimensions.get('screen').width};
+import {getGoals} from '../database/GoalActions';
 import WhatGoalToAchieveScreen from './goalQuestionTabScreens/WhatGoalToAchieveScreen';
 import HowToAchieveGoalScreen from './goalQuestionTabScreens/HowToAchieveGoalScreen';
 import WhyAchieveGoalScreen from './goalQuestionTabScreens/WhyAchieveGoalScreen';
@@ -14,13 +14,10 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useEffect} from 'react';
 import {addToGoal} from '../database/GoalActions';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
-import {getGoals} from '../database/GoalActions';
-
+const initialLayout = {width: Dimensions.get('screen').width};
 const GoalQuestionsScreen = ({route, navigation}) => {
   const categoryId = route?.params?.categoryId;
-
   const [newTaskIndex, setNewTaskIndex] = useState([]);
-
   useEffect(() => {
     getGoals().then((realmArr) => {
       const indexArray = realmArr.map((element) => element.id);
