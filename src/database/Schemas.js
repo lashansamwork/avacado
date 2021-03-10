@@ -7,10 +7,10 @@ export const GoalSchema = {
   primaryKey: 'id',
   properties: {
     id: 'int',
-    name: 'string',
-    description: 'string',
-    category: 'string',
-    when: 'int',
+    name: 'string?',
+    description: 'string?',
+    category: 'string?',
+    when: 'int?',
     tasks: 'Task[]',
   },
 };
@@ -20,10 +20,9 @@ export const TaskSchema = {
   primaryKey: 'id',
   properties: {
     id: 'int',
-    name: 'string',
-    epochTime: 'int',
-    repeats: 'int',
-    daysToRepeat: 'string[]',
+    name: 'string?',
+    epochTime: 'int?',
+    daysToRepeat: {type: 'string[]', optional: true},
   },
 };
 
@@ -37,5 +36,5 @@ export const UserSchema = {
 export const databaseOptions = {
   path: 'test.realm',
   schema: [GoalSchema, TaskSchema, UserSchema],
-  schemaVersion: 14,
+  schemaVersion: 20,
 };

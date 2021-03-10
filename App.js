@@ -17,7 +17,9 @@ import WelcomeNavigator from './src/routes/WelcomeNavigator';
 import TabNavigator from './src/routes/TabNavigator';
 import AboutScreen from './src/screens/AboutScreen';
 import {addToGoal, getGoals} from './src/database/GoalActions';
+import Realm from 'realm';
 
+console.log('realm new path', Realm.defaultPath);
 const MyTheme = {
   ...DefaultTheme,
   colors: {
