@@ -1,4 +1,4 @@
-import {databaseOptions, GoalSchemaName} from './Schemas';
+import {databaseOptions, GoalSchemaName, TaskSchemaName} from './Schemas';
 import Realm from 'realm';
 import moment from 'moment';
 import PushNotification from 'react-native-push-notification';
@@ -8,11 +8,17 @@ export const addToGoal = (newGoal) =>
       .then((realm) => {
         realm.write(() => {
           const lastGoal = realm.objects(GoalSchemaName).sorted('id', true)[0];
+          const lastTask = realm.objects(TaskSchemaName).sorted('id', true)[0];
+          console.log(
+            '🚀 ~ file: GoalActions.js ~ line 12 ~ realm.write ~ lastTask',
+            lastTask,
+          );
           const id = lastGoal == null ? 1 : lastGoal.id + 1;
+          const taskId = lastTask == null ? 1 : lastTask.id + 1;
           const filteredGoal = {
             ...newGoal,
             tasks: newGoal.tasks.map((task, index) => {
-              return {...task, id: index};
+              return {...task, id: index + taskId};
             }),
             id: id,
           };
@@ -99,7 +105,6 @@ export const updateTask = (goalId, task) =>
       .then((realm) => {
         realm.write(() => {
           const goal = realm.objectForPrimaryKey(GoalSchemaName, goalId);
-          console.log('🚀 ~ file: GoalActions.js ~ line 97 ~ task', task);
           goal.tasks = goal.tasks.map((item) => {
             if (item.id === task.id) {
               return task;
@@ -176,10 +181,10 @@ export const setAlarmsTasks = async (task) => {
 };
 
 export const createNewAlert = (alarmNotifData) => {
-  console.log(
-    '🚀 ~ file: GoalActions.js ~ line 177 ~ createNewAlert ~ alarmNotifData',
-    moment(alarmNotifData.date).format('DD-MM-YYYY HH:mm:ss'),
-  );
+  // console.log(
+  //   '🚀 ~ file: GoalActions.js ~ line 177 ~ createNewAlert ~ alarmNotifData',
+  //   moment(alarmNotifData.date).format('DD-MM-YYYY HH:mm:ss'),
+  // );
 
   PushNotification.localNotificationSchedule({
     ...alarmNotifData, // in 60 secs
