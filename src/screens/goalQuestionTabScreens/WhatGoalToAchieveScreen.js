@@ -38,7 +38,6 @@ const SvgHand = (style) => {
 };
 
 const WhatGoalToAchieveScreen = (onPress, categoryId) => {
-  categoryId = 1;
   const categoryData = getCategoryData(categoryId);
   const [goalName, onChangeGoalName] = useState('');
   const SAFEVIEW_OFFSET = 15;
