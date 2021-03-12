@@ -1,4 +1,5 @@
 import {Dimensions} from 'react-native';
+const MAGNIFIEDBY = 1.2;
 const layout = {
   screenWidth: {
     full: '100%',
@@ -36,17 +37,17 @@ const layout = {
     svgHand: 13.724 / 15.855,
   },
   fontSizes: {
-    xxsmall: 9,
-    xsmall: 10,
-    small: 11,
-    medium: 14,
-    xheader: 19.5,
-    header: 20,
-    mediumHigh: 14,
-    medium2: 16,
-    subText: 12,
-    large: 23,
-    xxxLarge: 39,
+    xxsmall: 9 * MAGNIFIEDBY,
+    xsmall: 10 * MAGNIFIEDBY,
+    small: 11 * MAGNIFIEDBY,
+    medium: 14 * MAGNIFIEDBY,
+    xheader: 19.5 * MAGNIFIEDBY,
+    header: 20 * MAGNIFIEDBY,
+    mediumHigh: 14 * MAGNIFIEDBY,
+    medium2: 16 * MAGNIFIEDBY,
+    subText: 12 * MAGNIFIEDBY,
+    large: 23 * MAGNIFIEDBY,
+    xxxLarge: 39 * MAGNIFIEDBY,
   },
   imageSizes: {
     small: '10%',

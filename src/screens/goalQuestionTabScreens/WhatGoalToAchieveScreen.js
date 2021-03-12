@@ -7,6 +7,7 @@ import {
   View,
   KeyboardAvoidingView,
   Alert,
+  Platform,
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
@@ -37,6 +38,7 @@ const SvgHand = (style) => {
 };
 
 const WhatGoalToAchieveScreen = (onPress, categoryId) => {
+  categoryId = 1;
   const categoryData = getCategoryData(categoryId);
   const [goalName, onChangeGoalName] = useState('');
   const SAFEVIEW_OFFSET = 15;
@@ -45,101 +47,105 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
   const IMAGE_HEIGHT = '56%';
   const CUSTOM_INPUT_TEXT_GAP = 6;
   return (
-    <SafeAreaView style={{flexGrow: 1, marginTop: SAFEVIEW_OFFSET}}>
-      <View
-        style={{flex: 1, paddingHorizontal: layout.padding.screenHorizontal}}>
-        <View style={{flex: 1, justifyContent: 'center'}}>
-          <Text
-            style={{
-              flexBasis: HEADING_GAP,
-              fontFamily: layout.fonts.nunito,
-              color: colors.themeColors.primary,
-              fontSize: layout.fontSizes.xxxLarge,
-            }}>
-            What?
-          </Text>
-          <Text
-            style={{
-              fontFamily: layout.fonts.nunito,
-              color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.header,
-            }}>
-            What do you want to achieve?
-          </Text>
-        </View>
-        <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{flex: 1}}>
+      <SafeAreaView style={{flexGrow: 1, marginTop: SAFEVIEW_OFFSET}}>
+        <View
+          style={{flex: 1, paddingHorizontal: layout.padding.screenHorizontal}}>
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <Text
+              style={{
+                flexBasis: HEADING_GAP,
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.primary,
+                fontSize: layout.fontSizes.xxxLarge,
+              }}>
+              What?
+            </Text>
+            <Text
+              style={{
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.pink,
+                fontSize: layout.fontSizes.header,
+              }}>
+              What do you want to achieve?
+            </Text>
+          </View>
           <View
-            style={{
-              height: IMAGE_HEIGHT,
-              aspectRatio: categoryData.aspectRatio,
-            }}>
-            <Image
-              source={categoryData.imagePath}
-              style={{flex: 1, height: null, width: null}}
-              resizeMode="stretch"
+            style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
+            <View
+              style={{
+                height: IMAGE_HEIGHT,
+                aspectRatio: categoryData.aspectRatio,
+              }}>
+              <Image
+                source={categoryData.imagePath}
+                style={{flex: 1, height: null, width: null}}
+                resizeMode="stretch"
+              />
+            </View>
+            <Text
+              style={{
+                paddingTop: layout.padding.small,
+                fontFamily: layout.fonts.nunito,
+                fontSize: layout.fontSizes.medium,
+                color: colors.themeColors.primary,
+              }}>
+              {categoryData.description}
+            </Text>
+            <View style={{flexBasis: IMAGE_OFFSET}} />
+          </View>
+        </View>
+        <View
+          style={{flex: 1, paddingHorizontal: layout.padding.screenHorizontal}}>
+          <View style={{flex: 8}}>
+            <CustomTextInput
+              style={{position: 'absolute', bottom: 0, width: '100%'}}
+              gap={CUSTOM_INPUT_TEXT_GAP}
+              placeholder={categoryData.placeholder}
+              value={goalName}
+              onChangeText={(text) => onChangeGoalName(text)}
             />
           </View>
-          <Text
-            style={{
-              paddingTop: layout.padding.small,
-              fontFamily: layout.fonts.nunito,
-              fontSize: layout.fontSizes.medium,
-              color: colors.themeColors.primary,
-            }}>
-            {categoryData.description}
-          </Text>
-          <View style={{flexBasis: IMAGE_OFFSET}} />
-        </View>
-      </View>
-      <View
-        style={{flex: 1, paddingHorizontal: layout.padding.screenHorizontal}}>
-        <View style={{flex: 8}}>
-          <CustomTextInput
-            style={{position: 'absolute', bottom: 0, width: '100%'}}
-            gap={CUSTOM_INPUT_TEXT_GAP}
-            placeholder={categoryData.placeholder}
-            value={goalName}
-            onChangeText={(text) => onChangeGoalName(text)}
-          />
-        </View>
-        <View style={{flex: 11}}>
-          <View style={{flexBasis: 8}} />
-          <SvgHand style={{aspectRatio: layout.imageAspectRatio.svgHand}} />
-          <Text
-            style={{
-              flex: 1,
-              color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.small,
-            }}>
-            {
-              'Goals must be Specific, Measurement, Achievable, \nRelevant and Time based.'
-            }
-          </Text>
-        </View>
-
-        <View style={{flex: 5}}>
-          <TouchableOpacity
-            onPress={() => {
-              if (goalName !== '') {
-                onPress(goalName);
-              } else {
-                Alert.alert(
-                  'Goal is empty',
-                  'The goal to achieve cannot be empty. Please provide a goal',
-                  {cancelable: false},
-                );
+          <View style={{flex: 11}}>
+            <View style={{flexBasis: 8}} />
+            <SvgHand style={{aspectRatio: layout.imageAspectRatio.svgHand}} />
+            <Text
+              style={{
+                flex: 1,
+                color: colors.themeColors.pink,
+                fontSize: layout.fontSizes.small,
+              }}>
+              {
+                'Goals must be Specific, Measurement, Achievable, \nRelevant and Time based.'
               }
-            }}
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
-            <CheckCircle />
-          </TouchableOpacity>
+            </Text>
+          </View>
+          <View style={{flex: 5}}>
+            <TouchableOpacity
+              onPress={() => {
+                if (goalName !== '') {
+                  onPress(goalName);
+                } else {
+                  Alert.alert(
+                    'Goal is empty',
+                    'The goal to achieve cannot be empty. Please provide a goal',
+                    {cancelable: false},
+                  );
+                }
+              }}
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+              }}>
+              <CheckCircle />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
