@@ -76,7 +76,9 @@ const MyTasksHome = ({navigation, route}) => {
           return {goalId: goal.id, ...task};
         }),
       ]);
+
       const flatten = [].concat.apply([], arraysOfTasks);
+
       const tasksArray = flatten.map((task) => {
         return {
           id: task.id,
@@ -84,9 +86,9 @@ const MyTasksHome = ({navigation, route}) => {
           goalId: task.goalId,
           epochTime: task.epochTime,
           daysToRepeat: task.daysToRepeat,
-          repeats: task.repeats,
         };
       });
+      setDataList(tasksArray);
     });
   };
 
@@ -104,7 +106,6 @@ const MyTasksHome = ({navigation, route}) => {
         id: selectedItem.id,
         name: selectedItem.name,
         epochTime: selectedItem.epochTime,
-        repeats: selectedItem.repeats,
         daysToRepeat: selectedItem.daysToRepeat,
       };
 
@@ -121,39 +122,24 @@ const MyTasksHome = ({navigation, route}) => {
   }, [selectedItem]);
 
   const CustomModal = () => {
-    let {name, daysToRepeat, epochTime: currentTime, repeats} = selectedItem;
+    let {name, daysToRepeat, epochTime: currentTime} = selectedItem;
     if (daysToRepeat && daysToRepeat.length > 0) {
       daysToRepeat = daysToRepeat.map((item) => {
         return {text: item, isSelected: true};
       });
     }
-    if (modalIndex === 0) {
-      return (
-        <TaskNameModal
-          initialName={name}
-          onSubmit={(taskName) => {
-            console.log('worked');
-            setSelectedItem({...selectedItem, name: taskName});
-            setModalIndex(1);
-          }}
-        />
-      );
-    }
     return (
       <TaskTimeModal
         initialTime={new Date(currentTime)}
         initialDaysRepeat={daysToRepeat}
-        initialTimes={repeats}
-        onSubmit={({epochTime, times, daysStringArray}) => {
+        onSubmit={({epochTime, daysStringArray}) => {
           setSelectedItem({
             ...selectedItem,
             epochTime: epochTime,
             daysToRepeat: daysStringArray,
-            repeats: times,
             isUpdated: true,
           });
           setIsVisibleEditModal(false);
-          setModalIndex(0);
         }}
       />
     );
@@ -229,7 +215,6 @@ const MyTasksHome = ({navigation, route}) => {
                         name: '',
                         daysToRepeat: [],
                         epochTime: new Date().getTime(),
-                        repeats: 5,
                       });
                       setIsVisibleEditModal(true);
                     }

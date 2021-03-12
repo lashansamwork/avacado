@@ -183,8 +183,6 @@ const TaskTimeModal = ({
         <TouchableOpacity
           style={{alignSelf: 'center'}}
           onPress={() => {
-            console.log('repeatDays' + repeatDays);
-            console.log('name ' + name);
             if (repeatDays && repeatDays.length > 0 && name !== '') {
               let daysStringArray = [];
               repeatDays.forEach((e) => {
