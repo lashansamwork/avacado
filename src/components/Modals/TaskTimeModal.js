@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, TouchableOpacity, Alert} from 'react-native';
+import {Dimensions, Text, View, TouchableOpacity, Alert} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import DatePicker from 'react-native-date-picker';
@@ -28,6 +28,8 @@ const TaskTimeModal = ({
   const MODAL_WIDTH = '100%';
   const MODAL_RADIUS = 70;
   const MODAL_SHADOW_HEIGHT = 3;
+  const WINDOWHEIGHT = Dimensions.get('window').height;
+  const MODAL_HEIGHT = (WINDOWHEIGHT * 59) / 100;
 
   const PICKER_CONTAINER_WIDTH = '85%';
   const DATEPICKER_MAGNIFICATION = 1.1;
@@ -56,7 +58,7 @@ const TaskTimeModal = ({
         padding: 0,
         position: 'absolute',
         bottom: 0,
-        height: '59%',
+        height: MODAL_HEIGHT,
         right: 0,
         left: 0,
         alignItems: 'center',
