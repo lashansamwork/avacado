@@ -12,7 +12,7 @@ import {SwipeListView} from 'react-native-swipe-list-view';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 import TaskItem from '../TaskItem';
-const Tick = require('../../assets/images/TickIcon.png');
+import Tick from '../SvgIcons/TickIcon';
 const TouchableHighlightAnimated = Animated.createAnimatedComponent(
   TouchableOpacity,
 );
@@ -102,13 +102,7 @@ export default function TasksList({
             marginRight: 1,
           }}
           onPress={onPress}>
-          <View style={{aspectRatio: 1, height: TICK_HEIGHT}}>
-            <Image
-              source={Tick}
-              resizeMode="stretch"
-              style={{width: null, height: null, flex: 1}}
-            />
-          </View>
+          <Tick />
         </TouchableOpacity>
       );
     } else {
