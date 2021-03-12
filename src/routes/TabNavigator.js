@@ -10,9 +10,11 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
   return (
     <SafeAreaProvider>
-      <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
-        <Tab.Screen name="Settings" component={MyGoalNavigator} />
+      <Tab.Navigator
+        initialRouteName="Settings"
+        tabBar={(props) => <TabBar {...props} />}>
         <Tab.Screen name="MyTask" component={MyTaskNavigator} />
+        <Tab.Screen name="Settings" component={MyGoalNavigator} />
         <Tab.Screen
           name="profile"
           component={AboutScreen}
