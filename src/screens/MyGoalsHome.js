@@ -7,6 +7,7 @@ import {
   Modal,
   TouchableOpacity,
   Image,
+  Dimensions,
 } from 'react-native';
 import layout from '../theme/layout';
 import ListCard from '../components/Cards/ListCard';
@@ -23,6 +24,7 @@ const MyGoalsHome = ({navigation}) => {
   const [myGoals, setMyGoals] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const WINDOWWIDTH = Dimensions.get('window').width;
 
   useEffect(() => {
     updateGoals();
@@ -140,6 +142,7 @@ const MyGoalsHome = ({navigation}) => {
                 }}>
                 <Text
                   style={{
+                    marginHorizontal: WINDOWWIDTH / 3.4,
                     fontFamily: layout.fonts.nunito,
                     fontSize: layout.fontSizes.medium,
                     color: colors.themeColors.primary,
