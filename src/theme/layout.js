@@ -43,6 +43,7 @@ const layout = {
     xheader: 19.5,
     header: 20,
     mediumHigh: 14,
+    medium2: 16,
     subText: 12,
     large: 23,
     xxxLarge: 39,

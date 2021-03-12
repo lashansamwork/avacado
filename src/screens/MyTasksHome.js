@@ -67,7 +67,6 @@ const MyTasksHome = ({navigation, route}) => {
   }, [navigation]);
 
   const updateGoalsState = () => {
-    //not good code ( this code divides the relationship between goals and tasks )
     const selectedGoal = route?.params?.goal;
 
     getGoals(selectedGoal?.id).then((realmArr) => {
@@ -88,17 +87,6 @@ const MyTasksHome = ({navigation, route}) => {
           repeats: task.repeats,
         };
       });
-      console.log(
-        '🚀 ~ file: MyTasksHome.js ~ line 99 ~ tasksArray ~ tasksArray',
-        tasksArray,
-      );
-      if (tasksArray && tasksArray.length > 0) {
-        setTasks(tasksArray);
-        console.log('data set ✅');
-      } else {
-        console.log('data not set ❌');
-        setTasks([]);
-      }
     });
   };
 

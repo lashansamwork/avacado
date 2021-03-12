@@ -9,14 +9,9 @@ import {
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
-
 import CheckCircle from '../../assets/images/CheckCircle';
 
-// <<<<<<< HEAD
 const WhyAchieveGoalScreen = (onPress) => {
-  // =======
-  // const WhyAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
-  // >>>>>>> origin/code/category-dynamic
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
   const HEADING_GAP = '29.5%';

@@ -6,9 +6,7 @@ import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
 import TaskItem from '../../components/TaskItem';
 import TaskTimeModal from '../../components/Modals/TaskTimeModal';
-import TaskNameModal from '../../components/Modals/TaskNameModal';
 
-// <<<<<<< HEAD
 const BORDER_RADIUS = 20;
 
 //Task Item sent here
@@ -22,10 +20,6 @@ const Item = ({title}) => (
 
 const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
-
-  // =======
-  // const HowToAchieveGoalScreen = (onPress, goBack, {navigation}, itemId) => {
-  // >>>>>>> origin/code/category-dynamic
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 44;
   const HEADING_OFFSET = 120;
@@ -35,40 +29,26 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const [tasks, setTasks] = React.useState(oldTasks);
   const [task, setTask] = React.useState({name: null});
   const CustomModal = () => {
-    if (modalIndex === 0) {
-      return (
-        <TaskNameModal
-          onSubmit={(taskName) => {
-            setTask({
-              ...task,
-              name: taskName,
-            });
-            setModalIndex(1);
-          }}
-        />
-      );
-    }
     return (
       <TaskTimeModal
-        onSubmit={({epochTime, times, daysStringArray}) => {
+        onSubmit={({name, epochTime, daysStringArray}) => {
           let repeatDays = daysStringArray;
           //todo conevert correct way;
           setTask({
             ...task,
+            name: name,
             epochTime: epochTime,
-            repeats: times,
             daysToRepeat: repeatDays,
           });
           setTasks([
             ...tasks,
             {
               ...task,
+              name: name,
               epochTime: epochTime,
-              repeats: times,
               daysToRepeat: repeatDays,
             },
           ]);
-          setModalIndex(0);
           setModalVisible(false);
         }}
       />
@@ -77,7 +57,12 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <View style={{flexGrow: 1, height: '100%', marginTop: SAFEVIEW_OFFSET}}>
+      <View
+        style={{
+          flexGrow: 1,
+          height: '100%',
+          marginTop: SAFEVIEW_OFFSET,
+        }}>
         <View
           style={{
             flex: 23,
