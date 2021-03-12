@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, Image, View} from 'react-native';
+import {Text, TouchableOpacity, Image, View, Alert} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import CheckCircle from '../../assets/images/CheckCircle';
@@ -17,7 +17,6 @@ const WhenToAchieveGoalScreen = (onPress) => {
   const BUTTON_OFFSET = 35;
   const TEXT_GAP = -17;
   const [selectedDate, setSelectedDate] = React.useState(null);
-  const [error, setError] = React.useState(false);
   return (
     <View style={{flex: 1.2}}>
       <View
@@ -89,7 +88,11 @@ const WhenToAchieveGoalScreen = (onPress) => {
               if (selectedDate !== null) {
                 onPress(selectedDate);
               } else {
-                setError(true);
+                Alert.alert(
+                  'Date is not selected',
+                  'Please choose a valid date to achieve your goal',
+                  {cancelable: false},
+                );
               }
             }}
             style={{
@@ -99,27 +102,6 @@ const WhenToAchieveGoalScreen = (onPress) => {
             }}>
             <CheckCircle />
           </TouchableOpacity>
-        </View>
-        <View style={{flex: 13}}>
-          {!error && (
-            <View
-              style={{
-                flexBasis: 30,
-              }}
-            />
-          )}
-          {error && (
-            <Text
-              style={{
-                alignSelf: 'center',
-                lineHeight: layout.defaultLineHeight,
-                fontSize: layout.fontSizes.welcomeText,
-                fontFamily: layout.fonts.nunito,
-                color: colors.themeColors.error,
-              }}>
-              Please enter your goal
-            </Text>
-          )}
         </View>
       </View>
     </View>
