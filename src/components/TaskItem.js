@@ -29,7 +29,10 @@ const TaskItem = ({onPress, style, fontColor, label, backgroundColor}) => {
         }}>
         {label}
       </Text>
-      <ClockIcon />
+      <View style={{flexDirection: 'row'}}>
+        <ClockIcon />
+        <View style={{flexBasis: 20}} />
+      </View>
     </TouchableOpacity>
   );
 };
