@@ -14,7 +14,7 @@ import {
 } from '../database/GoalActions';
 import {useEffect} from 'react';
 import TaskNameModal from '../components/Modals/TaskNameModal';
-import TaskTimeModal from '../components/Modals/TaskTimeModal';
+import TaskTimeModalEdit from '../components/Modals/TaskTimeModalEdit';
 const LeftArrow = require('../assets/images/ArrowLeft.png');
 const MODAL_OFFSET = 200;
 
@@ -108,12 +108,21 @@ const MyTasksHome = ({navigation, route}) => {
         epochTime: selectedItem.epochTime,
         daysToRepeat: selectedItem.daysToRepeat,
       };
-
+      console.log(
+        '🚀 ~ file: MyTasksHome.js ~ line 116 ~ useEffect ~ task',
+        task,
+      );
+      console.log(
+        '🚀 ~ file: MyTasksHome.js ~ line 105 ~ useEffect ~ selectedItem',
+        selectedItem,
+      );
       if (selectedItem.isNew) {
+        console.log('beep');
         addNewTask(goalId, task).then((test) => {
           updateGoalsState();
         });
       } else {
+        console.log('boop');
         updateTask(goalId, task).then((test) => {
           updateGoalsState();
         });
@@ -129,12 +138,14 @@ const MyTasksHome = ({navigation, route}) => {
       });
     }
     return (
-      <TaskTimeModal
+      <TaskTimeModalEdit
         initialTime={new Date(currentTime)}
         initialDaysRepeat={daysToRepeat}
-        onSubmit={({epochTime, daysStringArray}) => {
+        initialName={name}
+        onSubmit={({name, epochTime, daysStringArray}) => {
           setSelectedItem({
             ...selectedItem,
+            name: name,
             epochTime: epochTime,
             daysToRepeat: daysStringArray,
             isUpdated: true,
@@ -220,12 +231,12 @@ const MyTasksHome = ({navigation, route}) => {
                     }
                   : null
               }
+              // EDIT
               onEditPress={(item) => {
                 setIsVisibleEditModal(true);
                 setSelectedItem(item);
               }}
             />
-            {/* Task Items and hidden functions */}
           </View>
         </View>
         <Modal
