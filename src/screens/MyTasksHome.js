@@ -88,7 +88,7 @@ const MyTasksHome = ({navigation, route}) => {
           daysToRepeat: task.daysToRepeat,
         };
       });
-      setDataList(tasksArray);
+      setTasks(tasksArray);
     });
   };
 
