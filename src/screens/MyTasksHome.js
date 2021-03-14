@@ -193,8 +193,13 @@ const MyTasksHome = ({navigation, route}) => {
               fontSize: layout.fontSizes.header,
               color: colors.themeColors.primary,
             }}>
-            My Tasks
+            {selectedGoal ? selectedGoal.name : 'My Tasks'}
           </Text>
+          {selectedGoal && (
+            <Text style={{color: colors.themeColors.pink}}>
+              {selectedGoal.category}
+            </Text>
+          )}
         </View>
         <View style={{flex: 6, justifyContent: 'center'}}>
           <View
