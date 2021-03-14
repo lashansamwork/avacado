@@ -27,7 +27,10 @@ const MyTasksHome = ({navigation, route}) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const selectedGoal = route?.params?.goal;
   useEffect(() => {
-    updateGoalsState();
+    const unsubscribe = navigation.addListener('focus', () => {
+      updateGoalsState();
+    });
+    return unsubscribe;
   }, []);
 
   React.useLayoutEffect(() => {
