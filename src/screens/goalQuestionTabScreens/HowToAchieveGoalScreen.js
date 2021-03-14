@@ -21,7 +21,7 @@ const Item = ({title}) => (
 const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
   const SAFEVIEW_OFFSET = 15;
-  const HEADING_GAP = 44;
+  const HEADING_GAP = 50;
   const HEADING_OFFSET = 120;
   const MODAL_OFFSET = 200;
   const [modalVisible, setModalVisible] = useState(false);

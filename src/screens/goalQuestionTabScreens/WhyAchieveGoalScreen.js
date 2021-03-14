@@ -16,7 +16,7 @@ import CheckCircle from '../../assets/images/CheckCircle';
 const WhyAchieveGoalScreen = (onPress) => {
   const [reason, setReason] = useState('');
   const CHECK_BUTTON_OFFSET = '44%';
-  const HEADING_GAP = '29.5%';
+  const HEADING_GAP = '35.5%';
   const HEADING_OFFSET = '25.9%';
   return (
     <KeyboardAvoidingView

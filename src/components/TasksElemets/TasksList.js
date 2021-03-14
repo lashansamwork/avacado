@@ -57,7 +57,7 @@ export default function TasksList({
 
     let translateX = data.item.animation.interpolate({
       inputRange: [0, 83],
-      outputRange: [0, -(layout.swipeButtonSize - 6)],
+      outputRange: [0, -(layout.swipeButtonSize + 14)],
       extrapolate: 'clamp',
     });
 

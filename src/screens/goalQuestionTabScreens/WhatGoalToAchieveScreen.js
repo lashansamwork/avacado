@@ -41,7 +41,7 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
   const categoryData = getCategoryData(categoryId);
   const [goalName, onChangeGoalName] = useState('');
   const SAFEVIEW_OFFSET = 15;
-  const HEADING_GAP = 44;
+  const HEADING_GAP = 50;
   const IMAGE_OFFSET = 20;
   const IMAGE_HEIGHT = '56%';
   const CUSTOM_INPUT_TEXT_GAP = 6;
