@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
 const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
@@ -97,17 +98,6 @@ const FirstPageScreen = ({navigation}) => {
           value={name}
           onChangeText={(text) => setName(text)}
         />
-        {error && (
-          <Text
-            style={{
-              lineHeight: layout.defaultLineHeight,
-              fontSize: layout.fontSizes.welcomeText,
-              fontFamily: layout.fonts.nunito,
-              color: colors.themeColors.error,
-            }}>
-            Name cannot be empty
-          </Text>
-        )}
         <View style={{flex: 0.22}} />
         <TouchableOpacity
           style={{alignSelf: 'center'}}
@@ -116,7 +106,11 @@ const FirstPageScreen = ({navigation}) => {
               addUser({name: name});
               navigation.navigate('AddGoalScreen');
             } else {
-              setError(true);
+              Alert.alert(
+                'Name error',
+                'Name cannot be empty',
+                {cancelable: false},
+              );
             }
           }}>
           <CheckCircle />

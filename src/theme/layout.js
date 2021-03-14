@@ -48,6 +48,7 @@ const layout = {
     subText: 12 * MAGNIFIEDBY,
     large: 23 * MAGNIFIEDBY,
     xxxLarge: 39 * MAGNIFIEDBY,
+    welcomeText: 20 * MAGNIFIEDBY
   },
   imageSizes: {
     small: '10%',
