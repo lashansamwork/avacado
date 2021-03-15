@@ -50,16 +50,22 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{flex: 1}}>
       <SafeAreaView style={{flexGrow: 1, marginTop: SAFEVIEW_OFFSET}}>
-        <View style={{ paddingHorizontal: layout.padding.screenHorizontal, paddingVertical: layout.padding.xxxLarge, flex: 1 }}>
+        <View
+          style={{
+            paddingHorizontal: layout.padding.screenHorizontal,
+            paddingVertical: layout.padding.xxxLarge,
+            flex: 1,
+          }}>
           {/* title */}
-          <View style={{ alignItems: 'flex-start', justifyContent: 'flex-start'}}>
+          <View
+            style={{alignItems: 'flex-start', justifyContent: 'flex-start'}}>
             <Text
-                style={{
-                  fontFamily: layout.fonts.nunito,
-                  color: colors.themeColors.primary,
-                  fontSize: layout.fontSizes.xxxLarge,
-                }}>
-                What?
+              style={{
+                fontFamily: layout.fonts.nunito,
+                color: colors.themeColors.primary,
+                fontSize: layout.fontSizes.xxxLarge,
+              }}>
+              What?
             </Text>
             <Text
               style={{
@@ -71,12 +77,13 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
             </Text>
           </View>
           {/* image */}
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <View
               style={{
                 height: IMAGE_HEIGHT,
                 aspectRatio: categoryData.aspectRatio,
-            }}>
+              }}>
               <Image
                 source={categoryData.imagePath}
                 style={{flex: 1, height: null, width: null}}
@@ -85,16 +92,16 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
             </View>
           </View>
           {/* input */}
-          <View style={{ flex: 1}}>
+          <View style={{flex: 1}}>
             <CustomTextInput
-              style={{ width: '100%', justifyContent: 'flex-start'}}
+              style={{width: '100%', justifyContent: 'flex-start'}}
               gap={CUSTOM_INPUT_TEXT_GAP}
               placeholder={categoryData.placeholder}
               value={goalName}
               onChangeText={(text) => onChangeGoalName(text)}
             />
-            <View style={{ paddingTop: layout.padding.medium }}/>
-            <SvgHand style={{aspectRatio: layout.imageAspectRatio.svgHand }} />
+            <View style={{paddingTop: layout.padding.medium}} />
+            <SvgHand style={{aspectRatio: layout.imageAspectRatio.svgHand}} />
             <Text
               style={{
                 color: colors.themeColors.pink,
@@ -105,22 +112,22 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
               }
             </Text>
             <TouchableOpacity
-                onPress={() => {
-                  if (goalName !== '') {
-                    onPress(goalName);
-                  } else {
-                    Alert.alert(
-                      'Goal is empty',
-                      'The goal to achieve cannot be empty. Please provide a goal',
-                      {cancelable: false},
-                    );
-                  }
-                }}
-                style={{
-                  paddingTop: layout.padding.large,
-                  alignSelf: 'center'
-                }}>
-                <CheckCircle />
+              onPress={() => {
+                if (goalName !== '') {
+                  onPress(goalName);
+                } else {
+                  Alert.alert(
+                    'Goal is empty',
+                    'The goal to achieve cannot be empty. Please provide a goal',
+                    {cancelable: false},
+                  );
+                }
+              }}
+              style={{
+                paddingTop: layout.padding.large,
+                alignSelf: 'center',
+              }}>
+              <CheckCircle />
             </TouchableOpacity>
           </View>
         </View>
