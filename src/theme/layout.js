@@ -1,5 +1,5 @@
 import {Dimensions} from 'react-native';
-const MAGNIFIEDBY = 1;
+const MAGNIFIEDBY = 1.2;
 const layout = {
   screenWidth: {
     full: '100%',
@@ -48,7 +48,7 @@ const layout = {
     subText: 12 * MAGNIFIEDBY,
     large: 23 * MAGNIFIEDBY,
     xxxLarge: 39 * MAGNIFIEDBY,
-    welcomeText: 20 * MAGNIFIEDBY
+    welcomeText: 20 * MAGNIFIEDBY,
   },
   imageSizes: {
     small: '10%',
