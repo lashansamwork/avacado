@@ -1,5 +1,5 @@
 import {Dimensions} from 'react-native';
-const MAGNIFIEDBY = 1.2;
+const MAGNIFIEDBY = 1;
 const layout = {
   screenWidth: {
     full: '100%',
