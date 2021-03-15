@@ -76,7 +76,6 @@ const PrimaryCalendar = ({onSelect}) => {
             [day.dateString]: {
               customStyles: {
                 container: {
-                  top: -MARKED_DAY_OFFSET,
                   backgroundColor: colors.themeColors.pink,
                   height: MARKED_DAY_HEIGHT,
                   aspectRatio: 1,
