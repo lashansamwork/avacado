@@ -30,7 +30,7 @@ const PrimaryCalendar = ({onSelect}) => {
   const DAY_CONTAINER_HEIGHT = 32;
 
   const MARKED_DAY_OFFSET = 3;
-  const MARKED_DAY_HEIGHT = 20;
+  const MARKED_DAY_HEIGHT = 25;
 
   const SKIP_DAYS = 1;
 
