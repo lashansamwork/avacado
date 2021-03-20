@@ -13,6 +13,7 @@ import DotIcon from '../SvgIcons/DotIcon';
 import PinkButton from '../Buttons/PinkButton';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {useEffect} from 'react';
+import Toast from 'react-native-simple-toast';
 const ListCard = ({
   imageUrl,
   imageAspectRatio,
@@ -50,7 +51,9 @@ const ListCard = ({
       onDeletePress && onDeletePress();
     }
   }, [isVisibleRBSheet]);
-
+  function showToast() {
+    Toast.showWithGravity('Congratulations!', Toast.LONG, Toast.TOP);
+  }
   return (
     <View>
       <View
@@ -185,25 +188,60 @@ const ListCard = ({
             <View
               style={{
                 height: RBSHEET_HEIGHT,
-                borderTopLeftRadius: RBSHEET_MAIN_VIEW_RADIUS,
-                borderTopRightRadius: RBSHEET_MAIN_VIEW_RADIUS,
                 justifyContent: 'flex-start',
                 alignItems: 'center',
+                borderTopLeftRadius: RBSHEET_MAIN_VIEW_RADIUS,
+                borderTopRightRadius: RBSHEET_MAIN_VIEW_RADIUS,
               }}>
-              <TouchableOpacity
-                style={{paddingTop: layout.padding.xxxLarge}}
-                onPress={() => {
-                  setPressedButton('delete');
-                  myRbSheet.close();
-                }}>
-                <Text
-                  style={{
-                    color: colors.themeColors.pink,
-                    fontFamily: layout.fonts.nunito,
+              <View
+                style={{
+                  width: PINK_BAR_WIDTH,
+                  borderRadius: PINK_BAR_RADIUS,
+                  margin: layout.padding.medium,
+                  backgroundColor: colors.themeColors.pink,
+                  height: PINK_BAR_HEIGHT,
+                }}
+              />
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <View style={{flexBasis: BUTTON_GAP}} />
+                <TouchableOpacity
+                  onPress={() => {
+                    myRbSheet.close();
+                    setTimeout(showToast, 750);
                   }}>
-                  Delete
-                </Text>
-              </TouchableOpacity>
+                  <Text
+                    style={{
+                      color: colors.themeColors.pink,
+                      fontFamily: layout.fonts.nunito,
+                    }}>
+                    Archived
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  height: layout.heights.seperatorHeight,
+                  width: SEPERATOR_WIDTH,
+                  backgroundColor: colors.themeColors.shadow,
+                  opacity: SEPERATOR_OPACITY,
+                }}
+              />
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setPressedButton('delete');
+                    myRbSheet.close();
+                  }}>
+                  <Text
+                    style={{
+                      color: colors.themeColors.pink,
+                      fontFamily: layout.fonts.nunito,
+                    }}>
+                    Delete
+                  </Text>
+                </TouchableOpacity>
+                <View style={{flexBasis: BUTTON_GAP}} />
+              </View>
             </View>
           </RBSheet>
         )}
