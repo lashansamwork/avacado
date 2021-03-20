@@ -24,6 +24,7 @@ const ListCard = ({
   onDeletePress,
   onCardPress,
 }) => {
+  const HITSLOP_SIZE = 20;
   const RBSHEET_HEIGHT = 100;
   const RBSHEET_OPEN_DURATION = 250;
   const RBSHEET_RADIUS = 45;
@@ -67,13 +68,17 @@ const ListCard = ({
             flexDirection: 'row',
           }}>
           <View
-            style={{flex: 6, alignItems: 'flex-end', justifyContent: 'center'}}>
+            style={{
+              flex: 6,
+              height: '100%',
+              alignItems: 'flex-end',
+            }}>
             <TouchableOpacity
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                width: layout.padding.xxxxLarge,
+              hitSlop={{
+                bottom: HITSLOP_SIZE,
+                left: HITSLOP_SIZE,
+                right: HITSLOP_SIZE,
+                top: HITSLOP_SIZE,
               }}
               onPress={() => setIsVisibleRBSheet(true)}>
               <DotIcon />
