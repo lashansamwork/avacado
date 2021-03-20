@@ -69,7 +69,7 @@ const layout = {
     xsmall: Dimensions.get('screen').width / 10.7,
     small: Dimensions.get('screen').width / 3.13,
     medium: Dimensions.get('screen').height / 6.3,
-    large: Dimensions.get('screen').height / 5,
+    large: Dimensions.get('screen').height / 5.1,
     xxxxLarge: Dimensions.get('screen').width / 0.4443,
   },
   autoDisplacemets: {
