@@ -141,7 +141,7 @@ const GoalCategoryScreen = ({navigation}) => {
           }>
           <View
             style={{
-              height: layout.autoImageSizes.large,
+              height: layout.autoImageSizes.medium,
               aspectRatio: layout.imageAspectRatio.thinkingGirl,
             }}>
             <Image

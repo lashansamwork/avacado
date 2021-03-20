@@ -76,7 +76,7 @@ const MyTasksHome = ({navigation, route}) => {
       const goals = realmArr.map((goal) => goal);
       const arraysOfTasks = goals.map((goal) => [
         ...goal.tasks.map((task) => {
-          return {goalId: goal.id, ...task};
+          return {goalId: goal.id, goalCategory: goal.category, ...task};
         }),
       ]);
 
@@ -87,6 +87,7 @@ const MyTasksHome = ({navigation, route}) => {
           id: task.id,
           name: task.name,
           goalId: task.goalId,
+          goalCategory: task.goalCategory,
           epochTime: task.epochTime,
           daysToRepeat: task.daysToRepeat,
         };
@@ -111,21 +112,12 @@ const MyTasksHome = ({navigation, route}) => {
         epochTime: selectedItem.epochTime,
         daysToRepeat: selectedItem.daysToRepeat,
       };
-      console.log(
-        '🚀 ~ file: MyTasksHome.js ~ line 116 ~ useEffect ~ task',
-        task,
-      );
-      console.log(
-        '🚀 ~ file: MyTasksHome.js ~ line 105 ~ useEffect ~ selectedItem',
-        selectedItem,
-      );
+
       if (selectedItem.isNew) {
-        console.log('beep');
         addNewTask(goalId, task).then((test) => {
           updateGoalsState();
         });
       } else {
-        console.log('boop');
         updateTask(goalId, task).then((test) => {
           updateGoalsState();
         });
@@ -239,7 +231,6 @@ const MyTasksHome = ({navigation, route}) => {
                     }
                   : null
               }
-              // EDIT
               onEditPress={(item) => {
                 setIsVisibleEditModal(true);
                 setSelectedItem(item);

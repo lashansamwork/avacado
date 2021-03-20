@@ -1,10 +1,28 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import readingGirl from '../../assets/images/ReadingGirlWithoutCircle.png';
+import moneyGirl from '../../assets/images/MoneyGirlWithoutCircle.png';
+import yogaGirl from '../../assets/images/YogaGirlWithoutCircle.png';
+import thinkingGirl from '../../assets/images/ThinkingGirlWithoutCircle.png';
 import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 import moment from 'moment';
-const TaskView = ({name, time}) => {
+const TaskView = ({name, time, category}) => {
+  let IMAGE = null;
+  let ASPECT_RATIO = null;
+  if (category === 'Finance') {
+    IMAGE = moneyGirl;
+    ASPECT_RATIO = layout.imageAspectRatio.moneyGirlWithoutCirlce;
+  } else if (category === 'Self Growth') {
+    IMAGE = thinkingGirl;
+    ASPECT_RATIO = layout.imageAspectRatio.thinkingGirlWithoutCircle;
+  } else if (category === 'Career & Educational') {
+    IMAGE = readingGirl;
+    ASPECT_RATIO = layout.imageAspectRatio.readingGirlWithoutCircle;
+  } else if (category === 'Physical & Health') {
+    IMAGE = yogaGirl;
+    ASPECT_RATIO = layout.imageAspectRatio.yogaGirlWithoutCircle;
+  }
   const TIME_OFFSET = 20;
   return (
     <View
@@ -17,12 +35,12 @@ const TaskView = ({name, time}) => {
       }}>
       <View
         style={{
-          aspectRatio: layout.imageAspectRatio.readingGirlWithoutCircle,
+          aspectRatio: ASPECT_RATIO,
           height: '90%',
         }}>
         <Image
-          source={readingGirl}
-          style={{height: null, width: null, flex: 1}}
+          source={IMAGE}
+          style={{height: null, width: null, flex: 1, marginLeft: 15}}
           resizeMode="stretch"
         />
       </View>

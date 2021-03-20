@@ -6,7 +6,6 @@ import {
   FlatList,
   Modal,
   TouchableOpacity,
-  Image,
   Dimensions,
 } from 'react-native';
 import layout from '../theme/layout';

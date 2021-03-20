@@ -34,6 +34,7 @@ export default function TasksList({
       const dataList = rawData.map((element, index) => {
         return {
           id: element.id,
+          goalCategory: element.goalCategory,
           key: index,
           text: element.name,
           time: element.epochTime,
@@ -60,7 +61,6 @@ export default function TasksList({
       outputRange: [0, -(layout.swipeButtonSize + 14)],
       extrapolate: 'clamp',
     });
-
     return (
       <TouchableHighlightAnimated
         activeOpacity={0.8}
@@ -82,7 +82,11 @@ export default function TasksList({
         }}
         underlayColor={'rgba(255,255,255, 0.8)'}>
         <View>
-          <TaskView time={data.item.time} name={data.item.text} />
+          <TaskView
+            category={data.item.goalCategory}
+            time={data.item.time}
+            name={data.item.text}
+          />
         </View>
       </TouchableHighlightAnimated>
     );
