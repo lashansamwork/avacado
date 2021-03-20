@@ -112,11 +112,9 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
                 if (goalName !== '') {
                   onPress(goalName);
                 } else {
-                  Alert.alert(
-                    'Goal is empty',
-                    'The goal to achieve cannot be empty. Please provide a goal',
-                    {cancelable: false},
-                  );
+                  Alert.alert('Error', 'Please fill out the field', {
+                    cancelable: false,
+                  });
                 }
               }}
               style={{

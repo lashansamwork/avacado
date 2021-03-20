@@ -88,11 +88,9 @@ const WhenToAchieveGoalScreen = (onPress) => {
               if (selectedDate !== null) {
                 onPress(selectedDate);
               } else {
-                Alert.alert(
-                  'Date is not selected',
-                  'Please choose a valid date to achieve your goal',
-                  {cancelable: false},
-                );
+                Alert.alert('Error', 'Please choose a date', {
+                  cancelable: false,
+                });
               }
             }}
             style={{
