@@ -47,6 +47,7 @@ const layout = {
     xheader: 19.5 * MAGNIFIEDBY,
     header: 20 * MAGNIFIEDBY,
     mediumHigh: 14 * MAGNIFIEDBY,
+    medium1: 18 * MAGNIFIEDBY,
     medium2: 16 * MAGNIFIEDBY,
     subText: 12 * MAGNIFIEDBY,
     large: 23 * MAGNIFIEDBY,
