@@ -66,8 +66,16 @@ const ListCard = ({
             alignItems: 'flex-end',
             flexDirection: 'row',
           }}>
-          <View style={{flex: 6, alignItems: 'flex-end'}}>
-            <TouchableOpacity onPress={() => setIsVisibleRBSheet(true)}>
+          <View
+            style={{flex: 6, alignItems: 'flex-end', justifyContent: 'center'}}>
+            <TouchableOpacity
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                width: layout.padding.xxxxLarge,
+              }}
+              onPress={() => setIsVisibleRBSheet(true)}>
               <DotIcon />
             </TouchableOpacity>
           </View>
