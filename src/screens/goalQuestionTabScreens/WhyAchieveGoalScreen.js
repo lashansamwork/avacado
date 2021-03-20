@@ -77,11 +77,9 @@ const WhyAchieveGoalScreen = (onPress) => {
               if (reason !== '') {
                 onPress(reason);
               } else {
-                Alert.alert(
-                  'Reason is empty',
-                  'Please provide a reason to remember why this goal important to you',
-                  {cancelable: false},
-                );
+                Alert.alert('Error', 'Please fill out the field', {
+                  cancelable: false,
+                });
               }
             }}
             style={{

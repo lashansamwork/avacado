@@ -5,7 +5,7 @@ import {
   Image,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Alert
+  Alert,
 } from 'react-native';
 const AvacadoLogo = require('../assets/images/AvocadoLogo.png');
 const GirlCouchImage = require('../assets/images/GirlSittingCouch3.png');
@@ -106,11 +106,9 @@ const FirstPageScreen = ({navigation}) => {
               addUser({name: name});
               navigation.navigate('AddGoalScreen');
             } else {
-              Alert.alert(
-                'Name error',
-                'Name cannot be empty',
-                {cancelable: false},
-              );
+              Alert.alert('Error', 'Please fill out the field', {
+                cancelable: false,
+              });
             }
           }}>
           <CheckCircle />

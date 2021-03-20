@@ -98,7 +98,6 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
                 setModalVisible(true);
               }}
             />
-
             <FlatList
               style={{width: '100%'}}
               data={tasks}
@@ -118,11 +117,9 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
                 if (tasks !== undefined && tasks.length !== 0) {
                   onPress(tasks);
                 } else {
-                  Alert.alert(
-                    'There are no tasks',
-                    'You should provide at least one task helping to achieve your goal',
-                    {cancelable: false},
-                  );
+                  Alert.alert('Error', 'Create at least one task', {
+                    cancelable: false,
+                  });
                 }
               }}
               style={{
