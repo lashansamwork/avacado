@@ -70,7 +70,6 @@ const ListCard = ({
           <View
             style={{
               flex: 6,
-              height: '100%',
               alignItems: 'flex-end',
             }}>
             <TouchableOpacity
