@@ -56,7 +56,11 @@ const GoalInfoScreen = ({navigation, route}) => {
           alignSelf: 'center',
           justifyContent: 'center',
         }}>
-        <View style={{height: 130, aspectRatio: imageAspectRatio}}>
+        <View
+          style={{
+            height: layout.autoImageSizes.large,
+            aspectRatio: imageAspectRatio,
+          }}>
           <Image
             source={imageUrl}
             style={{width: null, height: null, flex: 1}}

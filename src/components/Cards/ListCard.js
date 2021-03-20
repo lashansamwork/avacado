@@ -82,7 +82,7 @@ const ListCard = ({
           }}>
           <View
             style={{
-              width: '70%',
+              height: layout.autoImageSizes.large,
               aspectRatio: imageAspectRatio,
             }}>
             <Image
