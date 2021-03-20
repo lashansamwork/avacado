@@ -4,14 +4,14 @@ const CategoryData = [
     imagePath: require('./images/YogaGirl.png'),
     description: 'Physical & Health',
     placeholder: 'Lose 2kg in a month',
-    aspectRatio: 804 / 612,
+    aspectRatio: 694 / 699,
   },
   {
     id: 1,
     imagePath: require('./images/ReadingGirl.png'),
     description: 'Career & Education',
     placeholder: "Get my bacholer's dagree in three years",
-    aspectRatio: 696 / 631,
+    aspectRatio: 694 / 699,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const CategoryData = [
     imagePath: require('./images/ThinkingGirl.png'),
     description: 'Self Growth',
     placeholder: 'Build a reading habit in 21 days',
-    aspectRatio: 635 / 765,
+    aspectRatio: 694 / 699,
   },
 ];
 

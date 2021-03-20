@@ -11,9 +11,6 @@ import {
 } from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
-const readingGirl = require('../../assets/images/ReadingGirl.png');
-const readingGirlPlaceholder = 'Get my bachelors degree in three years';
-const readingGirlDescription = 'Career & Education';
 import CheckCircle from '../../assets/images/CheckCircle';
 import Svg, {Path} from 'react-native-svg';
 import CustomTextInput from '../../components/CustomTextInput';
@@ -43,7 +40,7 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 50;
   const IMAGE_OFFSET = 20;
-  const IMAGE_HEIGHT = '56%';
+  const IMAGE_HEIGHT = layout.imageSizes.medium;
   const CUSTOM_INPUT_TEXT_GAP = 6;
   return (
     <KeyboardAvoidingView
@@ -76,12 +73,11 @@ const WhatGoalToAchieveScreen = (onPress, categoryId) => {
               What do you want to achieve?
             </Text>
           </View>
-          {/* image */}
           <View
             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <View
               style={{
-                height: IMAGE_HEIGHT,
+                height: layout.autoImageSizes.large,
                 aspectRatio: categoryData.aspectRatio,
               }}>
               <Image
