@@ -13,6 +13,7 @@ import DotIcon from '../SvgIcons/DotIcon';
 import PinkButton from '../Buttons/PinkButton';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {useEffect} from 'react';
+import Toast from 'react-native-simple-toast';
 const ListCard = ({
   imageUrl,
   imageAspectRatio,
@@ -49,7 +50,9 @@ const ListCard = ({
       onDeletePress && onDeletePress();
     }
   }, [isVisibleRBSheet]);
-
+  function showToast() {
+    Toast.showWithGravity('Congratulations!', Toast.LONG, Toast.TOP);
+  }
   return (
     <View>
       <View
@@ -189,7 +192,11 @@ const ListCard = ({
               />
               <View style={{flex: 1, justifyContent: 'center'}}>
                 <View style={{flexBasis: BUTTON_GAP}} />
-                <TouchableOpacity onPress={() => myRbSheet.close()}>
+                <TouchableOpacity
+                  onPress={() => {
+                    myRbSheet.close();
+                    setTimeout(showToast, 750);
+                  }}>
                   <Text
                     style={{
                       color: colors.themeColors.pink,
