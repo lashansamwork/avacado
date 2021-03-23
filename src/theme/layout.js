@@ -51,6 +51,7 @@ const layout = {
     medium2: 16 * MAGNIFIEDBY,
     subText: 12 * MAGNIFIEDBY,
     large: 23 * MAGNIFIEDBY,
+    xxLarge: 35 * MAGNIFIEDBY,
     xxxLarge: 39 * MAGNIFIEDBY,
     welcomeText: 20 * MAGNIFIEDBY,
   },

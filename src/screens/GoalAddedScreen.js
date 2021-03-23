@@ -59,7 +59,7 @@ const GoalAddedScreen = ({navigation}) => {
               textAlign: 'center',
               fontFamily: 'Nunito-SemiBold',
               color: colors.themeColors.pink,
-              fontSize: layout.fontSizes.xxxLarge,
+              fontSize: layout.fontSizes.xxLarge,
             }}>
             Congrats {username}!
           </Text>

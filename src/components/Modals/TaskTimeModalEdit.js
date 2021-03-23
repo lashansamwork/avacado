@@ -197,15 +197,9 @@ const TaskTimeModalEdit = ({
               onSubmit({name, epochTime, daysStringArray});
             } else {
               if (repeatDays.length <= 0) {
-                Alert.alert(
-                  'Days not selected',
-                  'Please choose at least one day',
-                );
+                Alert.alert('Error', 'Please choose at least one day');
               } else if (name === '') {
-                Alert.alert(
-                  'Task name is empty',
-                  'Please provide a name for the task',
-                );
+                Alert.alert('Error', 'Please provide a name for the task');
               }
             }
           }}>
