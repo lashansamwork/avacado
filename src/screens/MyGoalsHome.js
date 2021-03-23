@@ -51,8 +51,10 @@ const MyGoalsHome = ({navigation}) => {
     });
   };
 
-  const onDeleteGoalPressed = () => {
-    deleteGoal(selectedItem.id).then(() => {
+  const onDeleteGoalPressed = (item) => {
+    const itemToDelete = item ? item : selectedItem;
+
+    deleteGoal(itemToDelete.id).then(() => {
       updateGoals();
     });
     setDeleteModal(false);
@@ -158,9 +160,14 @@ const MyGoalsHome = ({navigation}) => {
               <View style={{margin: layout.padding.large}}>
                 {/* 👉  list card detail sent */}
                 <ListCard
-                  onDeletePress={() => {
-                    setSelectedItem(item);
-                    setDeleteModal(true);
+                  onDeletePress={(directDelete) => {
+                    console.log('tadaa....', directDelete);
+                    if (directDelete) {
+                      onDeleteGoalPressed(item);
+                    } else {
+                      setSelectedItem(item);
+                      setDeleteModal(true);
+                    }
                   }}
                   imageUrl={item.imageUrl}
                   imageAspectRatio={item.imageAspectRatio}

@@ -26,7 +26,7 @@ const ListCard = ({
   onCardPress,
 }) => {
   const HITSLOP_SIZE = 20;
-  const RBSHEET_HEIGHT = 100;
+  const RBSHEET_HEIGHT = 180;
   const RBSHEET_OPEN_DURATION = 250;
   const RBSHEET_RADIUS = 45;
   const RBSHEET_MAIN_VIEW_RADIUS = 45;
@@ -206,6 +206,8 @@ const ListCard = ({
                 <View style={{flexBasis: BUTTON_GAP}} />
                 <TouchableOpacity
                   onPress={() => {
+                    console.log('testing');
+                    onDeletePress && onDeletePress(true);
                     myRbSheet.close();
                     setTimeout(showToast, 750);
                   }}>
