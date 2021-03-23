@@ -68,7 +68,7 @@ const GoalAddedScreen = ({navigation}) => {
               flexShrink: 1,
               textAlign: 'center',
               fontFamily: layout.fonts.nunito,
-              fontSize: layout.fontSizes.header,
+              fontSize: layout.fontSizes.medium1,
               color: colors.themeColors.primary,
             }}>
             You added a new goal that will change your life journey!
