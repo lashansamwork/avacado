@@ -8,6 +8,10 @@ import colors from '../../theme/colors';
 import layout from '../../theme/layout';
 import moment from 'moment';
 const TaskView = ({name, time, category}) => {
+  console.log(
+    '🚀 ~ file: TaskView.js ~ line 11 ~ TaskView ~ category',
+    category,
+  );
   let IMAGE = null;
   let ASPECT_RATIO = null;
   if (category === 'Finance') {
@@ -17,6 +21,7 @@ const TaskView = ({name, time, category}) => {
     IMAGE = thinkingGirl;
     ASPECT_RATIO = layout.imageAspectRatio.thinkingGirlWithoutCircle;
   } else if (category === 'Career & Educational') {
+    console.log('tada.....');
     IMAGE = readingGirl;
     ASPECT_RATIO = layout.imageAspectRatio.readingGirlWithoutCircle;
   } else if (category === 'Physical & Health') {
@@ -37,10 +42,11 @@ const TaskView = ({name, time, category}) => {
         style={{
           aspectRatio: ASPECT_RATIO,
           height: '90%',
+          marginLeft: 15,
         }}>
         <Image
           source={IMAGE}
-          style={{height: null, width: null, flex: 1, marginLeft: 15}}
+          style={{height: null, width: null, flex: 1}}
           resizeMode="stretch"
         />
       </View>

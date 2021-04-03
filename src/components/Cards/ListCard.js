@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Modal,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import layout from '../../theme/layout';
 import colors from '../../theme/colors';
 import DotIcon from '../SvgIcons/DotIcon';
@@ -97,7 +90,7 @@ const ListCard = ({
           }}>
           <View
             style={{
-              height: layout.autoImageSizes.large,
+              height: layout.autoImageSizes.medium,
               aspectRatio: imageAspectRatio,
             }}>
             <Image
