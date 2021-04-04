@@ -29,6 +29,13 @@ const MyGoalsHome = ({navigation}) => {
     updateGoals();
   }, []);
 
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      updateGoals();
+    });
+    return unsubscribe;
+  }, [navigation]);
+
   const updateGoals = () => {
     getGoals().then((realmArr) => {
       const goalArray = realmArr.map((element, index) => {
@@ -94,6 +101,7 @@ const MyGoalsHome = ({navigation}) => {
   const onCardPress = (item) => {
     navigation.navigate('GoalInfoScreen', {
       title: item.title,
+      goalId: item.id,
       imageUrl: item.imageUrl,
       imageAspectRatio: item.imageAspectRatio,
       description: item.description,

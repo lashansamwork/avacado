@@ -56,11 +56,13 @@ export const updateGoal = (id, newGoal) =>
   new Promise((resolve, reject) => {
     Realm.open(databaseOptions)
       .then((realm) => {
-        const goal = realm.objects(GoalSchemaName).filtered(`id == ${id}`);
-        Object.keys(newGoal).map((key) => {
-          goal[key] = newGoal[key];
+        realm.write(() => {
+          const goal = realm.objectForPrimaryKey(GoalSchemaName, id);
+          Object.keys(newGoal).map((key) => {
+            goal[key] = newGoal[key];
+          });
+          resolve(newGoal);
         });
-        resolve(newGoal);
       })
       .catch((error) => reject(error));
   });

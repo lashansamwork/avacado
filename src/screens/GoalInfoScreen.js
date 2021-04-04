@@ -1,14 +1,65 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Alert} from 'react-native';
 import layout from '../theme/layout';
 import colors from '../theme/colors';
 import LeftArrow from '../components/NavBar/LeftArrow';
+import CustomTextInput from '../components/CustomTextInput';
+import {TextInput} from 'react-native-gesture-handler';
+import {useState} from 'react';
+import {updateGoal} from '../database/GoalActions';
+
 const GoalInfoScreen = ({navigation, route}) => {
   const title = route?.params?.title;
   const description = route?.params?.description;
+  const goalId = route?.params?.goalId;
   const imageUrl = route?.params?.imageUrl;
   const imageAspectRatio = route?.params?.imageAspectRatio;
-  console.log(imageAspectRatio);
+  const [currentTitle, setTitle] = useState(title);
+  const [currentDescription, setDescription] = useState(description);
+  const [hasUnsavedChanges, sethasUnsavedChanges] = useState(false);
+
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        if (!hasUnsavedChanges) {
+          // If we don't have unsaved changes, then we don't need to do anything
+          return;
+        }
+
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+
+        // Prompt the user before leaving the screen
+        Alert.alert(
+          'Save your changes?',
+          'You have unsaved changes. Do you want to save those changes?',
+          [
+            {
+              text: 'Yes',
+              style: 'cancel',
+              onPress: () => {
+                const updatedGoal = {
+                  name: currentTitle,
+                  description: currentDescription,
+                };
+                updateGoal(goalId, updatedGoal).then((item) => {
+                  console.log('testing.... ', item);
+                  navigation.dispatch(e.data.action);
+                });
+              },
+            },
+            {
+              text: 'Discard',
+              style: 'destructive',
+              // If the user confirmed, then we dispatch the action we blocked earlier
+              // This will continue the action that had triggered the removal of the screen
+              onPress: () => navigation.dispatch(e.data.action),
+            },
+          ],
+        );
+      }),
+    [navigation, hasUnsavedChanges, currentTitle, currentDescription, goalId],
+  );
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,7 +99,6 @@ const GoalInfoScreen = ({navigation, route}) => {
           My Why
         </Text>
       </View>
-
       <View
         style={{
           flex: 11,
@@ -73,28 +123,38 @@ const GoalInfoScreen = ({navigation, route}) => {
           flex: 2,
           justifyContent: 'center',
         }}>
-        <Text
+        <TextInput
           style={{
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.primary,
             fontSize: layout.fontSizes.xheader,
-          }}>
-          {title}
-        </Text>
+          }}
+          placeholder={'Title'}
+          value={currentTitle}
+          onChangeText={(text) => {
+            sethasUnsavedChanges(true);
+            setTitle(text);
+          }}
+        />
       </View>
 
       <View
         style={{
           flex: 17,
         }}>
-        <Text
+        <TextInput
           style={{
             fontSize: layout.fontSizes.xsmall,
             fontFamily: layout.fonts.nunito,
             color: colors.themeColors.transparent,
-          }}>
-          {description}
-        </Text>
+          }}
+          placeholder={'Description'}
+          value={currentDescription}
+          onChangeText={(text) => {
+            sethasUnsavedChanges(true);
+            setDescription(text);
+          }}
+        />
       </View>
     </View>
   );
