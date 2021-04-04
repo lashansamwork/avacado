@@ -10,16 +10,16 @@ import TaskTimeModal from '../../components/Modals/TaskTimeModal';
 const BORDER_RADIUS = 20;
 
 //Task Item sent here
-const Item = ({title}) => (
+const Item = ({title, onPress}) => (
   <TaskItem
     backgroundColor={colors.themeColors.primary}
     label={title} // check flatlist, pulls from STATE : tasks
     fontColor={colors.themeColors.secondary}
+    onPress={onPress}
   />
 );
 
 const HowToAchieveGoalScreen = (onPress, oldTasks) => {
-  const renderItem = ({item, index}) => <Item title={item.name} />; // pulls task item
   const SAFEVIEW_OFFSET = 15;
   const HEADING_GAP = 50;
   const HEADING_OFFSET = 120;
@@ -28,6 +28,39 @@ const HowToAchieveGoalScreen = (onPress, oldTasks) => {
   const [modalIndex, setModalIndex] = React.useState(0);
   const [tasks, setTasks] = React.useState(oldTasks);
   const [task, setTask] = React.useState({name: null});
+
+  const renderItem = ({item, index}) => {
+    const currentIndex = index;
+    return (
+      <Item
+        title={item.name}
+        onPress={() => {
+          Alert.alert('Delete', 'Do you want to delete this task?', [
+            {
+              text: 'Yes',
+              style: 'cancel',
+              onPress: () => {
+                const filteredList = tasks.filter(
+                  (item, itemIndex) => itemIndex !== currentIndex,
+                );
+                console.log(
+                  '🚀 ~ file: HowToAchieveGoalScreen.js ~ line 46 ~ renderItem ~ filteredList',
+                  filteredList,
+                );
+                setTasks(filteredList);
+              },
+            },
+            {
+              text: 'Cancel',
+              style: 'destructive',
+              onPress: () => {},
+            },
+          ]);
+        }}
+      />
+    );
+  };
+
   const CustomModal = () => {
     return (
       <TaskTimeModal

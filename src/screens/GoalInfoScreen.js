@@ -42,8 +42,16 @@ const GoalInfoScreen = ({navigation, route}) => {
                   name: currentTitle,
                   description: currentDescription,
                 };
+                if (!currentTitle || !currentDescription) {
+                  Alert.alert(
+                    'Error',
+                    'Please provide a name and a description',
+                  );
+                  navigation.dispatch(e.data.action);
+                  return;
+                }
+
                 updateGoal(goalId, updatedGoal).then((item) => {
-                  console.log('testing.... ', item);
                   navigation.dispatch(e.data.action);
                 });
               },
